@@ -1,0 +1,2500 @@
+Current local date and time: 2024-05-16 10:31:42
+[ TITLE  ]  **************************************************************************
+[ TITLE  ]        ANT-MOC: an advanced neutron transport code from the CVR suite      
+[ TITLE  ]  **************************************************************************
+[  INFO  ]  
+[  INFO  ]  ... Reporting runtime parameters...
+[  INFO  ]  ------------------------
+[  INFO  ]  Log level                = INFO
+[  INFO  ]  Log line length          = 74
+[  INFO  ]  Log file                 =
+[  INFO  ]  ...  
+[  INFO  ]  ... /home/gengxiaoxu/data/Hex-CMFD-v0.1/ant-moc-develop/Log-Hex-Modify/outp
+[  INFO  ]  ... ut
+[  INFO  ]  ------------------------
+[  INFO  ]  Ranks                    = 1
+[  INFO  ]  Threads per rank         = 1
+[  INFO  ]  Spatial Domains          = 1 x 1 x 1 x 1
+[  INFO  ]  Sub track domains        = 1
+[  INFO  ]  Track mapping            = AUTO
+[  INFO  ]  ------------------------
+[  INFO  ]  Config file              =
+[  INFO  ]  ...  
+[  INFO  ]  ... /home/gengxiaoxu/data/Hex-CMFD-v0.1/ant-moc-develop/cases/c5g7/simple-l
+[  INFO  ]  ... attice/settings.toml
+[  INFO  ]  Geometry file            =
+[  INFO  ]  ...  
+[  INFO  ]  ... /home/gengxiaoxu/data/Modify-Hex-CMFD/ant-moc-develop/cases/c5g7/simple
+[  INFO  ]  ... -lattice/geometry.xml
+[  INFO  ]  Primitives file          = 
+[  INFO  ]  Materials file           =
+[  INFO  ]  ...  
+[  INFO  ]  ... /home/gengxiaoxu/data/Modify-Hex-CMFD/ant-moc-develop/cases/c5g7/c5g7-m
+[  INFO  ]  ... gxs.h5
+[  INFO  ]  XS file layout           = NAMED
+[  INFO  ]  Global lattice refines   = 0, 0, 0
+[  INFO  ]  Global cell sectors      = 
+[  INFO  ]  Global cell rings        = 
+[  INFO  ]  ------------------------
+[  INFO  ]  Quadrature               = EQUAL WEIGHT
+[  INFO  ]  Azimuthal angles         = 16
+[  INFO  ]  Azimuthal spacing        = 1
+[  INFO  ]  Polar angles             = 2
+[  INFO  ]  Polar spacing            = 0.75
+[  INFO  ]  Segment formation        = OTF STACKS
+[  INFO  ]  Modules                  = 1, 1, 1
+[  INFO  ]  Axial zones              = -21.42, +21.42
+[  INFO  ]  Z mesh type              = LOCAL
+[  INFO  ]  ------------------------
+[  INFO  ]  Solver                   = CPU SOLVER
+[  INFO  ]  Max iterations           = 1000
+[  INFO  ]  Tolerance                = 1.0000E-05
+[  INFO  ]  K-eff                    = Successive Fission Rates
+[  INFO  ]  Stabilization            = NONE
+[  INFO  ]  ------------------------
+[  INFO  ]  
+[  INFO  ]  ... Reporting output configuration...
+[  INFO  ]  ------------------------
+[  INFO  ]  Output directory         = 20240516-103142
+[  INFO  ]  Output settings          = false
+[  INFO  ]  Output tally mesh        = true
+[  INFO  ]  Output FSR data          = false
+[  INFO  ]  Output track types       = NONE
+[  INFO  ]  Tally RX types           = F, PHI
+[  INFO  ]  Tally XS types           = NONE
+[  INFO  ]  Selected groups          = ALL
+[  INFO  ]  Tally mesh type          = RECTANGLE
+[  INFO  ]  Tally mesh shape         = [1.26]*3, [1.26]*3, [1.428]*30
+[  INFO  ]  Tally mesh offset        = (0, 0, 0)
+[  INFO  ]  ------------------------
+[  INFO  ]  
+[  INFO  ]  ... Reporting other options...
+[  INFO  ]  ------------------------
+[  INFO  ]  Required energy group    = ALL
+[  INFO  ]  ------------------------
+[  INFO  ]  
+[  INFO  ]  Periodic track domain decomposition = disabled
+[  INFO  ]  Spatial domain decomposition        = disabled
+[  INFO  ]  Creating geometry and materials...
+[  INFO  ]  Reading geometry from file...
+[  INFO  ]  Found child global element of the geometry, reading primitives...
+[  INFO  ]  Number of primitives cleaned = 2
+[  INFO  ]  Initializing flat source regions...
+[  INFO  ]  Number of materials cleaned = 1
+[  INFO  ]  Number of energy groups required      = 7
+[  INFO  ]  Number of energy groups in H5 file    = 7
+[  INFO  ]  Total number of materials in H5 file  = 9
+[  INFO  ]  Number of retrieved materials         = 3
+[  INFO  ]  Number of materials in geometry       = 3
+[  INFO  ]  Max storage for Materials per domain = 0.00 MiB
+[ HEADER ]  **************************************************************************
+[ HEADER ]                       Timing Report - Input (average)                      
+[ HEADER ]  **************************************************************************
+[ RESULT ]  Total Input Time................................... 5.73788E-02 s
+[ RESULT ]    Time to read settings............................ 4.01980E-02 s 70.06%
+[ RESULT ]    Time to read geometry and materials.............. 9.54414E-03 s 16.63%
+[ RESULT ]    Time of domain decomposition..................... 1.39446E-03 s  2.43%
+[ RESULT ]    Time of meshing and FSRs initialization.......... 1.05984E-03 s  1.85%
+[ RESULT ]    Time to remove unused objects.................... 1.70653E-03 s  2.97%
+[   SP   ]  --------------------------------------------------------------------------
+[  INFO  ]  Initializing the track generator...
+[  INFO  ]  Boundary condition (Z) for cyclic tracks = REFLECTIVE
+[  INFO  ]  Initializing 2D tracks...
+[  INFO  ]  SD of phis after correction  = 0.0730
+[  INFO  ]  Extra tracks due to correction = 0, 0.0000%
+[  INFO  ]  Max/Min length of cyclics = 15.59, 3.90
+[  INFO  ]  Initializing 2D tracks array...
+[ RESULT ]  Total number of 2D Tracks = 48
+[  INFO  ]  Initializing 3D tracks...
+[  INFO  ]  RMS polar angle correction 0.222664 %
+[  INFO  ]  Max polar angle correction 0.621546 %
+[ RESULT ]  Total number of 3D Chains = 3096
+[  INFO  ]  Progress Initializing 3D Tracks:   0.00%
+[  INFO  ]  Progress Initializing 3D Tracks:  10.42%
+[  INFO  ]  Progress Initializing 3D Tracks:  18.75%
+[  INFO  ]  Progress Initializing 3D Tracks:  27.08%
+[  INFO  ]  Progress Initializing 3D Tracks:  35.42%
+[  INFO  ]  Progress Initializing 3D Tracks:  43.75%
+[  INFO  ]  Progress Initializing 3D Tracks:  52.08%
+[  INFO  ]  Progress Initializing 3D Tracks:  60.42%
+[  INFO  ]  Progress Initializing 3D Tracks:  68.75%
+[  INFO  ]  Progress Initializing 3D Tracks:  77.08%
+[  INFO  ]  Progress Initializing 3D Tracks: 100.00%
+[ RESULT ]  Number of 3D Tracks in spatial domain = 5936
+[  INFO  ]  Memory allocated for Tracks in spatial domain = 0.026 MiB
+[  INFO  ]  Finished initialization of 3D tracks
+[  INFO  ]  Ray tracing for axially extruded track segmentation...
+[  INFO  ]  Segmenting 2D tracks on the superposition plane...
+[  INFO  ]  Progress Segmenting 2D Tracks:   0.00%
+[  INFO  ]  Cell:127, phi:0.244979, region_id:0, end_point:(0.504000,-1.764000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.244979, region_id:0, start_point:(0.000000,-1.890000),
+[  INFO  ]  ...  surface[1]:3318
+[  INFO  ]  Cell:127, phi:0.244979, region_id:1, end_point:(0.630000,-1.732500),
+[  INFO  ]  ...  surface[0]:3315
+[  INFO  ]  Cell:127, phi:0.244979, region_id:1, start_point:(0.504000,-1.764000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:128, phi:0.244979, region_id:2, end_point:(0.840000,-1.680000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.244979, region_id:2, start_point:(0.630000,-1.732500),
+[  INFO  ]  ...  surface[1]:3340
+[  INFO  ]  Cell:128, phi:0.244979, region_id:3, end_point:(0.902201,-1.664450),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.244979, region_id:3, start_point:(0.840000,-1.680000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:0.244979, region_id:4, end_point:(1.512000,-1.512000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.244979, region_id:4, start_point:(0.902201,-1.664450),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:0.244979, region_id:5, end_point:(1.766035,-1.448491),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.244979, region_id:5, start_point:(1.512000,-1.512000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:0.244979, region_id:6, end_point:(1.890000,-1.417500),
+[  INFO  ]  ...  surface[0]:3341
+[  INFO  ]  Cell:128, phi:0.244979, region_id:6, start_point:(1.766035,-1.448491),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:126, phi:0.244979, region_id:7, end_point:(-1.783877,-1.390969),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.244979, region_id:7, start_point:(-1.890000,-1.417500),
+[  INFO  ]  ...  surface[1]:3288
+[  INFO  ]  Cell:126, phi:0.244979, region_id:8, end_point:(-1.260000,-1.260000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.244979, region_id:8, start_point:(-1.783877,-1.390969),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:0.244979, region_id:9, end_point:(-0.736123,-1.129031),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.244979, region_id:9, start_point:(-1.260000,-1.260000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:0.244979, region_id:10, end_point:(-0.630000,-1.102500),
+[  INFO  ]  ...  surface[0]:3289
+[  INFO  ]  Cell:126, phi:0.244979, region_id:10, start_point:(-0.736123,-1.129031),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:127, phi:0.244979, region_id:11, end_point:(-0.506035,-1.071509),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.244979, region_id:11, start_point:(-0.630000,-1.102500),
+[  INFO  ]  ...  surface[1]:3314
+[  INFO  ]  Cell:127, phi:0.244979, region_id:12, end_point:(-0.252000,-1.008000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.244979, region_id:12, start_point:(-0.506035,-1.071509),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:0.244979, region_id:13, end_point:(0.357799,-0.855550),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.244979, region_id:13, start_point:(-0.252000,-1.008000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:0.244979, region_id:14, end_point:(0.420000,-0.840000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.244979, region_id:14, start_point:(0.357799,-0.855550),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:0.244979, region_id:15, end_point:(0.630000,-0.787500),
+[  INFO  ]  ...  surface[0]:3315
+[  INFO  ]  Cell:127, phi:0.244979, region_id:15, start_point:(0.420000,-0.840000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:128, phi:0.244979, region_id:16, end_point:(0.756000,-0.756000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.244979, region_id:16, start_point:(0.630000,-0.787500),
+[  INFO  ]  ...  surface[1]:3340
+[  INFO  ]  Cell:128, phi:0.244979, region_id:17, end_point:(1.260000,-0.630000),
+[  INFO  ]  ...  surface[0]:3345
+[  INFO  ]  Cell:128, phi:0.244979, region_id:17, start_point:(0.756000,-0.756000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:131, phi:0.244979, region_id:18, end_point:(1.764000,-0.504000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.244979, region_id:18, start_point:(1.260000,-0.630000),
+[  INFO  ]  ...  surface[1]:3422
+[  INFO  ]  Cell:131, phi:0.244979, region_id:19, end_point:(1.890000,-0.472500),
+[  INFO  ]  ...  surface[0]:3419
+[  INFO  ]  Cell:131, phi:0.244979, region_id:19, start_point:(1.764000,-0.504000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:129, phi:0.244979, region_id:20, end_point:(-1.680000,-0.420000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.244979, region_id:20, start_point:(-1.890000,-0.472500),
+[  INFO  ]  ...  surface[1]:3366
+[  INFO  ]  Cell:129, phi:0.244979, region_id:21, end_point:(-1.617799,-0.404450),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.244979, region_id:21, start_point:(-1.680000,-0.420000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:0.244979, region_id:22, end_point:(-1.008000,-0.252000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.244979, region_id:22, start_point:(-1.617799,-0.404450),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:0.244979, region_id:23, end_point:(-0.753965,-0.188491),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.244979, region_id:23, start_point:(-1.008000,-0.252000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:0.244979, region_id:24, end_point:(-0.630000,-0.157500),
+[  INFO  ]  ...  surface[0]:3367
+[  INFO  ]  Cell:129, phi:0.244979, region_id:24, start_point:(-0.753965,-0.188491),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:130, phi:0.244979, region_id:25, end_point:(-0.523877,-0.130969),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:25, start_point:(-0.630000,-0.157500),
+[  INFO  ]  ...  surface[1]:3392
+[  INFO  ]  Cell:130, phi:0.244979, region_id:26, end_point:(-0.468570,-0.117142),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:26, start_point:(-0.523877,-0.130969),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:27, end_point:(-0.405793,-0.101448),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:27, start_point:(-0.468570,-0.117142),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:28, end_point:(-0.331329,-0.082832),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:28, start_point:(-0.405793,-0.101448),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:29, end_point:(-0.234285,-0.058571),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:29, start_point:(-0.331329,-0.082832),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:30, end_point:(-0.000000,-0.000000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:30, start_point:(-0.234285,-0.058571),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:31, end_point:(0.234285,0.058571),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:31, start_point:(-0.000000,-0.000000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:32, end_point:(0.331329,0.082832),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:32, start_point:(0.234285,0.058571),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:33, end_point:(0.405793,0.101448),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:33, start_point:(0.331329,0.082832),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:34, end_point:(0.468570,0.117142),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:34, start_point:(0.405793,0.101448),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:35, end_point:(0.523877,0.130969),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:35, start_point:(0.468570,0.117142),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.244979, region_id:36, end_point:(0.630000,0.157500),
+[  INFO  ]  ...  surface[0]:3393
+[  INFO  ]  Cell:130, phi:0.244979, region_id:36, start_point:(0.523877,0.130969),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:131, phi:0.244979, region_id:37, end_point:(0.753965,0.188491),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.244979, region_id:37, start_point:(0.630000,0.157500),
+[  INFO  ]  ...  surface[1]:3418
+[  INFO  ]  Cell:131, phi:0.244979, region_id:38, end_point:(1.008000,0.252000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.244979, region_id:38, start_point:(0.753965,0.188491),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:0.244979, region_id:39, end_point:(1.617799,0.404450),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.244979, region_id:39, start_point:(1.008000,0.252000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:0.244979, region_id:40, end_point:(1.680000,0.420000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.244979, region_id:40, start_point:(1.617799,0.404450),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:0.244979, region_id:41, end_point:(1.890000,0.472500),
+[  INFO  ]  ...  surface[0]:3419
+[  INFO  ]  Cell:131, phi:0.244979, region_id:41, start_point:(1.680000,0.420000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:129, phi:0.244979, region_id:42, end_point:(-1.764000,0.504000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.244979, region_id:42, start_point:(-1.890000,0.472500),
+[  INFO  ]  ...  surface[1]:3366
+[  INFO  ]  Cell:129, phi:0.244979, region_id:43, end_point:(-1.260000,0.630000),
+[  INFO  ]  ...  surface[0]:3371
+[  INFO  ]  Cell:129, phi:0.244979, region_id:43, start_point:(-1.764000,0.504000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:132, phi:0.244979, region_id:44, end_point:(-0.756000,0.756000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.244979, region_id:44, start_point:(-1.260000,0.630000),
+[  INFO  ]  ...  surface[1]:3448
+[  INFO  ]  Cell:132, phi:0.244979, region_id:45, end_point:(-0.630000,0.787500),
+[  INFO  ]  ...  surface[0]:3445
+[  INFO  ]  Cell:132, phi:0.244979, region_id:45, start_point:(-0.756000,0.756000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:133, phi:0.244979, region_id:46, end_point:(-0.420000,0.840000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.244979, region_id:46, start_point:(-0.630000,0.787500),
+[  INFO  ]  ...  surface[1]:3470
+[  INFO  ]  Cell:133, phi:0.244979, region_id:47, end_point:(-0.357799,0.855550),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.244979, region_id:47, start_point:(-0.420000,0.840000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:0.244979, region_id:48, end_point:(0.252000,1.008000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.244979, region_id:48, start_point:(-0.357799,0.855550),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:0.244979, region_id:49, end_point:(0.506035,1.071509),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.244979, region_id:49, start_point:(0.252000,1.008000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:0.244979, region_id:50, end_point:(0.630000,1.102500),
+[  INFO  ]  ...  surface[0]:3471
+[  INFO  ]  Cell:133, phi:0.244979, region_id:50, start_point:(0.506035,1.071509),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:134, phi:0.244979, region_id:51, end_point:(0.736123,1.129031),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.244979, region_id:51, start_point:(0.630000,1.102500),
+[  INFO  ]  ...  surface[1]:3496
+[  INFO  ]  Cell:134, phi:0.244979, region_id:52, end_point:(1.260000,1.260000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.244979, region_id:52, start_point:(0.736123,1.129031),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:0.244979, region_id:53, end_point:(1.783877,1.390969),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.244979, region_id:53, start_point:(1.260000,1.260000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:0.244979, region_id:54, end_point:(1.890000,1.417500),
+[  INFO  ]  ...  surface[0]:3497
+[  INFO  ]  Cell:134, phi:0.244979, region_id:54, start_point:(1.783877,1.390969),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Progress Segmenting 2D Tracks:  10.42%
+[  INFO  ]  Cell:132, phi:0.244979, region_id:55, end_point:(-1.766035,1.448491),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.244979, region_id:55, start_point:(-1.890000,1.417500),
+[  INFO  ]  ...  surface[1]:3444
+[  INFO  ]  Cell:132, phi:0.244979, region_id:56, end_point:(-1.512000,1.512000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.244979, region_id:56, start_point:(-1.766035,1.448491),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:0.244979, region_id:57, end_point:(-0.902201,1.664450),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.244979, region_id:57, start_point:(-1.512000,1.512000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:0.244979, region_id:58, end_point:(-0.840000,1.680000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.244979, region_id:58, start_point:(-0.902201,1.664450),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:0.244979, region_id:59, end_point:(-0.630000,1.732500),
+[  INFO  ]  ...  surface[0]:3445
+[  INFO  ]  Cell:132, phi:0.244979, region_id:59, start_point:(-0.840000,1.680000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:133, phi:0.244979, region_id:60, end_point:(-0.504000,1.764000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.244979, region_id:60, start_point:(-0.630000,1.732500),
+[  INFO  ]  ...  surface[1]:3470
+[  INFO  ]  Cell:133, phi:0.244979, region_id:61, end_point:(-0.000000,1.890000),
+[  INFO  ]  ...  surface[0]:3475
+[  INFO  ]  Cell:133, phi:0.244979, region_id:61, start_point:(-0.504000,1.764000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:128, phi:0.643501, region_id:62, end_point:(1.407307,-1.779520),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.643501, region_id:62, start_point:(1.260000,-1.890000),
+[  INFO  ]  ...  surface[1]:3344
+[  INFO  ]  Cell:128, phi:0.643501, region_id:4, end_point:(1.620000,-1.620000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.643501, region_id:4, start_point:(1.407307,-1.779520),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:0.643501, region_id:5, end_point:(1.717493,-1.546880),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.643501, region_id:5, start_point:(1.620000,-1.620000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:0.643501, region_id:6, end_point:(1.890000,-1.417500),
+[  INFO  ]  ...  surface[0]:3341
+[  INFO  ]  Cell:128, phi:0.643501, region_id:6, start_point:(1.717493,-1.546880),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:127, phi:0.643501, region_id:0, end_point:(0.147307,-1.779520),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.643501, region_id:0, start_point:(-0.000000,-1.890000),
+[  INFO  ]  ...  surface[1]:3318
+[  INFO  ]  Cell:127, phi:0.643501, region_id:63, end_point:(0.360000,-1.620000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.643501, region_id:63, start_point:(0.147307,-1.779520),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:0.643501, region_id:64, end_point:(0.457493,-1.546880),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.643501, region_id:64, start_point:(0.360000,-1.620000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:0.643501, region_id:1, end_point:(0.630000,-1.417500),
+[  INFO  ]  ...  surface[0]:3315
+[  INFO  ]  Cell:127, phi:0.643501, region_id:1, start_point:(0.457493,-1.546880),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:128, phi:0.643501, region_id:2, end_point:(0.726725,-1.344956),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.643501, region_id:2, start_point:(0.630000,-1.417500),
+[  INFO  ]  ...  surface[1]:3340
+[  INFO  ]  Cell:128, phi:0.643501, region_id:65, end_point:(1.080000,-1.080000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.643501, region_id:65, start_point:(0.726725,-1.344956),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:0.643501, region_id:66, end_point:(1.490875,-0.771844),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.643501, region_id:66, start_point:(1.080000,-1.080000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:0.643501, region_id:67, end_point:(1.680000,-0.630000),
+[  INFO  ]  ...  surface[0]:3345
+[  INFO  ]  Cell:128, phi:0.643501, region_id:67, start_point:(1.490875,-0.771844),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:131, phi:0.643501, region_id:18, end_point:(1.800000,-0.540000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.643501, region_id:18, start_point:(1.680000,-0.630000),
+[  INFO  ]  ...  surface[1]:3422
+[  INFO  ]  Cell:131, phi:0.643501, region_id:19, end_point:(1.890000,-0.472500),
+[  INFO  ]  ...  surface[0]:3419
+[  INFO  ]  Cell:131, phi:0.643501, region_id:19, start_point:(1.800000,-0.540000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:126, phi:0.643501, region_id:68, end_point:(-1.112693,-1.779520),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.643501, region_id:68, start_point:(-1.260000,-1.890000),
+[  INFO  ]  ...  surface[1]:3292
+[  INFO  ]  Cell:126, phi:0.643501, region_id:69, end_point:(-0.900000,-1.620000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.643501, region_id:69, start_point:(-1.112693,-1.779520),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:0.643501, region_id:9, end_point:(-0.802507,-1.546880),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.643501, region_id:9, start_point:(-0.900000,-1.620000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:0.643501, region_id:70, end_point:(-0.630000,-1.417500),
+[  INFO  ]  ...  surface[0]:3289
+[  INFO  ]  Cell:126, phi:0.643501, region_id:70, start_point:(-0.802507,-1.546880),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:127, phi:0.643501, region_id:71, end_point:(-0.533275,-1.344956),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.643501, region_id:71, start_point:(-0.630000,-1.417500),
+[  INFO  ]  ...  surface[1]:3314
+[  INFO  ]  Cell:127, phi:0.643501, region_id:12, end_point:(-0.180000,-1.080000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.643501, region_id:12, start_point:(-0.533275,-1.344956),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:0.643501, region_id:13, end_point:(0.230875,-0.771844),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.643501, region_id:13, start_point:(-0.180000,-1.080000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:0.643501, region_id:14, end_point:(0.420000,-0.630000),
+[  INFO  ]  ...  surface[0]:3319
+[  INFO  ]  Cell:127, phi:0.643501, region_id:14, start_point:(0.230875,-0.771844),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:130, phi:0.643501, region_id:72, end_point:(0.540000,-0.540000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:72, start_point:(0.420000,-0.630000),
+[  INFO  ]  ...  surface[1]:3396
+[  INFO  ]  Cell:130, phi:0.643501, region_id:73, end_point:(0.630000,-0.472500),
+[  INFO  ]  ...  surface[0]:3393
+[  INFO  ]  Cell:130, phi:0.643501, region_id:73, start_point:(0.540000,-0.540000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:131, phi:0.643501, region_id:74, end_point:(0.828000,-0.324000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.643501, region_id:74, start_point:(0.630000,-0.472500),
+[  INFO  ]  ...  surface[1]:3418
+[  INFO  ]  Cell:131, phi:0.643501, region_id:38, end_point:(1.260000,-0.000000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.643501, region_id:38, start_point:(0.828000,-0.324000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:0.643501, region_id:75, end_point:(1.692000,0.324000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.643501, region_id:75, start_point:(1.260000,-0.000000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:0.643501, region_id:41, end_point:(1.890000,0.472500),
+[  INFO  ]  ...  surface[0]:3419
+[  INFO  ]  Cell:131, phi:0.643501, region_id:41, start_point:(1.692000,0.324000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Progress Segmenting 2D Tracks:  18.75%
+[  INFO  ]  Cell:126, phi:0.643501, region_id:7, end_point:(-1.793275,-1.344956),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.643501, region_id:7, start_point:(-1.890000,-1.417500),
+[  INFO  ]  ...  surface[1]:3288
+[  INFO  ]  Cell:126, phi:0.643501, region_id:8, end_point:(-1.440000,-1.080000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.643501, region_id:8, start_point:(-1.793275,-1.344956),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:0.643501, region_id:76, end_point:(-1.029125,-0.771844),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.643501, region_id:76, start_point:(-1.440000,-1.080000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:0.643501, region_id:77, end_point:(-0.840000,-0.630000),
+[  INFO  ]  ...  surface[0]:3293
+[  INFO  ]  Cell:126, phi:0.643501, region_id:77, start_point:(-1.029125,-0.771844),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:129, phi:0.643501, region_id:78, end_point:(-0.720000,-0.540000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.643501, region_id:78, start_point:(-0.840000,-0.630000),
+[  INFO  ]  ...  surface[1]:3370
+[  INFO  ]  Cell:129, phi:0.643501, region_id:24, end_point:(-0.630000,-0.472500),
+[  INFO  ]  ...  surface[0]:3367
+[  INFO  ]  Cell:129, phi:0.643501, region_id:24, start_point:(-0.720000,-0.540000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:130, phi:0.643501, region_id:25, end_point:(-0.432000,-0.324000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:25, start_point:(-0.630000,-0.472500),
+[  INFO  ]  ...  surface[1]:3392
+[  INFO  ]  Cell:130, phi:0.643501, region_id:26, end_point:(-0.386393,-0.289794),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:26, start_point:(-0.432000,-0.324000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:27, end_point:(-0.334626,-0.250969),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:27, start_point:(-0.386393,-0.289794),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:28, end_point:(-0.273221,-0.204916),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:28, start_point:(-0.334626,-0.250969),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:29, end_point:(-0.193196,-0.144897),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:29, start_point:(-0.273221,-0.204916),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:30, end_point:(-0.000000,-0.000000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:30, start_point:(-0.193196,-0.144897),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:31, end_point:(0.193196,0.144897),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:31, start_point:(-0.000000,-0.000000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:32, end_point:(0.273221,0.204916),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:32, start_point:(0.193196,0.144897),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:33, end_point:(0.334626,0.250969),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:33, start_point:(0.273221,0.204916),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:34, end_point:(0.386393,0.289794),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:34, start_point:(0.334626,0.250969),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:35, end_point:(0.432000,0.324000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:35, start_point:(0.386393,0.289794),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:36, end_point:(0.630000,0.472500),
+[  INFO  ]  ...  surface[0]:3393
+[  INFO  ]  Cell:130, phi:0.643501, region_id:36, start_point:(0.432000,0.324000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:131, phi:0.643501, region_id:37, end_point:(0.720000,0.540000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.643501, region_id:37, start_point:(0.630000,0.472500),
+[  INFO  ]  ...  surface[1]:3418
+[  INFO  ]  Cell:131, phi:0.643501, region_id:79, end_point:(0.840000,0.630000),
+[  INFO  ]  ...  surface[0]:3423
+[  INFO  ]  Cell:131, phi:0.643501, region_id:79, start_point:(0.720000,0.540000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:134, phi:0.643501, region_id:80, end_point:(1.029125,0.771844),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.643501, region_id:80, start_point:(0.840000,0.630000),
+[  INFO  ]  ...  surface[1]:3500
+[  INFO  ]  Cell:134, phi:0.643501, region_id:81, end_point:(1.440000,1.080000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.643501, region_id:81, start_point:(1.029125,0.771844),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:0.643501, region_id:53, end_point:(1.793275,1.344956),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.643501, region_id:53, start_point:(1.440000,1.080000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:0.643501, region_id:54, end_point:(1.890000,1.417500),
+[  INFO  ]  ...  surface[0]:3497
+[  INFO  ]  Cell:134, phi:0.643501, region_id:54, start_point:(1.793275,1.344956),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:129, phi:0.643501, region_id:20, end_point:(-1.692000,-0.324000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.643501, region_id:20, start_point:(-1.890000,-0.472500),
+[  INFO  ]  ...  surface[1]:3366
+[  INFO  ]  Cell:129, phi:0.643501, region_id:82, end_point:(-1.260000,-0.000000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.643501, region_id:82, start_point:(-1.692000,-0.324000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:0.643501, region_id:23, end_point:(-0.828000,0.324000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.643501, region_id:23, start_point:(-1.260000,-0.000000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:0.643501, region_id:83, end_point:(-0.630000,0.472500),
+[  INFO  ]  ...  surface[0]:3367
+[  INFO  ]  Cell:129, phi:0.643501, region_id:83, start_point:(-0.828000,0.324000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:130, phi:0.643501, region_id:84, end_point:(-0.540000,0.540000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.643501, region_id:84, start_point:(-0.630000,0.472500),
+[  INFO  ]  ...  surface[1]:3392
+[  INFO  ]  Cell:130, phi:0.643501, region_id:85, end_point:(-0.420000,0.630000),
+[  INFO  ]  ...  surface[0]:3397
+[  INFO  ]  Cell:130, phi:0.643501, region_id:85, start_point:(-0.540000,0.540000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:133, phi:0.643501, region_id:47, end_point:(-0.230875,0.771844),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.643501, region_id:47, start_point:(-0.420000,0.630000),
+[  INFO  ]  ...  surface[1]:3474
+[  INFO  ]  Cell:133, phi:0.643501, region_id:48, end_point:(0.180000,1.080000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.643501, region_id:48, start_point:(-0.230875,0.771844),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:0.643501, region_id:49, end_point:(0.533275,1.344956),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.643501, region_id:49, start_point:(0.180000,1.080000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:0.643501, region_id:86, end_point:(0.630000,1.417500),
+[  INFO  ]  ...  surface[0]:3471
+[  INFO  ]  Cell:133, phi:0.643501, region_id:86, start_point:(0.533275,1.344956),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:134, phi:0.643501, region_id:87, end_point:(0.802507,1.546880),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.643501, region_id:87, start_point:(0.630000,1.417500),
+[  INFO  ]  ...  surface[1]:3496
+[  INFO  ]  Cell:134, phi:0.643501, region_id:52, end_point:(0.900000,1.620000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.643501, region_id:52, start_point:(0.802507,1.546880),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:0.643501, region_id:88, end_point:(1.112693,1.779520),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.643501, region_id:88, start_point:(0.900000,1.620000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:0.643501, region_id:89, end_point:(1.260000,1.890000),
+[  INFO  ]  ...  surface[0]:3501
+[  INFO  ]  Cell:134, phi:0.643501, region_id:89, start_point:(1.112693,1.779520),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:129, phi:0.643501, region_id:42, end_point:(-1.800000,0.540000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.643501, region_id:42, start_point:(-1.890000,0.472500),
+[  INFO  ]  ...  surface[1]:3366
+[  INFO  ]  Cell:129, phi:0.643501, region_id:43, end_point:(-1.680000,0.630000),
+[  INFO  ]  ...  surface[0]:3371
+[  INFO  ]  Cell:129, phi:0.643501, region_id:43, start_point:(-1.800000,0.540000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:132, phi:0.643501, region_id:90, end_point:(-1.490875,0.771844),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.643501, region_id:90, start_point:(-1.680000,0.630000),
+[  INFO  ]  ...  surface[1]:3448
+[  INFO  ]  Cell:132, phi:0.643501, region_id:91, end_point:(-1.080000,1.080000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.643501, region_id:91, start_point:(-1.490875,0.771844),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:0.643501, region_id:92, end_point:(-0.726725,1.344956),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.643501, region_id:92, start_point:(-1.080000,1.080000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:0.643501, region_id:59, end_point:(-0.630000,1.417500),
+[  INFO  ]  ...  surface[0]:3445
+[  INFO  ]  Cell:132, phi:0.643501, region_id:59, start_point:(-0.726725,1.344956),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:133, phi:0.643501, region_id:60, end_point:(-0.457493,1.546880),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.643501, region_id:60, start_point:(-0.630000,1.417500),
+[  INFO  ]  ...  surface[1]:3470
+[  INFO  ]  Cell:133, phi:0.643501, region_id:93, end_point:(-0.360000,1.620000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.643501, region_id:93, start_point:(-0.457493,1.546880),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:0.643501, region_id:94, end_point:(-0.147307,1.779520),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.643501, region_id:94, start_point:(-0.360000,1.620000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:0.643501, region_id:61, end_point:(-0.000000,1.890000),
+[  INFO  ]  ...  surface[0]:3475
+[  INFO  ]  Cell:133, phi:0.643501, region_id:61, start_point:(-0.147307,1.779520),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:132, phi:0.643501, region_id:55, end_point:(-1.717493,1.546880),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.643501, region_id:55, start_point:(-1.890000,1.417500),
+[  INFO  ]  ...  surface[1]:3444
+[  INFO  ]  Cell:132, phi:0.643501, region_id:56, end_point:(-1.620000,1.620000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.643501, region_id:56, start_point:(-1.717493,1.546880),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:0.643501, region_id:57, end_point:(-1.407307,1.779520),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.643501, region_id:57, start_point:(-1.620000,1.620000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:0.643501, region_id:95, end_point:(-1.260000,1.890000),
+[  INFO  ]  ...  surface[0]:3449
+[  INFO  ]  Cell:132, phi:0.643501, region_id:95, start_point:(-1.407307,1.779520),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Progress Segmenting 2D Tracks:  27.08%
+[  INFO  ]  Cell:128, phi:0.927295, region_id:62, end_point:(1.546880,-1.717493),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.927295, region_id:62, start_point:(1.417500,-1.890000),
+[  INFO  ]  ...  surface[1]:3344
+[  INFO  ]  Cell:128, phi:0.927295, region_id:4, end_point:(1.620000,-1.620000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.927295, region_id:4, start_point:(1.546880,-1.717493),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:0.927295, region_id:5, end_point:(1.779520,-1.407307),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.927295, region_id:5, start_point:(1.620000,-1.620000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:0.927295, region_id:6, end_point:(1.890000,-1.260000),
+[  INFO  ]  ...  surface[0]:3341
+[  INFO  ]  Cell:128, phi:0.927295, region_id:6, start_point:(1.779520,-1.407307),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:127, phi:0.927295, region_id:0, end_point:(0.540000,-1.800000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.927295, region_id:0, start_point:(0.472500,-1.890000),
+[  INFO  ]  ...  surface[1]:3318
+[  INFO  ]  Cell:127, phi:0.927295, region_id:1, end_point:(0.630000,-1.680000),
+[  INFO  ]  ...  surface[0]:3315
+[  INFO  ]  Cell:127, phi:0.927295, region_id:1, start_point:(0.540000,-1.800000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:128, phi:0.927295, region_id:2, end_point:(0.771844,-1.490875),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.927295, region_id:2, start_point:(0.630000,-1.680000),
+[  INFO  ]  ...  surface[1]:3340
+[  INFO  ]  Cell:128, phi:0.927295, region_id:65, end_point:(1.080000,-1.080000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.927295, region_id:65, start_point:(0.771844,-1.490875),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:0.927295, region_id:66, end_point:(1.344956,-0.726725),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:0.927295, region_id:66, start_point:(1.080000,-1.080000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:0.927295, region_id:67, end_point:(1.417500,-0.630000),
+[  INFO  ]  ...  surface[0]:3345
+[  INFO  ]  Cell:128, phi:0.927295, region_id:67, start_point:(1.344956,-0.726725),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:131, phi:0.927295, region_id:18, end_point:(1.546880,-0.457493),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.927295, region_id:18, start_point:(1.417500,-0.630000),
+[  INFO  ]  ...  surface[1]:3422
+[  INFO  ]  Cell:131, phi:0.927295, region_id:96, end_point:(1.620000,-0.360000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.927295, region_id:96, start_point:(1.546880,-0.457493),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:0.927295, region_id:75, end_point:(1.779520,-0.147307),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.927295, region_id:75, start_point:(1.620000,-0.360000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:0.927295, region_id:19, end_point:(1.890000,-0.000000),
+[  INFO  ]  ...  surface[0]:3419
+[  INFO  ]  Cell:131, phi:0.927295, region_id:19, start_point:(1.779520,-0.147307),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:127, phi:0.927295, region_id:97, end_point:(-0.324000,-1.692000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.927295, region_id:97, start_point:(-0.472500,-1.890000),
+[  INFO  ]  ...  surface[1]:3318
+[  INFO  ]  Cell:127, phi:0.927295, region_id:63, end_point:(-0.000000,-1.260000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.927295, region_id:63, start_point:(-0.324000,-1.692000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:0.927295, region_id:13, end_point:(0.324000,-0.828000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.927295, region_id:13, start_point:(-0.000000,-1.260000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:0.927295, region_id:14, end_point:(0.472500,-0.630000),
+[  INFO  ]  ...  surface[0]:3319
+[  INFO  ]  Cell:127, phi:0.927295, region_id:14, start_point:(0.324000,-0.828000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:130, phi:0.927295, region_id:72, end_point:(0.540000,-0.540000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:72, start_point:(0.472500,-0.630000),
+[  INFO  ]  ...  surface[1]:3396
+[  INFO  ]  Cell:130, phi:0.927295, region_id:73, end_point:(0.630000,-0.420000),
+[  INFO  ]  ...  surface[0]:3393
+[  INFO  ]  Cell:130, phi:0.927295, region_id:73, start_point:(0.540000,-0.540000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:131, phi:0.927295, region_id:74, end_point:(0.771844,-0.230875),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.927295, region_id:74, start_point:(0.630000,-0.420000),
+[  INFO  ]  ...  surface[1]:3418
+[  INFO  ]  Cell:131, phi:0.927295, region_id:38, end_point:(1.080000,0.180000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.927295, region_id:38, start_point:(0.771844,-0.230875),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:0.927295, region_id:39, end_point:(1.344956,0.533275),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:0.927295, region_id:39, start_point:(1.080000,0.180000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:0.927295, region_id:40, end_point:(1.417500,0.630000),
+[  INFO  ]  ...  surface[0]:3423
+[  INFO  ]  Cell:131, phi:0.927295, region_id:40, start_point:(1.344956,0.533275),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:134, phi:0.927295, region_id:98, end_point:(1.546880,0.802507),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.927295, region_id:98, start_point:(1.417500,0.630000),
+[  INFO  ]  ...  surface[1]:3500
+[  INFO  ]  Cell:134, phi:0.927295, region_id:81, end_point:(1.620000,0.900000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.927295, region_id:81, start_point:(1.546880,0.802507),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:0.927295, region_id:53, end_point:(1.779520,1.112693),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.927295, region_id:53, start_point:(1.620000,0.900000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:0.927295, region_id:99, end_point:(1.890000,1.260000),
+[  INFO  ]  ...  surface[0]:3497
+[  INFO  ]  Cell:134, phi:0.927295, region_id:99, start_point:(1.779520,1.112693),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:126, phi:0.927295, region_id:100, end_point:(-1.344956,-1.793275),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.927295, region_id:100, start_point:(-1.417500,-1.890000),
+[  INFO  ]  ...  surface[1]:3292
+[  INFO  ]  Cell:126, phi:0.927295, region_id:69, end_point:(-1.080000,-1.440000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.927295, region_id:69, start_point:(-1.344956,-1.793275),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:0.927295, region_id:9, end_point:(-0.771844,-1.029125),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.927295, region_id:9, start_point:(-1.080000,-1.440000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:0.927295, region_id:10, end_point:(-0.630000,-0.840000),
+[  INFO  ]  ...  surface[0]:3289
+[  INFO  ]  Cell:126, phi:0.927295, region_id:10, start_point:(-0.771844,-1.029125),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:127, phi:0.927295, region_id:11, end_point:(-0.540000,-0.720000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:0.927295, region_id:11, start_point:(-0.630000,-0.840000),
+[  INFO  ]  ...  surface[1]:3314
+[  INFO  ]  Cell:127, phi:0.927295, region_id:101, end_point:(-0.472500,-0.630000),
+[  INFO  ]  ...  surface[0]:3319
+[  INFO  ]  Cell:127, phi:0.927295, region_id:101, start_point:(-0.540000,-0.720000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:130, phi:0.927295, region_id:102, end_point:(-0.324000,-0.432000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:102, start_point:(-0.472500,-0.630000),
+[  INFO  ]  ...  surface[1]:3396
+[  INFO  ]  Cell:130, phi:0.927295, region_id:103, end_point:(-0.289794,-0.386393),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:103, start_point:(-0.324000,-0.432000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:104, end_point:(-0.250969,-0.334626),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:104, start_point:(-0.289794,-0.386393),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:105, end_point:(-0.204916,-0.273221),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:105, start_point:(-0.250969,-0.334626),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:106, end_point:(-0.144897,-0.193196),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:106, start_point:(-0.204916,-0.273221),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:107, end_point:(0.000000,-0.000000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:107, start_point:(-0.144897,-0.193196),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:108, end_point:(0.144897,0.193196),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:108, start_point:(0.000000,-0.000000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:109, end_point:(0.204916,0.273221),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:109, start_point:(0.144897,0.193196),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:110, end_point:(0.250969,0.334626),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:110, start_point:(0.204916,0.273221),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:111, end_point:(0.289794,0.386393),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:111, start_point:(0.250969,0.334626),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:112, end_point:(0.324000,0.432000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:112, start_point:(0.289794,0.386393),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:113, end_point:(0.472500,0.630000),
+[  INFO  ]  ...  surface[0]:3397
+[  INFO  ]  Cell:130, phi:0.927295, region_id:113, start_point:(0.324000,0.432000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:133, phi:0.927295, region_id:114, end_point:(0.540000,0.720000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.927295, region_id:114, start_point:(0.472500,0.630000),
+[  INFO  ]  ...  surface[1]:3474
+[  INFO  ]  Cell:133, phi:0.927295, region_id:50, end_point:(0.630000,0.840000),
+[  INFO  ]  ...  surface[0]:3471
+[  INFO  ]  Cell:133, phi:0.927295, region_id:50, start_point:(0.540000,0.720000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:134, phi:0.927295, region_id:51, end_point:(0.771844,1.029125),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.927295, region_id:51, start_point:(0.630000,0.840000),
+[  INFO  ]  ...  surface[1]:3496
+[  INFO  ]  Cell:134, phi:0.927295, region_id:52, end_point:(1.080000,1.440000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.927295, region_id:52, start_point:(0.771844,1.029125),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:0.927295, region_id:88, end_point:(1.344956,1.793275),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:0.927295, region_id:88, start_point:(1.080000,1.440000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:0.927295, region_id:115, end_point:(1.417500,1.890000),
+[  INFO  ]  ...  surface[0]:3501
+[  INFO  ]  Cell:134, phi:0.927295, region_id:115, start_point:(1.344956,1.793275),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Progress Segmenting 2D Tracks:  35.42%
+[  INFO  ]  Cell:126, phi:0.927295, region_id:116, end_point:(-1.779520,-1.112693),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.927295, region_id:116, start_point:(-1.890000,-1.260000),
+[  INFO  ]  ...  surface[1]:3288
+[  INFO  ]  Cell:126, phi:0.927295, region_id:8, end_point:(-1.620000,-0.900000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.927295, region_id:8, start_point:(-1.779520,-1.112693),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:0.927295, region_id:76, end_point:(-1.546880,-0.802507),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:0.927295, region_id:76, start_point:(-1.620000,-0.900000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:0.927295, region_id:117, end_point:(-1.417500,-0.630000),
+[  INFO  ]  ...  surface[0]:3293
+[  INFO  ]  Cell:126, phi:0.927295, region_id:117, start_point:(-1.546880,-0.802507),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:129, phi:0.927295, region_id:21, end_point:(-1.344956,-0.533275),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.927295, region_id:21, start_point:(-1.417500,-0.630000),
+[  INFO  ]  ...  surface[1]:3370
+[  INFO  ]  Cell:129, phi:0.927295, region_id:22, end_point:(-1.080000,-0.180000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.927295, region_id:22, start_point:(-1.344956,-0.533275),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:0.927295, region_id:23, end_point:(-0.771844,0.230875),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.927295, region_id:23, start_point:(-1.080000,-0.180000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:0.927295, region_id:83, end_point:(-0.630000,0.420000),
+[  INFO  ]  ...  surface[0]:3367
+[  INFO  ]  Cell:129, phi:0.927295, region_id:83, start_point:(-0.771844,0.230875),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:130, phi:0.927295, region_id:84, end_point:(-0.540000,0.540000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:0.927295, region_id:84, start_point:(-0.630000,0.420000),
+[  INFO  ]  ...  surface[1]:3392
+[  INFO  ]  Cell:130, phi:0.927295, region_id:85, end_point:(-0.472500,0.630000),
+[  INFO  ]  ...  surface[0]:3397
+[  INFO  ]  Cell:130, phi:0.927295, region_id:85, start_point:(-0.540000,0.540000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:133, phi:0.927295, region_id:47, end_point:(-0.324000,0.828000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.927295, region_id:47, start_point:(-0.472500,0.630000),
+[  INFO  ]  ...  surface[1]:3474
+[  INFO  ]  Cell:133, phi:0.927295, region_id:48, end_point:(-0.000000,1.260000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.927295, region_id:48, start_point:(-0.324000,0.828000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:0.927295, region_id:94, end_point:(0.324000,1.692000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.927295, region_id:94, start_point:(-0.000000,1.260000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:0.927295, region_id:118, end_point:(0.472500,1.890000),
+[  INFO  ]  ...  surface[0]:3475
+[  INFO  ]  Cell:133, phi:0.927295, region_id:118, start_point:(0.324000,1.692000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:129, phi:0.927295, region_id:42, end_point:(-1.779520,0.147307),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.927295, region_id:42, start_point:(-1.890000,0.000000),
+[  INFO  ]  ...  surface[1]:3366
+[  INFO  ]  Cell:129, phi:0.927295, region_id:82, end_point:(-1.620000,0.360000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.927295, region_id:82, start_point:(-1.779520,0.147307),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:0.927295, region_id:119, end_point:(-1.546880,0.457493),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:0.927295, region_id:119, start_point:(-1.620000,0.360000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:0.927295, region_id:43, end_point:(-1.417500,0.630000),
+[  INFO  ]  ...  surface[0]:3371
+[  INFO  ]  Cell:129, phi:0.927295, region_id:43, start_point:(-1.546880,0.457493),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:132, phi:0.927295, region_id:90, end_point:(-1.344956,0.726725),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.927295, region_id:90, start_point:(-1.417500,0.630000),
+[  INFO  ]  ...  surface[1]:3448
+[  INFO  ]  Cell:132, phi:0.927295, region_id:91, end_point:(-1.080000,1.080000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.927295, region_id:91, start_point:(-1.344956,0.726725),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:0.927295, region_id:92, end_point:(-0.771844,1.490875),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.927295, region_id:92, start_point:(-1.080000,1.080000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:0.927295, region_id:59, end_point:(-0.630000,1.680000),
+[  INFO  ]  ...  surface[0]:3445
+[  INFO  ]  Cell:132, phi:0.927295, region_id:59, start_point:(-0.771844,1.490875),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:133, phi:0.927295, region_id:60, end_point:(-0.540000,1.800000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:0.927295, region_id:60, start_point:(-0.630000,1.680000),
+[  INFO  ]  ...  surface[1]:3470
+[  INFO  ]  Cell:133, phi:0.927295, region_id:61, end_point:(-0.472500,1.890000),
+[  INFO  ]  ...  surface[0]:3475
+[  INFO  ]  Cell:133, phi:0.927295, region_id:61, start_point:(-0.540000,1.800000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:132, phi:0.927295, region_id:55, end_point:(-1.779520,1.407307),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.927295, region_id:55, start_point:(-1.890000,1.260000),
+[  INFO  ]  ...  surface[1]:3444
+[  INFO  ]  Cell:132, phi:0.927295, region_id:56, end_point:(-1.620000,1.620000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.927295, region_id:56, start_point:(-1.779520,1.407307),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:0.927295, region_id:57, end_point:(-1.546880,1.717493),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:0.927295, region_id:57, start_point:(-1.620000,1.620000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:0.927295, region_id:95, end_point:(-1.417500,1.890000),
+[  INFO  ]  ...  surface[0]:3449
+[  INFO  ]  Cell:132, phi:0.927295, region_id:95, start_point:(-1.546880,1.717493),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:128, phi:1.325818, region_id:62, end_point:(1.448491,-1.766035),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:1.325818, region_id:62, start_point:(1.417500,-1.890000),
+[  INFO  ]  ...  surface[1]:3344
+[  INFO  ]  Cell:128, phi:1.325818, region_id:4, end_point:(1.512000,-1.512000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:1.325818, region_id:4, start_point:(1.448491,-1.766035),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:1.325818, region_id:5, end_point:(1.664450,-0.902201),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:1.325818, region_id:5, start_point:(1.512000,-1.512000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:1.325818, region_id:120, end_point:(1.680000,-0.840000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:1.325818, region_id:120, start_point:(1.664450,-0.902201),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:1.325818, region_id:67, end_point:(1.732500,-0.630000),
+[  INFO  ]  ...  surface[0]:3345
+[  INFO  ]  Cell:128, phi:1.325818, region_id:67, start_point:(1.680000,-0.840000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:131, phi:1.325818, region_id:18, end_point:(1.764000,-0.504000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:1.325818, region_id:18, start_point:(1.732500,-0.630000),
+[  INFO  ]  ...  surface[1]:3422
+[  INFO  ]  Cell:131, phi:1.325818, region_id:19, end_point:(1.890000,-0.000000),
+[  INFO  ]  ...  surface[0]:3419
+[  INFO  ]  Cell:131, phi:1.325818, region_id:19, start_point:(1.764000,-0.504000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Progress Segmenting 2D Tracks:  43.75%
+[  INFO  ]  Cell:127, phi:1.325818, region_id:0, end_point:(0.504000,-1.764000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:1.325818, region_id:0, start_point:(0.472500,-1.890000),
+[  INFO  ]  ...  surface[1]:3318
+[  INFO  ]  Cell:127, phi:1.325818, region_id:1, end_point:(0.630000,-1.260000),
+[  INFO  ]  ...  surface[0]:3315
+[  INFO  ]  Cell:127, phi:1.325818, region_id:1, start_point:(0.504000,-1.764000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:128, phi:1.325818, region_id:16, end_point:(0.756000,-0.756000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:1.325818, region_id:16, start_point:(0.630000,-1.260000),
+[  INFO  ]  ...  surface[1]:3340
+[  INFO  ]  Cell:128, phi:1.325818, region_id:17, end_point:(0.787500,-0.630000),
+[  INFO  ]  ...  surface[0]:3345
+[  INFO  ]  Cell:128, phi:1.325818, region_id:17, start_point:(0.756000,-0.756000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:131, phi:1.325818, region_id:121, end_point:(0.840000,-0.420000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:1.325818, region_id:121, start_point:(0.787500,-0.630000),
+[  INFO  ]  ...  surface[1]:3422
+[  INFO  ]  Cell:131, phi:1.325818, region_id:74, end_point:(0.855550,-0.357799),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:1.325818, region_id:74, start_point:(0.840000,-0.420000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:1.325818, region_id:38, end_point:(1.008000,0.252000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:1.325818, region_id:38, start_point:(0.855550,-0.357799),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:1.325818, region_id:39, end_point:(1.071509,0.506035),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:1.325818, region_id:39, start_point:(1.008000,0.252000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:1.325818, region_id:79, end_point:(1.102500,0.630000),
+[  INFO  ]  ...  surface[0]:3423
+[  INFO  ]  Cell:131, phi:1.325818, region_id:79, start_point:(1.071509,0.506035),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:134, phi:1.325818, region_id:80, end_point:(1.129031,0.736123),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:1.325818, region_id:80, start_point:(1.102500,0.630000),
+[  INFO  ]  ...  surface[1]:3500
+[  INFO  ]  Cell:134, phi:1.325818, region_id:81, end_point:(1.260000,1.260000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:1.325818, region_id:81, start_point:(1.129031,0.736123),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:1.325818, region_id:88, end_point:(1.390969,1.783877),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:1.325818, region_id:88, start_point:(1.260000,1.260000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:1.325818, region_id:115, end_point:(1.417500,1.890000),
+[  INFO  ]  ...  surface[0]:3501
+[  INFO  ]  Cell:134, phi:1.325818, region_id:115, start_point:(1.390969,1.783877),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:127, phi:1.325818, region_id:97, end_point:(-0.420000,-1.680000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:1.325818, region_id:97, start_point:(-0.472500,-1.890000),
+[  INFO  ]  ...  surface[1]:3318
+[  INFO  ]  Cell:127, phi:1.325818, region_id:71, end_point:(-0.404450,-1.617799),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:1.325818, region_id:71, start_point:(-0.420000,-1.680000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:1.325818, region_id:12, end_point:(-0.252000,-1.008000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:1.325818, region_id:12, start_point:(-0.404450,-1.617799),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:1.325818, region_id:13, end_point:(-0.188491,-0.753965),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:1.325818, region_id:13, start_point:(-0.252000,-1.008000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:1.325818, region_id:101, end_point:(-0.157500,-0.630000),
+[  INFO  ]  ...  surface[0]:3319
+[  INFO  ]  Cell:127, phi:1.325818, region_id:101, start_point:(-0.188491,-0.753965),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:130, phi:1.325818, region_id:102, end_point:(-0.130969,-0.523877),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:102, start_point:(-0.157500,-0.630000),
+[  INFO  ]  ...  surface[1]:3396
+[  INFO  ]  Cell:130, phi:1.325818, region_id:103, end_point:(-0.117142,-0.468570),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:103, start_point:(-0.130969,-0.523877),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:104, end_point:(-0.101448,-0.405793),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:104, start_point:(-0.117142,-0.468570),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:105, end_point:(-0.082832,-0.331329),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:105, start_point:(-0.101448,-0.405793),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:106, end_point:(-0.058571,-0.234285),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:106, start_point:(-0.082832,-0.331329),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:107, end_point:(-0.000000,-0.000000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:107, start_point:(-0.058571,-0.234285),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:108, end_point:(0.058571,0.234285),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:108, start_point:(-0.000000,-0.000000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:109, end_point:(0.082832,0.331329),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:109, start_point:(0.058571,0.234285),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:110, end_point:(0.101448,0.405793),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:110, start_point:(0.082832,0.331329),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:111, end_point:(0.117142,0.468570),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:111, start_point:(0.101448,0.405793),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:112, end_point:(0.130969,0.523877),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:112, start_point:(0.117142,0.468570),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.325818, region_id:113, end_point:(0.157500,0.630000),
+[  INFO  ]  ...  surface[0]:3397
+[  INFO  ]  Cell:130, phi:1.325818, region_id:113, start_point:(0.130969,0.523877),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:133, phi:1.325818, region_id:114, end_point:(0.188491,0.753965),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:1.325818, region_id:114, start_point:(0.157500,0.630000),
+[  INFO  ]  ...  surface[1]:3474
+[  INFO  ]  Cell:133, phi:1.325818, region_id:48, end_point:(0.252000,1.008000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:1.325818, region_id:48, start_point:(0.188491,0.753965),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:1.325818, region_id:49, end_point:(0.404450,1.617799),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:1.325818, region_id:49, start_point:(0.252000,1.008000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:1.325818, region_id:86, end_point:(0.420000,1.680000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:1.325818, region_id:86, start_point:(0.404450,1.617799),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:1.325818, region_id:118, end_point:(0.472500,1.890000),
+[  INFO  ]  ...  surface[0]:3475
+[  INFO  ]  Cell:133, phi:1.325818, region_id:118, start_point:(0.420000,1.680000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:126, phi:1.325818, region_id:100, end_point:(-1.390969,-1.783877),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:1.325818, region_id:100, start_point:(-1.417500,-1.890000),
+[  INFO  ]  ...  surface[1]:3292
+[  INFO  ]  Cell:126, phi:1.325818, region_id:69, end_point:(-1.260000,-1.260000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:1.325818, region_id:69, start_point:(-1.390969,-1.783877),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:1.325818, region_id:76, end_point:(-1.129031,-0.736123),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:1.325818, region_id:76, start_point:(-1.260000,-1.260000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:1.325818, region_id:77, end_point:(-1.102500,-0.630000),
+[  INFO  ]  ...  surface[0]:3293
+[  INFO  ]  Cell:126, phi:1.325818, region_id:77, start_point:(-1.129031,-0.736123),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:129, phi:1.325818, region_id:78, end_point:(-1.071509,-0.506035),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:1.325818, region_id:78, start_point:(-1.102500,-0.630000),
+[  INFO  ]  ...  surface[1]:3370
+[  INFO  ]  Cell:129, phi:1.325818, region_id:22, end_point:(-1.008000,-0.252000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:1.325818, region_id:22, start_point:(-1.071509,-0.506035),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:1.325818, region_id:23, end_point:(-0.855550,0.357799),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:1.325818, region_id:23, start_point:(-1.008000,-0.252000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:1.325818, region_id:83, end_point:(-0.840000,0.420000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:1.325818, region_id:83, start_point:(-0.855550,0.357799),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:1.325818, region_id:122, end_point:(-0.787500,0.630000),
+[  INFO  ]  ...  surface[0]:3371
+[  INFO  ]  Cell:129, phi:1.325818, region_id:122, start_point:(-0.840000,0.420000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:132, phi:1.325818, region_id:44, end_point:(-0.756000,0.756000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:1.325818, region_id:44, start_point:(-0.787500,0.630000),
+[  INFO  ]  ...  surface[1]:3448
+[  INFO  ]  Cell:132, phi:1.325818, region_id:45, end_point:(-0.630000,1.260000),
+[  INFO  ]  ...  surface[0]:3445
+[  INFO  ]  Cell:132, phi:1.325818, region_id:45, start_point:(-0.756000,0.756000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:133, phi:1.325818, region_id:60, end_point:(-0.504000,1.764000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:1.325818, region_id:60, start_point:(-0.630000,1.260000),
+[  INFO  ]  ...  surface[1]:3470
+[  INFO  ]  Cell:133, phi:1.325818, region_id:61, end_point:(-0.472500,1.890000),
+[  INFO  ]  ...  surface[0]:3475
+[  INFO  ]  Cell:133, phi:1.325818, region_id:61, start_point:(-0.504000,1.764000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:129, phi:1.325818, region_id:42, end_point:(-1.764000,0.504000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:1.325818, region_id:42, start_point:(-1.890000,0.000000),
+[  INFO  ]  ...  surface[1]:3366
+[  INFO  ]  Cell:129, phi:1.325818, region_id:43, end_point:(-1.732500,0.630000),
+[  INFO  ]  ...  surface[0]:3371
+[  INFO  ]  Cell:129, phi:1.325818, region_id:43, start_point:(-1.764000,0.504000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:132, phi:1.325818, region_id:90, end_point:(-1.680000,0.840000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:1.325818, region_id:90, start_point:(-1.732500,0.630000),
+[  INFO  ]  ...  surface[1]:3448
+[  INFO  ]  Cell:132, phi:1.325818, region_id:123, end_point:(-1.664450,0.902201),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:1.325818, region_id:123, start_point:(-1.680000,0.840000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:1.325818, region_id:56, end_point:(-1.512000,1.512000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:1.325818, region_id:56, start_point:(-1.664450,0.902201),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:1.325818, region_id:57, end_point:(-1.448491,1.766035),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:1.325818, region_id:57, start_point:(-1.512000,1.512000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:1.325818, region_id:95, end_point:(-1.417500,1.890000),
+[  INFO  ]  ...  surface[0]:3449
+[  INFO  ]  Cell:132, phi:1.325818, region_id:95, start_point:(-1.448491,1.766035),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Progress Segmenting 2D Tracks:  52.08%
+[  INFO  ]  Cell:126, phi:1.815775, region_id:100, end_point:(-1.448491,-1.766035),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:1.815775, region_id:100, start_point:(-1.417500,-1.890000),
+[  INFO  ]  ...  surface[1]:3292
+[  INFO  ]  Cell:126, phi:1.815775, region_id:69, end_point:(-1.512000,-1.512000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:1.815775, region_id:69, start_point:(-1.448491,-1.766035),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:1.815775, region_id:8, end_point:(-1.664450,-0.902201),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:1.815775, region_id:8, start_point:(-1.512000,-1.512000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:1.815775, region_id:116, end_point:(-1.680000,-0.840000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:1.815775, region_id:116, start_point:(-1.664450,-0.902201),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:1.815775, region_id:117, end_point:(-1.732500,-0.630000),
+[  INFO  ]  ...  surface[0]:3293
+[  INFO  ]  Cell:126, phi:1.815775, region_id:117, start_point:(-1.680000,-0.840000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:129, phi:1.815775, region_id:21, end_point:(-1.764000,-0.504000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:1.815775, region_id:21, start_point:(-1.732500,-0.630000),
+[  INFO  ]  ...  surface[1]:3370
+[  INFO  ]  Cell:129, phi:1.815775, region_id:20, end_point:(-1.890000,-0.000000),
+[  INFO  ]  ...  surface[0]:3366
+[  INFO  ]  Cell:129, phi:1.815775, region_id:20, start_point:(-1.764000,-0.504000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:127, phi:1.815775, region_id:97, end_point:(-0.504000,-1.764000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:1.815775, region_id:97, start_point:(-0.472500,-1.890000),
+[  INFO  ]  ...  surface[1]:3318
+[  INFO  ]  Cell:127, phi:1.815775, region_id:71, end_point:(-0.630000,-1.260000),
+[  INFO  ]  ...  surface[0]:3314
+[  INFO  ]  Cell:127, phi:1.815775, region_id:71, start_point:(-0.504000,-1.764000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:126, phi:1.815775, region_id:10, end_point:(-0.756000,-0.756000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:1.815775, region_id:10, start_point:(-0.630000,-1.260000),
+[  INFO  ]  ...  surface[1]:3289
+[  INFO  ]  Cell:126, phi:1.815775, region_id:77, end_point:(-0.787500,-0.630000),
+[  INFO  ]  ...  surface[0]:3293
+[  INFO  ]  Cell:126, phi:1.815775, region_id:77, start_point:(-0.756000,-0.756000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:129, phi:1.815775, region_id:78, end_point:(-0.840000,-0.420000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:1.815775, region_id:78, start_point:(-0.787500,-0.630000),
+[  INFO  ]  ...  surface[1]:3370
+[  INFO  ]  Cell:129, phi:1.815775, region_id:24, end_point:(-0.855550,-0.357799),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:1.815775, region_id:24, start_point:(-0.840000,-0.420000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:1.815775, region_id:23, end_point:(-1.008000,0.252000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:1.815775, region_id:23, start_point:(-0.855550,-0.357799),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:1.815775, region_id:119, end_point:(-1.071509,0.506035),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:1.815775, region_id:119, start_point:(-1.008000,0.252000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:1.815775, region_id:122, end_point:(-1.102500,0.630000),
+[  INFO  ]  ...  surface[0]:3371
+[  INFO  ]  Cell:129, phi:1.815775, region_id:122, start_point:(-1.071509,0.506035),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:132, phi:1.815775, region_id:44, end_point:(-1.129031,0.736123),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:1.815775, region_id:44, start_point:(-1.102500,0.630000),
+[  INFO  ]  ...  surface[1]:3448
+[  INFO  ]  Cell:132, phi:1.815775, region_id:91, end_point:(-1.260000,1.260000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:1.815775, region_id:91, start_point:(-1.129031,0.736123),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:1.815775, region_id:57, end_point:(-1.390969,1.783877),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:1.815775, region_id:57, start_point:(-1.260000,1.260000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:1.815775, region_id:95, end_point:(-1.417500,1.890000),
+[  INFO  ]  ...  surface[0]:3449
+[  INFO  ]  Cell:132, phi:1.815775, region_id:95, start_point:(-1.390969,1.783877),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:127, phi:1.815775, region_id:0, end_point:(0.420000,-1.680000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:1.815775, region_id:0, start_point:(0.472500,-1.890000),
+[  INFO  ]  ...  surface[1]:3318
+[  INFO  ]  Cell:127, phi:1.815775, region_id:1, end_point:(0.404450,-1.617799),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:1.815775, region_id:1, start_point:(0.420000,-1.680000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:1.815775, region_id:64, end_point:(0.252000,-1.008000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:1.815775, region_id:64, start_point:(0.404450,-1.617799),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:1.815775, region_id:13, end_point:(0.188491,-0.753965),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:1.815775, region_id:13, start_point:(0.252000,-1.008000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:1.815775, region_id:14, end_point:(0.157500,-0.630000),
+[  INFO  ]  ...  surface[0]:3319
+[  INFO  ]  Cell:127, phi:1.815775, region_id:14, start_point:(0.188491,-0.753965),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:130, phi:1.815775, region_id:72, end_point:(0.130969,-0.523877),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:72, start_point:(0.157500,-0.630000),
+[  INFO  ]  ...  surface[1]:3396
+[  INFO  ]  Cell:130, phi:1.815775, region_id:103, end_point:(0.117142,-0.468570),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:103, start_point:(0.130969,-0.523877),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:104, end_point:(0.101448,-0.405793),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:104, start_point:(0.117142,-0.468570),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:105, end_point:(0.082832,-0.331329),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:105, start_point:(0.101448,-0.405793),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:106, end_point:(0.058571,-0.234285),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:106, start_point:(0.082832,-0.331329),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:107, end_point:(0.000000,-0.000000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:107, start_point:(0.058571,-0.234285),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:108, end_point:(-0.058571,0.234285),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:108, start_point:(0.000000,-0.000000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:109, end_point:(-0.082832,0.331329),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:109, start_point:(-0.058571,0.234285),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:110, end_point:(-0.101448,0.405793),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:110, start_point:(-0.082832,0.331329),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:111, end_point:(-0.117142,0.468570),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:111, start_point:(-0.101448,0.405793),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:112, end_point:(-0.130969,0.523877),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:112, start_point:(-0.117142,0.468570),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:1.815775, region_id:85, end_point:(-0.157500,0.630000),
+[  INFO  ]  ...  surface[0]:3397
+[  INFO  ]  Cell:130, phi:1.815775, region_id:85, start_point:(-0.130969,0.523877),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:133, phi:1.815775, region_id:47, end_point:(-0.188491,0.753965),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:1.815775, region_id:47, start_point:(-0.157500,0.630000),
+[  INFO  ]  ...  surface[1]:3474
+[  INFO  ]  Cell:133, phi:1.815775, region_id:48, end_point:(-0.252000,1.008000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:1.815775, region_id:48, start_point:(-0.188491,0.753965),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:1.815775, region_id:93, end_point:(-0.404450,1.617799),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:1.815775, region_id:93, start_point:(-0.252000,1.008000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:1.815775, region_id:60, end_point:(-0.420000,1.680000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:1.815775, region_id:60, start_point:(-0.404450,1.617799),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:1.815775, region_id:61, end_point:(-0.472500,1.890000),
+[  INFO  ]  ...  surface[0]:3475
+[  INFO  ]  Cell:133, phi:1.815775, region_id:61, start_point:(-0.420000,1.680000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:128, phi:1.815775, region_id:62, end_point:(1.390969,-1.783877),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:1.815775, region_id:62, start_point:(1.417500,-1.890000),
+[  INFO  ]  ...  surface[1]:3344
+[  INFO  ]  Cell:128, phi:1.815775, region_id:4, end_point:(1.260000,-1.260000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:1.815775, region_id:4, start_point:(1.390969,-1.783877),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:1.815775, region_id:66, end_point:(1.129031,-0.736123),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:1.815775, region_id:66, start_point:(1.260000,-1.260000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:1.815775, region_id:17, end_point:(1.102500,-0.630000),
+[  INFO  ]  ...  surface[0]:3345
+[  INFO  ]  Cell:128, phi:1.815775, region_id:17, start_point:(1.129031,-0.736123),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:131, phi:1.815775, region_id:121, end_point:(1.071509,-0.506035),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:1.815775, region_id:121, start_point:(1.102500,-0.630000),
+[  INFO  ]  ...  surface[1]:3422
+[  INFO  ]  Cell:131, phi:1.815775, region_id:96, end_point:(1.008000,-0.252000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:1.815775, region_id:96, start_point:(1.071509,-0.506035),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:1.815775, region_id:38, end_point:(0.855550,0.357799),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:1.815775, region_id:38, start_point:(1.008000,-0.252000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:1.815775, region_id:37, end_point:(0.840000,0.420000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:1.815775, region_id:37, start_point:(0.855550,0.357799),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:1.815775, region_id:79, end_point:(0.787500,0.630000),
+[  INFO  ]  ...  surface[0]:3423
+[  INFO  ]  Cell:131, phi:1.815775, region_id:79, start_point:(0.840000,0.420000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:134, phi:1.815775, region_id:80, end_point:(0.756000,0.756000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:1.815775, region_id:80, start_point:(0.787500,0.630000),
+[  INFO  ]  ...  surface[1]:3500
+[  INFO  ]  Cell:134, phi:1.815775, region_id:51, end_point:(0.630000,1.260000),
+[  INFO  ]  ...  surface[0]:3496
+[  INFO  ]  Cell:134, phi:1.815775, region_id:51, start_point:(0.756000,0.756000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:133, phi:1.815775, region_id:86, end_point:(0.504000,1.764000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:1.815775, region_id:86, start_point:(0.630000,1.260000),
+[  INFO  ]  ...  surface[1]:3471
+[  INFO  ]  Cell:133, phi:1.815775, region_id:118, end_point:(0.472500,1.890000),
+[  INFO  ]  ...  surface[0]:3475
+[  INFO  ]  Cell:133, phi:1.815775, region_id:118, start_point:(0.504000,1.764000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Progress Segmenting 2D Tracks:  60.42%
+[  INFO  ]  Cell:131, phi:1.815775, region_id:41, end_point:(1.764000,0.504000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:1.815775, region_id:41, start_point:(1.890000,0.000000),
+[  INFO  ]  ...  surface[1]:3419
+[  INFO  ]  Cell:131, phi:1.815775, region_id:40, end_point:(1.732500,0.630000),
+[  INFO  ]  ...  surface[0]:3423
+[  INFO  ]  Cell:131, phi:1.815775, region_id:40, start_point:(1.764000,0.504000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:134, phi:1.815775, region_id:98, end_point:(1.680000,0.840000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:1.815775, region_id:98, start_point:(1.732500,0.630000),
+[  INFO  ]  ...  surface[1]:3500
+[  INFO  ]  Cell:134, phi:1.815775, region_id:99, end_point:(1.664450,0.902201),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:1.815775, region_id:99, start_point:(1.680000,0.840000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:1.815775, region_id:53, end_point:(1.512000,1.512000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:1.815775, region_id:53, start_point:(1.664450,0.902201),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:1.815775, region_id:88, end_point:(1.448491,1.766035),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:1.815775, region_id:88, start_point:(1.512000,1.512000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:1.815775, region_id:115, end_point:(1.417500,1.890000),
+[  INFO  ]  ...  surface[0]:3501
+[  INFO  ]  Cell:134, phi:1.815775, region_id:115, start_point:(1.448491,1.766035),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:126, phi:2.214297, region_id:100, end_point:(-1.546880,-1.717493),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.214297, region_id:100, start_point:(-1.417500,-1.890000),
+[  INFO  ]  ...  surface[1]:3292
+[  INFO  ]  Cell:126, phi:2.214297, region_id:69, end_point:(-1.620000,-1.620000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.214297, region_id:69, start_point:(-1.546880,-1.717493),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:2.214297, region_id:8, end_point:(-1.779520,-1.407307),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.214297, region_id:8, start_point:(-1.620000,-1.620000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:2.214297, region_id:7, end_point:(-1.890000,-1.260000),
+[  INFO  ]  ...  surface[0]:3288
+[  INFO  ]  Cell:126, phi:2.214297, region_id:7, start_point:(-1.779520,-1.407307),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:127, phi:2.214297, region_id:97, end_point:(-0.540000,-1.800000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.214297, region_id:97, start_point:(-0.472500,-1.890000),
+[  INFO  ]  ...  surface[1]:3318
+[  INFO  ]  Cell:127, phi:2.214297, region_id:71, end_point:(-0.630000,-1.680000),
+[  INFO  ]  ...  surface[0]:3314
+[  INFO  ]  Cell:127, phi:2.214297, region_id:71, start_point:(-0.540000,-1.800000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:126, phi:2.214297, region_id:70, end_point:(-0.771844,-1.490875),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.214297, region_id:70, start_point:(-0.630000,-1.680000),
+[  INFO  ]  ...  surface[1]:3289
+[  INFO  ]  Cell:126, phi:2.214297, region_id:9, end_point:(-1.080000,-1.080000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.214297, region_id:9, start_point:(-0.771844,-1.490875),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:2.214297, region_id:76, end_point:(-1.344956,-0.726725),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.214297, region_id:76, start_point:(-1.080000,-1.080000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:2.214297, region_id:117, end_point:(-1.417500,-0.630000),
+[  INFO  ]  ...  surface[0]:3293
+[  INFO  ]  Cell:126, phi:2.214297, region_id:117, start_point:(-1.344956,-0.726725),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:129, phi:2.214297, region_id:21, end_point:(-1.546880,-0.457493),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.214297, region_id:21, start_point:(-1.417500,-0.630000),
+[  INFO  ]  ...  surface[1]:3370
+[  INFO  ]  Cell:129, phi:2.214297, region_id:22, end_point:(-1.620000,-0.360000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.214297, region_id:22, start_point:(-1.546880,-0.457493),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:2.214297, region_id:82, end_point:(-1.779520,-0.147307),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.214297, region_id:82, start_point:(-1.620000,-0.360000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:2.214297, region_id:20, end_point:(-1.890000,-0.000000),
+[  INFO  ]  ...  surface[0]:3366
+[  INFO  ]  Cell:129, phi:2.214297, region_id:20, start_point:(-1.779520,-0.147307),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:127, phi:2.214297, region_id:0, end_point:(0.324000,-1.692000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.214297, region_id:0, start_point:(0.472500,-1.890000),
+[  INFO  ]  ...  surface[1]:3318
+[  INFO  ]  Cell:127, phi:2.214297, region_id:63, end_point:(0.000000,-1.260000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.214297, region_id:63, start_point:(0.324000,-1.692000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:2.214297, region_id:13, end_point:(-0.324000,-0.828000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.214297, region_id:13, start_point:(0.000000,-1.260000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:2.214297, region_id:101, end_point:(-0.472500,-0.630000),
+[  INFO  ]  ...  surface[0]:3319
+[  INFO  ]  Cell:127, phi:2.214297, region_id:101, start_point:(-0.324000,-0.828000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:130, phi:2.214297, region_id:102, end_point:(-0.540000,-0.540000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:102, start_point:(-0.472500,-0.630000),
+[  INFO  ]  ...  surface[1]:3396
+[  INFO  ]  Cell:130, phi:2.214297, region_id:25, end_point:(-0.630000,-0.420000),
+[  INFO  ]  ...  surface[0]:3392
+[  INFO  ]  Cell:130, phi:2.214297, region_id:25, start_point:(-0.540000,-0.540000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:129, phi:2.214297, region_id:24, end_point:(-0.771844,-0.230875),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.214297, region_id:24, start_point:(-0.630000,-0.420000),
+[  INFO  ]  ...  surface[1]:3367
+[  INFO  ]  Cell:129, phi:2.214297, region_id:23, end_point:(-1.080000,0.180000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.214297, region_id:23, start_point:(-0.771844,-0.230875),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:2.214297, region_id:119, end_point:(-1.344956,0.533275),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.214297, region_id:119, start_point:(-1.080000,0.180000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:2.214297, region_id:43, end_point:(-1.417500,0.630000),
+[  INFO  ]  ...  surface[0]:3371
+[  INFO  ]  Cell:129, phi:2.214297, region_id:43, start_point:(-1.344956,0.533275),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:132, phi:2.214297, region_id:90, end_point:(-1.546880,0.802507),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.214297, region_id:90, start_point:(-1.417500,0.630000),
+[  INFO  ]  ...  surface[1]:3448
+[  INFO  ]  Cell:132, phi:2.214297, region_id:91, end_point:(-1.620000,0.900000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.214297, region_id:91, start_point:(-1.546880,0.802507),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:2.214297, region_id:56, end_point:(-1.779520,1.112693),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.214297, region_id:56, start_point:(-1.620000,0.900000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:2.214297, region_id:123, end_point:(-1.890000,1.260000),
+[  INFO  ]  ...  surface[0]:3444
+[  INFO  ]  Cell:132, phi:2.214297, region_id:123, start_point:(-1.779520,1.112693),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Progress Segmenting 2D Tracks:  68.75%
+[  INFO  ]  Cell:128, phi:2.214297, region_id:62, end_point:(1.344956,-1.793275),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.214297, region_id:62, start_point:(1.417500,-1.890000),
+[  INFO  ]  ...  surface[1]:3344
+[  INFO  ]  Cell:128, phi:2.214297, region_id:4, end_point:(1.080000,-1.440000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.214297, region_id:4, start_point:(1.344956,-1.793275),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:2.214297, region_id:65, end_point:(0.771844,-1.029125),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.214297, region_id:65, start_point:(1.080000,-1.440000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:2.214297, region_id:16, end_point:(0.630000,-0.840000),
+[  INFO  ]  ...  surface[0]:3340
+[  INFO  ]  Cell:128, phi:2.214297, region_id:16, start_point:(0.771844,-1.029125),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:127, phi:2.214297, region_id:15, end_point:(0.540000,-0.720000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.214297, region_id:15, start_point:(0.630000,-0.840000),
+[  INFO  ]  ...  surface[1]:3315
+[  INFO  ]  Cell:127, phi:2.214297, region_id:14, end_point:(0.472500,-0.630000),
+[  INFO  ]  ...  surface[0]:3319
+[  INFO  ]  Cell:127, phi:2.214297, region_id:14, start_point:(0.540000,-0.720000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:130, phi:2.214297, region_id:72, end_point:(0.324000,-0.432000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:72, start_point:(0.472500,-0.630000),
+[  INFO  ]  ...  surface[1]:3396
+[  INFO  ]  Cell:130, phi:2.214297, region_id:103, end_point:(0.289794,-0.386393),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:103, start_point:(0.324000,-0.432000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:104, end_point:(0.250969,-0.334626),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:104, start_point:(0.289794,-0.386393),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:105, end_point:(0.204916,-0.273221),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:105, start_point:(0.250969,-0.334626),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:106, end_point:(0.144897,-0.193196),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:106, start_point:(0.204916,-0.273221),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:107, end_point:(0.000000,-0.000000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:107, start_point:(0.144897,-0.193196),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:108, end_point:(-0.144897,0.193196),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:108, start_point:(0.000000,-0.000000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:109, end_point:(-0.204916,0.273221),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:109, start_point:(-0.144897,0.193196),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:110, end_point:(-0.250969,0.334626),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:110, start_point:(-0.204916,0.273221),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:111, end_point:(-0.289794,0.386393),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:111, start_point:(-0.250969,0.334626),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:112, end_point:(-0.324000,0.432000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:112, start_point:(-0.289794,0.386393),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:85, end_point:(-0.472500,0.630000),
+[  INFO  ]  ...  surface[0]:3397
+[  INFO  ]  Cell:130, phi:2.214297, region_id:85, start_point:(-0.324000,0.432000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:133, phi:2.214297, region_id:47, end_point:(-0.540000,0.720000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.214297, region_id:47, start_point:(-0.472500,0.630000),
+[  INFO  ]  ...  surface[1]:3474
+[  INFO  ]  Cell:133, phi:2.214297, region_id:46, end_point:(-0.630000,0.840000),
+[  INFO  ]  ...  surface[0]:3470
+[  INFO  ]  Cell:133, phi:2.214297, region_id:46, start_point:(-0.540000,0.720000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:132, phi:2.214297, region_id:45, end_point:(-0.771844,1.029125),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.214297, region_id:45, start_point:(-0.630000,0.840000),
+[  INFO  ]  ...  surface[1]:3445
+[  INFO  ]  Cell:132, phi:2.214297, region_id:92, end_point:(-1.080000,1.440000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.214297, region_id:92, start_point:(-0.771844,1.029125),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:2.214297, region_id:57, end_point:(-1.344956,1.793275),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.214297, region_id:57, start_point:(-1.080000,1.440000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:2.214297, region_id:95, end_point:(-1.417500,1.890000),
+[  INFO  ]  ...  surface[0]:3449
+[  INFO  ]  Cell:132, phi:2.214297, region_id:95, start_point:(-1.344956,1.793275),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:128, phi:2.214297, region_id:120, end_point:(1.779520,-1.112693),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.214297, region_id:120, start_point:(1.890000,-1.260000),
+[  INFO  ]  ...  surface[1]:3341
+[  INFO  ]  Cell:128, phi:2.214297, region_id:5, end_point:(1.620000,-0.900000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.214297, region_id:5, start_point:(1.779520,-1.112693),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:2.214297, region_id:66, end_point:(1.546880,-0.802507),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.214297, region_id:66, start_point:(1.620000,-0.900000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:2.214297, region_id:67, end_point:(1.417500,-0.630000),
+[  INFO  ]  ...  surface[0]:3345
+[  INFO  ]  Cell:128, phi:2.214297, region_id:67, start_point:(1.546880,-0.802507),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:131, phi:2.214297, region_id:18, end_point:(1.344956,-0.533275),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.214297, region_id:18, start_point:(1.417500,-0.630000),
+[  INFO  ]  ...  surface[1]:3422
+[  INFO  ]  Cell:131, phi:2.214297, region_id:96, end_point:(1.080000,-0.180000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.214297, region_id:96, start_point:(1.344956,-0.533275),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:2.214297, region_id:38, end_point:(0.771844,0.230875),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.214297, region_id:38, start_point:(1.080000,-0.180000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:2.214297, region_id:37, end_point:(0.630000,0.420000),
+[  INFO  ]  ...  surface[0]:3418
+[  INFO  ]  Cell:131, phi:2.214297, region_id:37, start_point:(0.771844,0.230875),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:130, phi:2.214297, region_id:36, end_point:(0.540000,0.540000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.214297, region_id:36, start_point:(0.630000,0.420000),
+[  INFO  ]  ...  surface[1]:3393
+[  INFO  ]  Cell:130, phi:2.214297, region_id:113, end_point:(0.472500,0.630000),
+[  INFO  ]  ...  surface[0]:3397
+[  INFO  ]  Cell:130, phi:2.214297, region_id:113, start_point:(0.540000,0.540000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:133, phi:2.214297, region_id:114, end_point:(0.324000,0.828000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.214297, region_id:114, start_point:(0.472500,0.630000),
+[  INFO  ]  ...  surface[1]:3474
+[  INFO  ]  Cell:133, phi:2.214297, region_id:48, end_point:(0.000000,1.260000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.214297, region_id:48, start_point:(0.324000,0.828000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:2.214297, region_id:94, end_point:(-0.324000,1.692000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.214297, region_id:94, start_point:(0.000000,1.260000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:2.214297, region_id:61, end_point:(-0.472500,1.890000),
+[  INFO  ]  ...  surface[0]:3475
+[  INFO  ]  Cell:133, phi:2.214297, region_id:61, start_point:(-0.324000,1.692000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:131, phi:2.214297, region_id:41, end_point:(1.779520,0.147307),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.214297, region_id:41, start_point:(1.890000,0.000000),
+[  INFO  ]  ...  surface[1]:3419
+[  INFO  ]  Cell:131, phi:2.214297, region_id:75, end_point:(1.620000,0.360000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.214297, region_id:75, start_point:(1.779520,0.147307),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:2.214297, region_id:39, end_point:(1.546880,0.457493),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.214297, region_id:39, start_point:(1.620000,0.360000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:2.214297, region_id:40, end_point:(1.417500,0.630000),
+[  INFO  ]  ...  surface[0]:3423
+[  INFO  ]  Cell:131, phi:2.214297, region_id:40, start_point:(1.546880,0.457493),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:134, phi:2.214297, region_id:98, end_point:(1.344956,0.726725),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.214297, region_id:98, start_point:(1.417500,0.630000),
+[  INFO  ]  ...  surface[1]:3500
+[  INFO  ]  Cell:134, phi:2.214297, region_id:81, end_point:(1.080000,1.080000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.214297, region_id:81, start_point:(1.344956,0.726725),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:2.214297, region_id:52, end_point:(0.771844,1.490875),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.214297, region_id:52, start_point:(1.080000,1.080000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:2.214297, region_id:87, end_point:(0.630000,1.680000),
+[  INFO  ]  ...  surface[0]:3496
+[  INFO  ]  Cell:134, phi:2.214297, region_id:87, start_point:(0.771844,1.490875),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:133, phi:2.214297, region_id:86, end_point:(0.540000,1.800000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.214297, region_id:86, start_point:(0.630000,1.680000),
+[  INFO  ]  ...  surface[1]:3471
+[  INFO  ]  Cell:133, phi:2.214297, region_id:118, end_point:(0.472500,1.890000),
+[  INFO  ]  ...  surface[0]:3475
+[  INFO  ]  Cell:133, phi:2.214297, region_id:118, start_point:(0.540000,1.800000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:134, phi:2.214297, region_id:54, end_point:(1.779520,1.407307),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.214297, region_id:54, start_point:(1.890000,1.260000),
+[  INFO  ]  ...  surface[1]:3497
+[  INFO  ]  Cell:134, phi:2.214297, region_id:53, end_point:(1.620000,1.620000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.214297, region_id:53, start_point:(1.779520,1.407307),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:2.214297, region_id:88, end_point:(1.546880,1.717493),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.214297, region_id:88, start_point:(1.620000,1.620000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:2.214297, region_id:115, end_point:(1.417500,1.890000),
+[  INFO  ]  ...  surface[0]:3501
+[  INFO  ]  Cell:134, phi:2.214297, region_id:115, start_point:(1.546880,1.717493),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Progress Segmenting 2D Tracks:  77.08%
+[  INFO  ]  Cell:126, phi:2.498092, region_id:100, end_point:(-1.407307,-1.779520),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.498092, region_id:100, start_point:(-1.260000,-1.890000),
+[  INFO  ]  ...  surface[1]:3292
+[  INFO  ]  Cell:126, phi:2.498092, region_id:69, end_point:(-1.620000,-1.620000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.498092, region_id:69, start_point:(-1.407307,-1.779520),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:2.498092, region_id:8, end_point:(-1.717493,-1.546880),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.498092, region_id:8, start_point:(-1.620000,-1.620000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:2.498092, region_id:7, end_point:(-1.890000,-1.417500),
+[  INFO  ]  ...  surface[0]:3288
+[  INFO  ]  Cell:126, phi:2.498092, region_id:7, start_point:(-1.717493,-1.546880),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:127, phi:2.498092, region_id:97, end_point:(-0.147307,-1.779520),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.498092, region_id:97, start_point:(0.000000,-1.890000),
+[  INFO  ]  ...  surface[1]:3318
+[  INFO  ]  Cell:127, phi:2.498092, region_id:63, end_point:(-0.360000,-1.620000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.498092, region_id:63, start_point:(-0.147307,-1.779520),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:2.498092, region_id:12, end_point:(-0.457493,-1.546880),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.498092, region_id:12, start_point:(-0.360000,-1.620000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:2.498092, region_id:71, end_point:(-0.630000,-1.417500),
+[  INFO  ]  ...  surface[0]:3314
+[  INFO  ]  Cell:127, phi:2.498092, region_id:71, start_point:(-0.457493,-1.546880),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:126, phi:2.498092, region_id:70, end_point:(-0.726725,-1.344956),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.498092, region_id:70, start_point:(-0.630000,-1.417500),
+[  INFO  ]  ...  surface[1]:3289
+[  INFO  ]  Cell:126, phi:2.498092, region_id:9, end_point:(-1.080000,-1.080000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.498092, region_id:9, start_point:(-0.726725,-1.344956),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:2.498092, region_id:76, end_point:(-1.490875,-0.771844),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.498092, region_id:76, start_point:(-1.080000,-1.080000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:2.498092, region_id:117, end_point:(-1.680000,-0.630000),
+[  INFO  ]  ...  surface[0]:3293
+[  INFO  ]  Cell:126, phi:2.498092, region_id:117, start_point:(-1.490875,-0.771844),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:129, phi:2.498092, region_id:21, end_point:(-1.800000,-0.540000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.498092, region_id:21, start_point:(-1.680000,-0.630000),
+[  INFO  ]  ...  surface[1]:3370
+[  INFO  ]  Cell:129, phi:2.498092, region_id:20, end_point:(-1.890000,-0.472500),
+[  INFO  ]  ...  surface[0]:3366
+[  INFO  ]  Cell:129, phi:2.498092, region_id:20, start_point:(-1.800000,-0.540000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:128, phi:2.498092, region_id:3, end_point:(1.112693,-1.779520),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.498092, region_id:3, start_point:(1.260000,-1.890000),
+[  INFO  ]  ...  surface[1]:3344
+[  INFO  ]  Cell:128, phi:2.498092, region_id:4, end_point:(0.900000,-1.620000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.498092, region_id:4, start_point:(1.112693,-1.779520),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:2.498092, region_id:65, end_point:(0.802507,-1.546880),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.498092, region_id:65, start_point:(0.900000,-1.620000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:2.498092, region_id:2, end_point:(0.630000,-1.417500),
+[  INFO  ]  ...  surface[0]:3340
+[  INFO  ]  Cell:128, phi:2.498092, region_id:2, start_point:(0.802507,-1.546880),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:127, phi:2.498092, region_id:1, end_point:(0.533275,-1.344956),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.498092, region_id:1, start_point:(0.630000,-1.417500),
+[  INFO  ]  ...  surface[1]:3315
+[  INFO  ]  Cell:127, phi:2.498092, region_id:64, end_point:(0.180000,-1.080000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.498092, region_id:64, start_point:(0.533275,-1.344956),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:2.498092, region_id:13, end_point:(-0.230875,-0.771844),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.498092, region_id:13, start_point:(0.180000,-1.080000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:2.498092, region_id:101, end_point:(-0.420000,-0.630000),
+[  INFO  ]  ...  surface[0]:3319
+[  INFO  ]  Cell:127, phi:2.498092, region_id:101, start_point:(-0.230875,-0.771844),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:130, phi:2.498092, region_id:102, end_point:(-0.540000,-0.540000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:102, start_point:(-0.420000,-0.630000),
+[  INFO  ]  ...  surface[1]:3396
+[  INFO  ]  Cell:130, phi:2.498092, region_id:25, end_point:(-0.630000,-0.472500),
+[  INFO  ]  ...  surface[0]:3392
+[  INFO  ]  Cell:130, phi:2.498092, region_id:25, start_point:(-0.540000,-0.540000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:129, phi:2.498092, region_id:24, end_point:(-0.828000,-0.324000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.498092, region_id:24, start_point:(-0.630000,-0.472500),
+[  INFO  ]  ...  surface[1]:3367
+[  INFO  ]  Cell:129, phi:2.498092, region_id:23, end_point:(-1.260000,0.000000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.498092, region_id:23, start_point:(-0.828000,-0.324000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:2.498092, region_id:82, end_point:(-1.692000,0.324000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.498092, region_id:82, start_point:(-1.260000,0.000000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:2.498092, region_id:42, end_point:(-1.890000,0.472500),
+[  INFO  ]  ...  surface[0]:3366
+[  INFO  ]  Cell:129, phi:2.498092, region_id:42, start_point:(-1.692000,0.324000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:128, phi:2.498092, region_id:6, end_point:(1.793275,-1.344956),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.498092, region_id:6, start_point:(1.890000,-1.417500),
+[  INFO  ]  ...  surface[1]:3341
+[  INFO  ]  Cell:128, phi:2.498092, region_id:5, end_point:(1.440000,-1.080000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.498092, region_id:5, start_point:(1.793275,-1.344956),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:2.498092, region_id:66, end_point:(1.029125,-0.771844),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.498092, region_id:66, start_point:(1.440000,-1.080000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:2.498092, region_id:17, end_point:(0.840000,-0.630000),
+[  INFO  ]  ...  surface[0]:3345
+[  INFO  ]  Cell:128, phi:2.498092, region_id:17, start_point:(1.029125,-0.771844),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:131, phi:2.498092, region_id:121, end_point:(0.720000,-0.540000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.498092, region_id:121, start_point:(0.840000,-0.630000),
+[  INFO  ]  ...  surface[1]:3422
+[  INFO  ]  Cell:131, phi:2.498092, region_id:74, end_point:(0.630000,-0.472500),
+[  INFO  ]  ...  surface[0]:3418
+[  INFO  ]  Cell:131, phi:2.498092, region_id:74, start_point:(0.720000,-0.540000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:130, phi:2.498092, region_id:73, end_point:(0.432000,-0.324000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:73, start_point:(0.630000,-0.472500),
+[  INFO  ]  ...  surface[1]:3393
+[  INFO  ]  Cell:130, phi:2.498092, region_id:35, end_point:(0.386393,-0.289794),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:35, start_point:(0.432000,-0.324000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:34, end_point:(0.334626,-0.250969),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:34, start_point:(0.386393,-0.289794),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:33, end_point:(0.273221,-0.204916),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:33, start_point:(0.334626,-0.250969),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:32, end_point:(0.193196,-0.144897),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:32, start_point:(0.273221,-0.204916),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:31, end_point:(-0.000000,-0.000000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:31, start_point:(0.193196,-0.144897),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:30, end_point:(-0.193196,0.144897),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:30, start_point:(-0.000000,-0.000000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:29, end_point:(-0.273221,0.204916),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:29, start_point:(-0.193196,0.144897),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:28, end_point:(-0.334626,0.250969),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:28, start_point:(-0.273221,0.204916),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:27, end_point:(-0.386393,0.289794),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:27, start_point:(-0.334626,0.250969),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:26, end_point:(-0.432000,0.324000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:26, start_point:(-0.386393,0.289794),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:84, end_point:(-0.630000,0.472500),
+[  INFO  ]  ...  surface[0]:3392
+[  INFO  ]  Cell:130, phi:2.498092, region_id:84, start_point:(-0.432000,0.324000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:129, phi:2.498092, region_id:83, end_point:(-0.720000,0.540000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.498092, region_id:83, start_point:(-0.630000,0.472500),
+[  INFO  ]  ...  surface[1]:3367
+[  INFO  ]  Cell:129, phi:2.498092, region_id:122, end_point:(-0.840000,0.630000),
+[  INFO  ]  ...  surface[0]:3371
+[  INFO  ]  Cell:129, phi:2.498092, region_id:122, start_point:(-0.720000,0.540000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:132, phi:2.498092, region_id:44, end_point:(-1.029125,0.771844),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.498092, region_id:44, start_point:(-0.840000,0.630000),
+[  INFO  ]  ...  surface[1]:3448
+[  INFO  ]  Cell:132, phi:2.498092, region_id:91, end_point:(-1.440000,1.080000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.498092, region_id:91, start_point:(-1.029125,0.771844),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:2.498092, region_id:56, end_point:(-1.793275,1.344956),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.498092, region_id:56, start_point:(-1.440000,1.080000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:2.498092, region_id:55, end_point:(-1.890000,1.417500),
+[  INFO  ]  ...  surface[0]:3444
+[  INFO  ]  Cell:132, phi:2.498092, region_id:55, start_point:(-1.793275,1.344956),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:131, phi:2.498092, region_id:19, end_point:(1.692000,-0.324000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.498092, region_id:19, start_point:(1.890000,-0.472500),
+[  INFO  ]  ...  surface[1]:3419
+[  INFO  ]  Cell:131, phi:2.498092, region_id:75, end_point:(1.260000,-0.000000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.498092, region_id:75, start_point:(1.692000,-0.324000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:2.498092, region_id:38, end_point:(0.828000,0.324000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.498092, region_id:38, start_point:(1.260000,-0.000000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:2.498092, region_id:37, end_point:(0.630000,0.472500),
+[  INFO  ]  ...  surface[0]:3418
+[  INFO  ]  Cell:131, phi:2.498092, region_id:37, start_point:(0.828000,0.324000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:130, phi:2.498092, region_id:36, end_point:(0.540000,0.540000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.498092, region_id:36, start_point:(0.630000,0.472500),
+[  INFO  ]  ...  surface[1]:3393
+[  INFO  ]  Cell:130, phi:2.498092, region_id:113, end_point:(0.420000,0.630000),
+[  INFO  ]  ...  surface[0]:3397
+[  INFO  ]  Cell:130, phi:2.498092, region_id:113, start_point:(0.540000,0.540000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:133, phi:2.498092, region_id:114, end_point:(0.230875,0.771844),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.498092, region_id:114, start_point:(0.420000,0.630000),
+[  INFO  ]  ...  surface[1]:3474
+[  INFO  ]  Cell:133, phi:2.498092, region_id:48, end_point:(-0.180000,1.080000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.498092, region_id:48, start_point:(0.230875,0.771844),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:2.498092, region_id:93, end_point:(-0.533275,1.344956),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.498092, region_id:93, start_point:(-0.180000,1.080000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:2.498092, region_id:60, end_point:(-0.630000,1.417500),
+[  INFO  ]  ...  surface[0]:3470
+[  INFO  ]  Cell:133, phi:2.498092, region_id:60, start_point:(-0.533275,1.344956),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:132, phi:2.498092, region_id:59, end_point:(-0.802507,1.546880),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.498092, region_id:59, start_point:(-0.630000,1.417500),
+[  INFO  ]  ...  surface[1]:3445
+[  INFO  ]  Cell:132, phi:2.498092, region_id:92, end_point:(-0.900000,1.620000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.498092, region_id:92, start_point:(-0.802507,1.546880),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:2.498092, region_id:57, end_point:(-1.112693,1.779520),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.498092, region_id:57, start_point:(-0.900000,1.620000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:2.498092, region_id:58, end_point:(-1.260000,1.890000),
+[  INFO  ]  ...  surface[0]:3449
+[  INFO  ]  Cell:132, phi:2.498092, region_id:58, start_point:(-1.112693,1.779520),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:131, phi:2.498092, region_id:41, end_point:(1.800000,0.540000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.498092, region_id:41, start_point:(1.890000,0.472500),
+[  INFO  ]  ...  surface[1]:3419
+[  INFO  ]  Cell:131, phi:2.498092, region_id:40, end_point:(1.680000,0.630000),
+[  INFO  ]  ...  surface[0]:3423
+[  INFO  ]  Cell:131, phi:2.498092, region_id:40, start_point:(1.800000,0.540000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:134, phi:2.498092, region_id:98, end_point:(1.490875,0.771844),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.498092, region_id:98, start_point:(1.680000,0.630000),
+[  INFO  ]  ...  surface[1]:3500
+[  INFO  ]  Cell:134, phi:2.498092, region_id:81, end_point:(1.080000,1.080000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.498092, region_id:81, start_point:(1.490875,0.771844),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:2.498092, region_id:52, end_point:(0.726725,1.344956),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.498092, region_id:52, start_point:(1.080000,1.080000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:2.498092, region_id:87, end_point:(0.630000,1.417500),
+[  INFO  ]  ...  surface[0]:3496
+[  INFO  ]  Cell:134, phi:2.498092, region_id:87, start_point:(0.726725,1.344956),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:133, phi:2.498092, region_id:86, end_point:(0.457493,1.546880),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.498092, region_id:86, start_point:(0.630000,1.417500),
+[  INFO  ]  ...  surface[1]:3471
+[  INFO  ]  Cell:133, phi:2.498092, region_id:49, end_point:(0.360000,1.620000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.498092, region_id:49, start_point:(0.457493,1.546880),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:2.498092, region_id:94, end_point:(0.147307,1.779520),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.498092, region_id:94, start_point:(0.360000,1.620000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:2.498092, region_id:118, end_point:(0.000000,1.890000),
+[  INFO  ]  ...  surface[0]:3475
+[  INFO  ]  Cell:133, phi:2.498092, region_id:118, start_point:(0.147307,1.779520),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:134, phi:2.498092, region_id:54, end_point:(1.717493,1.546880),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.498092, region_id:54, start_point:(1.890000,1.417500),
+[  INFO  ]  ...  surface[1]:3497
+[  INFO  ]  Cell:134, phi:2.498092, region_id:53, end_point:(1.620000,1.620000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.498092, region_id:53, start_point:(1.717493,1.546880),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:2.498092, region_id:88, end_point:(1.407307,1.779520),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.498092, region_id:88, start_point:(1.620000,1.620000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:2.498092, region_id:115, end_point:(1.260000,1.890000),
+[  INFO  ]  ...  surface[0]:3501
+[  INFO  ]  Cell:134, phi:2.498092, region_id:115, start_point:(1.407307,1.779520),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:127, phi:2.896614, region_id:97, end_point:(-0.504000,-1.764000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.896614, region_id:97, start_point:(0.000000,-1.890000),
+[  INFO  ]  ...  surface[1]:3318
+[  INFO  ]  Cell:127, phi:2.896614, region_id:71, end_point:(-0.630000,-1.732500),
+[  INFO  ]  ...  surface[0]:3314
+[  INFO  ]  Cell:127, phi:2.896614, region_id:71, start_point:(-0.504000,-1.764000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:126, phi:2.896614, region_id:70, end_point:(-0.840000,-1.680000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.896614, region_id:70, start_point:(-0.630000,-1.732500),
+[  INFO  ]  ...  surface[1]:3289
+[  INFO  ]  Cell:126, phi:2.896614, region_id:68, end_point:(-0.902201,-1.664450),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.896614, region_id:68, start_point:(-0.840000,-1.680000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:2.896614, region_id:69, end_point:(-1.512000,-1.512000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.896614, region_id:69, start_point:(-0.902201,-1.664450),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:2.896614, region_id:8, end_point:(-1.766035,-1.448491),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.896614, region_id:8, start_point:(-1.512000,-1.512000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:126, phi:2.896614, region_id:7, end_point:(-1.890000,-1.417500),
+[  INFO  ]  ...  surface[0]:3288
+[  INFO  ]  Cell:126, phi:2.896614, region_id:7, start_point:(-1.766035,-1.448491),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:128, phi:2.896614, region_id:6, end_point:(1.783877,-1.390969),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.896614, region_id:6, start_point:(1.890000,-1.417500),
+[  INFO  ]  ...  surface[1]:3341
+[  INFO  ]  Cell:128, phi:2.896614, region_id:5, end_point:(1.260000,-1.260000),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.896614, region_id:5, start_point:(1.783877,-1.390969),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:2.896614, region_id:65, end_point:(0.736123,-1.129031),
+[  INFO  ]  ...  surface[0]:3333
+[  INFO  ]  Cell:128, phi:2.896614, region_id:65, start_point:(1.260000,-1.260000),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:128, phi:2.896614, region_id:16, end_point:(0.630000,-1.102500),
+[  INFO  ]  ...  surface[0]:3340
+[  INFO  ]  Cell:128, phi:2.896614, region_id:16, start_point:(0.736123,-1.129031),
+[  INFO  ]  ...  surface[1]:3333
+[  INFO  ]  Cell:127, phi:2.896614, region_id:15, end_point:(0.506035,-1.071509),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.896614, region_id:15, start_point:(0.630000,-1.102500),
+[  INFO  ]  ...  surface[1]:3315
+[  INFO  ]  Cell:127, phi:2.896614, region_id:64, end_point:(0.252000,-1.008000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.896614, region_id:64, start_point:(0.506035,-1.071509),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:2.896614, region_id:13, end_point:(-0.357799,-0.855550),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.896614, region_id:13, start_point:(0.252000,-1.008000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:2.896614, region_id:101, end_point:(-0.420000,-0.840000),
+[  INFO  ]  ...  surface[0]:3307
+[  INFO  ]  Cell:127, phi:2.896614, region_id:101, start_point:(-0.357799,-0.855550),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:127, phi:2.896614, region_id:11, end_point:(-0.630000,-0.787500),
+[  INFO  ]  ...  surface[0]:3314
+[  INFO  ]  Cell:127, phi:2.896614, region_id:11, start_point:(-0.420000,-0.840000),
+[  INFO  ]  ...  surface[1]:3307
+[  INFO  ]  Cell:126, phi:2.896614, region_id:10, end_point:(-0.756000,-0.756000),
+[  INFO  ]  ...  surface[0]:3281
+[  INFO  ]  Cell:126, phi:2.896614, region_id:10, start_point:(-0.630000,-0.787500),
+[  INFO  ]  ...  surface[1]:3289
+[  INFO  ]  Cell:126, phi:2.896614, region_id:77, end_point:(-1.260000,-0.630000),
+[  INFO  ]  ...  surface[0]:3293
+[  INFO  ]  Cell:126, phi:2.896614, region_id:77, start_point:(-0.756000,-0.756000),
+[  INFO  ]  ...  surface[1]:3281
+[  INFO  ]  Cell:129, phi:2.896614, region_id:21, end_point:(-1.764000,-0.504000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.896614, region_id:21, start_point:(-1.260000,-0.630000),
+[  INFO  ]  ...  surface[1]:3370
+[  INFO  ]  Cell:129, phi:2.896614, region_id:20, end_point:(-1.890000,-0.472500),
+[  INFO  ]  ...  surface[0]:3366
+[  INFO  ]  Cell:129, phi:2.896614, region_id:20, start_point:(-1.764000,-0.504000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:131, phi:2.896614, region_id:19, end_point:(1.680000,-0.420000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.896614, region_id:19, start_point:(1.890000,-0.472500),
+[  INFO  ]  ...  surface[1]:3419
+[  INFO  ]  Cell:131, phi:2.896614, region_id:18, end_point:(1.617799,-0.404450),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.896614, region_id:18, start_point:(1.680000,-0.420000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:2.896614, region_id:96, end_point:(1.008000,-0.252000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.896614, region_id:96, start_point:(1.617799,-0.404450),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:2.896614, region_id:38, end_point:(0.753965,-0.188491),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.896614, region_id:38, start_point:(1.008000,-0.252000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:131, phi:2.896614, region_id:74, end_point:(0.630000,-0.157500),
+[  INFO  ]  ...  surface[0]:3418
+[  INFO  ]  Cell:131, phi:2.896614, region_id:74, start_point:(0.753965,-0.188491),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:130, phi:2.896614, region_id:73, end_point:(0.523877,-0.130969),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:73, start_point:(0.630000,-0.157500),
+[  INFO  ]  ...  surface[1]:3393
+[  INFO  ]  Cell:130, phi:2.896614, region_id:35, end_point:(0.468570,-0.117142),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:35, start_point:(0.523877,-0.130969),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:34, end_point:(0.405793,-0.101448),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:34, start_point:(0.468570,-0.117142),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:33, end_point:(0.331329,-0.082832),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:33, start_point:(0.405793,-0.101448),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:32, end_point:(0.234285,-0.058571),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:32, start_point:(0.331329,-0.082832),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:31, end_point:(0.000000,0.000000),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:31, start_point:(0.234285,-0.058571),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:30, end_point:(-0.234285,0.058571),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:30, start_point:(0.000000,0.000000),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:29, end_point:(-0.331329,0.082832),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:29, start_point:(-0.234285,0.058571),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:28, end_point:(-0.405793,0.101448),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:28, start_point:(-0.331329,0.082832),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:27, end_point:(-0.468570,0.117142),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:27, start_point:(-0.405793,0.101448),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:26, end_point:(-0.523877,0.130969),
+[  INFO  ]  ...  surface[0]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:26, start_point:(-0.468570,0.117142),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:130, phi:2.896614, region_id:84, end_point:(-0.630000,0.157500),
+[  INFO  ]  ...  surface[0]:3392
+[  INFO  ]  Cell:130, phi:2.896614, region_id:84, start_point:(-0.523877,0.130969),
+[  INFO  ]  ...  surface[1]:3385
+[  INFO  ]  Cell:129, phi:2.896614, region_id:83, end_point:(-0.753965,0.188491),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.896614, region_id:83, start_point:(-0.630000,0.157500),
+[  INFO  ]  ...  surface[1]:3367
+[  INFO  ]  Cell:129, phi:2.896614, region_id:23, end_point:(-1.008000,0.252000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.896614, region_id:23, start_point:(-0.753965,0.188491),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:2.896614, region_id:119, end_point:(-1.617799,0.404450),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.896614, region_id:119, start_point:(-1.008000,0.252000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:2.896614, region_id:43, end_point:(-1.680000,0.420000),
+[  INFO  ]  ...  surface[0]:3359
+[  INFO  ]  Cell:129, phi:2.896614, region_id:43, start_point:(-1.617799,0.404450),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:129, phi:2.896614, region_id:42, end_point:(-1.890000,0.472500),
+[  INFO  ]  ...  surface[0]:3366
+[  INFO  ]  Cell:129, phi:2.896614, region_id:42, start_point:(-1.680000,0.420000),
+[  INFO  ]  ...  surface[1]:3359
+[  INFO  ]  Cell:131, phi:2.896614, region_id:41, end_point:(1.764000,0.504000),
+[  INFO  ]  ...  surface[0]:3411
+[  INFO  ]  Cell:131, phi:2.896614, region_id:41, start_point:(1.890000,0.472500),
+[  INFO  ]  ...  surface[1]:3419
+[  INFO  ]  Cell:131, phi:2.896614, region_id:40, end_point:(1.260000,0.630000),
+[  INFO  ]  ...  surface[0]:3423
+[  INFO  ]  Cell:131, phi:2.896614, region_id:40, start_point:(1.764000,0.504000),
+[  INFO  ]  ...  surface[1]:3411
+[  INFO  ]  Cell:134, phi:2.896614, region_id:80, end_point:(0.756000,0.756000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.896614, region_id:80, start_point:(1.260000,0.630000),
+[  INFO  ]  ...  surface[1]:3500
+[  INFO  ]  Cell:134, phi:2.896614, region_id:51, end_point:(0.630000,0.787500),
+[  INFO  ]  ...  surface[0]:3496
+[  INFO  ]  Cell:134, phi:2.896614, region_id:51, start_point:(0.756000,0.756000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:133, phi:2.896614, region_id:50, end_point:(0.420000,0.840000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.896614, region_id:50, start_point:(0.630000,0.787500),
+[  INFO  ]  ...  surface[1]:3471
+[  INFO  ]  Cell:133, phi:2.896614, region_id:114, end_point:(0.357799,0.855550),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.896614, region_id:114, start_point:(0.420000,0.840000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:2.896614, region_id:48, end_point:(-0.252000,1.008000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.896614, region_id:48, start_point:(0.357799,0.855550),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:2.896614, region_id:93, end_point:(-0.506035,1.071509),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.896614, region_id:93, start_point:(-0.252000,1.008000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:133, phi:2.896614, region_id:46, end_point:(-0.630000,1.102500),
+[  INFO  ]  ...  surface[0]:3470
+[  INFO  ]  Cell:133, phi:2.896614, region_id:46, start_point:(-0.506035,1.071509),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Cell:132, phi:2.896614, region_id:45, end_point:(-0.736123,1.129031),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.896614, region_id:45, start_point:(-0.630000,1.102500),
+[  INFO  ]  ...  surface[1]:3445
+[  INFO  ]  Cell:132, phi:2.896614, region_id:92, end_point:(-1.260000,1.260000),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.896614, region_id:92, start_point:(-0.736123,1.129031),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:2.896614, region_id:56, end_point:(-1.783877,1.390969),
+[  INFO  ]  ...  surface[0]:3437
+[  INFO  ]  Cell:132, phi:2.896614, region_id:56, start_point:(-1.260000,1.260000),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Cell:132, phi:2.896614, region_id:55, end_point:(-1.890000,1.417500),
+[  INFO  ]  ...  surface[0]:3444
+[  INFO  ]  Cell:132, phi:2.896614, region_id:55, start_point:(-1.783877,1.390969),
+[  INFO  ]  ...  surface[1]:3437
+[  INFO  ]  Progress Segmenting 2D Tracks: 100.00%
+[  INFO  ]  Cell:134, phi:2.896614, region_id:54, end_point:(1.766035,1.448491),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.896614, region_id:54, start_point:(1.890000,1.417500),
+[  INFO  ]  ...  surface[1]:3497
+[  INFO  ]  Cell:134, phi:2.896614, region_id:53, end_point:(1.512000,1.512000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.896614, region_id:53, start_point:(1.766035,1.448491),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:2.896614, region_id:88, end_point:(0.902201,1.664450),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.896614, region_id:88, start_point:(1.512000,1.512000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:2.896614, region_id:89, end_point:(0.840000,1.680000),
+[  INFO  ]  ...  surface[0]:3489
+[  INFO  ]  Cell:134, phi:2.896614, region_id:89, start_point:(0.902201,1.664450),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:134, phi:2.896614, region_id:87, end_point:(0.630000,1.732500),
+[  INFO  ]  ...  surface[0]:3496
+[  INFO  ]  Cell:134, phi:2.896614, region_id:87, start_point:(0.840000,1.680000),
+[  INFO  ]  ...  surface[1]:3489
+[  INFO  ]  Cell:133, phi:2.896614, region_id:86, end_point:(0.504000,1.764000),
+[  INFO  ]  ...  surface[0]:3463
+[  INFO  ]  Cell:133, phi:2.896614, region_id:86, start_point:(0.630000,1.732500),
+[  INFO  ]  ...  surface[1]:3471
+[  INFO  ]  Cell:133, phi:2.896614, region_id:118, end_point:(0.000000,1.890000),
+[  INFO  ]  ...  surface[0]:3475
+[  INFO  ]  Cell:133, phi:2.896614, region_id:118, start_point:(0.504000,1.764000),
+[  INFO  ]  ...  surface[1]:3463
+[  INFO  ]  Initializing 3D FSRs in axially extruded regions...
+[  INFO  ]  Progress initializing 3D FSRs:   0.00%
+[  INFO  ]  Progress initializing 3D FSRs:  10.48%
+[  INFO  ]  Progress initializing 3D FSRs:  20.16%
+[  INFO  ]  Progress initializing 3D FSRs:  29.84%
+[  INFO  ]  Progress initializing 3D FSRs:  39.52%
+[  INFO  ]  Progress initializing 3D FSRs:  49.19%
+[  INFO  ]  Progress initializing 3D FSRs:  58.87%
+[  INFO  ]  Progress initializing 3D FSRs:  68.55%
+[  INFO  ]  Progress initializing 3D FSRs:  78.23%
+[  INFO  ]  Progress initializing 3D FSRs:  87.90%
+[  INFO  ]  Progress initializing 3D FSRs: 100.00%
+[  INFO  ]  Total number of extruded FSRs = 124
+[  INFO  ]  Max storage for extruded FSRs per domain = 0.38 MiB
+[  INFO  ]  Progress reordering FSR IDs:   0.00%
+[  INFO  ]  Progress reordering FSR IDs:  10.48%
+[  INFO  ]  Progress reordering FSR IDs:  20.16%
+[  INFO  ]  Progress reordering FSR IDs:  29.84%
+[  INFO  ]  Progress reordering FSR IDs:  39.52%
+[  INFO  ]  Progress reordering FSR IDs:  49.19%
+[  INFO  ]  Progress reordering FSR IDs:  58.87%
+[  INFO  ]  Progress reordering FSR IDs:  68.55%
+[  INFO  ]  Progress reordering FSR IDs:  78.23%
+[  INFO  ]  Progress reordering FSR IDs:  87.90%
+[  INFO  ]  Progress reordering FSR IDs: 100.00%
+[  INFO  ]  Finished initialization of axial 3D FSRs
+[  INFO  ]  Initializing FSR lookup vectors
+[  INFO  ]  Total number of FSRs = 3720
+[  INFO  ]  Max storage for FSRs per domain = 0.38 MiB
+[  INFO  ]  Counting segments and allocate temporary segments...
+[ RESULT ]  Number of local 3D segments = 74000
+[ HEADER ]  **************************************************************************
+[ HEADER ]                    Timing Report - Ray Tracing (average)                   
+[ HEADER ]  **************************************************************************
+[ RESULT ]  Total Track Generation & Segmentation Time......... 6.16951E-01 s
+[ RESULT ]    Quadrature Initialization........................ 1.97552E-05 s  0.00%
+[ RESULT ]    Tracks Initialization............................ 1.13035E-02 s  1.83%
+[ RESULT ]    Segmenting Tracks................................ 6.05586E-01 s 98.16%
+[ RESULT ]      Segmenting on Superposition Plane.............. 5.30129E-01 s -87.54%
+[ RESULT ]      Axial FSRs Initialization...................... 5.46044E-02 s - 9.02%
+[ RESULT ]      Segments Counting.............................. 1.99035E-02 s - 3.29%
+[   SP   ]  --------------------------------------------------------------------------
+[ RESULT ]        # 2D chains             # 2D tracks                # FSRs         
+[   SP   ]  --------------------------------------------------------------------------
+[ RESULT ]             24                      48                     3720          
+[   SP   ]  --------------------------------------------------------------------------
+[  INFO  ]  Running simulation...
+[  INFO  ]  Initializing MOC eigenvalue solver...
+[  INFO  ]  Initializing materials...
+[  INFO  ]  Initializing solver arrays...
+[  INFO  ]  Computing volumes of FSRs...
+[  INFO  ]  Total FSR volume       = 6.1211505600e+02
+[  INFO  ]  Average volume per FSR = 1.6454705806e-01
+[  INFO  ]  Computing centroids of FSRs...
+[  INFO  ]  Initializing exponential interpolation table...
+[  INFO  ]  Max boundary angular flux storage per domain = 0.634 MiB
+[  INFO  ]  Max scalar flux storage per domain = 0.397 MiB
+[  INFO  ]  Max source storage per domain = 0.199 MiB
+[  INFO  ]  Number of azimuthal angles = 16
+[  INFO  ]  Azimuthal ray spacing = 1
+[  INFO  ]  Number of polar angles = 2
+[  INFO  ]  Z-spacing = 0.75
+[  INFO  ]  Source type = Flat
+[  INFO  ]  MOC transport undamped
+[  INFO  ]  CMFD acceleration: ON
+[  INFO  ]  CMFD inner linear solver SOR factor: 1.500000
+[  INFO  ]  CMFD corrected diffusion coef. relaxation factor: 1.000000
+[  INFO  ]  CMFD K-nearest scheme: 3 neighbors
+[  INFO  ]  CMFD Mesh: 3 x 3 x 30
+[  INFO  ]  CMFD Group Structure:
+[  INFO  ]  	 MOC Group 	 CMFD Group
+[  INFO  ]  	 1 		 1
+[  INFO  ]  	 2 		 1
+[  INFO  ]  	 3 		 1
+[  INFO  ]  	 4 		 2
+[  INFO  ]  	 5 		 2
+[  INFO  ]  	 6 		 2
+[  INFO  ]  	 7 		 2
+[  INFO  ]  Using 1 threads
+[  INFO  ]  Computing the eigenvalue...
+[  INFO  ]  Iteration 0:  k_eff = 0.974094   res = 7.736E-02  delta-k (pcm) = -2590
+[  INFO  ]  ...  D.R. = 0.0774
+[  INFO  ]  Iteration 1:  k_eff = 0.953923   res = 7.972E-02  delta-k (pcm) = -2017
+[  INFO  ]  ...  D.R. = 1.0304
+[  INFO  ]  Iteration 2:  k_eff = 0.937154   res = 1.097E-02  delta-k (pcm) = -1676
+[  INFO  ]  ...  D.R. = 0.1376
+[  INFO  ]  Iteration 3:  k_eff = 0.934769   res = 1.349E-02  delta-k (pcm) = -238
+[  INFO  ]  ...  D.R. = 1.2303
+[  INFO  ]  Iteration 4:  k_eff = 0.926381   res = 4.469E-03  delta-k (pcm) = -838
+[  INFO  ]  ...  D.R. = 0.3312

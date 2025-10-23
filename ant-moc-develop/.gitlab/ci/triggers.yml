@@ -1,0 +1,31 @@
+#-------------------------------------------------------------------------------
+# Generate normal tests
+#-------------------------------------------------------------------------------
+generate-tests:
+  extends: .run-base
+  stage: setup
+  script: python3 .gitlab/ci/generate-tests.py | tee .tests.yml
+  artifacts:
+    paths:
+      - .tests.yml
+
+trigger-tests:
+  stage: triggers
+  needs: ["generate-tests"]
+  trigger:
+    strategy: depend
+    include:
+      - job: generate-tests
+        artifact: .tests.yml
+
+#-------------------------------------------------------------------------------
+# Create a job for code quality
+#-------------------------------------------------------------------------------
+trigger-code-quality:
+  stage: triggers
+  needs: []
+  trigger:
+    include:
+      - local: .gitlab/ci/code-quality.yml
+  when: manual
+  allow_failure: true

@@ -1,0 +1,15 @@
+stages:
+  - setup
+  - triggers
+  - coverage
+  - deploy
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+include:
+  - template: 'Workflows/Branch-Pipelines.gitlab-ci.yml'
+  - local: .gitlab/ci/base.yml
+  - local: .gitlab/ci/triggers.yml
+  - local: .gitlab/ci/coverage.yml
+

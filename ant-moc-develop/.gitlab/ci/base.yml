@@ -1,0 +1,111 @@
+.setup-base:
+  interruptible: true
+  image: ubuntu:18.04
+
+# Template for all jobs running antmoc
+.run-base:
+  # all jobs are interruptible by default
+  interruptible: true
+  image: antmoc/antmoc-ci:0.1.15
+  variables:
+    USE_SPECS: ""
+  before_script:
+    - source ~/setup-env.sh
+    - spack load cmake%gcc
+    # load customized packages
+    - if [ "x$USE_SPECS" != "x" ]; then spack load $USE_SPECS; fi
+    - spack find -v --loaded
+  timeout: 2h
+  retry:
+    max: 2
+    when:
+      - unknown_failure
+      - api_failure
+      - stuck_or_timeout_failure
+      - runner_system_failure
+      - unmet_prerequisites
+      - scheduler_failure
+
+# Template for 'build' jobs
+.build-base:
+  extends: .run-base
+  stage: build
+  needs: []
+  variables:
+    C_COMPILER: "gcc"
+    CXX_COMPILER: "g++"
+    BUILD_TYPE: "Release"
+    BUILD_SHARED_LIBS: "ON"
+    ENABLE_MPI: "OFF"
+    ENABLE_HIP: "OFF"
+    ENABLE_TESTS: "ON"
+  script:
+    - echo -e "section_start:`date +%s`:section_configure\r\e[0KConfiguring antmoc"
+    - cmake -S . -B build -DCMAKE_C_COMPILER=$C_COMPILER
+                          -DCMAKE_CXX_COMPILER=$CXX_COMPILER
+                          -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+                          -DBUILD_SHARED_LIBS:BOOL=$BUILD_SHARED_LIBS
+                          -DENABLE_TESTS:BOOL=$ENABLE_TESTS
+                          -DENABLE_MPI:BOOL=$ENABLE_MPI
+                          -DENABLE_HIP:BOOL=$ENABLE_HIP
+    - echo -e "section_end:`date +%s`:section_configure\r\e[0K"
+
+    - echo -e "section_start:`date +%s`:section_build\r\e[0KBuilding antmoc"
+    - cmake --build build -j
+    - echo -e "section_end:`date +%s`:section_build\r\e[0K"
+
+    - echo -e "section_start:`date +%s`:section_prep_artifacts\r\e[0KPreparing artifacts"
+    - du -h --max-depth=1 .
+    # strip binaries with a script
+    - .gitlab/ci/strip-binaries.sh "build/"
+    - tar -zcf build.tar.gz build/ $DEPS_TGZ
+    - ls -hl build.tar.gz
+    - echo -e "section_end:`date +%s`:section_prep_artifacts\r\e[0K"
+  artifacts:
+    paths:
+      - build.tar.gz
+    expire_in: 1 days
+
+# Template for 'test' jobs
+.test-base:
+  extends: .run-base
+  stage: test
+  variables:
+    CTEST_RANDOM: "ON"
+    #CTEST_FILTER: ""
+  script:
+    - ARGS="--output-on-failure"
+    - if [ "$CTEST_RANDOM" == "ON" ]; then
+        ARGS="$ARGS --schedule-random";
+      fi
+    # this is deprecated since the criteria of regression tests has been relaxed
+    #- if [ "x$CTEST_FILTER" != "x" ]; then ARGS="$ARGS -R \'unit.*\'"; fi
+    - echo -e "section_start:`date +%s`:section_test\r\e[0KRunning tests"
+    - tar -zxf build.tar.gz
+    - cd build/
+    - ctest $ARGS
+    - echo -e "section_end:`date +%s`:section_test\r\e[0K"
+  parallel: 2
+  timeout: 1h
+
+# Template for 'install' jobs
+.install-base:
+  extends: .run-base
+  stage: install
+  script:
+    - tar -zxf build.tar.gz
+
+    - export ANTMOC_DIR=$CI_PROJECT_DIR/install
+    - export PATH=$ANTMOC_DIR/bin:$PATH
+    - export LD_LIBRARY_PATH=$ANTMOC_DIR/lib:$LD_LIBRARY_PATH
+
+    - echo -e "section_start:`date +%s`:section_install\r\e[0KInstalling antmoc"
+    - cmake --install build --prefix $ANTMOC_DIR
+    - echo -e "section_end:`date +%s`:section_install\r\e[0K"
+
+    - echo -e "section_start:`date +%s`:section_test_install\r\e[0KTesting antmoc installation"
+    - ldd $(which antmoc)
+    - antmoc --help
+    - echo -e "section_end:`date +%s`:section_test_install\r\e[0K"
+  allow_failure: true
+

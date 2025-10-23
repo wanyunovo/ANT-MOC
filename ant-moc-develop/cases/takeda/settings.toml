@@ -1,0 +1,42 @@
+log_level = "info"
+
+[parallel]
+track_mapping = "auto"
+
+[geometry]
+path        = "cases/takeda/takeda-unrodded-geo.xml"
+primitives  = "cases/takeda/primitives.xml"
+lattice_refines = "20, 20, 20"
+cell_sectors    = ""
+
+[materials]
+path      = "cases/takeda/takeda-mgxs.h5"
+xs_layout = "named"
+
+[output]
+reaction_rates = "F, T, PHI"
+cross_sections = "none"
+tracks         = "none"
+mesh.type      = "rectangle"
+mesh.offset    = "0, 0, 0"
+mesh.shape     = "[5]*5, [5]*5, [5]*5"
+
+[quadrature]
+type         = "Equal Weight"
+azims        = 32
+azim_spacing = 0.05
+polars       = 2
+z_spacing    = 0.05
+
+[ray_tracing]
+segmentation = "OTF Stacks"
+z_mesh       = "Local"
+zones        = "-12.5, 12.5"
+modules      = "1, 1, 1"
+
+[solver]
+type           = "CPU Solver"
+max_iterations = 1000
+tolerance      = 1E-5
+stabilization  = "none"
+keff_neutron_balance = false

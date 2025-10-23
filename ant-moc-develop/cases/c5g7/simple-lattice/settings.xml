@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="GBK" ?>
+<settings>
+
+  <!-- This file illustrate different styles of options -->
+
+  <log_level>info</log_level>
+
+  <track_mapping>auto</track_mapping>
+
+  <geometry  path="cases/c5g7/simple-lattice/geometry.xml" lattice_refines="0, 0, 0"/>
+  <materials path="cases/c5g7/c5g7-mgxs.h5"/>
+
+  <tally>
+    <reaction_rates>F, PHI</reaction_rates>
+    <cross_sections>none</cross_sections>
+    <tracks>none</tracks>
+
+    <mesh type="rectangle">
+      <shape>
+          [1.26]*3,
+          [1.26]*3,
+          [1.428]*30</shape>
+    </mesh>
+  </tally>
+
+  <quadrature type="Equal Weight" azims="16" polars="2">
+    <azim_spacing>1.0</azim_spacing>
+    <z_spacing>0.75</z_spacing>
+  </quadrature>
+
+  <ray_tracing segmentation="OTF Stacks" z_mesh="Local">
+    <zones>-21.42, +21.42</zones>
+    <modules>1, 1, 1</modules>
+  </ray_tracing>
+
+  <solver type="CPU Solver" max_iterations="1000" tolerance="1E-5"
+          keff_neutron_balance="false"
+  />
+
+</settings>

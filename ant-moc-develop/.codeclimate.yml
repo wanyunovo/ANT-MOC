@@ -1,0 +1,14 @@
+---
+version: "2"
+
+plugins:
+  cppcheck:
+    enabled: true
+  gnu-complexity:
+    enabled: true
+  sonar-python:
+    enabled: true
+
+exclude_patterns:
+  - "dependencies/"
+  - "cases/"

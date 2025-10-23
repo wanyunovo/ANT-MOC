@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="GBK" ?>
+
+<geometry>
+
+  <cell id="1" fill="1" name="Pin6x6 Testing" region="+3 -4 +5 -6 +7 -8">
+
+    <!-- Local halfspaces -->
+    <surface id="3" type="x-plane" coeffs="-3.78"  name="left"   boundary="REFLECTIVE"/>
+    <surface id="4" type="x-plane" coeffs="+3.78"  name="right"  boundary="REFLECTIVE"/>
+    <surface id="5" type="y-plane" coeffs="-3.78"  name="back"   boundary="REFLECTIVE"/>
+    <surface id="6" type="y-plane" coeffs="+3.78"  name="front"  boundary="REFLECTIVE"/>
+    <surface id="7" type="z-plane" coeffs="-3.78"  name="bottom" boundary="REFLECTIVE"/>
+    <surface id="8" type="z-plane" coeffs="+3.78"  name="top"    boundary="REFLECTIVE"/>
+
+    <!-- Local lattice -->
+    <lattice id="1" name="Outer Lattice" type="Rectangle">
+      <widths x="[3.78]*2" y="[3.78]*2" z="[3.78]*2"/>
+      <universes>
+        21 21
+        21 22
+
+        22 22
+        22 22
+      </universes>
+    </lattice>
+
+  </cell>
+
+</geometry>

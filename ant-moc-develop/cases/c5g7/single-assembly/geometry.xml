@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="GBK" ?>
+<geometry>
+
+  <cell id="1" fill="1" type ="CORE" name="C5G7 Assembly 1">
+    <region> +31 -32 +33 -34 +35 -36 </region>
+    <surface id="31" type="x-plane" coeffs="-10.71" boundary="Reflective"/>
+    <surface id="32" type="x-plane" coeffs="+10.71" boundary="Reflective"/>
+    <surface id="33" type="y-plane" coeffs="-10.71" boundary="Reflective"/>
+    <surface id="34" type="y-plane" coeffs="+10.71" boundary="Reflective"/>
+    <surface id="35" type="z-plane" coeffs="-21.42" boundary="Reflective"/>
+    <surface id="36" type="z-plane" coeffs="+21.42" boundary="Reflective"/>
+
+    <lattice id="1" name="Full Geometry" type="Rectangle">
+      <widths x="21.42" y="21.42" z="[7.14] * 6"/>
+      <row>  23 </row>  <!--rodded-->
+
+      <row>  23 </row>  <!--rodded-->
+
+      <row>  23 </row>  <!--rodded-->
+
+      <row>  23 </row>  <!--rodded-->
+
+      <row>  21 </row>
+
+      <row>  21 </row>
+   </lattice>
+  </cell>
+
+</geometry>

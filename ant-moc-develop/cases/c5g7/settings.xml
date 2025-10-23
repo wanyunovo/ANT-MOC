@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="GBK" ?>
+<settings>
+
+  <log_level>info</log_level>
+
+  <track_mapping>auto</track_mapping>
+
+  <geometry lattice_refines="0, 0, 0">
+    <path>cases/c5g7/c5g7-rodded-B-geo.xml</path>
+    <primitives>cases/c5g7/primitives.xml</primitives>
+  </geometry>
+
+  <materials path="cases/c5g7/c5g7-mgxs.h5"/>
+
+  <tally>
+    <reaction_rates>F, T, PHI</reaction_rates>
+    <cross_sections>none</cross_sections>
+    <tracks>none</tracks>
+
+    <mesh type="rectangle">
+      <shape>
+          [1.26]*51,
+          [1.26]*51,
+          [1.428]*45</shape>
+    </mesh>
+  </tally>
+
+  <quadrature type="Equal Weight" azims="32" polars="2">
+    <azim_spacing>0.05</azim_spacing>
+    <z_spacing>0.75</z_spacing>
+  </quadrature>
+
+  <ray_tracing segmentation="OTF Stacks" z_mesh="Local">
+    <zones>-32.13, -10.71, 10.71, 32.13</zones>
+    <modules>3, 3, 1</modules>
+  </ray_tracing>
+
+  <solver type="CPU Solver" max_iterations="1000" tolerance="1E-5"/>
+
+</settings>

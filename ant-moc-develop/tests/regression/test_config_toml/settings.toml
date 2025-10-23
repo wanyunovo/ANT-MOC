@@ -1,0 +1,40 @@
+[parallel]
+omp_threads = 1
+
+[geometry]
+path        = ""
+primitives  = ""
+lattice_refines = ""
+cell_sectors    = ""
+
+[materials]
+path      = ""
+xs_layout = "named"
+
+[output]
+reaction_rates = "F, PHI"
+cross_sections = "none"
+tracks         = "none"
+mesh.type      = "rectangle"
+mesh.offset    = "0, 0, 0"
+mesh.shape     = "[1.26]*6, [1.26]*6, [1.428]*2"
+
+[quadrature]
+type         = "Leonard"
+azims        = 8
+azim_spacing = 0.75
+polars       = 2
+z_spacing    = 3.0
+
+[ray_tracing]
+segmentation = "OTF Stacks"
+z_mesh       = "Local"
+zones        = ""
+modules      = "1, 1, 1"
+
+[solver]
+type           = "CPU Solver"
+max_iterations = 200
+tolerance      = 1E-5
+stabilization  = "none"
+keff_neutron_balance = false

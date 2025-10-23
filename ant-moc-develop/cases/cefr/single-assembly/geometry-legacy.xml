@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="GBK" ?>
+<geometry>
+  <cell      id="1" region="-1 +2 -3 +4 +5 -6" name="CEFR单组件">
+    <fill> 002 </fill>
+  </cell>
+</geometry>
+
+
+<global>
+  <!-- 整个几何从 -83 到 113.5 -->
+  <!-- 目前以(0,0,0)为外层几何的中心，内部每个组件平移，保证底部被截去0.5。 -->
+  <!-- 设整个几何高度为z，某一组件高度为h，则需要向上平移 -->
+  <!--   h/2 - z/2 - 0.5 -->
+  <surface id="1" type="z-plane" coeffs=" 98.25" name="上端面" boundary="VACUUM"/>
+  <surface id="2" type="z-plane" coeffs="-98.25" name="下端面" boundary="VACUUM"/>
+  <surface id="3" type="y-plane" coeffs=" 3.5"   name="前"     boundary="VACUUM"/>
+  <surface id="4" type="y-plane" coeffs="-3.5"   name="后"     boundary="VACUUM"/>
+  <surface id="5" type="x-plane" coeffs="-3.0"   name="左"     boundary="VACUUM"/>
+  <surface id="6" type="x-plane" coeffs=" 3.0"   name="右"     boundary="VACUUM"/>
+
+  <!-- 002号组件：组件边界 -->
+  <surface id="21" type="plane"   coeffs=" 1 -1.7320508076 0 -5.924" name="right_bottom"/>
+  <surface id="22" type="plane"   coeffs=" 1 -1.7320508076 0  5.924" name="left_top"/>
+  <surface id="23" type="plane"   coeffs=" 1  1.7320508076 0 -5.924" name="right_top"/>
+  <surface id="24" type="plane"   coeffs=" 1  1.7320508076 0  5.924" name="left_bottom"/>
+  <surface id="25" type="x-plane" coeffs=" 2.962" name="right"/>
+  <surface id="26" type="x-plane" coeffs="-2.962" name="left"/>
+
+  <!-- 002号组件：整个燃料组件及组件外的钠 -->
+  <!-- 分为组件内部、组件外部两部分描述 -->
+  <universe id="002" name="组件及组件外的钠">
+    <cell   id="081" material="2" region="~(-21 +22 -23 +24 -25 +26)" name="组件外的钠(多组件时应为组件间的钠)"/>
+    <cell   id="095" fill="095"   region="-21 +22 -23 +24 -25 +26"    name="组件栅元阵列及轴向其他部件"/>
+  </universe>
+
+  <!-- 002号组件：组件内部 -->
+  <!-- 分为5层描述 -->
+  <!-- 上部操作头 -->
+  <!-- 上屏蔽段 -->
+  <!-- 钠腔 -->
+  <!-- 栅元阵列及组件内钠 -->
+  <!-- 气腔 -->
+  <lattice id="095" type="Hexagon" name="燃料组件" orientation="x" n_rings="1" offset="0 0 13.4625">
+    <widths r="5.924" z="[10.041] + [135.5590] + [6.025] + [49.705] + [23.095]"/> <!-- 224.425 -->
+    <universes>
+      [096]
+      [097]
+      [098]
+      [100]
+      [099]
+    </universes>
+    <universe id="096"> <cell material="6" name="上部操作头"/> </universe>
+    <universe id="097"> <cell material="7" name="上屏蔽段"/>   </universe>
+    <universe id="098"> <cell material="8" name="钠腔"/>       </universe>
+    <universe id="099"> <cell material="5" name="气腔"/>       </universe>
+  </lattice>
+
+  <!-- 002号组件：燃料组件栅元阵列边界 -->
+  <surface id="31" type="plane"   coeffs=" 1 -1.7320508076 0 -5.683" name="right_bottom"/>
+  <surface id="32" type="plane"   coeffs=" 1 -1.7320508076 0  5.683" name="left_top"/>
+  <surface id="33" type="plane"   coeffs=" 1  1.7320508076 0 -5.683" name="right_top"/>
+  <surface id="34" type="plane"   coeffs=" 1  1.7320508076 0  5.683" name="left_bottom"/>
+  <surface id="35" type="x-plane" coeffs=" 2.8415" name="right"/>
+  <surface id="36" type="x-plane" coeffs="-2.8415" name="left"/>
+
+  <!-- 002号组件：燃料组件栅元阵列，整个组件自下向上的第2层 -->
+  <!-- 超栅元空间 -->
+  <!-- 上端塞 -->
+  <!-- 弹簧 -->
+  <!-- 上转芯块 -->
+  <!-- 活性区芯块 -->
+  <!-- 下转芯块 -->
+  <!-- 下支撑体 -->
+  <!-- 气腔 -->
+  <!-- 下端塞 -->
+  <universe id="100" name="栅元阵列、外套管">
+    <cell   id="082" material="1" name="组件外套管" region="~(-31 +32 -33 +34 -35 +36) (-21 +22 -23 +24 -25 +26)"/>
+    <cell   id="200" fill="200"   name="栅元阵列及组件内钠"   region="-31 +32 -33 +34 -35 +36"/>
+  </universe>
+
+  <lattice id="200" type="Hexagon" name ="燃料组件栅元及栅元外钠" orientation="y" n_rings="6" offset = "0 0 0">
+    <widths r="0.695" z="[135.5590]"/>
+    <refines z="1" />
+    <universes>
+                      300
+                   300   300
+                300   301   300
+             300   301   301   300
+          300   301   301   301   300
+       300   301   301   301   301   300
+          301   301   301   301   301
+       300   301   301   301   301   300
+          301   301   301   301   301
+       300   301   301   301   301   300
+          301   301   301   301   301
+       300   301   301   301   301   300
+          301   301   301   301   301
+       300   301   301   301   301   300
+          301   301   301   301   301
+       300   301   301   301   301   300
+          300   301   301   301   300
+             300   301   301   300
+                300   301   300
+                   300   300
+                      300
+    </universes>
+  </lattice>
+
+  <!-- 定义栅元阵列边缘的钠 -->
+  <cell id="300" universes="300" material="2" name="栅元阵列边缘钠" />
+  <!-- 栅元阵列 -->
+  <cell id="301" universes="301" fill="301" name="栅元阵列" />
+
+  <lattice  id="301" type="Hexagon" name="燃料棒" orientation="y" n_rings="1">
+    <!-- 135.5590 -->
+    <widths r="0.695" z="[3.515] + [44.182] + [1.004] + [25.1037] + [45.1863] + [10.041] + [4.519] + [2.008]"/>
+    <refines z="1"/>
+    <universes>
+      [101]
+      [102]
+      [103]
+      [104]
+      [105]
+      [106]
+      [107]
+      [108]
+    </universes>
+  </lattice>
+
+  <!-- 002号组件：燃料棒定义 -->
+  <surface id="11" type="z-cylinder" coeffs="0 0 0.30499" name="绕丝位置"/>
+  <surface id="12" type="z-cylinder" coeffs="0 0 0.30124" name="包壳与绕丝接触面"/>
+  <surface id="13" type="z-cylinder" coeffs="0 0 0.27112" name="包壳内壁"/>
+  <surface id="14" type="z-cylinder" coeffs="0 0 0.25606" name="弹簧外侧面"/>
+  <surface id="15" type="z-cylinder" coeffs="0 0 0.08033" name="中心孔"/>
+
+  <cell                 id="102" material="2"  sectors="0" region="+11"     name="包壳外钠">
+    <universes> 101 102 103 104 105 106 107 108 </universes> </cell>
+  <cell                 id="103" material="1"  sectors="0" region="+12 -11" name="绕丝">
+    <universes> 101 102 103 104 105 106 107 108 </universes> </cell>
+  <cell                 id="104" material="1"  sectors="0" region="+13 -12" name="包壳">
+    <universes> 101 102 103 104 105 106 107 108 </universes> </cell>
+
+  <cell universes="101" id="101" material="1"  sectors="0" region="-13"     name="上端塞"/>
+
+  <cell universes="102" id="105" material="8"  sectors="0" region="-14"     name="弹簧"/>
+  <cell universes="102" id="106" material="32" sectors="0" region="+14 -13" name="弹簧元件与包壳之间，真空"/>
+
+  <cell universes="103" id="107" material="4"  sectors="0" region="-13" name="上转芯块"  />
+  <cell universes="104" id="108" material="3"  sectors="0" region="-13" name="活性区芯块"/>
+  <cell universes="105" id="109" material="4"  sectors="0" region="-13" name="下转芯块"  />
+
+  <cell universes="106" id="110" material="32" sectors="0" region="-15"     name="下支撑体中心孔"/>
+  <cell universes="106" id="111" material="1"  sectors="0" region="+15 -14" name="下支撑体"/>
+  <cell universes="106" id="112" material="32" sectors="0" region="+14 -13" name="下支撑体元件与包壳之间，真空"/>
+
+  <cell universes="107" id="113" material="32" sectors="0" region="-13" name="气腔"/>
+
+  <cell universes="108" id="114" material="1"  sectors="0" region="-13" name="下端塞"/>
+
+</global>
+

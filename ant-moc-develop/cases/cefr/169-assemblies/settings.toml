@@ -1,0 +1,58 @@
+log_level = "info"
+log_line  = 100
+
+[parallel]
+track_mapping = "auto"
+
+[geometry]
+path        = "cases/cefr/169-assemblies/geometry.xml"
+primitives  = "cases/cefr/primitives.xml"
+lattice_refines = ""
+cell_sectors    = ""
+
+[materials]
+path      = "cases/cefr/cefr-mgxs.h5"
+xs_layout = "Compressed"
+
+[output]
+reaction_rates = "F, PHI"
+cross_sections = "none"
+tracks         = "none"
+mesh.type        = "hexagon"
+mesh.orientation = "X"
+mesh.offset      = "0, 0, -20.9295"
+# 暂时输出15圈组件，轴向取燃料部分的高度，并非全堆
+mesh.shape       = """\
+    8, 6.125,\
+    [3.515] + [44.182] + [1.004] + [25.1037] + [45.1863] + [10.041] + [4.519] + [2.008]\
+    """
+
+[quadrature]
+type         = "Equal Weight"
+azims        = 8
+azim_spacing = 0.5
+polars       = 2
+z_spacing    = 0.75
+
+[ray_tracing]
+segmentation = "OTF Stacks"
+z_mesh       = "Local"
+zones        = """\
+                -98.25,-88.25,-78.25,-68.25,-58.25,-48.25,\
+                -38.25,-28.25,-18.25,-8.25,0,8.25,18.25,28.25,\
+                38.25,48.25,58.25,68.25,78.25,88.25,98.25\
+                """
+modules      = "1, 1, 1"
+
+[solver]
+type           = "CPU Solver"
+max_iterations = 1000
+tolerance      = 1E-5
+stabilization  = "none"
+keff_neutron_balance = false
+xs.check       = false
+xs.correct     = false
+xs.log_level   = "error"
+
+[experimental]
+required_groups = "ALL"

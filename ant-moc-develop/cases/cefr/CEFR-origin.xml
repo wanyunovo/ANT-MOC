@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<geometry>
+	<cell id="1" type="CORE" name="CEFR堆芯" remark="全堆芯非均匀几何，六角形排列">
+		<lattice name="组件阵列">
+			<layout type="SEXANGULAR" range="-18 18 -18 18 0 0">
+				<row id="18">                                     9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9</row>
+				<row id="17">                                    9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9</row>
+				<row id="16">                                   9 9 9 9 9 9 5 5 5 5 5 5 5 5 5 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 </row>
+				<row id="15">                                  9 9 9 9 9 5 4 4 4 4 4 4 4 4 4 4 5 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9</row>
+				<row id="14">                                 9 9 9 9 5 4 4 5 5 5 5 5 5 5 5 5 4 4 5 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9</row>
+				<row id="13">                                9 9 9 5 4 4 5 5 5 5 5 5 5 5 5 5 5 5 4 4 5 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9</row>
+				<row id="12">                               9 9 5 4 4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 4 5 9 9 9 9 9 9 9 9 9 9 9 9 9 9</row>
+				<row id="11">                              9 9 5 4 5 5 5 5 5 5 4 4 4 4 4 4 5 5 5 5 5 5 4 5 9 9 9 9 9 9 9 9 9 9 9 9 9</row>
+				<row id="10">                             9 9 5 4 5 5 5 5 5 4 4 4 4 4 4 4 4 4 5 5 5 5 5 4 5 9 9 9 9 9 9 9 9 9 9 9 9</row>
+				<row id="9">                             9 9 5 4 5 5 5 5 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 9 9 9 9 9 9 9 9 9 9 9 9</row>
+				<row id="8">                            9 9 5 4 5 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 5 9 9 9 9 9 9 9 9 9 9 9</row>
+				<row id="7">                           9 9 5 5 5 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 9 9 9 9 9 9 9 9 9 9 9</row>
+				<row id="6">                          9 9 5 5 5 5 5 4 4 4 4 4 3 3 7 3 3 3 3 4 4 4 4 4 4 4 4 9 9 9 9 9 9 9 9 9 9</row>
+				<row id="5">                         9 9 5 5 5 5 5 4 4 4 4 4 3 3 2 2 2 2 2 3 4 4 4 4 4 4 4 9 9 9 9 9 9 9 9 9 9</row>
+				<row id="4">                        9 9 4 4 4 4 4 4 4 4 4 4 3 10 2 2 3 2 6 2 3 4 4 4 4 4 4 4 9 9 9 9 9 9 9 9 9</row>
+				<row id="3">                       9 9 9 4 4 4 4 4 4 4 4 4 3 10 2 2 2 2 2 2 2 3 4 4 4 4 4 4 9 9 9 9 9 9 9 9 9</row>
+				<row id="2">                      9 9 9 4 4 4 4 4 4 4 4 4 3 2 2 2 6 2 2 2 2 2 3 4 4 4 4 4 4 9 9 9 9 9 9 9 9</row>
+				<row id="1">                     9 9 9 9 4 4 4 4 4 4 4 4 3 2 2 2 2 2 2 2 2 2 10 3 4 4 4 4 4 9 9 9 9 9 9 9 9</row>
+				<row id="0">                    9 9 9 9 4 4 4 4 4 4 4 4 3 2 6 2 2 2 11 2 6 2 2 3 3 4 4 4 4 4 9 9 9 9 9 9 9</row>
+				<row id="-1">                  9 9 9 9 9 4 4 4 4 4 4 4 4 3 2 2 2 2 2 2 2 2 2 10 3 4 4 4 4 4 9 9 9 9 9 9 9</row>
+				<row id="-2">                 9 9 9 9 9 4 4 4 4 4 4 4 4 4 3 2 2 2 6 2 2 2 2 10 3 4 4 4 4 4 4 9 9 9 9 9 9</row>
+				<row id="-3">                9 9 9 9 9 9 4 4 4 4 4 4 4 4 4 3 10 2 2 2 2 2 2 2 3 4 4 4 4 4 4 9 9 9 9 9 9</row>
+				<row id="-4">               9 9 9 9 9 9 4 4 4 4 4 4 4 4 4 4 3 10 2 2 3 2 6 2 3 4 4 4 4 4 4 4 9 9 9 9 9</row>
+				<row id="-5">              9 9 9 9 9 9 9 5 5 5 5 5 4 4 4 4 4 3 3 2 2 2 2 2 3 4 4 4 4 4 4 4 9 9 9 9 9</row>
+				<row id="-6">             9 9 9 9 9 9 9 9 5 5 5 5 5 4 4 4 4 4 3 3 8 3 3 3 3 4 4 4 4 4 4 4 4 9 9 9 9</row>
+				<row id="-7">            9 9 9 9 9 9 9 9 9 5 5 5 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 9 9 9 9</row>
+				<row id="-8">           9 9 9 9 9 9 9 9 9 9 5 4 5 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 5 9 9 9</row>
+				<row id="-9">          9 9 9 9 9 9 9 9 9 9 9 5 4 5 5 5 5 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 9 9 9</row>
+				<row id="-10">        9 9 9 9 9 9 9 9 9 9 9 9 5 4 5 5 5 5 5 4 4 4 4 4 4 4 4 4 5 5 5 5 5 4 5 9 9</row>
+				<row id="-11">       9 9 9 9 9 9 9 9 9 9 9 9 9 5 4 5 5 5 5 5 5 4 4 4 4 4 4 5 5 5 5 5 5 4 5 9 9</row>
+				<row id="-12">      9 9 9 9 9 9 9 9 9 9 9 9 9 9 5 4 4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 4 5 9 9</row>
+				<row id="-13">     9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 5 4 4 5 5 5 5 5 5 5 5 5 5 5 5 4 4 5 9 9 9</row>
+				<row id="-14">    9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 5 4 4 5 5 5 5 5 5 5 5 5 4 4 5 9 9 9 9</row>
+				<row id="-15">   9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 5 4 4 4 4 4 4 4 4 4 4 5 9 9 9 9 9</row>
+				<row id="-16">  9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 5 5 5 5 5 5 5 5 5 9 9 9 9 9 9</row>
+				<row id="-17"> 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9</row>
+				<row id="-18">9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9</row>
+				<format>
+					<!--同种类型Layout有着相同的定义方式-->
+					<halfspace type="x-plane" coeffs="3.0625" direction="-"/>
+					<halfspace type="x-plane" coeffs="-3.0625" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -6.125" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 6.125" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -6.125" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 6.125" direction="+"/>
+				</format>
+			</layout>
+
+			<universe id="2"  name="燃料组件栅格">
+				<cell id="1" material="2" name="组件间钠">
+					<remove cell="2"/>
+				</cell>
+
+				<cell id="2" type="ASSEMBLY" name="燃料组件">
+					<universe name="组件内部">
+						<!--最外层的高度只有113.5，cell1、2的高度是否存在问题-->
+						<cell id="1" material="6" name="上部操作头">
+							<halfspace type="z-plane" coeffs="140.925" direction="-"/>
+							<halfspace type="z-plane" coeffs="117.830" direction="+"/>
+						</cell>
+
+						<cell id="2" material="7" name="上屏蔽段">
+							<halfspace type="z-plane" coeffs="117.830" direction="-"/>
+							<halfspace type="z-plane" coeffs="68.125" direction="+"/>
+						</cell>
+
+						<cell id="3" material="8" name="钠腔">
+							<halfspace type="z-plane" coeffs="68.125" direction="-"/>
+							<halfspace type="z-plane" coeffs="62.100" direction="+"/>
+						</cell>
+						<!--cell4的高度是否存在问题，与cell1、2存在重合-->
+						<cell id="4" name="组件超栅元空间">
+							<!--BASIC型Universe-->
+							<lattice name="栅元阵列">
+								<!--LATTICE型Universe-->
+								<layout type="SEXANGULAR" range="-5 5 -5 5 0 0">
+									<row id="5">           2 2 2 2 2 2 2 2 2 2 2</row>
+									<row id="4">          2 1 1 1 1 1 2 2 2 2 2</row>
+									<row id="3">         2 1 1 1 1 1 1 2 2 2 2</row>
+									<row id="2">        2 1 1 1 1 1 1 1 2 2 2</row>
+									<row id="1">       2 1 1 1 1 1 1 1 1 2 2</row>
+									<row id="0">      2 1 1 1 1 1 1 1 1 1 2</row>
+									<row id="-1">    2 2 1 1 1 1 1 1 1 1 2</row>
+									<row id="-2">   2 2 2 1 1 1 1 1 1 1 2</row>
+									<row id="-3">  2 2 2 2 1 1 1 1 1 1 2</row>
+									<row id="-4"> 2 2 2 2 2 1 1 1 1 1 2</row>
+									<row id="-5">2 2 2 2 2 2 2 2 2 2 2</row>
+									<format>
+										<halfspace type="x-plane" coeffs="0.3475" direction="-"/>
+										<halfspace type="x-plane" coeffs="-0.3475" direction="+"/>
+										<halfspace type="plane" coeffs="1 1.7320508076 0 -0.695" direction="-"/>
+										<halfspace type="plane" coeffs="1 1.7320508076 0 0.695" direction="+"/>
+										<halfspace type="plane" coeffs="-1 1.7320508076 0 -0.695" direction="-"/>
+										<halfspace type="plane" coeffs="-1 1.7320508076 0 0.695" direction="+"/>
+										<transform position="0 0 0" rotation="30"/>
+									</format>
+								</layout>
+								<!--外层Cell的高度是(70,261.8538),与下面universe分层的高度不一致-->
+								<universe id="1" name="元件棒超栅元">
+
+									<cell id="1" material="1" name="包壳">
+										<halfspace type="z-cylinder" coeffs="0 0 0.30124" direction="-"/>
+										<halfspace type="z-cylinder" coeffs="0 0 0.27112" direction="+"/>
+										<halfspace type="z-plane" coeffs="60.092" direction="-"/>
+										<halfspace type="z-plane" coeffs="-73.459" direction="+"/>
+									</cell>
+
+									<cell id="2" material="1" name="绕丝">
+										<halfspace type="z-cylinder" coeffs="0 0 0.30499" direction="-"/>
+										<halfspace type="z-cylinder" coeffs="0 0 0.30124" direction="+"/>
+										<halfspace type="z-plane" coeffs="60.092" direction="-"/>
+										<halfspace type="z-plane" coeffs="-73.459" direction="+"/>
+									</cell>
+
+									<cell id="3" material="2" name="包壳外钠">
+										<halfspace type="z-cylinder" coeffs="0 0 0.30499" direction="+"/>
+										<halfspace type="z-plane" coeffs="60.092" direction="-"/>
+										<halfspace type="z-plane" coeffs="-73.459" direction="+"/>
+									</cell>
+
+									<cell id="4" material="1" name="上端塞">
+										<halfspace type="z-cylinder" coeffs="0 0 0.27112" direction="-"/>
+										<halfspace type="z-plane" coeffs="62.100" direction="-"/>
+										<halfspace type="z-plane" coeffs="60.092" direction="+"/>
+									</cell>
+
+									<cell id="5" name="弹簧">
+										<universe>
+											<cell id = "1" material="8" name="包壳内">
+												<halfspace type="z-cylinder" coeffs="0 0 0.25606" direction="-"/>
+											</cell>
+											<cell id = "2" material="0" name="元件与包壳之间，真空">
+												<halfspace type="z-cylinder" coeffs="0 0 0.25606" direction="+"/>
+												<!--建议把下面这个halfspace移到外一层cell-->
+											</cell>
+										</universe>
+										<!--cell13的高度与其他cell（1,2,3,4）重合，会出现同一区域两种材料-->
+										<halfspace type="z-plane" coeffs="60.092" direction="-"/>
+										<halfspace type="z-plane" coeffs="55.573" direction="+"/>
+										<halfspace type="z-cylinder" coeffs="0 0 0.27112" direction="-"/>
+									</cell>
+
+									<cell id="6" material="4" name="上转芯块">
+										<halfspace type="z-cylinder" coeffs="0 0 0.27112" direction="-"/>
+										<halfspace type="z-plane" coeffs="55.573" direction="-"/>
+										<halfspace type="z-plane" coeffs="45.532" direction="+"/>
+									</cell>
+
+									<cell id="7" material="3" name="活性区芯块">
+										<halfspace type="z-cylinder" coeffs="0 0 0.27112" direction="-"/>
+										<halfspace type="z-plane" coeffs="45.532" direction="-"/>
+										<halfspace type="z-plane" coeffs="0.3457" direction="+"/>
+									</cell>
+
+									<cell id="8" material="4" name="下转芯块">
+										<halfspace type="z-cylinder" coeffs="0 0 0.27112" direction="-"/>
+										<halfspace type="z-plane" coeffs="0.3457" direction="-"/>
+										<halfspace type="z-plane" coeffs="-24.758" direction="+"/>
+									</cell>
+
+									<cell id="9" name="下支撑体">
+										<universe>
+											<cell id = "1" material="0" name="中心孔">
+												<halfspace type="z-cylinder" coeffs="0 0 0.08033" direction="-"/>
+											</cell>
+											<cell id = "2" material="1" name="包壳内">
+												<halfspace type="z-cylinder" coeffs="0 0 0.08033" direction="+"/>
+												<halfspace type="z-cylinder" coeffs="0 0 0.25606" direction="-"/>
+											</cell>
+											<cell id = "3" material="0" name="元件与包壳之间，真空">
+												<halfspace type="z-cylinder" coeffs="0 0 0.25606" direction="+"/>
+												<!--建议把下面这个halfspace移到外一层cell-->
+											</cell>
+										</universe>
+										<!--cell19的高度与其他cell（1,2,3）重合，会出现同一区域两种材料-->
+										<halfspace type="z-plane" coeffs="-24.758" direction="-"/>
+										<halfspace type="z-plane" coeffs="-25.762" direction="+"/>
+										<halfspace type="z-cylinder" coeffs="0 0 0.27112" direction="-"/>
+									</cell>
+
+									<cell id="10" material="0" name="气腔">
+										<halfspace type="z-cylinder" coeffs="0 0 0.27112" direction="-"/>
+										<halfspace type="z-plane" coeffs="-25.762" direction="-"/>
+										<halfspace type="z-plane" coeffs="-69.944" direction="+"/>
+									</cell>
+
+									<cell id="11" material="1" name="下端塞">
+										<halfspace type="z-cylinder" coeffs="0 0 0.27112" direction="-"/>
+										<halfspace type="z-plane" coeffs="-69.944" direction="-"/>
+										<halfspace type="z-plane" coeffs="-73.459" direction="+"/>
+									</cell>
+								</universe>
+								<universe id="2" name="钠栅元">
+									<cell id="1" material="2" name="组件内钠"/>
+								</universe>
+							</lattice>
+							<halfspace type="x-plane" coeffs=" 2.8415" direction="-"/>
+							<halfspace type="x-plane" coeffs="-2.8415" direction="+"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 -5.683" direction="-"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 5.683" direction="+"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 -5.683" direction="-"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 5.683" direction="+"/>
+							<halfspace type="z-plane" coeffs="62.100" direction="-"/>
+							<halfspace type="z-plane" coeffs="-73.459" direction="+"/>
+						</cell>
+
+						<cell id="5" material="1" name="组件外套管">
+							<!--此处补元的定义是在上一层Cell内，但不在这一层cell4内的点-->
+							<!--可改成 remove cell="1 2 3 4 6" -->
+							<remove cell="1"/>
+							<remove cell="2"/>
+							<remove cell="3"/>
+							<remove cell="4"/>
+							<remove cell="6"/>
+						</cell>
+
+						<cell id="6" material="5" name="气腔">
+							<halfspace type="z-plane" coeffs="-73.459" direction="-"/>
+							<halfspace type="z-plane" coeffs="-83.5" direction="+"/>
+						</cell>
+					</universe>
+					<halfspace type="x-plane" coeffs="2.962" direction="-"/>
+					<halfspace type="x-plane" coeffs="-2.962" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -5.924" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 5.924" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -5.924" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 5.924" direction="+"/>
+				</cell>
+			</universe>
+
+			<universe id="3" name="I类不锈钢组件栅格">
+				<cell id="1" material="9" name="操作头">
+					<!--最外层圆柱的高度是(-83,113.5)，超出限制-->
+					<halfspace type="z-plane" coeffs="137.069" direction="-"/>
+					<halfspace type="z-plane" coeffs="109.707" direction="+"/>
+				</cell>
+				<cell id="2" material="10" name="上屏蔽">
+					<halfspace type="z-plane" coeffs="109.707" direction="-"/>
+					<halfspace type="z-plane" coeffs="62.010" direction="+"/>
+				</cell>
+				<cell id="3" material="11" name="钠段">
+					<halfspace type="z-plane" coeffs="62.010" direction="-"/>
+					<halfspace type="z-plane" coeffs="58.998" direction="+"/>
+				</cell>
+				<cell id="4" material="12" name="棒束段">
+					<halfspace type="z-plane" coeffs="58.998" direction="-"/>
+					<halfspace type="z-plane" coeffs="-28.162" direction="+"/>
+				</cell>
+				<cell id="5" material="11" name="钠段">
+					<halfspace type="z-plane" coeffs="-28.162" direction="-"/>
+					<halfspace type="z-plane" coeffs="-32.680" direction="+"/>
+				</cell>
+				<cell id="6" material="13" name="下屏蔽">
+					<halfspace type="z-plane" coeffs="-32.680" direction="-"/>
+					<!--最外层圆柱的高度是(-83,113.5)，未到限制-->
+					<halfspace type="z-plane" coeffs="-83.5" direction="+"/>
+				</cell>
+			</universe>
+
+			<universe id="4" name="II类不锈钢组件栅格">
+				<cell id="1" material="9" name="操作头">
+					<!--最外层圆柱的高度是(-83,113.5)，超出限制-->
+					<halfspace type="z-plane" coeffs="137.069" direction="-"/>
+					<halfspace type="z-plane" coeffs="109.707" direction="+"/>
+				</cell>
+				<cell id="2" material="10" name="上屏蔽">
+					<halfspace type="z-plane" coeffs="109.707" direction="-"/>
+					<halfspace type="z-plane" coeffs="-28.162" direction="+"/>
+				</cell>
+				<cell id="3" material="11" name="钠段">
+					<halfspace type="z-plane" coeffs="-28.162" direction="-"/>
+					<halfspace type="z-plane" coeffs="-32.680" direction="+"/>
+				</cell>
+				<cell id="6" material="13" name="下屏蔽">
+					<halfspace type="z-plane" coeffs="-32.680" direction="-"/>
+					<!--最外层圆柱的高度是(-83,113.5)，未到限制-->
+					<halfspace type="z-plane" coeffs="-83.5" direction="+"/>
+				</cell>
+			</universe>
+
+			<universe id="5" name="碳化硼组件栅格" remark="均匀化">
+				<cell id="1" material="9" name="操作头">
+					<!--最外层圆柱的高度是(-83,113.5)，超出限制-->
+					<halfspace type="z-plane" coeffs="136.005" direction="-"/>
+					<halfspace type="z-plane" coeffs="108.642" direction="+"/>
+				</cell>
+				<cell id="2" material="10" name="上屏蔽">
+					<halfspace type="z-plane" coeffs="108.642" direction="-"/>
+					<halfspace type="z-plane" coeffs="60.905" direction="+"/>
+				</cell>
+				<cell id="3" material="11" name="上钠腔">
+					<halfspace type="z-plane" coeffs="60.905" direction="-"/>
+					<halfspace type="z-plane" coeffs="57.893" direction="+"/>
+				</cell>
+				<cell id="4" material="10" name="上结构体">
+					<halfspace type="z-plane" coeffs="57.893" direction="-"/>
+					<halfspace type="z-plane" coeffs="56.186" direction="+"/>
+				</cell>
+				<cell id="5" material="14" name="plenum">
+					<halfspace type="z-plane" coeffs="56.186" direction="-"/>
+					<halfspace type="z-plane" coeffs="53.173" direction="+"/>
+				</cell>
+				<cell id="6" material="15" name="棒束">
+					<halfspace type="z-plane" coeffs="53.173" direction="-"/>
+					<halfspace type="z-plane" coeffs="-27.158" direction="+"/>
+				</cell>
+				<cell id="7" material="10" name="下结构体">
+					<halfspace type="z-plane" coeffs="-27.158" direction="-"/>
+					<halfspace type="z-plane" coeffs="-28.664" direction="+"/>
+				</cell>
+				<cell id="8" material="11" name="下钠腔">
+					<halfspace type="z-plane" coeffs="-28.664" direction="-"/>
+					<halfspace type="z-plane" coeffs="-32.680" direction="+"/>
+				</cell>
+				<cell id="9" material="13" name="下屏蔽">
+					<halfspace type="z-plane" coeffs="-32.680" direction="-"/>
+					<!--最外层圆柱的高度是(-83,113.5)，未到限制-->
+					<halfspace type="z-plane" coeffs="-83.5" direction="+"/>
+				</cell>
+			</universe>
+
+			<universe id="6" name="补偿棒and安全棒组件栅格" remark="提出堆芯">
+				<cell id="1" material="16" name="hand head">
+					<!--最外层圆柱的高度是(-83,113.5)，超出限制-->
+					<halfspace type="z-plane" coeffs="130.382" direction="-"/>
+					<halfspace type="z-plane" coeffs="122.550" direction="+"/>
+				</cell>
+				<cell id="2" material="17" name="head connector">
+					<halfspace type="z-plane" coeffs="122.550" direction="-"/>
+					<!--下面的呢？-->
+					<halfspace type="z-plane" coeffs="116.424" direction="+"/>
+				</cell>
+				<cell id="3" material="19" name="upper connnector">
+					<halfspace type="z-plane" coeffs="116.424" direction="-"/>
+					<halfspace type="z-plane" coeffs="109.897" direction="+"/>
+				</cell>
+				<cell id="4" material="20" name="plenum">
+					<halfspace type="z-plane" coeffs="109.897" direction="-"/>
+					<halfspace type="z-plane" coeffs="106.785" direction="+"/>
+				</cell>
+				<cell id="5" material="21" name="absorber">
+					<halfspace type="z-plane" coeffs="106.785" direction="-"/>
+					<halfspace type="z-plane" coeffs="55.573" direction="+"/>
+				</cell>
+				<cell id="6" material="20" name="lower connecor">
+					<halfspace type="z-plane" coeffs="55.573" direction="-"/>
+					<halfspace type="z-plane" coeffs="52.360" direction="+"/>
+				</cell>
+				<cell id="7" material="23" name="baffle">
+					<halfspace type="z-plane" coeffs="52.360" direction="-"/>
+					<halfspace type="z-plane" coeffs="48.143" direction="+"/>
+				</cell>
+				<cell id="8" material="11" name="Na plenum">
+					<halfspace type="z-plane" coeffs="48.143" direction="-"/>
+					<halfspace type="z-plane" coeffs="-18.231" direction="+"/>
+				</cell>
+				<cell id="9" material="13" name="lower shielding">
+					<halfspace type="z-plane" coeffs="-18.231" direction="-"/>
+					<halfspace type="z-plane" coeffs="-83.5" direction="+"/>
+				</cell>
+			</universe>
+
+			<universe id="7" name="调节棒组件栅格" remark="RE1/提出堆芯">
+				<cell id="1" material="16" name="hand head">
+					<!--最外层圆柱的高度是(-83,113.5)，cell1、2、3、4都超出限制-->
+					<halfspace type="z-plane" coeffs="130.382" direction="-"/>
+					<halfspace type="z-plane" coeffs="122.550" direction="+"/>
+				</cell>
+				<cell id="2" material="17" name="head connector">
+					<halfspace type="z-plane" coeffs="122.550" direction="-"/>
+					<halfspace type="z-plane" coeffs="116.424" direction="+"/>
+				</cell>
+				<cell id="3" material="19" name="upper connnector">
+					<halfspace type="z-plane" coeffs="116.424" direction="-"/>
+					<halfspace type="z-plane" coeffs="109.897" direction="+"/>
+				</cell>
+				<cell id="4" material="20" name="plenum">
+					<halfspace type="z-plane" coeffs="109.897" direction="-"/>
+					<halfspace type="z-plane" coeffs="106.785" direction="+"/>
+				</cell>
+				<cell id="5" material="22" name="absorber">
+					<halfspace type="z-plane" coeffs="106.785" direction="-"/>
+					<halfspace type="z-plane" coeffs="55.573" direction="+"/>
+				</cell>
+				<cell id="6" material="20" name="lower connecor">
+					<halfspace type="z-plane" coeffs="55.573" direction="-"/>
+					<halfspace type="z-plane" coeffs="52.360" direction="+"/>
+				</cell>
+				<cell id="7" material="23" name="baffle">
+					<halfspace type="z-plane" coeffs="52.360" direction="-"/>
+					<halfspace type="z-plane" coeffs="48.143" direction="+"/>
+				</cell>
+				<cell id="8" material="11" name="Na plenum">
+					<halfspace type="z-plane" coeffs="48.143" direction="-"/>
+					<halfspace type="z-plane" coeffs="-18.231" direction="+"/>
+				</cell>
+				<cell id="9" material="13" name="lower shielding">
+					<halfspace type="z-plane" coeffs="-18.231" direction="-"/>
+					<!--最外层圆柱的高度是(-83,113.5)，未到限制-->
+					<halfspace type="z-plane" coeffs="-83.5" direction="+"/>
+				</cell>
+			</universe>
+
+			<universe id="8" name="调节棒组件栅格" remark="RE2/7cm">
+				<cell id="1" material="16" name="hand head">
+					<!--最外层圆柱的高度是(-83,113.5)，cell1、2、3、4都超出限制-->
+					<halfspace type="z-plane" coeffs="130.382" direction="-"/>
+					<halfspace type="z-plane" coeffs="122.550" direction="+"/>
+				</cell>
+				<cell id="2" material="17" name="head connector">
+					<halfspace type="z-plane" coeffs="122.550" direction="-"/>
+					<halfspace type="z-plane" coeffs="113.613" direction="+"/>
+				</cell>
+				<cell id="3" material="18" name="upper plenum">
+					<halfspace type="z-plane" coeffs="113.613" direction="-"/>
+					<halfspace type="z-plane" coeffs="68.226" direction="+"/>
+				</cell>
+				<cell id="4" material="19" name="upper connnector">
+					<halfspace type="z-plane" coeffs="68.226" direction="-"/>
+					<halfspace type="z-plane" coeffs="61.699" direction="+"/>
+				</cell>
+				<cell id="5" material="20" name="plenum">
+					<halfspace type="z-plane" coeffs="61.699" direction="-"/>
+					<halfspace type="z-plane" coeffs="58.586" direction="+"/>
+				</cell>
+				<!--cell 6、7、8、9的边界存在问题-->
+				<cell id="6" material="22" name="absorber">
+					<halfspace type="z-plane" coeffs="58.586" direction="-"/>
+					<halfspace type="z-plane" coeffs="7.3747" direction="+"/>
+				</cell>
+				<cell id="7" material="20" name="lower connecor">
+					<halfspace type="z-plane" coeffs="7.3747" direction="-"/>
+					<halfspace type="z-plane" coeffs="4.1614" direction="+"/>
+				</cell>
+				<cell id="8" material="23" name="baffle">
+					<halfspace type="z-plane" coeffs="4.1614" direction="-"/>
+					<halfspace type="z-plane" coeffs="-0.55966" direction="+"/>
+				</cell>
+				<cell id="9" material="11" name="Na plenum">
+					<halfspace type="z-plane" coeffs="-0.55966" direction="-"/>
+					<halfspace type="z-plane" coeffs="-18.231" direction="+"/>
+				</cell>
+				<cell id="10" material="13" name="lower shielding">
+					<halfspace type="z-plane" coeffs="-18.231" direction="-"/>
+					<!--最外层圆柱的高度是(-83,113.5)，未到限制-->
+					<halfspace type="z-plane" coeffs="-83.5" direction="+"/>
+				</cell>
+			</universe>
+
+			<universe id="9" name="外围钠组件">
+				<cell id="1" material="5" name="钠组件"/>
+			</universe>
+
+			<universe id="10" name="模拟组件">
+				<cell id="1" material="24" name="操作头">
+					<!--最外层圆柱的高度是(-83,113.5)，超出限制-->
+					<halfspace type="z-plane" coeffs="131.009" direction="-"/>
+					<halfspace type="z-plane" coeffs="107.914" direction="+"/>
+				</cell>
+				<cell id="2" material="25" name="上屏蔽">
+					<halfspace type="z-plane" coeffs="107.914" direction="-"/>
+					<halfspace type="z-plane" coeffs="58.209" direction="+"/>
+				</cell>
+				<cell id="3" material="11" name="上钠腔">
+					<halfspace type="z-plane" coeffs="58.209" direction="-"/>
+					<halfspace type="z-plane" coeffs="58.084" direction="+"/>
+				</cell>
+				<cell id="4" material="26" name="filter">
+					<halfspace type="z-plane" coeffs="58.084" direction="-"/>
+					<halfspace type="z-plane" coeffs="21.232" direction="+"/>
+				</cell>
+				<cell id="5" material="27" name="下屏蔽">
+					<halfspace type="z-plane" coeffs="21.232" direction="-"/>
+					<!--最外层圆柱的高度是(-83,113.5)，未到限制-->
+					<halfspace type="z-plane" coeffs="-83.5" direction="+"/>
+				</cell>
+			</universe>
+
+			<universe id="11" name="中子源组件" remark="均匀化">
+				<cell id="1" material="16" name="操作头">
+					<!--最外层圆柱的高度是(-83,113.5)，cell1、2都超出限制-->
+					<halfspace type="z-plane" coeffs="125.863" direction="-"/>
+					<halfspace type="z-plane" coeffs="118.031" direction="+"/>
+				</cell>
+				<cell id="2" material="17" name="head connector">
+					<halfspace type="z-plane" coeffs="118.031" direction="-"/>
+					<halfspace type="z-plane" coeffs="109.094" direction="+"/>
+				</cell>
+				<cell id="3" material="28" name="上屏蔽">
+					<halfspace type="z-plane" coeffs="109.094" direction="-"/>
+					<halfspace type="z-plane" coeffs="61.899" direction="+"/>
+				</cell>
+				<cell id="4" material="29" name="上钠腔">
+					<halfspace type="z-plane" coeffs="61.899" direction="-"/>
+					<halfspace type="z-plane" coeffs="59.590" direction="+"/>
+				</cell>
+				<cell id="5" material="30" name="rod cluster 上段">
+					<halfspace type="z-plane" coeffs="59.590" direction="-"/>
+					<halfspace type="z-plane" coeffs="22.939" direction="+"/>
+				</cell>
+				<cell id="6" material="31" name="rod cluster 下段">
+					<halfspace type="z-plane" coeffs="22.939" direction="-"/>
+					<halfspace type="z-plane" coeffs="-28.272" direction="+"/>
+				</cell>
+				<cell id="7" material="11" name="钠腔下">
+					<halfspace type="z-plane" coeffs="-28.272" direction="-"/>
+					<halfspace type="z-plane" coeffs="-31.285" direction="+"/>
+				</cell>
+				<cell id="8" material="13" name="下屏蔽">
+					<halfspace type="z-plane" coeffs="-31.285" direction="-"/>
+					<!--最外层圆柱的高度是(-83,113.5)，未到限制-->
+					<halfspace type="z-plane" coeffs="-83.5" direction="+"/>
+				</cell>
+			</universe>
+
+		</lattice>
+
+		<origin>0 0 0</origin>
+		<!--坐标原点-->
+		<halfspace type="z-plane" coeffs="113.5" direction="-" name="上端面"/>
+		<halfspace type="z-plane" coeffs="-83" direction="+" name="下端面"/>
+		<halfspace type="z-cylinder" coeffs="0 0 92" direction="-" />
+	</cell>
+</geometry>

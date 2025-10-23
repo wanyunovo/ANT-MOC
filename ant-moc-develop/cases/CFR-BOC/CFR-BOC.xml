@@ -1,0 +1,1396 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<geometry>
+	<cell id="1" type="CORE" label="CFR首炉BOC堆芯" remark="全堆芯非均匀几何，六角形排列">
+		<lattice label="组件阵列" type="Hexagon" range="-22 22 -22 22 0 0">
+        <universes>
+9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9
+9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9
+9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	1	1	1	1	1	1	1	1	1	1	1	1	1	9	9	9	9	9	9
+9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	9	9	9	9	9
+9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	9	9	9	9
+9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	1	1	1	1	1	1	1	1	1	1	6	6	1	1	1	1	1	1	1	1	1	1	9	9	9
+9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	1	1	1	1	1	1	6	6	6	6	6	6	6	6	6	6	6	6	6	1	1	1	1	1	1	9	9
+9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	1	1	1	1	1	6	6	6	6	6	6	6	6	6	6	6	6	6	6	6	6	1	1	1	1	1	9	9
+9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	1	1	1	1	6	6	6	6	5	5	5	5	5	5	5	5	5	5	5	6	6	6	6	1	1	1	1	9	9
+9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	1	1	1	1	6	6	6	5	5	24	24	24	24	24	24	24	24	24	24	5	5	6	6	6	1	1	1	1	9	9
+9	9	9	9	9	9	9	9	9	9	9	9	9	9	1	1	1	1	6	6	5	5	24	24	4	4	4	4	4	4	4	4	4	24	24	5	5	6	6	1	1	1	1	9	9
+9	9	9	9	9	9	9	9	9	9	9	9	9	1	1	1	1	6	6	5	24	24	4	4	23	23	23	23	23	23	23	23	4	4	24	24	5	6	6	6	1	1	1	9	9
+9	9	9	9	9	9	9	9	9	9	9	9	1	1	1	6	6	6	5	24	4	4	23	23	3	3	3	1	3	3	3	23	23	4	4	24	5	6	6	6	1	1	1	9	9
+9	9	9	9	9	9	9	9	9	9	9	1	1	1	6	6	6	5	24	4	23	23	3	3	2	2	2	2	2	2	3	3	23	23	4	24	5	6	6	6	1	1	1	9	9
+9	9	9	9	9	9	9	9	9	9	1	1	1	1	6	6	5	24	4	23	3	3	2	2	2	11	2	1	2	11	2	3	3	23	4	24	5	6	6	1	1	1	1	9	9
+9	9	9	9	9	9	9	9	9	1	1	1	1	6	6	5	24	4	23	3	2	11	2	1	1	1	1	1	1	2	2	2	3	23	4	24	5	6	6	1	1	1	9	9	9
+9	9	9	9	9	9	9	9	1	1	1	1	6	6	5	24	4	23	3	2	2	1	1	1	1	1	12	1	1	1	2	2	3	23	4	24	5	6	6	1	1	1	9	9	9
+9	9	9	9	9	9	9	1	1	1	1	6	6	5	24	4	23	3	2	1	1	1	1	12	1	1	1	1	1	1	11	2	3	23	4	24	5	6	6	6	6	9	9	9	9
+9	9	9	9	9	9	1	1	1	1	6	6	5	24	4	23	3	2	2	1	12	1	1	1	1	1	1	14	1	1	2	2	3	23	4	24	5	5	5	5	9	9	9	9	9
+9	9	9	9	9	9	1	1	1	6	6	5	24	4	23	3	2	11	1	1	1	1	1	1	11	1	1	1	1	1	1	2	3	23	4	24	5	5	5	5	9	9	9	9	9
+9	9	9	9	9	1	1	1	6	6	5	24	4	23	3	2	2	1	1	1	1	11	1	1	1	1	1	1	13	1	2	2	3	23	4	24	5	5	5	9	9	9	9	9	9
+9	9	9	9	9	1	1	1	6	6	5	24	4	23	3	2	1	1	14	1	1	1	1	1	1	11	1	1	1	1	11	3	23	4	24	5	5	5	5	9	9	9	9	9	9
+9	9	9	9	1	1	1	6	6	5	24	4	1	3	2	2	1	1	1	1	1	1	11	1	1	1	1	1	1	2	2	3	1	4	24	5	5	5	9	9	9	9	9	9	9
+9	9	9	9	1	1	1	6	6	5	24	4	23	3	11	1	1	1	1	11	1	1	1	1	1	1	12	1	1	2	3	23	4	24	5	5	5	5	9	9	9	9	9	9	9
+9	9	9	1	1	1	6	6	5	24	4	23	3	2	2	1	13	1	1	1	1	1	1	11	1	1	1	1	2	2	3	23	4	24	5	5	5	9	9	9	9	9	9	9	9
+9	9	9	1	1	1	6	6	5	24	4	23	3	2	1	1	1	1	1	1	11	1	1	1	1	1	1	11	2	3	23	4	24	5	5	5	5	9	9	9	9	9	9	9	9
+9	9	1	1	1	1	6	6	5	24	4	23	3	2	2	1	1	12	1	1	1	1	1	1	12	1	2	2	3	23	4	24	5	6	6	6	6	9	9	9	9	9	9	9	9
+9	9	1	1	1	1	6	6	5	24	4	23	3	2	11	1	1	1	1	1	1	14	1	1	1	1	2	3	23	4	24	5	6	6	1	1	9	9	9	9	9	9	9	9	9
+9	9	1	1	1	1	6	6	5	24	4	23	3	2	2	1	1	1	12	1	1	1	1	1	2	2	3	23	4	24	5	6	6	1	1	1	9	9	9	9	9	9	9	9	9
+9	9	1	1	1	1	6	6	5	24	4	23	3	2	2	2	1	1	1	1	1	1	2	11	2	3	23	4	24	5	6	6	1	1	1	9	9	9	9	9	9	9	9	9	9
+9	9	1	1	1	6	6	6	5	24	4	23	3	3	2	11	2	1	2	11	2	2	2	3	3	23	4	24	5	6	6	6	1	1	1	9	9	9	9	9	9	9	9	9	9
+9	9	1	1	1	6	6	6	5	24	4	23	23	3	3	2	2	2	2	2	2	3	3	23	23	4	24	5	6	6	6	1	1	1	9	9	9	9	9	9	9	9	9	9	9
+9	9	1	1	1	1	6	6	5	24	4	4	23	23	3	3	3	1	3	3	3	23	23	4	4	24	5	6	6	1	1	1	1	9	9	9	9	9	9	9	9	9	9	9	9
+9	9	1	1	1	1	6	6	5	24	24	4	4	23	23	23	23	23	23	23	23	4	4	24	24	5	6	6	1	1	1	1	9	9	9	9	9	9	9	9	9	9	9	9	9
+9	9	1	1	1	1	6	6	5	5	24	24	4	4	4	4	4	4	4	4	4	24	24	5	5	6	6	1	1	1	1	9	9	9	9	9	9	9	9	9	9	9	9	9	9
+9	9	1	1	1	1	6	6	6	5	5	24	24	24	24	24	24	24	24	24	24	5	5	6	6	6	1	1	1	1	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9
+9	9	1	1	1	1	6	6	6	6	5	5	5	5	5	5	5	5	5	5	5	6	6	6	6	1	1	1	1	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9
+9	9	1	1	1	1	1	6	6	6	6	6	6	6	6	6	6	6	6	6	6	6	6	1	1	1	1	1	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9
+9	9	1	1	1	1	1	1	6	6	6	6	6	6	6	6	6	6	6	6	6	1	1	1	1	1	1	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9
+9	9	9	1	1	1	1	1	1	1	1	1	1	6	6	1	1	1	1	1	1	1	1	1	1	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9
+9	9	9	9	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9
+9	9	9	9	9	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9
+9	9	9	9	9	9	1	1	1	1	1	1	1	1	1	1	1	1	1	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9
+9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9
+9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9	9
+                </universes>
+                <format>
+					<halfspace type="x-plane" coeffs="6.0869" direction="-"/>
+					<halfspace type="x-plane" coeffs="-6.0869" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 12.1736" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -12.1736" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 12.1736" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -12.1736" direction="+"/>
+					<transform position="0 0 0" rotation="0"/>
+				</format>
+			<universe id="1"  label="内堆芯燃料组件栅格">
+				<cell id="1" mat="81" temperature="893" label="组件间钠">
+					<remove cell="2"/>
+
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+				<cell id="2" type="ASSEMBLY" label="内堆芯燃料组件">
+					<universe label="组件内部">
+						<cell id="1" mat="12" label="上部操作头">
+							<halfspace type="z-plane" coeffs="289.8538" direction="+"/>
+						</cell>
+						<cell id="2" mat="13" label="上屏蔽段">
+							<halfspace type="z-plane" coeffs="289.8538" direction="-"/>
+							<halfspace type="z-plane" coeffs="274.8538" direction="+"/>
+						</cell>
+						<cell id="3" mat="14" label="弹簧&端塞">
+							<halfspace type="z-plane" coeffs="274.8538" direction="-"/>
+							<halfspace type="z-plane" coeffs="261.8538" direction="+"/>
+						</cell>
+						<cell id="4" label="组件超栅元空间"> <!--BASIC型Universe-->
+							<lattice label="栅元阵列"> <!--LATTICE型Universe-->
+								<layout type="Hexagon" range="-9 9 -9 9 0 0">
+									<row id="-9">2 9R 2 8R</row>
+									<row id="-8">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+									<row id="-7">2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 2 2</row>
+									<row id="-6">2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 2 2</row>
+									<row id="-5">2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 2 2</row>
+									<row id="-4">2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+									<row id="-3">2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+									<row id="-2">2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+									<row id="-1">2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+									<row id="-0">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+									<row id="1">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2</row>
+									<row id="2">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2</row>
+									<row id="3">2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2</row>
+									<row id="4">2 2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2</row>
+									<row id="5">2 2 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2</row>
+									<row id="6">2 2 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2</row>
+									<row id="7">2 2 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2</row>
+									<row id="8">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+									<row id="9">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+									<format>
+										<halfspace type="x-plane" coeffs="0.4049" direction="-"/>
+										<halfspace type="x-plane" coeffs="-0.4049" direction="+"/>
+										<halfspace type="plane" coeffs="1 1.7320508076 0 0.8099" direction="-"/>
+										<halfspace type="plane" coeffs="1 1.7320508076 0 -0.8099" direction="+"/>
+										<halfspace type="plane" coeffs="-1 1.7320508076 0 0.8099" direction="-"/>
+										<halfspace type="plane" coeffs="-1 1.7320508076 0 -0.8099" direction="+"/>
+									</format>
+								</layout>
+								<universe id="1" label="棒超栅元">
+									<cell id="1" mat="81" label="棒间钠">
+										<halfspace type="z-cylinder" coeffs="0 0 0.3320" direction="+"/>
+									</cell>
+									<cell id="2" mat="83" label="包壳">
+										<halfspace type="z-cylinder" coeffs="0 0 0.3320" direction="-"/>
+										<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="+"/>
+									</cell>
+									<cell id="3" mat="143" type="PIN" label="上转芯块">
+										<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+										<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+										<halfspace type="z-plane" coeffs="216.5511" direction="+"/>
+									</cell>
+									<cell id="4" mat="142" type="PIN" label="活性区芯块">
+										<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+										<halfspace type="z-plane" coeffs="216.5511" direction="-"/>
+										<halfspace type="z-plane" coeffs="115.2320" direction="+"/>
+									</cell>
+									<cell id="5" mat="141" type="PIN" label="下转芯块">
+										<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+										<halfspace type="z-plane" coeffs="115.2320" direction="-"/>
+										<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+									</cell>
+								</universe>
+								<universe id="2" label="钠栅元">
+									<cell id="1" mat="81" temperature="893" label="组件内钠"/>
+								</universe>
+							</lattice>
+							<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+							<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+							<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+							<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+						</cell>
+						<cell id="5" mat="83" temperature="293" label="组件外套管&下转&活性区">
+							<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+							<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+							<!--<halfspace type="MINUS" coeffs="4"/>-->
+							<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+							<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+						</cell>
+						<cell id="6" mat="15" label="气腔">
+						<halfspace type="z-plane" coeffs="70.0" direction="-"/>
+					</cell>
+					</universe>
+					<halfspace type="x-plane" coeffs="5.785" direction="-"/>
+					<halfspace type="x-plane" coeffs="-5.785" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -11.57" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -11.57" direction="+"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+			</universe>
+
+			<universe id="2"  label="中堆芯燃料组件栅格">
+				<cell id="1" mat="81" temperature="893" label="组件间钠">
+					<remove cell="2"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+				<cell id="2" type="ASSEMBLY" label="燃料组件">
+					<universe label="组件内部">
+					<cell id="1" mat="12" label="上部操作头">
+						<halfspace type="z-plane" coeffs="289.8538" direction="+"/>
+					</cell>
+					<cell id="2" mat="13" label="上屏蔽段">
+						<halfspace type="z-plane" coeffs="289.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="274.8538" direction="+"/>
+					</cell>
+					<cell id="3" mat="14" label="弹簧&端塞">
+						<halfspace type="z-plane" coeffs="274.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="261.8538" direction="+"/>
+					</cell>
+					<cell id="4" label="组件超栅元空间"> <!--BASIC型Universe-->
+						<lattice label="栅元阵列"> <!--LATTICE型Universe-->
+							<layout type="Hexagon" range="-9 9 -9 9 0 0">
+								<row id="-9">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-8">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-7">2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-6">2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-5">2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-4">2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-3">2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-2">2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-1">2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-0">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="1">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2</row>
+								<row id="2">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2</row>
+								<row id="3">2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2</row>
+								<row id="4">2 2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2</row>
+								<row id="5">2 2 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2</row>
+								<row id="6">2 2 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2</row>
+								<row id="7">2 2 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2</row>
+								<row id="8">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="9">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+								<format>
+								<halfspace type="x-plane" coeffs="0.4049" direction="-"/>
+								<halfspace type="x-plane" coeffs="-0.4049" direction="+"/>
+								<halfspace type="plane" coeffs="1 1.7320508076 0 0.8099" direction="-"/>
+								<halfspace type="plane" coeffs="1 1.7320508076 0 -0.8099" direction="+"/>
+								<halfspace type="plane" coeffs="-1 1.7320508076 0 0.8099" direction="-"/>
+								<halfspace type="plane" coeffs="-1 1.7320508076 0 -0.8099" direction="+"/>
+								</format>
+							</layout>
+							<universe id="1" label="棒超栅元">
+								<cell id="1" mat="81" label="棒间钠">
+									<halfspace type="z-cylinder" coeffs="0 0 0.3320" direction="+"/>
+								</cell>
+								<cell id="2" mat="83" label="包壳">
+									<halfspace type="z-cylinder" coeffs="0 0 0.3320" direction="-"/>
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="+"/>
+								</cell>
+								<cell id="3" mat="146" type="PIN" label="上转芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+									<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+									<halfspace type="z-plane" coeffs="216.5511" direction="+"/>
+								</cell>
+								<cell id="3" mat="145" type="PIN" label="活性区芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+									<halfspace type="z-plane" coeffs="216.5511" direction="-"/>
+									<halfspace type="z-plane" coeffs="115.2320" direction="+"/>
+								</cell>
+								<cell id="3" mat="144" type="PIN" label="下转芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+									<halfspace type="z-plane" coeffs="115.2320" direction="-"/>
+									<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+								</cell>
+							</universe>
+							<universe id="2" label="钠">
+								<cell id="1" mat="81" temperature="893" label="组件内钠"/>
+							</universe>
+						</lattice>
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+					</cell>
+					<cell id="5" mat="83" temperature="293" label="组件外套管&下转&活性区">
+						<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+						<!--<halfspace type="MINUS" coeffs="4"/>-->
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+					</cell>
+					<cell id="6" mat="15" label="气腔">
+						<halfspace type="z-plane" coeffs="70.0" direction="-"/>
+					</cell>
+					</universe>
+					<halfspace type="x-plane" coeffs="5.785" direction="-"/>
+					<halfspace type="x-plane" coeffs="-5.785" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -11.57" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -11.57" direction="+"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+			</universe>
+
+			<universe id="3"  label="外堆芯燃料组件栅格">
+				<cell id="1" mat="81" temperature="893" label="组件间钠">
+					<remove cell="2"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+				<cell id="2" type="ASSEMBLY" label="燃料组件">
+					<universe label="组件内部">
+					<cell id="1" mat="12" label="上部操作头">
+						<halfspace type="z-plane" coeffs="289.8538" direction="+"/>
+					</cell>
+					<cell id="2" mat="13" label="上屏蔽段">
+						<halfspace type="z-plane" coeffs="289.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="274.8538" direction="+"/>
+					</cell>
+					<cell id="3" mat="14" label="弹簧&端塞">
+						<halfspace type="z-plane" coeffs="274.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="261.8538" direction="+"/>
+					</cell>
+					<cell id="4" label="组件超栅元空间"> <!--BASIC型Universe-->
+						<lattice label="栅元阵列"> <!--LATTICE型Universe-->
+							<layout type="Hexagon" range="-9 9 -9 9 0 0">
+								<row id="-9">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-8">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-7">2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-6">2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-5">2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-4">2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-3">2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-2">2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-1">2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-0">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="1">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2</row>
+								<row id="2">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2</row>
+								<row id="3">2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2</row>
+								<row id="4">2 2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2</row>
+								<row id="5">2 2 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2</row>
+								<row id="6">2 2 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2</row>
+								<row id="7">2 2 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2</row>
+								<row id="8">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="9">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+							<format>
+							<halfspace type="x-plane" coeffs="0.4049" direction="-"/>
+							<halfspace type="x-plane" coeffs="-0.4049" direction="+"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 0.8099" direction="-"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 -0.8099" direction="+"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 0.8099" direction="-"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 -0.8099" direction="+"/>
+							</format>
+							</layout>
+							<universe id="1" label="棒超栅元">
+								<cell id="1" mat="81" label="棒间钠">
+									<halfspace type="z-cylinder" coeffs="0 0 0.3320" direction="+"/>
+								</cell>
+								<cell id="2" mat="83" label="包壳">
+									<halfspace type="z-cylinder" coeffs="0 0 0.3320" direction="-"/>
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="+"/>
+								</cell>
+								<cell id="3" mat="149" type="PIN" label="上转芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+									<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+									<halfspace type="z-plane" coeffs="216.5511" direction="+"/>
+								</cell>
+								<cell id="4" mat="148" type="PIN" label="活性区芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+									<halfspace type="z-plane" coeffs="216.5511" direction="-"/>
+									<halfspace type="z-plane" coeffs="115.2320" direction="+"/>
+								</cell>
+								<cell id="5" mat="147" type="PIN" label="下转芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+									<halfspace type="z-plane" coeffs="115.2320" direction="-"/>
+									<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+								</cell>
+							</universe>
+							<universe id="2" label="钠">
+								<cell id="1" mat="81" temperature="893" label="组件内钠"/>
+							</universe>
+						</lattice>
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+					</cell>
+					<cell id="5" mat="83" temperature="293" label="组件外套管">
+						<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+						<!--<halfspace type="MINUS" coeffs="4"/>-->
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+					</cell>
+					<cell id="6" mat="15" label="气腔">
+						<halfspace type="z-plane" coeffs="70.0" direction="-"/>
+					</cell>
+					</universe>
+					<halfspace type="x-plane" coeffs="5.785" direction="-"/>
+					<halfspace type="x-plane" coeffs="-5.785" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -11.57" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -11.57" direction="+"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+			</universe>
+
+			<universe id="23"  label="外堆芯燃料组件栅格">
+				<cell id="1" mat="81" temperature="893" label="组件间钠">
+					<remove cell="2"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+				<cell id="2" type="ASSEMBLY" label="燃料组件">
+					<universe label="组件内部">
+					<cell id="1" mat="12" label="上部操作头">
+						<halfspace type="z-plane" coeffs="289.8538" direction="+"/>
+					</cell>
+					<cell id="2" mat="13" label="上屏蔽段">
+						<halfspace type="z-plane" coeffs="289.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="274.8538" direction="+"/>
+					</cell>
+					<cell id="3" mat="14" label="弹簧&端塞">
+						<halfspace type="z-plane" coeffs="274.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="261.8538" direction="+"/>
+					</cell>
+					<cell id="4" label="组件超栅元空间"> <!--BASIC型Universe-->
+						<lattice label="栅元阵列"> <!--LATTICE型Universe-->
+							<layout type="Hexagon" range="-9 9 -9 9 0 0">
+								<row id="-9">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-8">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-7">2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-6">2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-5">2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-4">2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-3">2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-2">2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-1">2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-0">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="1">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2</row>
+								<row id="2">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2</row>
+								<row id="3">2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2</row>
+								<row id="4">2 2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2</row>
+								<row id="5">2 2 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2</row>
+								<row id="6">2 2 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2</row>
+								<row id="7">2 2 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2</row>
+								<row id="8">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="9">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+							<format>
+							<halfspace type="x-plane" coeffs="0.4049" direction="-"/>
+							<halfspace type="x-plane" coeffs="-0.4049" direction="+"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 0.8099" direction="-"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 -0.8099" direction="+"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 0.8099" direction="-"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 -0.8099" direction="+"/>
+							</format>
+							</layout>
+							<universe id="1" label="棒超栅元">
+								<cell id="1" mat="81" label="棒间钠">
+									<halfspace type="z-cylinder" coeffs="0 0 0.3320" direction="+"/>
+								</cell>
+								<cell id="2" mat="83" label="包壳">
+									<halfspace type="z-cylinder" coeffs="0 0 0.3320" direction="-"/>
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="+"/>
+								</cell>
+								<cell id="3" mat="152" type="PIN" label="上转芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+									<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+									<halfspace type="z-plane" coeffs="216.5511" direction="+"/>
+								</cell>
+								<cell id="4" mat="151" type="PIN" label="活性区芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+									<halfspace type="z-plane" coeffs="216.5511" direction="-"/>
+									<halfspace type="z-plane" coeffs="115.2320" direction="+"/>
+								</cell>
+								<cell id="5" mat="150" type="PIN" label="下转芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+									<halfspace type="z-plane" coeffs="115.2320" direction="-"/>
+									<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+								</cell>
+							</universe>
+							<universe id="2" label="钠">
+								<cell id="1" mat="81" temperature="893" label="组件内钠"/>
+							</universe>
+						</lattice>
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+					</cell>
+					<cell id="5" mat="83" temperature="293" label="组件外套管">
+						<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+						<!--<halfspace type="MINUS" coeffs="4"/>-->
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+					</cell>
+					<cell id="6" mat="15" label="气腔">
+						<halfspace type="z-plane" coeffs="70.0" direction="-"/>
+					</cell>
+					</universe>
+					<halfspace type="x-plane" coeffs="5.785" direction="-"/>
+					<halfspace type="x-plane" coeffs="-5.785" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -11.57" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -11.57" direction="+"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+			</universe>
+
+			<universe id="5" label="不锈钢反射层">
+				<cell id="1" mat="12" temperature="893" label="组件上操作头">
+					<halfspace type="z-plane" coeffs="289.8538" direction="+"/>
+				</cell>
+				<cell id="2" mat="22" temperature="893" label="钢反射层">
+					<halfspace type="z-plane" coeffs="289.8538" direction="-"/>
+					<halfspace type="z-plane" coeffs="60.5" direction="+"/>
+				</cell>
+				<cell id="3" mat="23" temperature="893" label="钢反下部钠腔">
+					<halfspace type="z-plane" coeffs="60.5" direction="-"/>
+					<halfspace type="z-plane" coeffs="52" direction="+"/>
+				</cell>
+				<cell id="4" mat="24" temperature="893" label="钢反射层下端">
+					<halfspace type="z-plane" coeffs="52" direction="-"/>
+				</cell>
+			</universe>
+
+			<universe id="6" label="碳化硼吸收体">
+				<cell id="1" mat="12" temperature="893" label="组件上操作头">
+					<halfspace type="z-plane" coeffs="289.8538" direction="+"/>
+				</cell>
+				<cell id="2" mat="25" temperature="893" label="硼屏蔽上部钠腔">
+					<halfspace type="z-plane" coeffs="289.8538" direction="-" label="测试"/>
+					<halfspace type="z-plane" coeffs="274.8538" direction="+"/>
+				</cell>
+				<cell id="3" mat="26" temperature="893" label="硼屏蔽上部段塞+钠腔">
+					<halfspace type="z-plane" coeffs="274.8538" direction="-"/>
+					<halfspace type="z-plane" coeffs="261.8538" direction="+"/>
+				</cell>
+				<cell id="4" mat="27" temperature="893" label="硼屏蔽">
+					<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+					<halfspace type="z-plane" coeffs="70" direction="+"/>
+				</cell>
+				<cell id="5" mat="24" temperature="893" label="钢反射层下端">
+					<halfspace type="z-plane" coeffs="70" direction="-"/>
+				</cell>
+			</universe>
+
+			<universe id="7" label="储存阱">
+				<cell id="1" mat="12" temperature="893" label="组件上操作头">
+					<halfspace type="z-plane" coeffs="289.8538" direction="+"/>
+				</cell>
+				<cell id="2" mat="22" temperature="893" label="钢反射层">
+					<halfspace type="z-plane" coeffs="289.8538" direction="-"/>
+					<halfspace type="z-plane" coeffs="60.5" direction="+"/>
+				</cell>
+				<cell id="3" mat="23" temperature="893" label="钢反下部钠腔">
+					<halfspace type="z-plane" coeffs="60.5" direction="-"/>
+					<halfspace type="z-plane" coeffs="52" direction="+"/>
+				</cell>
+				<cell id="4" mat="24" temperature="893" label="钢反射层下端">
+					<halfspace type="z-plane" coeffs="52" direction="-"/>
+				</cell>
+			</universe>
+
+			<universe id="8"  label="内部转换组件栅格">
+				<cell id="1" mat="81" temperature="893" label="组件间钠">
+					<remove cell="2"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+				<cell id="2" type="ASSEMBLY" label="燃料组件">
+					<universe label="组件内部">
+					<cell id="1" mat="12" label="上部操作头">
+						<halfspace type="z-plane" coeffs="289.8538" direction="+"/>
+					</cell>
+					<cell id="2" mat="13" label="上屏蔽段">
+						<halfspace type="z-plane" coeffs="289.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="274.8538" direction="+"/>
+					</cell>
+					<cell id="3" mat="14" label="弹簧&端塞">
+						<halfspace type="z-plane" coeffs="274.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="261.8538" direction="+"/>
+					</cell>
+					<cell id="4" label="组件超栅元空间"> <!--BASIC型Universe-->
+						<lattice label="栅元阵列"> <!--LATTICE型Universe-->
+							<layout type="Hexagon" range="-9 9 -9 9 0 0">
+								<row id="-9">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-8">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-7">2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-6">2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-5">2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-4">2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-3">2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-2">2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-1">2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="-0">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2</row>
+								<row id="1">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2</row>
+								<row id="2">2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2</row>
+								<row id="3">2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2</row>
+								<row id="4">2 2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2</row>
+								<row id="5">2 2 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2</row>
+								<row id="6">2 2 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2</row>
+								<row id="7">2 2 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2</row>
+								<row id="8">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="9">2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</row>
+							<format>
+							<halfspace type="x-plane" coeffs="0.4049" direction="-"/>
+							<halfspace type="x-plane" coeffs="-0.4049" direction="+"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 0.8099" direction="-"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 -0.8099" direction="+"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 0.8099" direction="-"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 -0.8099" direction="+"/>
+							</format>
+							</layout>
+							<universe id="1" label="棒超栅元">
+								<cell id="1" mat="81" label="棒间钠">
+									<halfspace type="z-cylinder" coeffs="0 0 0.3320" direction="+"/>
+								</cell>
+								<cell id="2" mat="83" label="包壳">
+									<halfspace type="z-cylinder" coeffs="0 0 0.3320" direction="-"/>
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="+"/>
+								</cell>
+								<cell id="3" mat="167" type="PIN" label="上转芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+									<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+									<halfspace type="z-plane" coeffs="216.5511" direction="+"/>
+								</cell>
+								<cell id="3" mat="166" type="PIN" label="活性区芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+									<halfspace type="z-plane" coeffs="216.5511" direction="-"/>
+									<halfspace type="z-plane" coeffs="115.2320" direction="+"/>
+								</cell>
+								<cell id="3" mat="165" type="PIN" label="下转芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.2867" direction="-"/>
+									<halfspace type="z-plane" coeffs="115.2320" direction="-"/>
+									<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+								</cell>
+							</universe>
+							<universe id="2" label="钠">
+								<cell id="1" mat="81" temperature="893" label="组件内钠"/>
+							</universe>
+						</lattice>
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+					</cell>
+					<cell id="5" mat="83" temperature="293" label="组件外套管&下转&活性区">
+						<halfspace type="z-plane" coeffs="261.8538" direction="-"/>
+						<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+						<!--<halfspace type="MINUS" coeffs="4"/>-->
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+					</cell>
+					<cell id="6" mat="15" label="气腔">
+						<halfspace type="z-plane" coeffs="70.0" direction="-"/>
+					</cell>
+					</universe>
+					<halfspace type="x-plane" coeffs="5.785" direction="-"/>
+					<halfspace type="x-plane" coeffs="-5.785" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -11.57" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -11.57" direction="+"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+			</universe>
+
+			<universe id="9" label="外围钠">
+				<cell id="1" type="ASSEMBLY" mat="40" temperature="893" label="钠组件">
+
+
+				</cell>
+			</universe>
+
+			<universe id="4"  label="第一圈径向转换组件栅格">
+				<cell id="1" mat="81" temperature="893" label="组件间钠">
+					<remove cell="2"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+				<cell id="2" type="ASSEMBLY" label="燃料组件">
+					<universe label="组件内部">
+					<cell id="1" mat="12" label="上部操作头">
+						<halfspace type="z-plane" coeffs="261.0602" direction="+"/>
+					</cell>
+					<cell id="4" label="组件超栅元空间"> <!--BASIC型Universe-->
+						<lattice label="栅元阵列"> <!--LATTICE型Universe-->
+							<layout type="Hexagon" range="-5 5 -5 5 0 0">
+								<row id="-5">2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-4">2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-3">2 2 2 2 2 1 1 1 1 2 2</row>
+								<row id="-2">2 2 2 2 1 1 1 1 1 2 2</row>
+								<row id="-1">2 2 2 1 1 1 1 1 1 2 2</row>
+								<row id="-0">2 2 1 1 1 1 1 1 1 2 2</row>
+								<row id="1">2 2 1 1 1 1 1 1 2 2 2</row>
+								<row id="2">2 2 1 1 1 1 1 2 2 2 2</row>
+								<row id="3">2 2 1 1 1 1 2 2 2 2 2</row>
+								<row id="4">2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="5">2 2 2 2 2 2 2 2 2 2 2</row>
+							<format>
+							<halfspace type="x-plane" coeffs="0.8627" direction="-"/>
+							<halfspace type="x-plane" coeffs="-0.8627" direction="+"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 1.7254" direction="-"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 -1.7254" direction="+"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 1.7254" direction="-"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 -1.7254" direction="+"/>
+							</format>
+							</layout>
+							<universe id="1" label="棒超栅元">
+								<cell id="1" mat="81" label="棒间钠">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7847" direction="+"/>
+								</cell>
+								<cell id="2" mat="83" label="包壳">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7847" direction="-"/>
+									<halfspace type="z-cylinder" coeffs="0 0 0.7344" direction="+"/>
+								</cell>
+								<cell id="3" mat="161" type="PIN" label="转换区芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7344" direction="-"/>
+								</cell>
+							</universe>
+							<universe id="2" label="钠">
+								<cell id="1" mat="81" temperature="893" label="组件内钠"/>
+							</universe>
+						</lattice>
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="z-plane" coeffs="261.0602" direction="-"/>
+						<halfspace type="z-plane" coeffs="60.0" direction="+"/>
+					</cell>
+					<cell id="5" mat="83" temperature="293" label="组件外套管&下转&活性区">
+						<halfspace type="z-plane" coeffs="261.0602" direction="-"/>
+						<halfspace type="z-plane" coeffs="60.0" direction="+"/>
+						<!--<halfspace type="MINUS" coeffs="4"/>-->
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+					</cell>
+					<cell id="6" mat="15" label="气腔">
+						<halfspace type="z-plane" coeffs="60.0" direction="-"/>
+						<halfspace type="z-plane" coeffs="40.0" direction="+"/>
+					</cell>
+					<cell id="7" mat="19" label="下端塞&钠腔">
+						<halfspace type="z-plane" coeffs="40.0" direction="-"/>
+						<halfspace type="z-plane" coeffs="26.5" direction="+"/>
+					</cell>
+					<cell id="8" mat="20" label="下部钢">
+						<halfspace type="z-plane" coeffs="26.5" direction="-"/>
+					</cell>
+					</universe>
+					<halfspace type="x-plane" coeffs="5.785" direction="-"/>
+					<halfspace type="x-plane" coeffs="-5.785" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -11.57" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -11.57" direction="+"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+			</universe>
+
+			<universe id="24"  label="第二圈径向转换组件栅格">
+				<cell id="1" mat="81" temperature="893" label="组件间钠">
+					<remove cell="2"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+				<cell id="2" type="ASSEMBLY" label="燃料组件">
+					<universe label="组件内部">
+					<cell id="1" mat="12" label="上部操作头">
+						<halfspace type="z-plane" coeffs="261.0602" direction="+"/>
+					</cell>
+					<cell id="4" label="组件超栅元空间"> <!--BASIC型Universe-->
+						<lattice label="栅元阵列"> <!--LATTICE型Universe-->
+							<layout type="Hexagon" range="-5 5 -5 5 0 0">
+								<row id="-5">2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-4">2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-3">2 2 2 2 2 1 1 1 1 2 2</row>
+								<row id="-2">2 2 2 2 1 1 1 1 1 2 2</row>
+								<row id="-1">2 2 2 1 1 1 1 1 1 2 2</row>
+								<row id="-0">2 2 1 1 1 1 1 1 1 2 2</row>
+								<row id="1">2 2 1 1 1 1 1 1 2 2 2</row>
+								<row id="2">2 2 1 1 1 1 1 2 2 2 2</row>
+								<row id="3">2 2 1 1 1 1 2 2 2 2 2</row>
+								<row id="4">2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="5">2 2 2 2 2 2 2 2 2 2 2</row>
+							<format>
+							<halfspace type="x-plane" coeffs="0.8627" direction="-"/>
+							<halfspace type="x-plane" coeffs="-0.8627" direction="+"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 1.7254" direction="-"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 -1.7254" direction="+"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 1.7254" direction="-"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 -1.7254" direction="+"/>
+							</format>
+							</layout>
+							<universe id="1" label="棒超栅元">
+								<cell id="1" mat="81" label="棒间钠">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7847" direction="+"/>
+								</cell>
+								<cell id="2" mat="83" label="包壳">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7847" direction="-"/>
+									<halfspace type="z-cylinder" coeffs="0 0 0.7344" direction="+"/>
+								</cell>
+								<cell id="3" mat="162" type="PIN" label="转换区芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7344" direction="-"/>
+								</cell>
+							</universe>
+							<universe id="2" label="钠">
+								<cell id="1" mat="81" temperature="893" label="组件内钠"/>
+							</universe>
+						</lattice>
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="z-plane" coeffs="261.0602" direction="-"/>
+						<halfspace type="z-plane" coeffs="60.0" direction="+"/>
+					</cell>
+					<cell id="5" mat="83" temperature="293" label="组件外套管&下转&活性区">
+						<halfspace type="z-plane" coeffs="261.0602" direction="-"/>
+						<halfspace type="z-plane" coeffs="60.0" direction="+"/>
+						<!--<halfspace type="MINUS" coeffs="4"/>-->
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+					</cell>
+					<cell id="6" mat="15" label="气腔">
+						<halfspace type="z-plane" coeffs="60.0" direction="-"/>
+						<halfspace type="z-plane" coeffs="40.0" direction="+"/>
+					</cell>
+					<cell id="7" mat="19" label="下端塞&钠腔">
+						<halfspace type="z-plane" coeffs="40.0" direction="-"/>
+						<halfspace type="z-plane" coeffs="26.5" direction="+"/>
+					</cell>
+					<cell id="8" mat="20" label="下部钢">
+						<halfspace type="z-plane" coeffs="26.5" direction="-"/>
+					</cell>
+					</universe>
+					<halfspace type="x-plane" coeffs="5.785" direction="-"/>
+					<halfspace type="x-plane" coeffs="-5.785" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -11.57" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -11.57" direction="+"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+			</universe>
+
+			<universe id="34"  label="第三圈径向转换组件栅格">
+				<cell id="1" mat="81" temperature="893" label="组件间钠">
+					<remove cell="2"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+				<cell id="2" type="ASSEMBLY" label="燃料组件">
+					<universe label="组件内部">
+					<cell id="1" mat="12" label="上部操作头">
+						<halfspace type="z-plane" coeffs="261.0602" direction="+"/>
+					</cell>
+					<cell id="4" label="组件超栅元空间"> <!--BASIC型Universe-->
+						<lattice label="栅元阵列"> <!--LATTICE型Universe-->
+							<layout type="Hexagon" range="-5 5 -5 5 0 0">
+								<row id="-5">2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-4">2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-3">2 2 2 2 2 1 1 1 1 2 2</row>
+								<row id="-2">2 2 2 2 1 1 1 1 1 2 2</row>
+								<row id="-1">2 2 2 1 1 1 1 1 1 2 2</row>
+								<row id="-0">2 2 1 1 1 1 1 1 1 2 2</row>
+								<row id="1">2 2 1 1 1 1 1 1 2 2 2</row>
+								<row id="2">2 2 1 1 1 1 1 2 2 2 2</row>
+								<row id="3">2 2 1 1 1 1 2 2 2 2 2</row>
+								<row id="4">2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="5">2 2 2 2 2 2 2 2 2 2 2</row>
+							<format>
+							<halfspace type="x-plane" coeffs="0.8627" direction="-"/>
+							<halfspace type="x-plane" coeffs="-0.8627" direction="+"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 1.7254" direction="-"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 -1.7254" direction="+"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 1.7254" direction="-"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 -1.7254" direction="+"/>
+							</format>
+							</layout>
+							<universe id="1" label="棒超栅元">
+								<cell id="1" mat="81" label="棒间钠">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7847" direction="+"/>
+								</cell>
+								<cell id="2" mat="83" label="包壳">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7847" direction="-"/>
+									<halfspace type="z-cylinder" coeffs="0 0 0.7344" direction="+"/>
+								</cell>
+								<cell id="3" mat="163" type="PIN" label="转换区芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7344" direction="-"/>
+								</cell>
+							</universe>
+							<universe id="2" label="钠">
+								<cell id="1" mat="81" temperature="893" label="组件内钠"/>
+							</universe>
+						</lattice>
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="z-plane" coeffs="261.0602" direction="-"/>
+						<halfspace type="z-plane" coeffs="60.0" direction="+"/>
+					</cell>
+					<cell id="5" mat="83" temperature="293" label="组件外套管&下转&活性区">
+						<halfspace type="z-plane" coeffs="261.0602" direction="-"/>
+						<halfspace type="z-plane" coeffs="60.0" direction="+"/>
+						<!--<halfspace type="MINUS" coeffs="4"/>-->
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+					</cell>
+					<cell id="6" mat="15" label="气腔">
+						<halfspace type="z-plane" coeffs="60.0" direction="-"/>
+						<halfspace type="z-plane" coeffs="40.0" direction="+"/>
+					</cell>
+					<cell id="7" mat="19" label="下端塞&钠腔">
+						<halfspace type="z-plane" coeffs="40.0" direction="-"/>
+						<halfspace type="z-plane" coeffs="26.5" direction="+"/>
+					</cell>
+					<cell id="8" mat="20" label="下部钢">
+						<halfspace type="z-plane" coeffs="26.5" direction="-"/>
+					</cell>
+					</universe>
+					<halfspace type="x-plane" coeffs="5.785" direction="-"/>
+					<halfspace type="x-plane" coeffs="-5.785" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -11.57" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -11.57" direction="+"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+			</universe>
+
+			<universe id="44"  label="第四圈径向转换组件栅格">
+				<cell id="1" mat="81" temperature="893" label="组件间钠">
+					<remove cell="2"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+				<cell id="2" type="ASSEMBLY" label="燃料组件">
+					<universe label="组件内部">
+					<cell id="1" mat="12" label="上部操作头">
+						<halfspace type="z-plane" coeffs="261.0602" direction="+"/>
+					</cell>
+					<cell id="4" label="组件超栅元空间"> <!--BASIC型Universe-->
+						<lattice label="栅元阵列"> <!--LATTICE型Universe-->
+							<layout type="Hexagon" range="-5 5 -5 5 0 0">
+								<row id="-5">2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-4">2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="-3">2 2 2 2 2 1 1 1 1 2 2</row>
+								<row id="-2">2 2 2 2 1 1 1 1 1 2 2</row>
+								<row id="-1">2 2 2 1 1 1 1 1 1 2 2</row>
+								<row id="-0">2 2 1 1 1 1 1 1 1 2 2</row>
+								<row id="1">2 2 1 1 1 1 1 1 2 2 2</row>
+								<row id="2">2 2 1 1 1 1 1 2 2 2 2</row>
+								<row id="3">2 2 1 1 1 1 2 2 2 2 2</row>
+								<row id="4">2 2 2 2 2 2 2 2 2 2 2</row>
+								<row id="5">2 2 2 2 2 2 2 2 2 2 2</row>
+							<format>
+							<halfspace type="x-plane" coeffs="0.8627" direction="-"/>
+							<halfspace type="x-plane" coeffs="-0.8627" direction="+"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 1.7254" direction="-"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 -1.7254" direction="+"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 1.7254" direction="-"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 -1.7254" direction="+"/>
+							</format>
+							</layout>
+							<universe id="1" label="棒超栅元">
+								<cell id="1" mat="81" label="棒间钠">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7847" direction="+"/>
+								</cell>
+								<cell id="2" mat="83" label="包壳">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7847" direction="-"/>
+									<halfspace type="z-cylinder" coeffs="0 0 0.7344" direction="+"/>
+								</cell>
+								<cell id="3" mat="164" type="PIN" label="转换区芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7344" direction="-"/>
+								</cell>
+							</universe>
+							<universe id="2" label="钠">
+								<cell id="1" mat="81" temperature="893" label="组件内钠"/>
+							</universe>
+						</lattice>
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="z-plane" coeffs="261.0602" direction="-"/>
+						<halfspace type="z-plane" coeffs="60.0" direction="+"/>
+					</cell>
+					<cell id="5" mat="83" temperature="293" label="组件外套管&下转&活性区">
+						<halfspace type="z-plane" coeffs="261.0602" direction="-"/>
+						<halfspace type="z-plane" coeffs="60.0" direction="+"/>
+						<!--<halfspace type="MINUS" coeffs="4"/>-->
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+					</cell>
+					<cell id="6" mat="15" label="气腔">
+						<halfspace type="z-plane" coeffs="60.0" direction="-"/>
+						<halfspace type="z-plane" coeffs="40.0" direction="+"/>
+					</cell>
+					<cell id="7" mat="19" label="下端塞&钠腔">
+						<halfspace type="z-plane" coeffs="40.0" direction="-"/>
+						<halfspace type="z-plane" coeffs="26.5" direction="+"/>
+					</cell>
+					<cell id="8" mat="20" label="下部钢">
+						<halfspace type="z-plane" coeffs="26.5" direction="-"/>
+					</cell>
+					</universe>
+					<halfspace type="x-plane" coeffs="5.785" direction="-"/>
+					<halfspace type="x-plane" coeffs="-5.785" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -11.57" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -11.57" direction="+"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+			</universe>
+
+			<universe id="11"  label="SH补偿棒组件栅格">
+				<cell id="1" mat="40" temperature="893" label="组件间钠">
+					<remove cell="2"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+				<cell id="2" type="CROD" label="补偿棒棒组件" remark="临界棒位">
+					<universe label="组件内部">
+					<cell id="1" mat="12" label="上部操作头">
+						<halfspace type="z-plane" coeffs="302.5320" direction="+"/>
+					</cell>
+					<cell id="4" label="组件超栅元空间"> <!--BASIC型Universe-->
+						<lattice label="栅元阵列"> <!--LATTICE型Universe-->
+							<layout type="Hexagon" range="-4 4 -4 4 0 0">
+								<row id="-4">2 2 2 2 2 2 2 2 2</row>
+								<row id="-3">2 2 2 2 2 2 2 2 2</row>
+								<row id="-2">2 2 2 2 1 1 1 2 2</row>
+								<row id="-1">2 2 2 1 1 1 1 2 2</row>
+								<row id="-0">2 2 1 1 1 1 1 2 2</row>
+								<row id="1">2 2 1 1 1 1 2 2 2</row>
+								<row id="2">2 2 1 1 1 2 2 2 2</row>
+								<row id="3">2 2 2 2 2 2 2 2 2</row>
+								<row id="4">2 2 2 2 2 2 2 2 2</row>
+							<format>
+							<halfspace type="x-plane" coeffs="0.8476" direction="-"/>
+							<halfspace type="x-plane" coeffs="-0.8476" direction="+"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 1.6953" direction="-"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 -1.6953" direction="+"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 1.6953" direction="-"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 -1.6953" direction="+"/>
+							</format>
+							</layout>
+							<universe id="1" label="棒超栅元">
+								<cell id="1" mat="40" label="棒间钠">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7747" direction="+"/>
+								</cell>
+								<cell id="2" mat="83" label="包壳">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7747" direction="-"/>
+									<halfspace type="z-cylinder" coeffs="0 0 0.6741" direction="+"/>
+								</cell>
+								<cell id="3" mat="232" type="PIN" label="B4C芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.6741" direction="-"/>
+								</cell>
+							</universe>
+							<universe id="2" label="钠">
+								<cell id="1" mat="40" temperature="893" label="组件内钠"/>
+							</universe>
+						</lattice>
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="z-plane" coeffs="302.5320" direction="-"/>
+						<halfspace type="z-plane" coeffs="192.5320" direction="+"/>
+					</cell>
+					<cell id="5" mat="83" temperature="293" label="组件外套管">
+						<halfspace type="z-plane" coeffs="302.5320" direction="-"/>
+						<halfspace type="z-plane" coeffs="192.5320" direction="+"/>
+						<!--<halfspace type="MINUS" coeffs="4"/>-->
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+					</cell>
+					<cell id="6" mat="29" label="跟随体">
+						<halfspace type="z-plane" coeffs="192.5320" direction="-"/>
+						<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+					</cell>
+					<cell id="7" mat="30" label="下材料">
+						<halfspace type="z-plane" coeffs="70.0" direction="-"/>
+					</cell>
+					</universe>
+					<halfspace type="x-plane" coeffs="5.785" direction="-"/>
+					<halfspace type="x-plane" coeffs="-5.785" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -11.57" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -11.57" direction="+"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+			</universe>
+
+			<universe id="12"  label="SA安全棒组件栅格">
+				<cell id="1" mat="40" temperature="893" label="组件间钠">
+					<remove cell="2"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+				<cell id="2" type="CROD" label="控制棒组件" remark="全提出">
+					<universe label="组件内部">
+					<cell id="1" mat="12" label="上部操作头">
+						<halfspace type="z-plane" coeffs="302.5320" direction="+"/>
+					</cell>
+					<cell id="4" label="组件超栅元空间"> <!--BASIC型Universe-->
+						<lattice label="栅元阵列"> <!--LATTICE型Universe-->
+							<layout type="Hexagon" range="-4 4 -4 4 0 0">
+								<row id="-4">2 2 2 2 2 2 2 2 2</row>
+								<row id="-3">2 2 2 2 2 2 2 2 2</row>
+								<row id="-2">2 2 2 2 1 1 1 2 2</row>
+								<row id="-1">2 2 2 1 1 1 1 2 2</row>
+								<row id="-0">2 2 1 1 1 1 1 2 2</row>
+								<row id="1">2 2 1 1 1 1 2 2 2</row>
+								<row id="2">2 2 1 1 1 2 2 2 2</row>
+								<row id="3">2 2 2 2 2 2 2 2 2</row>
+								<row id="4">2 2 2 2 2 2 2 2 2</row>
+							<format>
+							<halfspace type="x-plane" coeffs="0.8476" direction="-"/>
+							<halfspace type="x-plane" coeffs="-0.8476" direction="+"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 1.6953" direction="-"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 -1.6953" direction="+"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 1.6953" direction="-"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 -1.6953" direction="+"/>
+							</format>
+							</layout>
+							<universe id="1" label="棒超栅元">
+								<cell id="1" mat="40" label="棒间钠">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7747" direction="+"/>
+								</cell>
+								<cell id="2" mat="83" label="包壳">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7747" direction="-"/>
+									<halfspace type="z-cylinder" coeffs="0 0 0.6741" direction="+"/>
+								</cell>
+								<cell id="3" mat="233" type="PIN" label="B4C芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.6741" direction="-"/>
+								</cell>
+							</universe>
+							<universe id="2" label="钠">
+								<cell id="1" mat="40" temperature="893" label="组件内钠"/>
+							</universe>
+						</lattice>
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="z-plane" coeffs="335.2320" direction="-"/>
+						<halfspace type="z-plane" coeffs="225.2320" direction="+"/>
+					</cell>
+					<cell id="5" mat="83" temperature="293" label="组件外套管">
+						<halfspace type="z-plane" coeffs="335.2320" direction="-"/>
+						<halfspace type="z-plane" coeffs="225.2320" direction="+"/>
+						<!--<halfspace type="MINUS" coeffs="4"/>-->
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+					</cell>
+					<cell id="6" mat="29" label="跟随体">
+						<halfspace type="z-plane" coeffs="225.2320" direction="-"/>
+						<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+					</cell>
+					<cell id="7" mat="30" label="下材料">
+						<halfspace type="z-plane" coeffs="70.0" direction="-"/>
+					</cell>
+					</universe>
+					<halfspace type="x-plane" coeffs="5.785" direction="-"/>
+					<halfspace type="x-plane" coeffs="-5.785" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -11.57" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -11.57" direction="+"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+			</universe>
+
+			<universe id="13"  label="RE调节棒组件栅格">
+				<cell id="1" mat="40" temperature="893" label="组件间钠">
+					<remove cell="2"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+				<cell id="2" type="CROD" label="控制棒组件" remark="临界棒位">
+					<universe label="组件内部">
+					<cell id="1" mat="12" label="上部操作头">
+						<halfspace type="z-plane" coeffs="302.5320" direction="+"/>
+					</cell>
+					<cell id="4" label="组件超栅元空间"> <!--BASIC型Universe-->
+						<lattice label="栅元阵列"> <!--LATTICE型Universe-->
+							<layout type="Hexagon" range="-4 4 -4 4 0 0">
+								<row id="-4">2 2 2 2 2 2 2 2 2</row>
+								<row id="-3">2 2 2 2 2 2 2 2 2</row>
+								<row id="-2">2 2 2 2 3 3 3 2 2</row>
+								<row id="-1">2 2 2 1 1 1 1 2 2</row>
+								<row id="-0">2 2 3 1 3 1 3 2 2</row>
+								<row id="1">2 2 3 1 1 3 2 2 2</row>
+								<row id="2">2 2 3 1 3 2 2 2 2</row>
+								<row id="3">2 2 2 2 2 2 2 2 2</row>
+								<row id="4">2 2 2 2 2 2 2 2 2</row>
+							<format>
+							<halfspace type="x-plane" coeffs="0.8476" direction="-"/>
+							<halfspace type="x-plane" coeffs="-0.8476" direction="+"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 1.6953" direction="-"/>
+							<halfspace type="plane" coeffs="1 1.7320508076 0 -1.6953" direction="+"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 1.6953" direction="-"/>
+							<halfspace type="plane" coeffs="-1 1.7320508076 0 -1.6953" direction="+"/>
+							</format>
+							</layout>
+							<universe id="1" label="棒超栅元">
+								<cell id="1" mat="40" label="棒间钠">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7747" direction="+"/>
+								</cell>
+								<cell id="2" mat="83" label="包壳">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7747" direction="-"/>
+									<halfspace type="z-cylinder" coeffs="0 0 0.6741" direction="+"/>
+								</cell>
+								<cell id="3" mat="231" type="PIN" label="B4C芯块">
+									<halfspace type="z-cylinder" coeffs="0 0 0.6741" direction="-"/>
+								</cell>
+							</universe>
+							<universe id="2" label="钠">
+								<cell id="1" mat="40" temperature="893" label="组件内钠"/>
+							</universe>
+							<universe id="3" label="钢棒栅元">
+								<cell id="1" mat="82" label="钢">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7747" direction="-"/>
+								</cell>
+								<cell id="2" mat="40" label="钠">
+									<halfspace type="z-cylinder" coeffs="0 0 0.7747" direction="+"/>
+								</cell>
+							</universe>
+						</lattice>
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="z-plane" coeffs="280.2320" direction="-"/>
+						<halfspace type="z-plane" coeffs="170.2320" direction="+"/>
+					</cell>
+					<cell id="5" mat="83" temperature="293" label="组件外套管">
+						<halfspace type="z-plane" coeffs="280.2320" direction="-"/>
+						<halfspace type="z-plane" coeffs="170.2320" direction="+"/>
+						<!--<halfspace type="MINUS" coeffs="4"/>-->
+						<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+						<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+					</cell>
+					<cell id="6" mat="29" label="跟随体">
+						<halfspace type="z-plane" coeffs="225.2320" direction="-"/>
+						<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+					</cell>
+					<cell id="7" mat="30" label="下材料">
+						<halfspace type="z-plane" coeffs="70.0" direction="-"/>
+					</cell>
+					</universe>
+					<halfspace type="x-plane" coeffs="5.785" direction="-"/>
+					<halfspace type="x-plane" coeffs="-5.785" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -11.57" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 11.57" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -11.57" direction="+"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+			</universe>
+
+			<universe id="14"  label="PEP棒组件栅格" remark="与安全棒相同">
+				<cell id="1" mat="40" temperature="893" label="组件间钠">
+					<remove cell="2"/>
+					<transform position="0 0 0" rotation="60"/>
+				</cell>
+				<cell id="2" type="CROD" label="控制棒组件" remark="全提出">
+				<universe label="组件内部">
+				<cell id="1" mat="12" label="上部操作头">
+					<halfspace type="z-plane" coeffs="302.5320" direction="+"/>
+				</cell>
+				<cell id="4" label="组件超栅元空间"> <!--BASIC型Universe-->
+					<lattice label="栅元阵列"> <!--LATTICE型Universe-->
+						<layout type="Hexagon" range="-4 4 -4 4 0 0">
+							<row id="-4">2 2 2 2 2 2 2 2 2</row>
+							<row id="-3">2 2 2 2 2 2 2 2 2</row>
+							<row id="-2">2 2 2 2 1 1 1 2 2</row>
+							<row id="-1">2 2 2 1 1 1 1 2 2</row>
+							<row id="-0">2 2 1 1 1 1 1 2 2</row>
+							<row id="1">2 2 1 1 1 1 2 2 2</row>
+							<row id="2">2 2 1 1 1 2 2 2 2</row>
+							<row id="3">2 2 2 2 2 2 2 2 2</row>
+							<row id="4">2 2 2 2 2 2 2 2 2</row>
+						<format>
+						<halfspace type="x-plane" coeffs="0.8476" direction="-"/>
+						<halfspace type="x-plane" coeffs="-0.8476" direction="+"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 1.6953" direction="-"/>
+						<halfspace type="plane" coeffs="1 1.7320508076 0 -1.6953" direction="+"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 1.6953" direction="-"/>
+						<halfspace type="plane" coeffs="-1 1.7320508076 0 -1.6953" direction="+"/>
+						</format>
+						</layout>
+						<universe id="1" label="棒超栅元">
+							<cell id="1" mat="40" label="棒间钠">
+								<halfspace type="z-cylinder" coeffs="0 0 0.7747" direction="+"/>
+							</cell>
+							<cell id="2" mat="83" label="包壳">
+								<halfspace type="z-cylinder" coeffs="0 0 0.7747" direction="-"/>
+								<halfspace type="z-cylinder" coeffs="0 0 0.6741" direction="+"/>
+							</cell>
+							<cell id="3" mat="233" type="PIN" label="B4C芯块">
+								<halfspace type="z-cylinder" coeffs="0 0 0.6741" direction="-"/>
+							</cell>
+						</universe>
+						<universe id="2" label="钠">
+							<cell id="1" mat="40" temperature="893" label="组件内钠"/>
+						</universe>
+					</lattice>
+					<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+					<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+					<halfspace type="z-plane" coeffs="335.2320" direction="-"/>
+					<halfspace type="z-plane" coeffs="225.2320" direction="+"/>
+				</cell>
+				<cell id="5" mat="83" temperature="293" label="组件外套管">
+					<halfspace type="z-plane" coeffs="335.2320" direction="-"/>
+					<halfspace type="z-plane" coeffs="225.2320" direction="+"/>
+					<!--<halfspace type="MINUS" coeffs="4"/>-->
+					<halfspace type="x-plane" coeffs=" 5.4832" direction="-"/>
+					<halfspace type="x-plane" coeffs="-5.4832" direction="+"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 10.9663" direction="-"/>
+					<halfspace type="plane" coeffs="1 1.7320508076 0 -10.9663" direction="+"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 10.9663" direction="-"/>
+					<halfspace type="plane" coeffs="-1 1.7320508076 0 -10.9663" direction="+"/>
+				</cell>
+				<cell id="6" mat="29" label="跟随体">
+					<halfspace type="z-plane" coeffs="225.2320" direction="-"/>
+					<halfspace type="z-plane" coeffs="70.0" direction="+"/>
+				</cell>
+				<cell id="7" mat="30" label="下材料">
+					<halfspace type="z-plane" coeffs="70.0" direction="-"/>
+				</cell>
+				</universe>
+				<halfspace type="x-plane" coeffs="5.785" direction="-"/>
+				<halfspace type="x-plane" coeffs="-5.785" direction="+"/>
+				<halfspace type="plane" coeffs="1 1.7320508076 0 11.57" direction="-"/>
+				<halfspace type="plane" coeffs="1 1.7320508076 0 -11.57" direction="+"/>
+				<halfspace type="plane" coeffs="-1 1.7320508076 0 11.57" direction="-"/>
+				<halfspace type="plane" coeffs="-1 1.7320508076 0 -11.57" direction="+"/>
+				<transform position="0 0 0" rotation="60"/>
+			</cell>
+		    </universe>
+		</lattice>
+		<origin>0 0 0</origin> <!--坐标原点-->
+		<halfspace type="z-plane" coeffs="347.8538" direction="-" label="上端面"/>
+		<halfspace type="z-plane" coeffs="0" direction="+" label="下端面"/>
+		<halfspace type="z-cylinder" coeffs="0 0 225.0" direction="-" />
+	</cell>
+</geometry>

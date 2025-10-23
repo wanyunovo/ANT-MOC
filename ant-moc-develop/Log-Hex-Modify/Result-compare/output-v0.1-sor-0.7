@@ -1,0 +1,368 @@
+Current local date and time: 2024-04-29 09:43:47
+[ TITLE  ]  ****************************************************************************************************
+[ TITLE  ]                     ANT-MOC: an advanced neutron transport code from the CVR suite                   
+[ TITLE  ]  ****************************************************************************************************
+[  INFO  ]  
+[  INFO  ]  ... Reporting runtime parameters...
+[  INFO  ]  ------------------------
+[  INFO  ]  Log level                = INFO
+[  INFO  ]  Log line length          = 100
+[  INFO  ]  Log file                 = /home/gengxiaoxu/data/Hex-CMFD-v0.1/ant-moc-develop/Log-Hex-Modify/output
+[  INFO  ]  ------------------------
+[  INFO  ]  Ranks                    = 1
+[  INFO  ]  Threads per rank         = 1
+[  INFO  ]  Spatial Domains          = 1 x 1 x 1 x 1
+[  INFO  ]  Sub track domains        = 1
+[  INFO  ]  Track mapping            = AUTO
+[  INFO  ]  ------------------------
+[  INFO  ]  Config file              =
+[  INFO  ]  ...  /home/gengxiaoxu/data/Hex-CMFD-v0.1/ant-moc-develop/cases/cefr/single-assembly/settings.toml
+[  INFO  ]  Geometry file            =
+[  INFO  ]  ...  /home/gengxiaoxu/data/Modify-Hex-CMFD/ant-moc-develop/cases/cefr/single-assembly/geometry.xml
+[  INFO  ]  Primitives file          =
+[  INFO  ]  ...  /home/gengxiaoxu/data/Modify-Hex-CMFD/ant-moc-develop/cases/cefr/single-assembly/primitives.xml
+[  INFO  ]  Materials file           =
+[  INFO  ]  ...  /home/gengxiaoxu/data/Modify-Hex-CMFD/ant-moc-develop/cases/cefr/cefr-mgxs-fixed.h5
+[  INFO  ]  XS file layout           = COMPRESSED
+[  INFO  ]  Global lattice refines   = 0, 0, 0
+[  INFO  ]  Global cell sectors      = 
+[  INFO  ]  Global cell rings        = 
+[  INFO  ]  ------------------------
+[  INFO  ]  Quadrature               = EQUAL WEIGHT
+[  INFO  ]  Azimuthal angles         = 8
+[  INFO  ]  Azimuthal spacing        = 0.5
+[  INFO  ]  Polar angles             = 2
+[  INFO  ]  Polar spacing            = 0.75
+[  INFO  ]  Segment formation        = OTF STACKS
+[  INFO  ]  Modules                  = 1, 1, 1
+[  INFO  ]  Axial zones              =
+[  INFO  ]  ...  
+[  INFO  ]  ... -98.25,-88.25,-78.25,-68.25,-58.25,-48.25,-38.25,-28.25,-18.25,-8.25,0,8.25,18.25,28.25,38.25,48.
+[  INFO  ]  ... 25,58.25,68.25,78.25,88.25,98.25
+[  INFO  ]  Z mesh type              = LOCAL
+[  INFO  ]  ------------------------
+[  INFO  ]  Solver                   = CPU SOLVER
+[  INFO  ]  Max iterations           = 1000
+[  INFO  ]  Tolerance                = 1.0000E-05
+[  INFO  ]  K-eff                    = Successive Fission Rates
+[  INFO  ]  Stabilization            = NONE
+[  INFO  ]  ------------------------
+[  INFO  ]  
+[  INFO  ]  ... Reporting output configuration...
+[  INFO  ]  ------------------------
+[  INFO  ]  Output directory         = 20240429-094347
+[  INFO  ]  Output settings          = true
+[  INFO  ]  Output tally mesh        = true
+[  INFO  ]  Output FSR data          = false
+[  INFO  ]  Output track types       = NONE
+[  INFO  ]  Tally RX types           = F, PHI
+[  INFO  ]  Tally XS types           = NONE
+[  INFO  ]  Selected groups          = ALL
+[  INFO  ]  Tally mesh type          = HEXAGON
+[  INFO  ]  Tally mesh shape         = 5, 0.695,[3.515] + [44.182] + [1.004] + [25.1037] + [45.1863] + [10.041]
+[  INFO  ]  ...  + [4.519] + [2.008]
+[  INFO  ]  Tally mesh offset        = (0, 0, -20.9295)
+[  INFO  ]  Mesh orientation         = Y
+[  INFO  ]  ------------------------
+[  INFO  ]  
+[  INFO  ]  ... Reporting other options...
+[  INFO  ]  ------------------------
+[  INFO  ]  Required energy group    = ALL
+[  INFO  ]  ------------------------
+[  INFO  ]  
+[  INFO  ]  Periodic track domain decomposition = disabled
+[  INFO  ]  Spatial domain decomposition        = disabled
+[  INFO  ]  Creating geometry and materials...
+[  INFO  ]  Reading geometry primitives from file...
+[  INFO  ]  Reading geometry from file...
+[  INFO  ]  Number of primitives cleaned = 0
+[  INFO  ]  Initializing flat source regions...
+[  INFO  ]  Number of materials cleaned = 0
+[  INFO  ]  Number of energy groups required      = 514
+[  INFO  ]  Number of energy groups in H5 file    = 514
+[  INFO  ]  Total number of materials in H5 file  = 32
+[  INFO  ]  Number of retrieved materials         = 9
+[  INFO  ]  Number of materials in geometry       = 9
+[  INFO  ]  Max storage for Materials per domain = 18.32 MiB
+[ HEADER ]  ****************************************************************************************************
+[ HEADER ]                                    Timing Report - Input (average)                                   
+[ HEADER ]  ****************************************************************************************************
+[ RESULT ]  Total Input Time................................... 1.49393E+00 s
+[ RESULT ]    Time to read settings............................ 3.84989E-02 s  2.58%
+[ RESULT ]    Time to read geometry and materials.............. 1.44512E+00 s 96.73%
+[ RESULT ]    Time of domain decomposition..................... 1.32629E-03 s  0.09%
+[ RESULT ]    Time of meshing and FSRs initialization.......... 7.28386E-04 s  0.05%
+[ RESULT ]    Time to remove unused objects.................... 2.20019E-03 s  0.15%
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[  INFO  ]  Initializing the track generator...
+[  INFO  ]  Initializing 2D tracks...
+[  INFO  ]  SD of phis after correction  = 0.0379
+[  INFO  ]  Extra tracks due to correction = 0, 0.0000%
+[  INFO  ]  Max/Min length of cyclics = 17.10, 7.62
+[  INFO  ]  Initializing 2D tracks array...
+[ RESULT ]  Total number of 2D Tracks = 72
+[  INFO  ]  Initializing 3D tracks...
+[  INFO  ]  RMS polar angle correction 0.070547 %
+[  INFO  ]  Max polar angle correction 0.132413 %
+[ RESULT ]  Total number of 3D Chains = 19060
+[  INFO  ]  Progress Initializing 3D Tracks:   0.00%
+[  INFO  ]  Progress Initializing 3D Tracks:  10.29%
+[  INFO  ]  Progress Initializing 3D Tracks:  19.12%
+[  INFO  ]  Progress Initializing 3D Tracks:  27.94%
+[  INFO  ]  Progress Initializing 3D Tracks:  36.76%
+[  INFO  ]  Progress Initializing 3D Tracks:  45.59%
+[  INFO  ]  Progress Initializing 3D Tracks:  54.41%
+[  INFO  ]  Progress Initializing 3D Tracks:  63.24%
+[  INFO  ]  Progress Initializing 3D Tracks:  72.06%
+[  INFO  ]  Progress Initializing 3D Tracks:  80.88%
+[  INFO  ]  Progress Initializing 3D Tracks: 100.00%
+[ RESULT ]  Number of 3D Tracks in spatial domain = 40000
+[  INFO  ]  Memory allocated for Tracks in spatial domain = 0.038 MiB
+[  INFO  ]  Finished initialization of 3D tracks
+[  INFO  ]  Ray tracing for axially extruded track segmentation...
+[  INFO  ]  Segmenting 2D tracks on the superposition plane...
+[  INFO  ]  Progress Segmenting 2D Tracks:   0.00%
+[  INFO  ]  Progress Segmenting 2D Tracks:  11.11%
+[  INFO  ]  Progress Segmenting 2D Tracks:  20.83%
+[  INFO  ]  Progress Segmenting 2D Tracks:  30.56%
+[  INFO  ]  Progress Segmenting 2D Tracks:  40.28%
+[  INFO  ]  Progress Segmenting 2D Tracks:  50.00%
+[  INFO  ]  Progress Segmenting 2D Tracks:  59.72%
+[  INFO  ]  Progress Segmenting 2D Tracks:  69.44%
+[  INFO  ]  Progress Segmenting 2D Tracks:  79.17%
+[  INFO  ]  Progress Segmenting 2D Tracks:  88.89%
+[  INFO  ]  Progress Segmenting 2D Tracks: 100.00%
+[  INFO  ]  Initializing 3D FSRs in axially extruded regions...
+[  INFO  ]  Progress initializing 3D FSRs:   0.00%
+[  INFO  ]  Progress initializing 3D FSRs:  10.19%
+[  INFO  ]  Progress initializing 3D FSRs:  20.14%
+[  INFO  ]  Progress initializing 3D FSRs:  30.09%
+[  INFO  ]  Progress initializing 3D FSRs:  40.05%
+[  INFO  ]  Progress initializing 3D FSRs:  50.00%
+[  INFO  ]  Progress initializing 3D FSRs:  59.95%
+[  INFO  ]  Progress initializing 3D FSRs:  69.91%
+[  INFO  ]  Progress initializing 3D FSRs:  79.86%
+[  INFO  ]  Progress initializing 3D FSRs:  89.81%
+[  INFO  ]  Progress initializing 3D FSRs: 100.00%
+[  INFO  ]  Total number of extruded FSRs = 432
+[  INFO  ]  Max storage for extruded FSRs per domain = 1.23 MiB
+[  INFO  ]  Progress reordering FSR IDs:   0.00%
+[  INFO  ]  Progress reordering FSR IDs:  10.19%
+[  INFO  ]  Progress reordering FSR IDs:  20.14%
+[  INFO  ]  Progress reordering FSR IDs:  30.09%
+[  INFO  ]  Progress reordering FSR IDs:  40.05%
+[  INFO  ]  Progress reordering FSR IDs:  50.00%
+[  INFO  ]  Progress reordering FSR IDs:  59.95%
+[  INFO  ]  Progress reordering FSR IDs:  69.91%
+[  INFO  ]  Progress reordering FSR IDs:  79.86%
+[  INFO  ]  Progress reordering FSR IDs:  89.81%
+[  INFO  ]  Progress reordering FSR IDs: 100.00%
+[  INFO  ]  Finished initialization of axial 3D FSRs
+[  INFO  ]  Initializing FSR lookup vectors
+[  INFO  ]  Total number of FSRs = 4093
+[  INFO  ]  Max storage for FSRs per domain = 0.42 MiB
+[  INFO  ]  Counting segments and allocate temporary segments...
+[ RESULT ]  Number of local 3D segments = 1566935
+[ HEADER ]  ****************************************************************************************************
+[ HEADER ]                                 Timing Report - Ray Tracing (average)                                
+[ HEADER ]  ****************************************************************************************************
+[ RESULT ]  Total Track Generation & Segmentation Time......... 3.16878E+00 s
+[ RESULT ]    Quadrature Initialization........................ 3.06452E-05 s  0.00%
+[ RESULT ]    Tracks Initialization............................ 1.92378E-02 s  0.61%
+[ RESULT ]    Segmenting Tracks................................ 3.14945E+00 s 99.39%
+[ RESULT ]      Segmenting on Superposition Plane.............. 2.84764E+00 s -90.42%
+[ RESULT ]      Axial FSRs Initialization...................... 1.32765E-01 s - 4.22%
+[ RESULT ]      Segments Counting.............................. 1.68204E-01 s - 5.34%
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[ RESULT ]             # 2D chains                      # 2D tracks                        # FSRs              
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[ RESULT ]                 34                               72                              4093               
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[  INFO  ]  Running simulation...
+[  INFO  ]  Initializing MOC eigenvalue solver...
+[  INFO  ]  Initializing materials...
+[  INFO  ]  Initializing solver arrays...
+[  INFO  ]  Computing volumes of FSRs...
+[  INFO  ]  Total FSR volume       = 6.1949913948e+03
+[  INFO  ]  Average volume per FSR = 1.5135576337e+00
+[  INFO  ]  Computing centroids of FSRs...
+[  INFO  ]  Initializing exponential interpolation table...
+[  INFO  ]  Max boundary angular flux storage per domain = 313.721 MiB
+[  INFO  ]  Max scalar flux storage per domain = 32.101 MiB
+[  INFO  ]  Max source storage per domain = 16.051 MiB
+[  INFO  ]  Number of azimuthal angles = 8
+[  INFO  ]  Azimuthal ray spacing = 0.5
+[  INFO  ]  Number of polar angles = 2
+[  INFO  ]  Z-spacing = 0.75
+[  INFO  ]  Source type = Flat
+[  INFO  ]  MOC transport undamped
+[  INFO  ]  CMFD acceleration: ON
+[  INFO  ]  CMFD inner linear solver SOR factor: 0.700000
+[  INFO  ]  CMFD corrected diffusion coef. relaxation factor: 1.000000
+[  INFO  ]  CMFD K-nearest scheme: 3 neighbors
+[  INFO  ]  CMFD Mesh: 9 x 9 x 10
+[  INFO  ]  Using 1 threads
+[  INFO  ]  Computing the eigenvalue...
+[  INFO  ]  Iteration 0:  k_eff = 0.124316   res = 6.491E-01  delta-k (pcm) = -87568 D.R. = 0.6491
+[  INFO  ]  Iteration 1:  k_eff = 0.641373   res = 4.116E+00  delta-k (pcm) = 51705 D.R. = 6.3413
+[  INFO  ]  Iteration 2:  k_eff = 1.615363   res = 1.320E+00  delta-k (pcm) = 97398 D.R. = 0.3208
+[  INFO  ]  Iteration 3:  k_eff = 2.272649   res = 7.630E-01  delta-k (pcm) = 65728 D.R. = 0.5779
+[  INFO  ]  Iteration 4:  k_eff = 2.561132   res = 5.743E-01  delta-k (pcm) = 28848 D.R. = 0.7527
+[  INFO  ]  Iteration 5:  k_eff = 2.602353   res = 1.968E-01  delta-k (pcm) = 4122 D.R. = 0.3428
+[  INFO  ]  Iteration 6:  k_eff = 2.566179   res = 4.869E-02  delta-k (pcm) = -3617 D.R. = 0.2473
+[  INFO  ]  Iteration 7:  k_eff = 2.513676   res = 3.249E-02  delta-k (pcm) = -5250 D.R. = 0.6674
+[  INFO  ]  Iteration 8:  k_eff = 2.463477   res = 2.503E-02  delta-k (pcm) = -5019 D.R. = 0.7703
+[  INFO  ]  Iteration 9:  k_eff = 2.418722   res = 2.037E-02  delta-k (pcm) = -4475 D.R. = 0.8139
+[  INFO  ]  Iteration 10:  k_eff = 2.378050   res = 1.778E-02  delta-k (pcm) = -4067 D.R. = 0.8728
+[  INFO  ]  Iteration 11:  k_eff = 2.339668   res = 1.621E-02  delta-k (pcm) = -3838 D.R. = 0.9118
+[  INFO  ]  Iteration 12:  k_eff = 2.305406   res = 1.510E-02  delta-k (pcm) = -3426 D.R. = 0.9317
+[  INFO  ]  Iteration 13:  k_eff = 2.273117   res = 1.503E-02  delta-k (pcm) = -3228 D.R. = 0.9951
+[  INFO  ]  Iteration 14:  k_eff = 2.241745   res = 1.422E-02  delta-k (pcm) = -3137 D.R. = 0.9459
+[  INFO  ]  Iteration 15:  k_eff = 2.213602   res = 1.348E-02  delta-k (pcm) = -2814 D.R. = 0.9478
+[  INFO  ]  Iteration 16:  k_eff = 2.190004   res = 1.212E-02  delta-k (pcm) = -2359 D.R. = 0.8992
+[  INFO  ]  Iteration 17:  k_eff = 2.171810   res = 1.073E-02  delta-k (pcm) = -1819 D.R. = 0.8858
+[  INFO  ]  Iteration 18:  k_eff = 2.158918   res = 9.690E-03  delta-k (pcm) = -1289 D.R. = 0.9028
+[  INFO  ]  Iteration 19:  k_eff = 2.150530   res = 8.867E-03  delta-k (pcm) = -838 D.R. = 0.9151
+[  INFO  ]  Iteration 20:  k_eff = 2.145458   res = 8.211E-03  delta-k (pcm) = -507 D.R. = 0.9260
+[  INFO  ]  Iteration 21:  k_eff = 2.143598   res = 7.569E-03  delta-k (pcm) = -186 D.R. = 0.9218
+[  INFO  ]  Iteration 22:  k_eff = 2.144725   res = 6.839E-03  delta-k (pcm) = 112 D.R. = 0.9036
+[  INFO  ]  Iteration 23:  k_eff = 2.148314   res = 6.058E-03  delta-k (pcm) = 358 D.R. = 0.8859
+[  INFO  ]  Iteration 24:  k_eff = 2.153540   res = 5.292E-03  delta-k (pcm) = 522 D.R. = 0.8735
+[  INFO  ]  Iteration 25:  k_eff = 2.159784   res = 4.592E-03  delta-k (pcm) = 624 D.R. = 0.8677
+[  INFO  ]  Iteration 26:  k_eff = 2.166554   res = 4.007E-03  delta-k (pcm) = 677 D.R. = 0.8726
+[  INFO  ]  Iteration 27:  k_eff = 2.173343   res = 3.570E-03  delta-k (pcm) = 678 D.R. = 0.8909
+[  INFO  ]  Iteration 28:  k_eff = 2.179721   res = 3.279E-03  delta-k (pcm) = 637 D.R. = 0.9186
+[  INFO  ]  Iteration 29:  k_eff = 2.185352   res = 3.082E-03  delta-k (pcm) = 563 D.R. = 0.9398
+[  INFO  ]  Iteration 30:  k_eff = 2.190088   res = 2.932E-03  delta-k (pcm) = 473 D.R. = 0.9514
+[  INFO  ]  Iteration 31:  k_eff = 2.193816   res = 2.783E-03  delta-k (pcm) = 372 D.R. = 0.9493
+[  INFO  ]  Iteration 32:  k_eff = 2.196597   res = 2.612E-03  delta-k (pcm) = 278 D.R. = 0.9386
+[  INFO  ]  Iteration 33:  k_eff = 2.198512   res = 2.416E-03  delta-k (pcm) = 191 D.R. = 0.9250
+[  INFO  ]  Iteration 34:  k_eff = 2.199668   res = 2.192E-03  delta-k (pcm) = 115 D.R. = 0.9072
+[  INFO  ]  Iteration 35:  k_eff = 2.200213   res = 1.957E-03  delta-k (pcm) = 54 D.R. = 0.8928
+[  INFO  ]  Iteration 36:  k_eff = 2.200279   res = 1.721E-03  delta-k (pcm) = 6 D.R. = 0.8792
+[  INFO  ]  Iteration 37:  k_eff = 2.200011   res = 1.497E-03  delta-k (pcm) = -26 D.R. = 0.8701
+[  INFO  ]  Iteration 38:  k_eff = 2.199535   res = 1.293E-03  delta-k (pcm) = -47 D.R. = 0.8634
+[  INFO  ]  Iteration 39:  k_eff = 2.198973   res = 1.119E-03  delta-k (pcm) = -56 D.R. = 0.8655
+[  INFO  ]  Iteration 40:  k_eff = 2.198433   res = 9.783E-04  delta-k (pcm) = -54 D.R. = 0.8745
+[  INFO  ]  Iteration 41:  k_eff = 2.198009   res = 8.759E-04  delta-k (pcm) = -42 D.R. = 0.8953
+[  INFO  ]  Iteration 42:  k_eff = 2.197781   res = 8.134E-04  delta-k (pcm) = -22 D.R. = 0.9287
+[  INFO  ]  Iteration 43:  k_eff = 2.197838   res = 7.777E-04  delta-k (pcm) = 5 D.R. = 0.9560
+[  INFO  ]  Iteration 44:  k_eff = 2.198217   res = 7.789E-04  delta-k (pcm) = 37 D.R. = 1.0016
+[  INFO  ]  Iteration 45:  k_eff = 2.198974   res = 7.794E-04  delta-k (pcm) = 75 D.R. = 1.0006
+[  INFO  ]  Iteration 46:  k_eff = 2.200119   res = 8.093E-04  delta-k (pcm) = 114 D.R. = 1.0384
+[  INFO  ]  Iteration 47:  k_eff = 2.201665   res = 8.215E-04  delta-k (pcm) = 154 D.R. = 1.0151
+[  INFO  ]  Iteration 48:  k_eff = 2.203596   res = 8.633E-04  delta-k (pcm) = 193 D.R. = 1.0509
+[  INFO  ]  Iteration 49:  k_eff = 2.205892   res = 8.722E-04  delta-k (pcm) = 229 D.R. = 1.0103
+[  INFO  ]  Iteration 50:  k_eff = 2.208527   res = 9.211E-04  delta-k (pcm) = 263 D.R. = 1.0560
+[  INFO  ]  Iteration 51:  k_eff = 2.211443   res = 9.079E-04  delta-k (pcm) = 291 D.R. = 0.9857
+[  INFO  ]  Iteration 52:  k_eff = 2.214630   res = 9.431E-04  delta-k (pcm) = 318 D.R. = 1.0388
+[  INFO  ]  Iteration 53:  k_eff = 2.218037   res = 8.965E-04  delta-k (pcm) = 340 D.R. = 0.9506
+[  INFO  ]  Iteration 54:  k_eff = 2.221635   res = 8.936E-04  delta-k (pcm) = 359 D.R. = 0.9968
+[  INFO  ]  Iteration 55:  k_eff = 2.225409   res = 8.458E-04  delta-k (pcm) = 377 D.R. = 0.9465
+[  INFO  ]  Iteration 56:  k_eff = 2.229395   res = 8.577E-04  delta-k (pcm) = 398 D.R. = 1.0141
+[  INFO  ]  Iteration 57:  k_eff = 2.233346   res = 9.002E-04  delta-k (pcm) = 395 D.R. = 1.0495
+[  INFO  ]  Iteration 58:  k_eff = 2.237370   res = 9.727E-04  delta-k (pcm) = 402 D.R. = 1.0806
+[  INFO  ]  Iteration 59:  k_eff = 2.241504   res = 1.061E-03  delta-k (pcm) = 413 D.R. = 1.0909
+[  INFO  ]  Iteration 60:  k_eff = 2.245713   res = 1.168E-03  delta-k (pcm) = 420 D.R. = 1.1008
+[  INFO  ]  Iteration 61:  k_eff = 2.249967   res = 1.250E-03  delta-k (pcm) = 425 D.R. = 1.0703
+[  INFO  ]  Iteration 62:  k_eff = 2.254212   res = 1.164E-03  delta-k (pcm) = 424 D.R. = 0.9313
+[  INFO  ]  Iteration 63:  k_eff = 2.258435   res = 1.068E-03  delta-k (pcm) = 422 D.R. = 0.9169
+[  INFO  ]  Iteration 64:  k_eff = 2.262462   res = 9.690E-04  delta-k (pcm) = 402 D.R. = 0.9076
+[  INFO  ]  Iteration 65:  k_eff = 2.266220   res = 8.288E-04  delta-k (pcm) = 375 D.R. = 0.8553
+[  INFO  ]  Iteration 66:  k_eff = 2.269662   res = 6.736E-04  delta-k (pcm) = 344 D.R. = 0.8127
+[  INFO  ]  Iteration 67:  k_eff = 2.272703   res = 5.310E-04  delta-k (pcm) = 304 D.R. = 0.7884
+[  INFO  ]  Iteration 68:  k_eff = 2.275357   res = 4.390E-04  delta-k (pcm) = 265 D.R. = 0.8268
+[  INFO  ]  Iteration 69:  k_eff = 2.277563   res = 4.347E-04  delta-k (pcm) = 220 D.R. = 0.9902
+[  INFO  ]  Iteration 70:  k_eff = 2.279295   res = 5.095E-04  delta-k (pcm) = 173 D.R. = 1.1721
+[  INFO  ]  Iteration 71:  k_eff = 2.280558   res = 6.161E-04  delta-k (pcm) = 126 D.R. = 1.2092
+[  INFO  ]  Iteration 72:  k_eff = 2.281387   res = 7.219E-04  delta-k (pcm) = 82 D.R. = 1.1717
+[  INFO  ]  Iteration 73:  k_eff = 2.281823   res = 8.095E-04  delta-k (pcm) = 43 D.R. = 1.1213
+[  INFO  ]  Iteration 74:  k_eff = 2.281905   res = 8.685E-04  delta-k (pcm) = 8 D.R. = 1.0729
+[  INFO  ]  Iteration 75:  k_eff = 2.281641   res = 9.009E-04  delta-k (pcm) = -26 D.R. = 1.0373
+[  INFO  ]  Iteration 76:  k_eff = 2.281083   res = 9.076E-04  delta-k (pcm) = -55 D.R. = 1.0075
+[  INFO  ]  Iteration 77:  k_eff = 2.280262   res = 8.917E-04  delta-k (pcm) = -82 D.R. = 0.9824
+[  INFO  ]  Iteration 78:  k_eff = 2.279211   res = 8.683E-04  delta-k (pcm) = -105 D.R. = 0.9738
+[  INFO  ]  Iteration 79:  k_eff = 2.277958   res = 8.251E-04  delta-k (pcm) = -125 D.R. = 0.9502
+[  INFO  ]  Iteration 80:  k_eff = 2.276547   res = 7.664E-04  delta-k (pcm) = -141 D.R. = 0.9289
+[  INFO  ]  Iteration 81:  k_eff = 2.274984   res = 7.090E-04  delta-k (pcm) = -156 D.R. = 0.9252
+[  INFO  ]  Iteration 82:  k_eff = 2.273353   res = 6.524E-04  delta-k (pcm) = -163 D.R. = 0.9201
+[  INFO  ]  Iteration 83:  k_eff = 2.271667   res = 5.992E-04  delta-k (pcm) = -168 D.R. = 0.9185
+[  INFO  ]  Iteration 84:  k_eff = 2.269952   res = 5.475E-04  delta-k (pcm) = -171 D.R. = 0.9136
+[  INFO  ]  Iteration 85:  k_eff = 2.268241   res = 5.003E-04  delta-k (pcm) = -171 D.R. = 0.9138
+[  INFO  ]  Iteration 86:  k_eff = 2.266556   res = 4.564E-04  delta-k (pcm) = -168 D.R. = 0.9123
+[  INFO  ]  Iteration 87:  k_eff = 2.264918   res = 4.164E-04  delta-k (pcm) = -163 D.R. = 0.9124
+[  INFO  ]  Iteration 88:  k_eff = 2.263341   res = 3.803E-04  delta-k (pcm) = -157 D.R. = 0.9133
+[  INFO  ]  Iteration 89:  k_eff = 2.261837   res = 3.487E-04  delta-k (pcm) = -150 D.R. = 0.9169
+[  INFO  ]  Iteration 90:  k_eff = 2.260410   res = 3.211E-04  delta-k (pcm) = -142 D.R. = 0.9211
+[  INFO  ]  Iteration 91:  k_eff = 2.259062   res = 2.977E-04  delta-k (pcm) = -134 D.R. = 0.9270
+[  INFO  ]  Iteration 92:  k_eff = 2.257789   res = 2.779E-04  delta-k (pcm) = -127 D.R. = 0.9335
+[  INFO  ]  Iteration 93:  k_eff = 2.256587   res = 2.608E-04  delta-k (pcm) = -120 D.R. = 0.9384
+[  INFO  ]  Iteration 94:  k_eff = 2.255447   res = 2.458E-04  delta-k (pcm) = -114 D.R. = 0.9425
+[  INFO  ]  Iteration 95:  k_eff = 2.254359   res = 2.316E-04  delta-k (pcm) = -108 D.R. = 0.9423
+[  INFO  ]  Iteration 96:  k_eff = 2.253313   res = 2.162E-04  delta-k (pcm) = -104 D.R. = 0.9336
+[  INFO  ]  Iteration 97:  k_eff = 2.252302   res = 2.028E-04  delta-k (pcm) = -101 D.R. = 0.9378
+[  INFO  ]  Iteration 98:  k_eff = 2.251316   res = 1.882E-04  delta-k (pcm) = -98 D.R. = 0.9281
+[  INFO  ]  Iteration 99:  k_eff = 2.250347   res = 1.616E-04  delta-k (pcm) = -96 D.R. = 0.8586
+[  INFO  ]  Iteration 100:  k_eff = 2.249399   res = 1.564E-04  delta-k (pcm) = -94 D.R. = 0.9679
+[  INFO  ]  Iteration 101:  k_eff = 2.248457   res = 1.452E-04  delta-k (pcm) = -94 D.R. = 0.9281
+[  INFO  ]  Iteration 102:  k_eff = 2.247536   res = 1.342E-04  delta-k (pcm) = -92 D.R. = 0.9244
+[  INFO  ]  Iteration 103:  k_eff = 2.246639   res = 1.285E-04  delta-k (pcm) = -89 D.R. = 0.9574
+[  INFO  ]  Iteration 104:  k_eff = 2.245770   res = 1.293E-04  delta-k (pcm) = -86 D.R. = 1.0062
+[  INFO  ]  Iteration 105:  k_eff = 2.244940   res = 1.374E-04  delta-k (pcm) = -83 D.R. = 1.0632
+[  INFO  ]  Iteration 106:  k_eff = 2.244157   res = 1.524E-04  delta-k (pcm) = -78 D.R. = 1.1090
+[  INFO  ]  Iteration 107:  k_eff = 2.243434   res = 1.723E-04  delta-k (pcm) = -72 D.R. = 1.1306
+[  INFO  ]  Iteration 108:  k_eff = 2.242784   res = 1.955E-04  delta-k (pcm) = -64 D.R. = 1.1348
+[  INFO  ]  Iteration 109:  k_eff = 2.242220   res = 2.205E-04  delta-k (pcm) = -56 D.R. = 1.1276
+[  INFO  ]  Iteration 110:  k_eff = 2.241756   res = 2.461E-04  delta-k (pcm) = -46 D.R. = 1.1159
+[  INFO  ]  Iteration 111:  k_eff = 2.241403   res = 2.715E-04  delta-k (pcm) = -35 D.R. = 1.1033
+[  INFO  ]  Iteration 112:  k_eff = 2.241174   res = 2.958E-04  delta-k (pcm) = -22 D.R. = 1.0897
+[  INFO  ]  Iteration 113:  k_eff = 2.241077   res = 3.181E-04  delta-k (pcm) = -9 D.R. = 1.0753
+[  INFO  ]  Iteration 114:  k_eff = 2.241122   res = 3.383E-04  delta-k (pcm) = 4 D.R. = 1.0636
+[  INFO  ]  Iteration 115:  k_eff = 2.241315   res = 3.558E-04  delta-k (pcm) = 19 D.R. = 1.0516
+[  INFO  ]  Iteration 116:  k_eff = 2.241659   res = 3.700E-04  delta-k (pcm) = 34 D.R. = 1.0400
+[  INFO  ]  Iteration 117:  k_eff = 2.242157   res = 3.809E-04  delta-k (pcm) = 49 D.R. = 1.0295
+[  INFO  ]  Iteration 118:  k_eff = 2.242807   res = 3.892E-04  delta-k (pcm) = 65 D.R. = 1.0218
+[  INFO  ]  Iteration 119:  k_eff = 2.243606   res = 4.082E-04  delta-k (pcm) = 79 D.R. = 1.0489
+[  INFO  ]  Iteration 120:  k_eff = 2.244537   res = 3.887E-04  delta-k (pcm) = 93 D.R. = 0.9521
+[  INFO  ]  Iteration 121:  k_eff = 2.245614   res = 3.840E-04  delta-k (pcm) = 107 D.R. = 0.9880
+[  INFO  ]  Iteration 122:  k_eff = 2.246800   res = 3.748E-04  delta-k (pcm) = 118 D.R. = 0.9761
+[  INFO  ]  Iteration 123:  k_eff = 2.248090   res = 3.614E-04  delta-k (pcm) = 128 D.R. = 0.9642
+[  INFO  ]  Iteration 124:  k_eff = 2.249463   res = 3.451E-04  delta-k (pcm) = 137 D.R. = 0.9549
+[  INFO  ]  Iteration 125:  k_eff = 2.250898   res = 3.260E-04  delta-k (pcm) = 143 D.R. = 0.9445
+[  INFO  ]  Iteration 126:  k_eff = 2.252376   res = 3.045E-04  delta-k (pcm) = 147 D.R. = 0.9341
+[  INFO  ]  Iteration 127:  k_eff = 2.253876   res = 2.821E-04  delta-k (pcm) = 150 D.R. = 0.9264
+[  INFO  ]  Iteration 128:  k_eff = 2.255378   res = 2.593E-04  delta-k (pcm) = 150 D.R. = 0.9193
+[  INFO  ]  Iteration 129:  k_eff = 2.256860   res = 2.373E-04  delta-k (pcm) = 148 D.R. = 0.9152
+[  INFO  ]  Iteration 130:  k_eff = 2.258304   res = 2.174E-04  delta-k (pcm) = 144 D.R. = 0.9159
+[  INFO  ]  Iteration 131:  k_eff = 2.259690   res = 1.979E-04  delta-k (pcm) = 138 D.R. = 0.9103
+[  INFO  ]  Iteration 132:  k_eff = 2.261004   res = 1.852E-04  delta-k (pcm) = 131 D.R. = 0.9360
+[  INFO  ]  Iteration 133:  k_eff = 2.262229   res = 1.767E-04  delta-k (pcm) = 122 D.R. = 0.9543
+[  INFO  ]  Iteration 134:  k_eff = 2.263353   res = 1.722E-04  delta-k (pcm) = 112 D.R. = 0.9742
+[  INFO  ]  Iteration 135:  k_eff = 2.264368   res = 1.712E-04  delta-k (pcm) = 101 D.R. = 0.9943
+[  INFO  ]  Iteration 136:  k_eff = 2.265267   res = 1.732E-04  delta-k (pcm) = 89 D.R. = 1.0115
+[  INFO  ]  Iteration 137:  k_eff = 2.266043   res = 1.772E-04  delta-k (pcm) = 77 D.R. = 1.0233
+[  INFO  ]  Iteration 138:  k_eff = 2.266695   res = 1.823E-04  delta-k (pcm) = 65 D.R. = 1.0285
+[  INFO  ]  Iteration 139:  k_eff = 2.267222   res = 1.880E-04  delta-k (pcm) = 52 D.R. = 1.0315
+[  INFO  ]  Iteration 140:  k_eff = 2.267626   res = 1.940E-04  delta-k (pcm) = 40 D.R. = 1.0320
+[  INFO  ]  Iteration 141:  k_eff = 2.267910   res = 2.002E-04  delta-k (pcm) = 28 D.R. = 1.0316
+[  INFO  ]  Iteration 142:  k_eff = 2.268075   res = 2.062E-04  delta-k (pcm) = 16 D.R. = 1.0299
+[  INFO  ]  Iteration 143:  k_eff = 2.268130   res = 2.117E-04  delta-k (pcm) = 5 D.R. = 1.0271
+[  INFO  ]  Iteration 144:  k_eff = 2.268078   res = 2.167E-04  delta-k (pcm) = -5 D.R. = 1.0234
+[  INFO  ]  Iteration 145:  k_eff = 2.267928   res = 2.207E-04  delta-k (pcm) = -15 D.R. = 1.0184
+[  INFO  ]  Iteration 146:  k_eff = 2.267686   res = 2.235E-04  delta-k (pcm) = -24 D.R. = 1.0128
+[  INFO  ]  Iteration 147:  k_eff = 2.267361   res = 2.249E-04  delta-k (pcm) = -32 D.R. = 1.0063
+[  INFO  ]  Iteration 148:  k_eff = 2.266961   res = 2.248E-04  delta-k (pcm) = -39 D.R. = 0.9994
+[  INFO  ]  Iteration 149:  k_eff = 2.266496   res = 2.230E-04  delta-k (pcm) = -46 D.R. = 0.9920
+[  INFO  ]  Iteration 150:  k_eff = 2.265973   res = 2.195E-04  delta-k (pcm) = -52 D.R. = 0.9846
+[  INFO  ]  Iteration 151:  k_eff = 2.265401   res = 2.145E-04  delta-k (pcm) = -57 D.R. = 0.9771
+[  INFO  ]  Iteration 152:  k_eff = 2.264788   res = 2.081E-04  delta-k (pcm) = -61 D.R. = 0.9700
+[  INFO  ]  Iteration 153:  k_eff = 2.264142   res = 2.005E-04  delta-k (pcm) = -64 D.R. = 0.9634
+[  INFO  ]  Iteration 154:  k_eff = 2.263470   res = 1.917E-04  delta-k (pcm) = -67 D.R. = 0.9563
+[  INFO  ]  Iteration 155:  k_eff = 2.262781   res = 1.822E-04  delta-k (pcm) = -68 D.R. = 0.9502
+[  INFO  ]  Iteration 156:  k_eff = 2.262080   res = 1.720E-04  delta-k (pcm) = -70 D.R. = 0.9440
+[  INFO  ]  Iteration 157:  k_eff = 2.261374   res = 1.614E-04  delta-k (pcm) = -70 D.R. = 0.9384
+[  INFO  ]  Iteration 158:  k_eff = 2.260669   res = 1.506E-04  delta-k (pcm) = -70 D.R. = 0.9335
+[  INFO  ]  Iteration 159:  k_eff = 2.259971   res = 1.399E-04  delta-k (pcm) = -69 D.R. = 0.9290
+[  INFO  ]  Iteration 160:  k_eff = 2.259283   res = 1.294E-04  delta-k (pcm) = -68 D.R. = 0.9249
+[  INFO  ]  Iteration 161:  k_eff = 2.258611   res = 1.193E-04  delta-k (pcm) = -67 D.R. = 0.9218
+[  INFO  ]  Iteration 162:  k_eff = 2.257957   res = 1.097E-04  delta-k (pcm) = -65 D.R. = 0.9191

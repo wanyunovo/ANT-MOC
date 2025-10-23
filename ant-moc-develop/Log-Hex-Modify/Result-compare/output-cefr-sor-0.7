@@ -1,0 +1,752 @@
+Current local date and time: 2024-04-24 11:23:19
+[ TITLE  ]  ****************************************************************************************************
+[ TITLE  ]                     ANT-MOC: an advanced neutron transport code from the CVR suite                   
+[ TITLE  ]  ****************************************************************************************************
+[  INFO  ]  
+[  INFO  ]  ... Reporting runtime parameters...
+[  INFO  ]  ------------------------
+[  INFO  ]  Log level                = INFO
+[  INFO  ]  Log line length          = 100
+[  INFO  ]  Log file                 =
+[  INFO  ]  ...  /home/gengxiaoxu/data/Modify-Hex-CMFD/ant-moc-develop/Log-Hex-Modify/output
+[  INFO  ]  ------------------------
+[  INFO  ]  Ranks                    = 1
+[  INFO  ]  Threads per rank         = 1
+[  INFO  ]  Spatial Domains          = 1 x 1 x 1 x 1
+[  INFO  ]  Sub track domains        = 1
+[  INFO  ]  Track mapping            = AUTO
+[  INFO  ]  ------------------------
+[  INFO  ]  Config file              =
+[  INFO  ]  ...  /home/gengxiaoxu/data/Modify-Hex-CMFD/ant-moc-develop/cases/cefr/single-assembly/settings.toml
+[  INFO  ]  Geometry file            =
+[  INFO  ]  ...  /home/gengxiaoxu/data/Modify-Hex-CMFD/ant-moc-develop/cases/cefr/single-assembly/geometry.xml
+[  INFO  ]  Primitives file          =
+[  INFO  ]  ...  /home/gengxiaoxu/data/Modify-Hex-CMFD/ant-moc-develop/cases/cefr/single-assembly/primitives.xml
+[  INFO  ]  Materials file           =
+[  INFO  ]  ...  /home/gengxiaoxu/data/Modify-Hex-CMFD/ant-moc-develop/cases/cefr/cefr-mgxs-fixed.h5
+[  INFO  ]  XS file layout           = COMPRESSED
+[  INFO  ]  Global lattice refines   = 0, 0, 0
+[  INFO  ]  Global cell sectors      = 
+[  INFO  ]  Global cell rings        = 
+[  INFO  ]  ------------------------
+[  INFO  ]  Quadrature               = EQUAL WEIGHT
+[  INFO  ]  Azimuthal angles         = 8
+[  INFO  ]  Azimuthal spacing        = 0.5
+[  INFO  ]  Polar angles             = 2
+[  INFO  ]  Polar spacing            = 0.75
+[  INFO  ]  Segment formation        = OTF STACKS
+[  INFO  ]  Modules                  = 1, 1, 1
+[  INFO  ]  Axial zones              =
+[  INFO  ]  ...  
+[  INFO  ]  ... -98.25,-88.25,-78.25,-68.25,-58.25,-48.25,-38.25,-28.25,-18.25,-8.25,0,8.25,18.25,28.25,38.25,48.
+[  INFO  ]  ... 25,58.25,68.25,78.25,88.25,98.25
+[  INFO  ]  Z mesh type              = LOCAL
+[  INFO  ]  ------------------------
+[  INFO  ]  Solver                   = CPU SOLVER
+[  INFO  ]  Max iterations           = 1000
+[  INFO  ]  Tolerance                = 1.0000E-05
+[  INFO  ]  K-eff                    = Successive Fission Rates
+[  INFO  ]  Stabilization            = NONE
+[  INFO  ]  ------------------------
+[  INFO  ]  
+[  INFO  ]  ... Reporting output configuration...
+[  INFO  ]  ------------------------
+[  INFO  ]  Output directory         = 20240424-112319
+[  INFO  ]  Output settings          = true
+[  INFO  ]  Output tally mesh        = true
+[  INFO  ]  Output FSR data          = false
+[  INFO  ]  Output track types       = NONE
+[  INFO  ]  Tally RX types           = F, PHI
+[  INFO  ]  Tally XS types           = NONE
+[  INFO  ]  Selected groups          = ALL
+[  INFO  ]  Tally mesh type          = HEXAGON
+[  INFO  ]  Tally mesh shape         = 5, 0.695,[3.515] + [44.182] + [1.004] + [25.1037] + [45.1863] + [10.041]
+[  INFO  ]  ...  + [4.519] + [2.008]
+[  INFO  ]  Tally mesh offset        = (0, 0, -20.9295)
+[  INFO  ]  Mesh orientation         = Y
+[  INFO  ]  ------------------------
+[  INFO  ]  
+[  INFO  ]  ... Reporting other options...
+[  INFO  ]  ------------------------
+[  INFO  ]  Required energy group    = ALL
+[  INFO  ]  ------------------------
+[  INFO  ]  
+[  INFO  ]  Periodic track domain decomposition = disabled
+[  INFO  ]  Spatial domain decomposition        = disabled
+[  INFO  ]  Creating geometry and materials...
+[  INFO  ]  Reading geometry primitives from file...
+[  INFO  ]  Reading geometry from file...
+[  INFO  ]  Number of primitives cleaned = 0
+[  INFO  ]  Initializing flat source regions...
+[  INFO  ]  Number of materials cleaned = 0
+[  INFO  ]  Number of energy groups required      = 514
+[  INFO  ]  Number of energy groups in H5 file    = 514
+[  INFO  ]  Total number of materials in H5 file  = 32
+[  INFO  ]  Number of retrieved materials         = 9
+[  INFO  ]  Number of materials in geometry       = 9
+[  INFO  ]  Max storage for Materials per domain = 18.32 MiB
+[ HEADER ]  ****************************************************************************************************
+[ HEADER ]                                    Timing Report - Input (average)                                   
+[ HEADER ]  ****************************************************************************************************
+[ RESULT ]  Total Input Time................................... 1.49003E+00 s
+[ RESULT ]    Time to read settings............................ 4.14278E-02 s  2.78%
+[ RESULT ]    Time to read geometry and materials.............. 1.43704E+00 s 96.44%
+[ RESULT ]    Time of domain decomposition..................... 1.41833E-03 s  0.10%
+[ RESULT ]    Time of meshing and FSRs initialization.......... 8.30407E-04 s  0.06%
+[ RESULT ]    Time to remove unused objects.................... 2.36720E-03 s  0.16%
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[  INFO  ]  Initializing the track generator...
+[  INFO  ]  Initializing 2D tracks...
+[  INFO  ]  SD of phis after correction  = 0.0379
+[  INFO  ]  Extra tracks due to correction = 0, 0.0000%
+[  INFO  ]  Max/Min length of cyclics = 17.10, 7.62
+[  INFO  ]  Initializing 2D tracks array...
+[ RESULT ]  Total number of 2D Tracks = 72
+[  INFO  ]  Initializing 3D tracks...
+[  INFO  ]  RMS polar angle correction 0.070547 %
+[  INFO  ]  Max polar angle correction 0.132413 %
+[ RESULT ]  Total number of 3D Chains = 19060
+[  INFO  ]  Progress Initializing 3D Tracks:   0.00%
+[  INFO  ]  Progress Initializing 3D Tracks:  10.29%
+[  INFO  ]  Progress Initializing 3D Tracks:  19.12%
+[  INFO  ]  Progress Initializing 3D Tracks:  27.94%
+[  INFO  ]  Progress Initializing 3D Tracks:  36.76%
+[  INFO  ]  Progress Initializing 3D Tracks:  45.59%
+[  INFO  ]  Progress Initializing 3D Tracks:  54.41%
+[  INFO  ]  Progress Initializing 3D Tracks:  63.24%
+[  INFO  ]  Progress Initializing 3D Tracks:  72.06%
+[  INFO  ]  Progress Initializing 3D Tracks:  80.88%
+[  INFO  ]  Progress Initializing 3D Tracks: 100.00%
+[ RESULT ]  Number of 3D Tracks in spatial domain = 40000
+[  INFO  ]  Memory allocated for Tracks in spatial domain = 0.038 MiB
+[  INFO  ]  Finished initialization of 3D tracks
+[  INFO  ]  Ray tracing for axially extruded track segmentation...
+[  INFO  ]  Segmenting 2D tracks on the superposition plane...
+[  INFO  ]  Progress Segmenting 2D Tracks:   0.00%
+[  INFO  ]  Progress Segmenting 2D Tracks:  11.11%
+[  INFO  ]  Progress Segmenting 2D Tracks:  20.83%
+[  INFO  ]  Progress Segmenting 2D Tracks:  30.56%
+[  INFO  ]  Progress Segmenting 2D Tracks:  40.28%
+[  INFO  ]  Progress Segmenting 2D Tracks:  50.00%
+[  INFO  ]  Progress Segmenting 2D Tracks:  59.72%
+[  INFO  ]  Progress Segmenting 2D Tracks:  69.44%
+[  INFO  ]  Progress Segmenting 2D Tracks:  79.17%
+[  INFO  ]  Progress Segmenting 2D Tracks:  88.89%
+[  INFO  ]  Progress Segmenting 2D Tracks: 100.00%
+[  INFO  ]  Initializing 3D FSRs in axially extruded regions...
+[  INFO  ]  Progress initializing 3D FSRs:   0.00%
+[  INFO  ]  Progress initializing 3D FSRs:  10.19%
+[  INFO  ]  Progress initializing 3D FSRs:  20.14%
+[  INFO  ]  Progress initializing 3D FSRs:  30.09%
+[  INFO  ]  Progress initializing 3D FSRs:  40.05%
+[  INFO  ]  Progress initializing 3D FSRs:  50.00%
+[  INFO  ]  Progress initializing 3D FSRs:  59.95%
+[  INFO  ]  Progress initializing 3D FSRs:  69.91%
+[  INFO  ]  Progress initializing 3D FSRs:  79.86%
+[  INFO  ]  Progress initializing 3D FSRs:  89.81%
+[  INFO  ]  Progress initializing 3D FSRs: 100.00%
+[  INFO  ]  Total number of extruded FSRs = 432
+[  INFO  ]  Max storage for extruded FSRs per domain = 1.23 MiB
+[  INFO  ]  Progress reordering FSR IDs:   0.00%
+[  INFO  ]  Progress reordering FSR IDs:  10.19%
+[  INFO  ]  Progress reordering FSR IDs:  20.14%
+[  INFO  ]  Progress reordering FSR IDs:  30.09%
+[  INFO  ]  Progress reordering FSR IDs:  40.05%
+[  INFO  ]  Progress reordering FSR IDs:  50.00%
+[  INFO  ]  Progress reordering FSR IDs:  59.95%
+[  INFO  ]  Progress reordering FSR IDs:  69.91%
+[  INFO  ]  Progress reordering FSR IDs:  79.86%
+[  INFO  ]  Progress reordering FSR IDs:  89.81%
+[  INFO  ]  Progress reordering FSR IDs: 100.00%
+[  INFO  ]  Finished initialization of axial 3D FSRs
+[  INFO  ]  Initializing FSR lookup vectors
+[  INFO  ]  Total number of FSRs = 4093
+[  INFO  ]  Max storage for FSRs per domain = 0.42 MiB
+[  INFO  ]  Counting segments and allocate temporary segments...
+[ RESULT ]  Number of local 3D segments = 1566935
+[ HEADER ]  ****************************************************************************************************
+[ HEADER ]                                 Timing Report - Ray Tracing (average)                                
+[ HEADER ]  ****************************************************************************************************
+[ RESULT ]  Total Track Generation & Segmentation Time......... 3.11000E+00 s
+[ RESULT ]    Quadrature Initialization........................ 2.94503E-05 s  0.00%
+[ RESULT ]    Tracks Initialization............................ 2.07392E-02 s  0.67%
+[ RESULT ]    Segmenting Tracks................................ 3.08917E+00 s 99.33%
+[ RESULT ]      Segmenting on Superposition Plane.............. 2.78664E+00 s -90.21%
+[ RESULT ]      Axial FSRs Initialization...................... 1.33386E-01 s - 4.32%
+[ RESULT ]      Segments Counting.............................. 1.68141E-01 s - 5.44%
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[ RESULT ]             # 2D chains                      # 2D tracks                        # FSRs              
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[ RESULT ]                 34                               72                              4093               
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[  INFO  ]  Running simulation...
+[  INFO  ]  Initializing MOC eigenvalue solver...
+[  INFO  ]  Initializing materials...
+[  INFO  ]  Initializing solver arrays...
+[  INFO  ]  Computing volumes of FSRs...
+[  INFO  ]  Total FSR volume       = 6.1949913948e+03
+[  INFO  ]  Average volume per FSR = 1.5135576337e+00
+[  INFO  ]  Computing centroids of FSRs...
+[  INFO  ]  Initializing exponential interpolation table...
+[  INFO  ]  Max boundary angular flux storage per domain = 313.721 MiB
+[  INFO  ]  Max scalar flux storage per domain = 32.101 MiB
+[  INFO  ]  Max source storage per domain = 16.051 MiB
+[  INFO  ]  Number of azimuthal angles = 8
+[  INFO  ]  Azimuthal ray spacing = 0.5
+[  INFO  ]  Number of polar angles = 2
+[  INFO  ]  Z-spacing = 0.75
+[  INFO  ]  Source type = Flat
+[  INFO  ]  MOC transport undamped
+[  INFO  ]  CMFD acceleration: ON
+[  INFO  ]  CMFD inner linear solver SOR factor: 0.700000
+[  INFO  ]  CMFD corrected diffusion coef. relaxation factor: 1.000000
+[  INFO  ]  CMFD K-nearest scheme: 3 neighbors
+[  INFO  ]  CMFD Mesh: 9 x 9 x 10
+[  INFO  ]  Using 1 threads
+[  INFO  ]  Computing the eigenvalue...
+[  INFO  ]  Iteration 0:  k_eff = 0.124316   res = 6.491E-01  delta-k (pcm) = -87568 D.R. = 0.6491
+[  INFO  ]  Iteration 1:  k_eff = 0.013640   res = 1.711E+00  delta-k (pcm) = -11067 D.R. = 2.6351
+[  INFO  ]  Iteration 2:  k_eff = 0.013580   res = 2.496E+00  delta-k (pcm) = -5 D.R. = 1.4592
+[  INFO  ]  Iteration 3:  k_eff = 0.019395   res = 7.182E-01  delta-k (pcm) = 581 D.R. = 0.2878
+[  INFO  ]  Iteration 4:  k_eff = 0.019848   res = 5.727E-01  delta-k (pcm) = 45 D.R. = 0.7974
+[  INFO  ]  Iteration 5:  k_eff = 0.019619   res = 4.293E-01  delta-k (pcm) = -22 D.R. = 0.7497
+[  INFO  ]  Iteration 6:  k_eff = 0.019642   res = 3.568E-01  delta-k (pcm) = 2 D.R. = 0.8310
+[  INFO  ]  Iteration 7:  k_eff = 0.019646   res = 3.174E-01  delta-k (pcm) = 0 D.R. = 0.8896
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 8:  k_eff = 0.019648   res = 2.437E-01  delta-k (pcm) = 0 D.R. = 0.7677
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 9:  k_eff = 0.019648   res = 1.781E-01  delta-k (pcm) = 0 D.R. = 0.7309
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 10:  k_eff = 0.019650   res = 1.222E-01  delta-k (pcm) = 0 D.R. = 0.6863
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 11:  k_eff = 0.019650   res = 7.780E-02  delta-k (pcm) = 0 D.R. = 0.6365
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 12:  k_eff = 0.019651   res = 4.618E-02  delta-k (pcm) = 0 D.R. = 0.5936
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 13:  k_eff = 0.019651   res = 2.653E-02  delta-k (pcm) = 0 D.R. = 0.5743
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 14:  k_eff = 0.019652   res = 1.474E-02  delta-k (pcm) = 0 D.R. = 0.5556
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 15:  k_eff = 0.019652   res = 8.091E-03  delta-k (pcm) = 0 D.R. = 0.5490
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 16:  k_eff = 0.019652   res = 4.507E-03  delta-k (pcm) = 0 D.R. = 0.5571
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 17:  k_eff = 0.019652   res = 2.701E-03  delta-k (pcm) = 0 D.R. = 0.5992
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 18:  k_eff = 0.019653   res = 1.825E-03  delta-k (pcm) = 0 D.R. = 0.6758
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 19:  k_eff = 0.019653   res = 1.368E-03  delta-k (pcm) = 0 D.R. = 0.7498
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 20:  k_eff = 0.019653   res = 1.076E-03  delta-k (pcm) = 0 D.R. = 0.7866
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 21:  k_eff = 0.019653   res = 8.528E-04  delta-k (pcm) = 0 D.R. = 0.7923
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 22:  k_eff = 0.019653   res = 6.705E-04  delta-k (pcm) = 0 D.R. = 0.7862
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 23:  k_eff = 0.019653   res = 5.207E-04  delta-k (pcm) = 0 D.R. = 0.7766
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 24:  k_eff = 0.019653   res = 3.998E-04  delta-k (pcm) = 0 D.R. = 0.7679
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 25:  k_eff = 0.019653   res = 3.040E-04  delta-k (pcm) = 0 D.R. = 0.7603
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 26:  k_eff = 0.019653   res = 2.292E-04  delta-k (pcm) = 0 D.R. = 0.7541
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 27:  k_eff = 0.019653   res = 1.717E-04  delta-k (pcm) = 0 D.R. = 0.7489
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 28:  k_eff = 0.019653   res = 1.280E-04  delta-k (pcm) = 0 D.R. = 0.7455
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 29:  k_eff = 0.019653   res = 9.503E-05  delta-k (pcm) = 0 D.R. = 0.7425
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 30:  k_eff = 0.019653   res = 7.029E-05  delta-k (pcm) = 0 D.R. = 0.7397
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 31:  k_eff = 0.019653   res = 5.185E-05  delta-k (pcm) = 0 D.R. = 0.7376
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 32:  k_eff = 0.019653   res = 3.816E-05  delta-k (pcm) = 0 D.R. = 0.7360
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 33:  k_eff = 0.019653   res = 2.795E-05  delta-k (pcm) = 0 D.R. = 0.7324
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 34:  k_eff = 0.019653   res = 2.053E-05  delta-k (pcm) = 0 D.R. = 0.7346
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 35:  k_eff = 0.019653   res = 1.508E-05  delta-k (pcm) = 0 D.R. = 0.7345
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 36:  k_eff = 0.019653   res = 1.101E-05  delta-k (pcm) = 0 D.R. = 0.7299
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 656 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 664 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 665 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 673 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 703 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 711 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 712 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 720 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 737 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 745 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 746 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 754 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 784 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 792 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 793 in CMFD group 9
+[  WARN  ]  Rank 0: Zero reaction tally calculated in CMFD cell 801 in CMFD group 9
+[  INFO  ]  Iteration 37:  k_eff = 0.019653   res = 8.061E-06  delta-k (pcm) = 0 D.R. = 0.7324
+[ HEADER ]  ****************************************************************************************************
+[ HEADER ]                                   Timing Report - Solution (average)                                 
+[ HEADER ]  ****************************************************************************************************
+[ RESULT ]  Total time to solution............................. 1.76152E+03 s
+[ RESULT ]    Solver Initialization............................ 1.17435E+00 s  0.07%
+[ RESULT ]      FSR Volumes & Centroids........................ 4.62222E-01 s -39.36%
+[ RESULT ]      ExpEvaluator Initialization.................... 2.35568E-01 s -20.06%
+[ RESULT ]    Source Iteration................................. 1.76035E+03 s 99.93%
+[ RESULT ]      Time per iteration............................. 4.63249E+01 s
+[ RESULT ]      Source & FSRs & keff Update.................... 7.57591E+02 s -43.04%
+[ RESULT ]      Transport Sweep................................ 1.00276E+03 s -56.96%
+[ RESULT ]        Boundary Flux Update......................... 3.42698E+00 s -- 0.34%
+[ RESULT ]  Integration time per segment integration........... 1.63820E-08 s
+[ RESULT ]  Total CMFD computation time..........................3.2177E+02 sec
+[ RESULT ]  Total XS collapse time...............................2.9730E+02 sec
+[ RESULT ]  CMFD MPI communication time..........................0.0000E+00 sec
+[ RESULT ]  Total CMFD solver time...............................1.1411E+01 sec
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[ RESULT ]              # tracks                        # segments                         # FSRs              
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[ RESULT ]                40000                           1566935                           4093               
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[  INFO  ]  Creating simple tally mesh...
+[ RESULT ]  Dumping mesh reaction rates, xs, and fluxes...
+[ RESULT ]  Finished writing file: 20240424-112319/reaction_rates.vtu
+[ HEADER ]  ****************************************************************************************************
+[ HEADER ]                                                Finished                                              
+[ HEADER ]  ****************************************************************************************************

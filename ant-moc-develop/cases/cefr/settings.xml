@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="GBK" ?>
+<settings>
+
+  <track_mapping>auto</track_mapping>
+
+  <geometry>
+    <path>cases/cefr/geometry.xml</path>
+    <primitives>cases/cefr/primitives.xml</primitives>
+  </geometry>
+
+  <materials path="cases/cefr/cefr-mgxs.h5"/>
+
+  <tally>
+    <reaction_rates>F, PHI</reaction_rates>
+    <cross_sections>none</cross_sections>
+    <tracks>none</tracks>
+
+    <mesh type="hexagon" orientation="X">
+      <offset>0, 0, -20.9295</offset>
+      <!-- 暂时输出15圈组件，轴向取燃料部分的高度，并非全堆  -->
+      <shape>15, 6.125,
+             [3.515] + [44.182] + [1.004] + [25.1037] + [45.1863] + [10.041] + [4.519] + [2.008]
+      </shape>
+    </mesh>
+  </tally>
+
+  <quadrature type="Equal Weight" azims="8" polars="2">
+    <azim_spacing>0.1</azim_spacing>
+    <z_spacing>0.1</z_spacing>
+  </quadrature>
+
+  <ray_tracing segmentation="OTF Stacks" z_mesh="Local">
+    <modules>1, 1, 1</modules>
+    <zones>-98.25,-88.25,-78.25,-68.25,-58.25,-48.25,-38.25,-28.25,-18.25,-8.25,0,8.25,18.25,28.25,38.25,48.25,58.25,68.25,78.25,88.25,98.25</zones>
+  </ray_tracing>
+
+  <solver type="CPU Solver" max_iterations="1000" tolerance="1E-5"/>
+
+</settings>

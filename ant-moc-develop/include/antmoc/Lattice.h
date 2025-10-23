@@ -1,0 +1,450 @@
+/// \file Lattice.h
+/// \brief The Lattice derivative class.
+/// \details Refactored on April 18, 2019, in HPC&DE, USTB
+/// \date January 9, 2012
+/// \author William Boyd, MIT, Course 22 (wboyd@mit.edu)
+
+#ifndef LATTICE_H_
+#define LATTICE_H_
+
+#include <limits>
+#include <map>
+#include <set>
+#include <vector>
+
+#include "antmoc/constants.h"
+#include "antmoc/enum_types.h"
+#include "antmoc/container_utils.h"
+#include "antmoc/math_utils.h"
+#include "antmoc/Point.h"
+#include "antmoc/Universe.h"
+
+namespace antmoc
+{
+
+/** Forward declarations */
+class Cell;
+class LocalCoords;
+class LatticeIter;
+
+///---------------------------------------------------------------------
+/// \class Lattice Lattice.h "include/Lattice.h"
+/// \brief Represents a repeating 3D Lattice of Universes.
+///---------------------------------------------------------------------
+class Lattice: public Universe {
+
+protected:
+
+  latticeType _lattice_type; ///< The type of the Lattice layout
+  Point _offset;      ///< The coordinates of the offset for the Universe
+  bool _non_uniform;  ///< True if the lattice is non-uniform
+  int _num_z;         ///< The number of Lattice cells along the z-axis
+  double _width_z;    ///< The axial width of each Lattice cell (uniform lattices only)
+  DoubleVec _widths_z;       ///< Z-direction widths of non-uniform lattice meshes
+  DoubleVec _accumulate_z;   ///< Accumulated widths of non-uniform lattice meshes
+  std::vector<Universe*> _universes;  ///< A container of Universes
+
+public:
+  //-----------------------------------------------------
+  // Iterators
+  //-----------------------------------------------------
+  friend class LatticeIter;
+
+  virtual LatticeIter begin() = 0;
+  LatticeIter end();
+
+  //-----------------------------------------------------
+  // Copy-control members
+  //-----------------------------------------------------
+  Lattice(const int id=-1, const char* name="");
+  virtual ~Lattice() = default;
+
+  //-----------------------------------------------------
+  // Non-virtual functions implemented in the base class
+  //-----------------------------------------------------
+  latticeType getLatticeType() const    { return _lattice_type; }
+  void setLatticeType(latticeType type) { _lattice_type = type; }
+
+  Point* getOffset() { return &_offset; }
+  void setOffset(double x, double y, double z=0.0);
+  void setOffset(Point offset);
+
+  /// \brief Determine if this is a 3-D lattice
+  bool is3D() const
+    { return _width_z != std::numeric_limits<double>::infinity(); }
+
+  // Utils for CSG construction
+  Cell* findCell(LocalCoords* coords);
+  void subdivideCells(double max_radius=INFINITY);
+  void buildNeighbors();
+
+  // Control child universes
+  void clearUniverses();
+  std::vector<Universe*>* getUniverses();
+  std::map<int, Universe*> getUniqueUniverses();
+  std::map<int, Cell*> getAllCells();
+  std::map<int, Universe*> getAllUniverses();
+  Universe* getUniverse(int lat_x, int lat_y, int lat_z=0);
+  void updateUniverse(int lat_x, int lat_y, int lat_z, Universe* universe);
+  void removeUniverse(Universe* universe);
+
+  // The same layout along z-axis
+  bool getNonUniform() const { return _non_uniform; }
+  virtual int getNumX() const = 0;
+  virtual int getNumY() const = 0;
+  int getNumZ() const        { return _num_z; }
+  double getWidthZ() const   { return _width_z; }
+  const DoubleVec& getWidthsZ() const     { return _widths_z; }
+  const DoubleVec& getAccumulateZ() const { return _accumulate_z; }
+  void setNumZ(int num_z) { _num_z = num_z; }
+  void setWidthsZ(DoubleVec widthsz)         { _widths_z = widthsz; }
+  void setAccumulateZ(DoubleVec accumulatez) { _accumulate_z = accumulatez; }
+  virtual void computeSizes() = 0;
+
+  virtual void printString();
+
+  //------------------------------------------------------
+  // Interfaces to be implemented in each derivative class
+  //------------------------------------------------------
+  virtual int getNumLatticeCells() const = 0;
+  int getMaxNumUniverses() const;
+
+  virtual bool containsPoint(Point* point) = 0;
+  virtual double minSurfaceDist(Point* point, double azim, double polar=M_PI/2.0) = 0;
+
+  virtual double getMinX() const = 0;
+  virtual double getMaxX() const = 0;
+  virtual double getMinY() const = 0;
+  virtual double getMaxY() const = 0;
+  double getMinZ() const; // implemented
+  double getMaxZ() const; // implemented
+
+  virtual std::map<int, double>
+      getUniqueRadius(std::map<int, Universe*> &unique_universes) = 0;
+
+  virtual bool areValidIndices(int lat_x, int lat_y, int lat_z) const = 0;
+  virtual bool isValidIndex(int index) const = 0;
+  virtual std::array<int, 2> getLatXY(Point *point) = 0;
+  virtual int getLatX(Point* point) = 0;
+  virtual int getLatY(Point* point) = 0;
+  int getLatZ(Point* point);  // implemented
+
+  int getLatXByIndex(int indx); // implemented
+  int getLatYByIndex(int indx); // implemented
+  int getLatZByIndex(int indx); // implemented
+  std::array<int, 3> getLatXYZByIndex(int indx);  // implemented
+
+  virtual double getLocalPointX(const Point *p, int lat_x, int lat_y) = 0;
+  virtual double getLocalPointY(const Point *p, int lat_x, int lat_y) = 0;
+  double getLocalPointZ(const Point *p, int lat_z); // implemented
+  //virtual double toLocalPoint(const Point *p, int lat_x, int lat_y, int lat_z) = 0;
+
+  virtual int getLatticeCell(int lat_x, int lat_y, int lat_z) const = 0;
+  virtual int getLatticeCell(Point* point) = 0;
+  virtual int getLatticeSurface(int cell, Point* point, double azim, double polar) = 0;
+  virtual int getLatticeSurfaceOTF(int cell, double z, int surface_2D) = 0;
+
+  // Get the center point of a lattice cell
+  virtual Point getLatticeCellCenter(int lat_x, int lat_y, int lat_z) = 0;
+  Point getLatticeCellCenter(int index);  // implemented
+
+  // Get vertices of a lattice cell
+  virtual std::vector<Point> getLatticeCellVertices(int index) = 0;
+
+  virtual std::string toString() = 0;
+  virtual std::string dimToString() = 0;
+
+  //Virtual functions used with HexLattice and RecLattice
+  virtual void setNumX(int num_x){};
+  virtual void setNumY(int num_y){};
+  virtual void setNumR(int num_r){};
+  //RecLattice
+  virtual void setWidths(DoubleVec _cell_widths_x, DoubleVec _cell_widths_y, DoubleVec _cell_widths_z){};
+  virtual void setWidth(double _cell_width_x, double _cell_width_y, double _cell_width_z){};
+  //HexLattice
+  virtual void setOrientation(std::string orientation){};
+  virtual void setOrientation(Orientation orientation){};
+  virtual void setWidth(double width_r,double width_z=std::numeric_limits<double>::infinity()){}
+  virtual void setWidths(double width_r, DoubleVec widths_z){};
+};
+
+
+///---------------------------------------------------------------------
+/// \class An iterator over lattice universes
+///---------------------------------------------------------------------
+class LatticeIter
+{
+public:
+  /// \brief Initialized from a lattice and the index of a lattice cell
+  LatticeIter(Lattice &lat, size_t pos)
+    : _lat(lat), _pos(pos)
+  { }
+
+  /// \brief Two LatticeIters equal iff they are at the same valid position
+  bool operator==(const LatticeIter &rhs) { return (_pos == rhs._pos); }
+
+  bool operator!=(const LatticeIter &rhs) { return !(*this == rhs); }
+
+  /// \brief Return a reference to a pointer to Universe
+  Universe*& operator*() { return _lat._universes[_pos]; }
+
+  /// \brief Move to the next valid lattice cell
+  /// \details This overloaded operator iterates cells of the given
+  ///          lattice and checks the validation
+  LatticeIter& operator++()
+  {
+    // Find the next valid index
+    while (_pos < _lat._universes.size()) {
+      ++_pos;
+      if (_lat.isValidIndex(_pos))
+        return *this;
+    }
+    // The index past the last element
+    _pos = _lat._universes.size();
+    return *this;
+  }
+
+  /// \brief Return the current position of the iterator
+  size_t getPos() const { return _pos; }
+
+protected:
+  Lattice &_lat;  ///< The lattice to be iterated
+  size_t _pos;    ///< Index of the current lattice cell
+};
+
+
+///---------------------------------------------------------------------
+/// \class RecLattice Lattice.h "include/Lattice.h"
+/// \brief Represents a repeating 3D rectangular Lattice of Universes.
+///---------------------------------------------------------------------
+class RecLattice: public Lattice {
+
+private:
+
+  /** The number of Lattice cells along the x-axis */
+  int _num_x;
+
+  /** The number of Lattice cells along the y-axis */
+  int _num_y;
+
+  /** The width of each Lattice cell (cm) along the x-axis
+      (uniform lattices only) */
+  double _width_x;
+
+  /** x-direction dimensions of non-uniform lattice meshes */
+  DoubleVec _widths_x;
+  DoubleVec _accumulate_x;
+
+  /** The width of each Lattice cell (cm) along the y-axis
+      (uniform lattices only) */
+  double _width_y;
+
+  /** y-direction dimensions of non-uniform lattice meshes */
+  DoubleVec _widths_y;
+  DoubleVec _accumulate_y;
+
+public:
+
+  RecLattice(const int id=-1, const char* name="");
+  ~RecLattice() = default;
+
+  //-----------------------------------------------------
+  // Implemented interfaces
+  //-----------------------------------------------------
+  friend class LatticeIter;
+
+  LatticeIter begin();
+
+  /// \brief Compute the number of cells of the HexLattice
+  int getNumLatticeCells() const
+    { return _num_x * _num_y * _num_z; }
+
+  bool containsPoint(Point* point);
+  double minSurfaceDist(Point* point, double azim, double polar=M_PI/2.0);
+
+  std::map<int, double>
+      getUniqueRadius(std::map<int, Universe*> &unique_universes);
+
+  void setUniverses(int num_z, int num_y, int num_x, Universe** universes);
+
+  double getMinX() const;
+  double getMaxX() const;
+  double getMinY() const;
+  double getMaxY() const;
+
+  bool areValidIndices(int lat_x, int lat_y, int lat_z) const;
+  bool isValidIndex(int index) const;
+  std::array<int, 2> getLatXY(Point *point);
+  int getLatX(Point* point);
+  int getLatY(Point* point);
+
+  /// \brief Get the x-coord in the local system of a universe
+  double getLocalPointX(const Point *p, int lat_x, int lat_y)
+    { return p->getX() - (getMinX() + _widths_x[lat_x]/2. + _accumulate_x[lat_x]); }
+
+  /// \brief Get the y-coord in the local system of a universe
+  double getLocalPointY(const Point *p, int lat_x, int lat_y)
+    { return p->getY() - (getMinY() + _widths_y[lat_y]/2. + _accumulate_y[lat_y]); }
+
+  //double toLocalPoint(const Point *p, int lat_x, int lat_y, int lat_z);
+
+  /// \brief Compute the uid of a lattice cell by its indices
+  int getLatticeCell(int lat_x, int lat_y, int lat_z) const
+    { return _num_y*_num_x*lat_z + _num_x*lat_y + lat_x; }
+
+  /// \brief Compute the uid of a lattice cell where a point resides
+  int getLatticeCell(Point* point);
+  int getLatticeSurface(int cell, Point* point, double azim = 0, double polar = M_PI/2.0);
+  int getLatticeSurfaceOTF(int cell, double z, int surface_2D);
+
+  // Non-uniform lattice cells along z-axis
+  void computeSizes();
+
+  // Get the center point of a lattice cell
+  Point getLatticeCellCenter(int lat_x, int lat_y, int lat_z);
+  using Lattice:: getLatticeCellCenter;
+
+  // Get vertices of a lattice cell
+  std::vector<Point> getLatticeCellVertices(int index);
+
+  std::string toString();
+  std::string dimToString();
+
+  //-----------------------------------------------------
+  // Member functions
+  //-----------------------------------------------------
+  int getNumX() const { return _num_x; }
+  int getNumY() const { return _num_y; }
+  double getWidthX() const { return _width_x; }
+  double getWidthY() const { return _width_y; }
+  const DoubleVec& getWidthsX() const { return _widths_x; }
+  const DoubleVec& getWidthsY() const { return _widths_y; }
+  const DoubleVec& getAccumulateX() const { return _accumulate_x; }
+  const DoubleVec& getAccumulateY() const { return _accumulate_y; }
+
+  void setNumX(int num_x) { _num_x = num_x; }
+  void setNumY(int num_y) { _num_y = num_y; }
+  void setNonUniform(bool non_uniform) { _non_uniform = non_uniform; }
+  void setWidthsX(DoubleVec widthsx) { _widths_x = widthsx; }
+  void setWidthsY(DoubleVec widthsy) { _widths_y = widthsy; }
+  void setAccumulateX(DoubleVec accumulatex) { _accumulate_x = accumulatex; }
+  void setAccumulateY(DoubleVec accumulatey) { _accumulate_y = accumulatey; }
+
+  /* Set XYZ widths of uniform meshes */
+  void setWidth(double width_x, double width_y,
+                double width_z=std::numeric_limits<double>::infinity());
+
+  /* Set XYZ widths of non-uniform meshes */
+  void setWidths(DoubleVec widths_x, DoubleVec widths_y,
+                 DoubleVec widths_z);
+
+  /* For debug use */
+  void printLatticeSizes();
+
+};
+
+
+///---------------------------------------------------------------------
+/// \file  Lattice.h "include/Lattice.h"
+/// \class HexLattice
+/// \brief Represents a repeating 3D hexagonal Lattice of Universes.
+///---------------------------------------------------------------------
+class HexLattice: public Lattice {
+
+private:
+
+  Orientation _orientation; ///< Orientation of the lattice
+  int _num_r;               ///< The number of radial tiles
+  double _width_r;          ///< The radial pitch of the lattice
+
+public:
+
+  HexLattice(const int id=-1, const char* name="");
+  ~HexLattice() = default;
+
+  //-----------------------------------------------------
+  // Implemented interfaces
+  //-----------------------------------------------------
+  friend class LatticeIter;
+
+  LatticeIter begin();
+
+  /// \brief Compute the number of cells of the HexLattice
+  int getNumLatticeCells() const
+    { return ( 3 * _num_r * (_num_r - 1) + 1 ) * _num_z; }
+
+  bool containsPoint(Point* point);
+  double minSurfaceDist(Point* point, double azim, double polar=M_PI/2.0);
+
+  std::map<int, double>
+      getUniqueRadius(std::map<int, Universe*> &unique_universes);
+
+  void setUniverses(int num_z, int num_r, Universe** universes);
+  void setUniversesY(int num_z, int num_r, Universe** universes);
+  void setUniversesX(int num_z, int num_r, Universe** universes);
+
+  double getMinX() const;
+  double getMaxX() const;
+  double getMinY() const;
+  double getMaxY() const;
+
+  bool areValidIndices(int lat_x, int lat_y, int lat_z) const;
+  bool isValidIndex(int index) const;
+  std::array<int, 2> getLatXY(Point *point);
+  int getLatX(Point* point);
+  int getLatY(Point* point);
+
+  double getLocalPointX(const Point *p, int lat_x, int lat_y);
+  double getLocalPointY(const Point *p, int lat_x, int lat_y);
+  //double toLocalPoint(const Point *p, int lat_x, int lat_y, int lat_z);
+
+  int getLatticeCell(int lat_x, int lat_y, int lat_z) const;
+  int getLatticeCell(Point* point);
+  int getLatticeSurface(int cell, Point* point, double azim, double polar=M_PI/2.0);
+  int getLatticeSurfaceOTF(int cell, double z, int surface_2D);
+
+  // Non-uniform lattice cells along z-axis
+  void computeSizes();
+
+  // Get the center point of a lattice cell
+  Point getLatticeCellCenterLocal(int lat_x, int lat_y, int lat_z);
+  Point getLatticeCellCenter(int lat_x, int lat_y, int lat_z);
+  using Lattice:: getLatticeCellCenter;
+
+  std::vector<Point> getLatticeCellVertices(int index);
+
+  std::string toString();
+  std::string dimToString();
+
+  //-----------------------------------------------------
+  // Member functions
+  //-----------------------------------------------------
+  /// \brief Returns the number of radial rings
+  int getNumR() const       { return _num_r; }
+
+  /// \brief Returns the radial pitch
+  double getWidthR() const  { return _width_r; }
+
+  /// \brief Returns the number of cells including invalid ones
+  int getNumX() const { return 2 * _num_r - 1; }
+  int getNumY() const { return 2 * _num_r - 1; }
+
+  /// \brief Returns the orientation
+  Orientation getOrientation() const { return _orientation; }
+
+  bool isOrientationX() const { return _orientation == Orientation::x; }
+  bool isOrientationY() const { return _orientation == Orientation::y; }
+
+  void setOrientation(std::string);
+  void setOrientation(Orientation);
+  void setNumR(int num_r) { _num_r = num_r; }
+  void setWidth(double width_r,
+                double width_z=std::numeric_limits<double>::infinity())
+    { _width_r = width_r; _width_z = width_z; }
+  // Set Z widths of non-uniform meshes
+  void setWidths(double width_r, DoubleVec widths_z);
+};
+
+} /* namespace antmoc */
+
+#endif /* LATTICE_H_ */

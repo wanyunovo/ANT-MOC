@@ -1,0 +1,47 @@
+log_level = "info"
+log_line  = 100
+
+[parallel]
+track_mapping = "auto"
+
+[geometry]
+path        = "cases/beavrs/geometry.xml"
+primitives  = ""
+lattice_refines = "0, 0, 50"
+cell_sectors    = ""
+
+[materials]
+path      = "cases/beavrs/beavrs-mgxs.h5"
+xs_layout = "named"
+
+[output]
+reaction_rates = "F, T, PHI"
+cross_sections = "none"
+tracks         = "none"
+mesh.type      = "rectangle"
+mesh.offset    = "0, 0, 0"
+mesh.shape     = """\
+          (0.04318 + [1.25984]*17 + 0.04318)*10,\
+          (0.04318 + [1.25984]*17 + 0.04318)*10,\
+          [7.3152]*50\
+          """
+
+[quadrature]
+type         = "Equal Weight"
+azims        = 16
+azim_spacing = 0.05
+polars       = 2
+z_spacing    = 0.75
+
+[ray_tracing]
+segmentation = "OTF Stacks"
+z_mesh       = "Local"
+zones        = "-182.88, 0, 182.88"
+modules      = "1, 1, 1"
+
+[solver]
+type           = "CPU Solver"
+max_iterations = 5000
+tolerance      = 1E-4
+stabilization  = "none"
+keff_neutron_balance = false

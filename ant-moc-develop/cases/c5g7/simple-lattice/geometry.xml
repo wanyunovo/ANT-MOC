@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="GBK" ?>
+<geometry>
+  <cell id="1" fill="1" name="Pin3x3" region="+3 -4 +5 -6 +7 -8">
+    <!-- Local lattice -->
+    <lattice id="1" name="Full Geometry" type="Rectangle">
+      <widths x="[3.78]" y="[3.78]" z="[7.14]*6"/>
+      <row>  23  </row>  <!--rodded-->
+      <row>  23  </row>  <!--rodded-->
+      <row>  23  </row>  <!--rodded-->
+      <row>  23  </row>  <!--rodded-->
+      <row>  23  </row>  <!--rodded-->
+      <row>  23  </row>  <!--rodded-->
+    </lattice>
+  </cell>
+
+<global>
+  <!-- Halfspaces -->
+  <surface id="1" type="z-cylinder" coeffs="0 0 0.54"/>
+
+  <surface id="3" type="x-plane" coeffs="-1.89"  name="left"   boundary="REFLECTIVE"/>
+  <surface id="4" type="x-plane" coeffs="+1.89"  name="right"  boundary="REFLECTIVE"/>
+  <surface id="5" type="y-plane" coeffs="-1.89"  name="back"   boundary="REFLECTIVE"/>
+  <surface id="6" type="y-plane" coeffs="+1.89"  name="front"  boundary="REFLECTIVE"/>
+  <surface id="7" type="z-plane" coeffs="-21.42" name="bottom" boundary="REFLECTIVE"/>
+  <surface id="8" type="z-plane" coeffs="+21.42" name="top"    boundary="REFLECTIVE"/>
+
+  <!-- Cells -->
+  <cell id="1"                name="moderator" material="Water"           region="+1" sectors="8">
+               <universes> 1 6 7 </universes>
+  </cell>
+  <cell id="2"  universes="1" name="uo2"       material="UO2"             region="-1" sectors="4"/>
+  <cell id="7"  universes="6" name="gt"        material="Guide Tube"      region="-1" rings="5" sectors="4"/>
+  <cell id="8"  universes="7" name="gtc"       material="Control Rod"     region="-1" rings="5" sectors="4"/>
+
+  <cell id="23" universes="23" fill="33" name="assemgly1-rodded" type="ASSEMBLY">
+    <lattice id="33" name="assembly1-rodded lattice" type="Rectangle">
+      <widths x="[1.26]*3" y="[1.26]*3" z="7.14"/>
+      <refines z="5"/>
+      <row> 1 1 1 </row>
+      <row> 1 7 1 </row>
+      <row> 1 1 1 </row>
+    </lattice>
+  </cell>
+</global>
+</geometry>

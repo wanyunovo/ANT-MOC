@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="GBK" ?>
+<global>
+  <!-- Halfspaces -->
+  <surface id="1" type="x-plane" coeffs="-12.5" name="left"   boundary="REFLECTIVE"/>
+  <surface id="2" type="x-plane" coeffs="+12.5" name="right"  boundary="VACUUM"/>
+  <surface id="3" type="y-plane" coeffs="-12.5" name="back"   boundary="REFLECTIVE"/>
+  <surface id="4" type="y-plane" coeffs="+12.5" name="front"  boundary="VACUUM"/>
+  <surface id="5" type="z-plane" coeffs="-12.5" name="bottom" boundary="REFLECTIVE"/>
+  <surface id="6" type="z-plane" coeffs="+12.5" name="top"    boundary="VACUUM"/>
+
+  <!-- Cells -->
+  <cell id="1"  universes="1" name="core"      material="Core"/>
+  <cell id="2"  universes="2" name="reflector" material="Reflector"/>
+  <cell id="3"  universes="3" name="void"      material="Void"/>
+  <cell id="4"  universes="4" name="control"   material="Control Rod"/>
+</global>

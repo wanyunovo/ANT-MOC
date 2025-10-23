@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="GBK" ?>
+<settings>
+
+  <track_mapping>auto</track_mapping>
+
+  <geometry lattice_refines="0, 0, 50">
+    <path>cases/beavrs/geometry.xml</path>
+  </geometry>
+
+  <materials path="cases/beavrs/beavrs-mgxs.h5"/>
+
+  <tally>
+    <reaction_rates>F, T, PHI</reaction_rates>
+    <cross_sections>none</cross_sections>
+    <tracks>none</tracks>
+
+    <mesh type="rectangle">
+      <shape>
+          (0.04318 + [1.25984]*17 + 0.04318)*10,
+          (0.04318 + [1.25984]*17 + 0.04318)*10,
+          [7.3152]*50</shape>
+    </mesh>
+  </tally>
+
+  <quadrature type="Equal Weight" azims="16" polars="2">
+    <azim_spacing>0.05</azim_spacing>
+    <z_spacing>0.75</z_spacing>
+  </quadrature>
+
+  <ray_tracing segmentation="OTF Stacks" z_mesh="Local">
+    <zones>-182.88, 0, 182.88</zones>
+    <modules>1, 1, 1</modules>
+  </ray_tracing>
+
+  <solver type="CPU Solver" max_iterations="5000" tolerance="1E-4"/>
+
+</settings>

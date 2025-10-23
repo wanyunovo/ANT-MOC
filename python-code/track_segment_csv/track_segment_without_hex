@@ -1,0 +1,869 @@
+Current local date and time: 2024-06-15 15:20:49
+[ TITLE  ]  ****************************************************************************************************
+[ TITLE  ]                     ANT-MOC: an advanced neutron transport code from the CVR suite                   
+[ TITLE  ]  ****************************************************************************************************
+[  INFO  ]  
+[  INFO  ]  ... Reporting runtime parameters...
+[  INFO  ]  ------------------------
+[  INFO  ]  Log level                = INFO
+[  INFO  ]  Log line length          = 100
+[  INFO  ]  Log file                 = /home/gengxiaoxu/data/Hex-CMFD-v0.1/ant-moc-develop/Log-Hex-Modify/output
+[  INFO  ]  ------------------------
+[  INFO  ]  Ranks                    = 1
+[  INFO  ]  Threads per rank         = 1
+[  INFO  ]  Spatial Domains          = 1 x 1 x 1 x 1
+[  INFO  ]  Sub track domains        = 1
+[  INFO  ]  Track mapping            = AUTO
+[  INFO  ]  ------------------------
+[  INFO  ]  Config file              =
+[  INFO  ]  ...  /home/gengxiaoxu/data/Hex-CMFD-v0.1/ant-moc-develop/cases/cefr/single-assembly/settings.toml
+[  INFO  ]  Geometry file            =
+[  INFO  ]  ...  /home/gengxiaoxu/data/Modify-Hex-CMFD/ant-moc-develop/cases/cefr/single-assembly/geometry.xml
+[  INFO  ]  Primitives file          =
+[  INFO  ]  ...  /home/gengxiaoxu/data/Modify-Hex-CMFD/ant-moc-develop/cases/cefr/single-assembly/primitives.xml
+[  INFO  ]  Materials file           =
+[  INFO  ]  ...  /home/gengxiaoxu/data/Modify-Hex-CMFD/ant-moc-develop/cases/cefr/cefr-mgxs-fixed.h5
+[  INFO  ]  XS file layout           = COMPRESSED
+[  INFO  ]  Global lattice refines   = 0, 0, 0
+[  INFO  ]  Global cell sectors      = 
+[  INFO  ]  Global cell rings        = 
+[  INFO  ]  ------------------------
+[  INFO  ]  Quadrature               = EQUAL WEIGHT
+[  INFO  ]  Azimuthal angles         = 8
+[  INFO  ]  Azimuthal spacing        = 0.5
+[  INFO  ]  Polar angles             = 2
+[  INFO  ]  Polar spacing            = 0.75
+[  INFO  ]  Segment formation        = OTF STACKS
+[  INFO  ]  Modules                  = 1, 1, 1
+[  INFO  ]  Axial zones              =
+[  INFO  ]  ...  
+[  INFO  ]  ... -98.25,-88.25,-78.25,-68.25,-58.25,-48.25,-38.25,-28.25,-18.25,-8.25,0,8.25,18.25,28.25,38.25,48.
+[  INFO  ]  ... 25,58.25,68.25,78.25,88.25,98.25
+[  INFO  ]  Z mesh type              = LOCAL
+[  INFO  ]  ------------------------
+[  INFO  ]  Solver                   = CPU SOLVER
+[  INFO  ]  Max iterations           = 1000
+[  INFO  ]  Tolerance                = 1.0000E-05
+[  INFO  ]  K-eff                    = Successive Fission Rates
+[  INFO  ]  Stabilization            = NONE
+[  INFO  ]  ------------------------
+[  INFO  ]  
+[  INFO  ]  ... Reporting output configuration...
+[  INFO  ]  ------------------------
+[  INFO  ]  Output directory         = 20240615-152049
+[  INFO  ]  Output settings          = true
+[  INFO  ]  Output tally mesh        = true
+[  INFO  ]  Output FSR data          = false
+[  INFO  ]  Output track types       = NONE
+[  INFO  ]  Tally RX types           = F, PHI
+[  INFO  ]  Tally XS types           = NONE
+[  INFO  ]  Selected groups          = ALL
+[  INFO  ]  Tally mesh type          = HEXAGON
+[  INFO  ]  Tally mesh shape         = 5, 0.695,[3.515] + [44.182] + [1.004] + [25.1037] + [45.1863] + [10.041]
+[  INFO  ]  ...  + [4.519] + [2.008]
+[  INFO  ]  Tally mesh offset        = (0, 0, -20.9295)
+[  INFO  ]  Mesh orientation         = Y
+[  INFO  ]  ------------------------
+[  INFO  ]  
+[  INFO  ]  ... Reporting other options...
+[  INFO  ]  ------------------------
+[  INFO  ]  Required energy group    = ALL
+[  INFO  ]  ------------------------
+[  INFO  ]  
+[  INFO  ]  Periodic track domain decomposition = disabled
+[  INFO  ]  Spatial domain decomposition        = disabled
+[  INFO  ]  Creating geometry and materials...
+[  INFO  ]  Reading geometry primitives from file...
+[  INFO  ]  Reading geometry from file...
+[  INFO  ]  Number of primitives cleaned = 0
+[  INFO  ]  Initializing flat source regions...
+[  INFO  ]  Number of materials cleaned = 0
+[  INFO  ]  Number of energy groups required      = 514
+[  INFO  ]  Number of energy groups in H5 file    = 514
+[  INFO  ]  Total number of materials in H5 file  = 32
+[  INFO  ]  Number of retrieved materials         = 9
+[  INFO  ]  Number of materials in geometry       = 9
+[  INFO  ]  Max storage for Materials per domain = 18.32 MiB
+[ HEADER ]  ****************************************************************************************************
+[ HEADER ]                                    Timing Report - Input (average)                                   
+[ HEADER ]  ****************************************************************************************************
+[ RESULT ]  Total Input Time................................... 1.90789E+00 s
+[ RESULT ]    Time to read settings............................ 3.66395E-02 s  1.92%
+[ RESULT ]    Time to read geometry and materials.............. 1.86164E+00 s 97.58%
+[ RESULT ]    Time of domain decomposition..................... 1.30767E-03 s  0.07%
+[ RESULT ]    Time of meshing and FSRs initialization.......... 8.05044E-04 s  0.04%
+[ RESULT ]    Time to remove unused objects.................... 1.99524E-03 s  0.10%
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[  INFO  ]  Initializing the track generator...
+[  INFO  ]  Initializing 2D tracks...
+[  INFO  ]  SD of phis after correction  = 0.0379
+[  INFO  ]  Extra tracks due to correction = 0, 0.0000%
+[  INFO  ]  Max/Min length of cyclics = 17.10, 7.62
+[  INFO  ]  Initializing 2D tracks array...
+[ RESULT ]  Total number of 2D Tracks = 72
+[  INFO  ]  Initializing 3D tracks...
+[  INFO  ]  RMS polar angle correction 0.070547 %
+[  INFO  ]  Max polar angle correction 0.132413 %
+[ RESULT ]  Total number of 3D Chains = 19060
+[  INFO  ]  Progress Initializing 3D Tracks:   0.00%
+[  INFO  ]  Progress Initializing 3D Tracks:  10.29%
+[  INFO  ]  Progress Initializing 3D Tracks:  19.12%
+[  INFO  ]  Progress Initializing 3D Tracks:  27.94%
+[  INFO  ]  Progress Initializing 3D Tracks:  36.76%
+[  INFO  ]  Progress Initializing 3D Tracks:  45.59%
+[  INFO  ]  Progress Initializing 3D Tracks:  54.41%
+[  INFO  ]  Progress Initializing 3D Tracks:  63.24%
+[  INFO  ]  Progress Initializing 3D Tracks:  72.06%
+[  INFO  ]  Progress Initializing 3D Tracks:  80.88%
+[  INFO  ]  Progress Initializing 3D Tracks: 100.00%
+[ RESULT ]  Number of 3D Tracks in spatial domain = 40000
+[  INFO  ]  Memory allocated for Tracks in spatial domain = 0.038 MiB
+[  INFO  ]  Finished initialization of 3D tracks
+[  INFO  ]  Ray tracing for axially extruded track segmentation...
+[  INFO  ]  Segmenting 2D tracks on the superposition plane...
+[  INFO  ]  Progress Segmenting 2D Tracks:   0.00%
+[  INFO  ]  segment not in CMFD Cell start(2.400000,-3.500000), end(2.736156,-3.349161)
+[  INFO  ]  segment not in CMFD Cell start(2.736156,-3.349161), end(3.000000,-3.230769)
+[  INFO  ]  2D Track Array id:0, start(2.400000,-3.500000), end(3.000000,-3.230769), track length:0.657636, num
+[  INFO  ]  ...  segments:2
+[  INFO  ]  segment not in CMFD Cell start(1.200000,-3.500000), end(1.533157,-3.350506)
+[  INFO  ]  segment not in CMFD Cell start(1.533157,-3.350506), end(2.170547,-3.064498)
+[  INFO  ]  segment not in CMFD Cell start(2.170547,-3.064498), end(2.807937,-2.778490)
+[  INFO  ]  segment not in CMFD Cell start(2.807937,-2.778490), end(3.000000,-2.692308)
+[  INFO  ]  2D Track Array id:1, start(1.200000,-3.500000), end(3.000000,-2.692308), track length:1.972908, num
+[  INFO  ]  ...  segments:4
+[  INFO  ]  segment not in CMFD Cell start(0.000000,-3.500000), end(0.330159,-3.351852)
+[  INFO  ]  segment not in CMFD Cell start(0.330159,-3.351852), end(0.967549,-3.065844)
+[  INFO  ]  segment not in CMFD Cell start(0.967549,-3.065844), end(1.604939,-2.779835)
+[  INFO  ]  segment not in CMFD Cell start(1.604939,-2.779835), end(2.146754,-2.536713)
+[  INFO  ]  segment not in CMFD Cell start(2.146754,-2.536713), end(2.379000,-2.432500)
+[  INFO  ]  segment not in CMFD Cell start(2.379000,-2.432500), end(2.688313,-2.293706)
+[  INFO  ]  segment not in CMFD Cell start(2.688313,-2.293706), end(3.000000,-2.153846)
+[  INFO  ]  2D Track Array id:2, start(0.000000,-3.500000), end(3.000000,-2.153846), track length:3.288180, num
+[  INFO  ]  ...  segments:7
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.200000,-3.500000), end(-0.872840,-3.353197)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.872840,-3.353197), end(-0.447031,-3.162129)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.447031,-3.162129), end(-0.311425,-3.101280)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.311425,-3.101280), end(-0.235450,-3.067189)
+[  INFO  ]  segment not in CMFD Cell start(0.400100,-2.782006), end(0.404571,-2.780000)
+[  INFO  ]  segment not in CMFD Cell start(0.941659,-2.538999), end(1.179000,-2.432500)
+[  INFO  ]  segment not in CMFD Cell start(1.483217,-2.295992), end(1.953429,-2.085000)
+[  INFO  ]  segment not in CMFD Cell start(2.024776,-2.052985), end(2.484159,-1.846852)
+[  INFO  ]  segment not in CMFD Cell start(2.484159,-1.846852), end(2.632805,-1.780152)
+[  INFO  ]  segment not in CMFD Cell start(2.632805,-1.780152), end(2.962000,-1.632436)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,-1.632436), end(3.000000,-1.615385)
+[  INFO  ]  2D Track Array id:3, start(-1.200000,-3.500000), end(3.000000,-1.615385), track length:4.603453,
+[  INFO  ]  ...  num segments:31
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.400000,-3.500000), end(-2.075838,-3.354543)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.075838,-3.354543), end(-1.438448,-3.068534)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.438448,-3.068534), end(-0.971813,-2.859147)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.971813,-2.859147), end(-0.836206,-2.798298)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.836206,-2.798298), end(-0.804995,-2.784293)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.804995,-2.784293), end(-0.795429,-2.780000)
+[  INFO  ]  segment not in CMFD Cell start(2.704586,-1.209481), end(2.841500,-1.148045)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,-1.148045), end(2.962000,-1.093974)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,-1.093974), end(3.000000,-1.076923)
+[  INFO  ]  2D Track Array id:4, start(-2.400000,-3.500000), end(3.000000,-1.076923), track length:5.918725,
+[  INFO  ]  ...  num segments:57
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,-3.230769), end(-2.641447,-3.069880)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.641447,-3.069880), end(-2.010091,-2.786579)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.010091,-2.786579), end(-1.995429,-2.780000)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.995429,-2.780000), end(-1.496594,-2.556164)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.496594,-2.556164), end(-1.468532,-2.543572)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.468532,-2.543572), end(-1.360988,-2.495315)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.360988,-2.495315), end(-1.221000,-2.432500)
+[  INFO  ]  segment not in CMFD Cell start(2.776367,-0.638809), end(2.841500,-0.609583)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,-0.609583), end(2.962000,-0.555513)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,-0.555513), end(3.000000,-0.538462)
+[  INFO  ]  2D Track Array id:5, start(-3.000000,-3.230769), end(3.000000,-0.538462), track length:6.576361,
+[  INFO  ]  ...  num segments:66
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,-2.692308), end(-2.673627,-2.545858)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.673627,-2.545858), end(-2.421000,-2.432500)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.421000,-2.432500), end(-2.132069,-2.302851)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.132069,-2.302851), end(-2.021375,-2.253181)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.021375,-2.253181), end(-1.885769,-2.192332)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.885769,-2.192332), end(-1.646571,-2.085000)
+[  INFO  ]  segment not in CMFD Cell start(2.741959,-0.115788), end(2.841500,-0.071122)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,-0.071122), end(2.962000,-0.017051)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,-0.017051), end(3.000000,0.000000)
+[  INFO  ]  2D Track Array id:6, start(-3.000000,-2.692308), end(3.000000,0.000000), track length:6.576361, num
+[  INFO  ]  ...  segments:74
+[  INFO  ]  Progress Segmenting 2D Tracks:  11.11%
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,-2.153846), end(-2.846571,-2.085000)
+[  INFO  ]  segment not in CMFD Cell start(-2.846571,-2.085000), end(-2.795605,-2.062131)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.795605,-2.062131), end(-2.546157,-1.950199)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.546157,-1.950199), end(-2.410551,-1.889350)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.410551,-1.889350), end(-2.179189,-1.785534)
+[  INFO  ]  segment not in CMFD Cell start(2.619981,0.367940), end(2.841500,0.467340)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,0.467340), end(2.962000,0.521410)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,0.521410), end(3.000000,0.538462)
+[  INFO  ]  2D Track Array id:7, start(-3.000000,-2.153846), end(3.000000,0.538462), track length:6.576361, num
+[  INFO  ]  ...  segments:75
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,-1.615385), end(-2.962000,-1.598333)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,-1.598333), end(-2.841500,-1.544263)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,-1.544263), end(-2.744798,-1.500871)
+[  INFO  ]  segment not in CMFD Cell start(2.673016,0.930200), end(2.841500,1.005801)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,1.005801), end(2.962000,1.059872)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,1.059872), end(3.000000,1.076923)
+[  INFO  ]  2D Track Array id:8, start(-3.000000,-1.615385), end(3.000000,1.076923), track length:6.576361, num
+[  INFO  ]  ...  segments:82
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,-1.076923), end(-2.962000,-1.059872)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,-1.059872), end(-2.841500,-1.005801)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,-1.005801), end(-2.673016,-0.930200)
+[  INFO  ]  segment not in CMFD Cell start(2.744798,1.500871), end(2.841500,1.544263)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,1.544263), end(2.962000,1.598333)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,1.598333), end(3.000000,1.615385)
+[  INFO  ]  2D Track Array id:9, start(-3.000000,-1.076923), end(3.000000,1.615385), track length:6.576361, num
+[  INFO  ]  ...  segments:82
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,-0.538462), end(-2.962000,-0.521410)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,-0.521410), end(-2.841500,-0.467340)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,-0.467340), end(-2.619981,-0.367940)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.179189,1.785534), end(2.410551,1.889350)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.410551,1.889350), end(2.546157,1.950199)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.546157,1.950199), end(2.795605,2.062131)
+[  INFO  ]  segment not in CMFD Cell start(2.795605,2.062131), end(2.846571,2.085000)
+[  INFO  ]  segment not in CMFD Cell start(2.846571,2.085000), end(3.000000,2.153846)
+[  INFO  ]  2D Track Array id:10, start(-3.000000,-0.538462), end(3.000000,2.153846), track length:6.576361,
+[  INFO  ]  ...  num segments:75
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,0.000000), end(-2.962000,0.017051)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,0.017051), end(-2.841500,0.071122)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,0.071122), end(-2.741959,0.115788)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.646571,2.085000), end(1.885769,2.192332)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.885769,2.192332), end(2.021376,2.253181)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.021376,2.253181), end(2.132069,2.302851)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.132069,2.302851), end(2.421000,2.432500)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.421000,2.432500), end(2.673627,2.545858)
+[  INFO  ]  segment not in CMFD Cell start(2.673627,2.545858), end(3.000000,2.692308)
+[  INFO  ]  2D Track Array id:11, start(-3.000000,0.000000), end(3.000000,2.692308), track length:6.576361, num
+[  INFO  ]  ...  segments:74
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,0.538462), end(-2.962000,0.555513)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,0.555513), end(-2.841500,0.609583)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,0.609583), end(-2.776367,0.638809)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.221000,2.432500), end(1.360988,2.495315)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.360988,2.495315), end(1.468532,2.543572)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.468532,2.543572), end(1.496594,2.556164)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.496594,2.556164), end(1.995429,2.780000)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.995429,2.780000), end(2.010091,2.786579)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.010091,2.786579), end(2.641447,3.069880)
+[  INFO  ]  segment not in CMFD Cell start(2.641447,3.069880), end(3.000000,3.230769)
+[  INFO  ]  2D Track Array id:12, start(-3.000000,0.538462), end(3.000000,3.230769), track length:6.576361, num
+[  INFO  ]  ...  segments:66
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,1.076923), end(-2.962000,1.093974)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,1.093974), end(-2.841500,1.148045)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,1.148045), end(-2.704586,1.209481)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.795429,2.780000), end(0.804995,2.784293)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.804995,2.784293), end(0.836206,2.798298)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.836206,2.798298), end(0.971813,2.859147)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.971813,2.859147), end(1.438448,3.068534)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.438448,3.068534), end(2.075838,3.354543)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.075838,3.354543), end(2.400000,3.500000)
+[  INFO  ]  2D Track Array id:13, start(-3.000000,1.076923), end(2.400000,3.500000), track length:5.918725, num
+[  INFO  ]  ...  segments:57
+[  INFO  ]  Progress Segmenting 2D Tracks:  20.83%
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,1.615385), end(-2.962000,1.632436)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,1.632436), end(-2.632805,1.780152)
+[  INFO  ]  segment not in CMFD Cell start(-2.632805,1.780152), end(-2.484159,1.846852)
+[  INFO  ]  segment not in CMFD Cell start(-2.484159,1.846852), end(-2.024776,2.052985)
+[  INFO  ]  segment not in CMFD Cell start(-1.953429,2.085000), end(-1.483217,2.295992)
+[  INFO  ]  segment not in CMFD Cell start(-1.179000,2.432500), end(-0.941659,2.538999)
+[  INFO  ]  segment not in CMFD Cell start(-0.404571,2.780000), end(-0.400100,2.782006)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.235450,3.067189), end(0.311425,3.101280)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.311425,3.101280), end(0.447031,3.162129)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.447031,3.162129), end(0.872840,3.353197)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.872840,3.353197), end(1.200000,3.500000)
+[  INFO  ]  2D Track Array id:14, start(-3.000000,1.615385), end(1.200000,3.500000), track length:4.603453, num
+[  INFO  ]  ...  segments:31
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,2.153846), end(-2.688313,2.293706)
+[  INFO  ]  segment not in CMFD Cell start(-2.688313,2.293706), end(-2.379000,2.432500)
+[  INFO  ]  segment not in CMFD Cell start(-2.379000,2.432500), end(-2.146754,2.536713)
+[  INFO  ]  segment not in CMFD Cell start(-2.146754,2.536713), end(-1.604939,2.779835)
+[  INFO  ]  segment not in CMFD Cell start(-1.604939,2.779835), end(-0.967549,3.065844)
+[  INFO  ]  segment not in CMFD Cell start(-0.967549,3.065844), end(-0.330159,3.351852)
+[  INFO  ]  segment not in CMFD Cell start(-0.330159,3.351852), end(0.000000,3.500000)
+[  INFO  ]  2D Track Array id:15, start(-3.000000,2.153846), end(0.000000,3.500000), track length:3.288180, num
+[  INFO  ]  ...  segments:7
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,2.692308), end(-2.807937,2.778490)
+[  INFO  ]  segment not in CMFD Cell start(-2.807937,2.778490), end(-2.170547,3.064498)
+[  INFO  ]  segment not in CMFD Cell start(-2.170547,3.064498), end(-1.533157,3.350506)
+[  INFO  ]  segment not in CMFD Cell start(-1.533157,3.350506), end(-1.200000,3.500000)
+[  INFO  ]  2D Track Array id:16, start(-3.000000,2.692308), end(-1.200000,3.500000), track length:1.972908,
+[  INFO  ]  ...  num segments:4
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,3.230769), end(-2.736156,3.349161)
+[  INFO  ]  segment not in CMFD Cell start(-2.736156,3.349161), end(-2.400000,3.500000)
+[  INFO  ]  2D Track Array id:17, start(-3.000000,3.230769), end(-2.400000,3.500000), track length:0.657636,
+[  INFO  ]  ...  num segments:2
+[  INFO  ]  segment not in CMFD Cell start(2.750000,-3.500000), end(2.781205,-3.427188)
+[  INFO  ]  segment not in CMFD Cell start(2.781205,-3.427188), end(3.000000,-2.916667)
+[  INFO  ]  2D Track Array id:18, start(2.750000,-3.500000), end(3.000000,-2.916667), track length:0.634648,
+[  INFO  ]  ...  num segments:2
+[  INFO  ]  segment not in CMFD Cell start(2.250000,-3.500000), end(2.409643,-3.127500)
+[  INFO  ]  segment not in CMFD Cell start(2.409643,-3.127500), end(2.665185,-2.531235)
+[  INFO  ]  segment not in CMFD Cell start(2.665185,-2.531235), end(2.856429,-2.085000)
+[  INFO  ]  segment not in CMFD Cell start(2.856429,-2.085000), end(3.000000,-1.750000)
+[  INFO  ]  2D Track Array id:19, start(2.250000,-3.500000), end(3.000000,-1.750000), track length:1.903943,
+[  INFO  ]  ...  num segments:4
+[  INFO  ]  segment not in CMFD Cell start(1.750000,-3.500000), end(1.760714,-3.475000)
+[  INFO  ]  segment not in CMFD Cell start(1.760714,-3.475000), end(2.036298,-2.831971)
+[  INFO  ]  segment not in CMFD Cell start(2.036298,-2.831971), end(2.207500,-2.432500)
+[  INFO  ]  segment not in CMFD Cell start(2.207500,-2.432500), end(2.370815,-2.051433)
+[  INFO  ]  segment not in CMFD Cell start(2.370815,-2.051433), end(2.450053,-1.866543)
+[  INFO  ]  segment not in CMFD Cell start(2.450053,-1.866543), end(2.505357,-1.737500)
+[  INFO  ]  segment not in CMFD Cell start(2.720120,-1.236386), end(2.841500,-0.953167)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,-0.953167), end(2.952143,-0.695000)
+[  INFO  ]  segment not in CMFD Cell start(2.952143,-0.695000), end(2.962000,-0.672000)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,-0.672000), end(3.000000,-0.583333)
+[  INFO  ]  2D Track Array id:20, start(1.750000,-3.500000), end(3.000000,-0.583333), track length:3.173239,
+[  INFO  ]  ...  num segments:19
+[  INFO  ]  Progress Segmenting 2D Tracks:  30.56%
+[  INFO  ]  segment not in CMFD Cell start(1.250000,-3.500000), end(1.407411,-3.132707)
+[  INFO  ]  segment not in CMFD Cell start(1.407411,-3.132707), end(1.424732,-3.092291)
+[  INFO  ]  segment not in CMFD Cell start(1.424732,-3.092291), end(1.578367,-2.733811)
+[  INFO  ]  segment not in CMFD Cell start(1.578367,-2.733811), end(1.706419,-2.435021)
+[  INFO  ]  segment not in CMFD Cell start(1.706419,-2.435021), end(1.785658,-2.250131)
+[  INFO  ]  segment not in CMFD Cell start(1.785658,-2.250131), end(1.856429,-2.085000)
+[  INFO  ]  segment not in CMFD Cell start(2.775056,0.058463), end(2.841500,0.213500)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,0.213500), end(2.962000,0.494667)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,0.494667), end(3.000000,0.583333)
+[  INFO  ]  2D Track Array id:21, start(1.250000,-3.500000), end(3.000000,0.583333), track length:4.442534, num
+[  INFO  ]  ...  segments:37
+[  INFO  ]  segment not in CMFD Cell start(0.750000,-3.500000), end(0.760714,-3.475000)
+[  INFO  ]  segment not in CMFD Cell start(0.760714,-3.475000), end(0.949480,-3.034547)
+[  INFO  ]  segment not in CMFD Cell start(0.949480,-3.034547), end(1.042024,-2.818610)
+[  INFO  ]  segment not in CMFD Cell start(1.042024,-2.818610), end(1.121263,-2.633720)
+[  INFO  ]  segment not in CMFD Cell start(1.121263,-2.633720), end(1.207500,-2.432500)
+[  INFO  ]  segment not in CMFD Cell start(2.659035,0.954416), end(2.841500,1.380167)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,1.380167), end(2.845714,1.390000)
+[  INFO  ]  segment not in CMFD Cell start(2.845714,1.390000), end(2.962000,1.661333)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,1.661333), end(3.000000,1.750000)
+[  INFO  ]  2D Track Array id:22, start(0.750000,-3.500000), end(3.000000,1.750000), track length:5.711830, num
+[  INFO  ]  ...  segments:55
+[  INFO  ]  segment not in CMFD Cell start(0.250000,-3.500000), end(0.320593,-3.335283)
+[  INFO  ]  segment not in CMFD Cell start(0.320593,-3.335283), end(0.377629,-3.202199)
+[  INFO  ]  segment not in CMFD Cell start(0.377629,-3.202199), end(0.456868,-3.017309)
+[  INFO  ]  segment not in CMFD Cell start(0.456868,-3.017309), end(0.558571,-2.780000)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.494643,1.737500), end(2.530132,1.820309)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.530132,1.820309), end(2.577936,1.931851)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.577936,1.931851), end(2.713971,2.249265)
+[  INFO  ]  segment not in CMFD Cell start(2.713971,2.249265), end(2.941429,2.780000)
+[  INFO  ]  segment not in CMFD Cell start(2.941429,2.780000), end(3.000000,2.916667)
+[  INFO  ]  2D Track Array id:23, start(0.250000,-3.500000), end(3.000000,2.916667), track length:6.981125, num
+[  INFO  ]  ...  segments:66
+[  INFO  ]  segment not in CMFD Cell start(-0.250000,-3.500000), end(-0.173003,-3.320340)
+[  INFO  ]  segment not in CMFD Cell start(-0.173003,-3.320340), end(-0.125199,-3.208798)
+[  INFO  ]  segment not in CMFD Cell start(-0.125199,-3.208798), end(-0.090357,-3.127500)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.085084,1.948529), end(2.129310,2.051724)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.129310,2.051724), end(2.177114,2.163266)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.177114,2.163266), end(2.292500,2.432500)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.292500,2.432500), end(2.590357,3.127500)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.590357,3.127500), end(2.750000,3.500000)
+[  INFO  ]  2D Track Array id:24, start(-0.250000,-3.500000), end(2.750000,3.500000), track length:7.615773,
+[  INFO  ]  ...  num segments:74
+[  INFO  ]  segment not in CMFD Cell start(-0.750000,-3.500000), end(-0.739286,-3.475000)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.739286,-3.475000), end(-0.573825,-3.088925)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.573825,-3.088925), end(-0.526021,-2.977383)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.526021,-2.977383), end(-0.441429,-2.780000)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.643571,2.085000), end(1.728488,2.283139)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.728488,2.283139), end(1.776292,2.394681)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.776292,2.394681), end(1.941429,2.780000)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.941429,2.780000), end(2.140019,3.243378)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.140019,3.243378), end(2.250000,3.500000)
+[  INFO  ]  2D Track Array id:25, start(-0.750000,-3.500000), end(2.250000,3.500000), track length:7.615773,
+[  INFO  ]  ...  num segments:74
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.250000,-3.500000), end(-1.090357,-3.127500)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.090357,-3.127500), end(-0.974647,-2.857510)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.974647,-2.857510), end(-0.926844,-2.745968)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.926844,-2.745968), end(-0.882245,-2.641906)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.292500,2.432500), end(1.327666,2.514553)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.327666,2.514553), end(1.375469,2.626095)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.375469,2.626095), end(1.511132,2.942642)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.511132,2.942642), end(1.739286,3.475000)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.739286,3.475000), end(1.750000,3.500000)
+[  INFO  ]  2D Track Array id:26, start(-1.250000,-3.500000), end(1.750000,3.500000), track length:7.615773,
+[  INFO  ]  ...  num segments:75
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.750000,-3.500000), end(-1.739286,-3.475000)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.739286,-3.475000), end(-1.511132,-2.942642)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.511132,-2.942642), end(-1.375469,-2.626095)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.375469,-2.626095), end(-1.327666,-2.514553)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.327666,-2.514553), end(-1.292500,-2.432500)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.882245,2.641906), end(0.926844,2.745968)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.926844,2.745968), end(0.974647,2.857510)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.974647,2.857510), end(1.090357,3.127500)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.090357,3.127500), end(1.250000,3.500000)
+[  INFO  ]  2D Track Array id:27, start(-1.750000,-3.500000), end(1.250000,3.500000), track length:7.615773,
+[  INFO  ]  ...  num segments:75
+[  INFO  ]  Progress Segmenting 2D Tracks:  40.28%
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.250000,-3.500000), end(-2.140019,-3.243378)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.140019,-3.243378), end(-1.941429,-2.780000)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.941429,-2.780000), end(-1.776292,-2.394681)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.776292,-2.394681), end(-1.728488,-2.283139)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.728488,-2.283139), end(-1.643571,-2.085000)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.441429,2.780000), end(0.526021,2.977383)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.526021,2.977383), end(0.573825,3.088925)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.573825,3.088925), end(0.739286,3.475000)
+[  INFO  ]  segment not in CMFD Cell start(0.739286,3.475000), end(0.750000,3.500000)
+[  INFO  ]  2D Track Array id:28, start(-2.250000,-3.500000), end(0.750000,3.500000), track length:7.615773,
+[  INFO  ]  ...  num segments:74
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.750000,-3.500000), end(-2.590357,-3.127500)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.590357,-3.127500), end(-2.292500,-2.432500)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.292500,-2.432500), end(-2.177114,-2.163266)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.177114,-2.163266), end(-2.129310,-2.051724)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.129310,-2.051724), end(-2.085084,-1.948529)
+[  INFO  ]  segment not in CMFD Cell start(0.090357,3.127500), end(0.125199,3.208798)
+[  INFO  ]  segment not in CMFD Cell start(0.125199,3.208798), end(0.173003,3.320340)
+[  INFO  ]  segment not in CMFD Cell start(0.173003,3.320340), end(0.250000,3.500000)
+[  INFO  ]  2D Track Array id:29, start(-2.750000,-3.500000), end(0.250000,3.500000), track length:7.615773,
+[  INFO  ]  ...  num segments:74
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,-2.916667), end(-2.941429,-2.780000)
+[  INFO  ]  segment not in CMFD Cell start(-2.941429,-2.780000), end(-2.713971,-2.249265)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.713971,-2.249265), end(-2.577936,-1.931851)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.577936,-1.931851), end(-2.530132,-1.820309)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.530132,-1.820309), end(-2.494643,-1.737500)
+[  INFO  ]  segment not in CMFD Cell start(-0.558571,2.780000), end(-0.456868,3.017309)
+[  INFO  ]  segment not in CMFD Cell start(-0.456868,3.017309), end(-0.377629,3.202199)
+[  INFO  ]  segment not in CMFD Cell start(-0.377629,3.202199), end(-0.320593,3.335283)
+[  INFO  ]  segment not in CMFD Cell start(-0.320593,3.335283), end(-0.250000,3.500000)
+[  INFO  ]  2D Track Array id:30, start(-3.000000,-2.916667), end(-0.250000,3.500000), track length:6.981125,
+[  INFO  ]  ...  num segments:66
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,-1.750000), end(-2.962000,-1.661333)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,-1.661333), end(-2.845714,-1.390000)
+[  INFO  ]  segment not in CMFD Cell start(-2.845714,-1.390000), end(-2.841500,-1.380167)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,-1.380167), end(-2.659035,-0.954416)
+[  INFO  ]  segment not in CMFD Cell start(-1.207500,2.432500), end(-1.121263,2.633720)
+[  INFO  ]  segment not in CMFD Cell start(-1.121263,2.633720), end(-1.042024,2.818610)
+[  INFO  ]  segment not in CMFD Cell start(-1.042024,2.818610), end(-0.949480,3.034547)
+[  INFO  ]  segment not in CMFD Cell start(-0.949480,3.034547), end(-0.760714,3.475000)
+[  INFO  ]  segment not in CMFD Cell start(-0.760714,3.475000), end(-0.750000,3.500000)
+[  INFO  ]  2D Track Array id:31, start(-3.000000,-1.750000), end(-0.750000,3.500000), track length:5.711830,
+[  INFO  ]  ...  num segments:55
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,-0.583333), end(-2.962000,-0.494667)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,-0.494667), end(-2.841500,-0.213500)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,-0.213500), end(-2.775056,-0.058463)
+[  INFO  ]  segment not in CMFD Cell start(-1.856429,2.085000), end(-1.785658,2.250132)
+[  INFO  ]  segment not in CMFD Cell start(-1.785658,2.250132), end(-1.706419,2.435021)
+[  INFO  ]  segment not in CMFD Cell start(-1.706419,2.435021), end(-1.578367,2.733811)
+[  INFO  ]  segment not in CMFD Cell start(-1.578367,2.733811), end(-1.424732,3.092291)
+[  INFO  ]  segment not in CMFD Cell start(-1.424732,3.092291), end(-1.407411,3.132707)
+[  INFO  ]  segment not in CMFD Cell start(-1.407411,3.132707), end(-1.250000,3.500000)
+[  INFO  ]  2D Track Array id:32, start(-3.000000,-0.583333), end(-1.250000,3.500000), track length:4.442534,
+[  INFO  ]  ...  num segments:37
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,0.583333), end(-2.962000,0.672000)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,0.672000), end(-2.952143,0.695000)
+[  INFO  ]  segment not in CMFD Cell start(-2.952143,0.695000), end(-2.841500,0.953167)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,0.953167), end(-2.720120,1.236386)
+[  INFO  ]  segment not in CMFD Cell start(-2.505357,1.737500), end(-2.450053,1.866543)
+[  INFO  ]  segment not in CMFD Cell start(-2.450053,1.866543), end(-2.370815,2.051433)
+[  INFO  ]  segment not in CMFD Cell start(-2.370815,2.051433), end(-2.207500,2.432500)
+[  INFO  ]  segment not in CMFD Cell start(-2.207500,2.432500), end(-2.036298,2.831971)
+[  INFO  ]  segment not in CMFD Cell start(-2.036298,2.831971), end(-1.760714,3.475000)
+[  INFO  ]  segment not in CMFD Cell start(-1.760714,3.475000), end(-1.750000,3.500000)
+[  INFO  ]  2D Track Array id:33, start(-3.000000,0.583333), end(-1.750000,3.500000), track length:3.173239,
+[  INFO  ]  ...  num segments:19
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,1.750000), end(-2.856429,2.085000)
+[  INFO  ]  segment not in CMFD Cell start(-2.856429,2.085000), end(-2.665185,2.531235)
+[  INFO  ]  segment not in CMFD Cell start(-2.665185,2.531235), end(-2.409643,3.127500)
+[  INFO  ]  segment not in CMFD Cell start(-2.409643,3.127500), end(-2.250000,3.500000)
+[  INFO  ]  2D Track Array id:34, start(-3.000000,1.750000), end(-2.250000,3.500000), track length:1.903943,
+[  INFO  ]  ...  num segments:4
+[  INFO  ]  Progress Segmenting 2D Tracks:  50.00%
+[  INFO  ]  segment not in CMFD Cell start(-3.000000,2.916667), end(-2.781205,3.427188)
+[  INFO  ]  segment not in CMFD Cell start(-2.781205,3.427188), end(-2.750000,3.500000)
+[  INFO  ]  2D Track Array id:35, start(-3.000000,2.916667), end(-2.750000,3.500000), track length:0.634648,
+[  INFO  ]  ...  num segments:2
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.750000,-3.500000), end(-2.781205,-3.427188)
+[  INFO  ]  segment not in CMFD Cell start(-2.781205,-3.427188), end(-3.000000,-2.916667)
+[  INFO  ]  2D Track Array id:36, start(-2.750000,-3.500000), end(-3.000000,-2.916667), track length:0.634648,
+[  INFO  ]  ...  num segments:2
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.250000,-3.500000), end(-2.409643,-3.127500)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.409643,-3.127500), end(-2.665185,-2.531235)
+[  INFO  ]  segment not in CMFD Cell start(-2.665185,-2.531235), end(-2.856429,-2.085000)
+[  INFO  ]  segment not in CMFD Cell start(-2.856429,-2.085000), end(-3.000000,-1.750000)
+[  INFO  ]  2D Track Array id:37, start(-2.250000,-3.500000), end(-3.000000,-1.750000), track length:1.903943,
+[  INFO  ]  ...  num segments:4
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.750000,-3.500000), end(-1.760714,-3.475000)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.760714,-3.475000), end(-2.036298,-2.831971)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.036298,-2.831971), end(-2.207500,-2.432500)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.207500,-2.432500), end(-2.370815,-2.051433)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.370815,-2.051433), end(-2.450053,-1.866543)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.450053,-1.866543), end(-2.505357,-1.737500)
+[  INFO  ]  segment not in CMFD Cell start(-2.720120,-1.236386), end(-2.841500,-0.953167)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,-0.953167), end(-2.952143,-0.695000)
+[  INFO  ]  segment not in CMFD Cell start(-2.952143,-0.695000), end(-2.962000,-0.672000)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,-0.672000), end(-3.000000,-0.583333)
+[  INFO  ]  2D Track Array id:38, start(-1.750000,-3.500000), end(-3.000000,-0.583333), track length:3.173239,
+[  INFO  ]  ...  num segments:19
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.250000,-3.500000), end(-1.407411,-3.132707)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.407411,-3.132707), end(-1.424732,-3.092291)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.424732,-3.092291), end(-1.578367,-2.733811)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.578367,-2.733811), end(-1.706419,-2.435021)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.706419,-2.435021), end(-1.785658,-2.250131)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.785658,-2.250131), end(-1.856429,-2.085000)
+[  INFO  ]  segment not in CMFD Cell start(-2.775056,0.058463), end(-2.841500,0.213500)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,0.213500), end(-2.962000,0.494667)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,0.494667), end(-3.000000,0.583333)
+[  INFO  ]  2D Track Array id:39, start(-1.250000,-3.500000), end(-3.000000,0.583333), track length:4.442534,
+[  INFO  ]  ...  num segments:37
+[  INFO  ]  segment not in CMFD Cell start(-0.750000,-3.500000), end(-0.760714,-3.475000)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.760714,-3.475000), end(-0.949480,-3.034547)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.949480,-3.034547), end(-1.042024,-2.818610)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.042024,-2.818610), end(-1.121263,-2.633720)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.121263,-2.633720), end(-1.207500,-2.432500)
+[  INFO  ]  segment not in CMFD Cell start(-2.659035,0.954416), end(-2.841500,1.380167)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,1.380167), end(-2.845714,1.390000)
+[  INFO  ]  segment not in CMFD Cell start(-2.845714,1.390000), end(-2.962000,1.661333)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,1.661333), end(-3.000000,1.750000)
+[  INFO  ]  2D Track Array id:40, start(-0.750000,-3.500000), end(-3.000000,1.750000), track length:5.711830,
+[  INFO  ]  ...  num segments:55
+[  INFO  ]  segment not in CMFD Cell start(-0.250000,-3.500000), end(-0.320593,-3.335283)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.320593,-3.335283), end(-0.377629,-3.202199)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.377629,-3.202199), end(-0.456868,-3.017309)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.456868,-3.017309), end(-0.558571,-2.780000)
+[  INFO  ]  segment not in CMFD Cell start(-2.494643,1.737500), end(-2.530132,1.820309)
+[  INFO  ]  segment not in CMFD Cell start(-2.530132,1.820309), end(-2.577936,1.931851)
+[  INFO  ]  segment not in CMFD Cell start(-2.577936,1.931851), end(-2.713971,2.249265)
+[  INFO  ]  segment not in CMFD Cell start(-2.713971,2.249265), end(-2.941429,2.780000)
+[  INFO  ]  segment not in CMFD Cell start(-2.941429,2.780000), end(-3.000000,2.916667)
+[  INFO  ]  2D Track Array id:41, start(-0.250000,-3.500000), end(-3.000000,2.916667), track length:6.981125,
+[  INFO  ]  ...  num segments:66
+[  INFO  ]  Progress Segmenting 2D Tracks:  59.72%
+[  INFO  ]  segment not in CMFD Cell start(0.250000,-3.500000), end(0.173003,-3.320340)
+[  INFO  ]  segment not in CMFD Cell start(0.173003,-3.320340), end(0.125199,-3.208798)
+[  INFO  ]  segment not in CMFD Cell start(0.125199,-3.208798), end(0.090357,-3.127500)
+[  INFO  ]  segment not in CMFD Cell start(-2.085084,1.948529), end(-2.129310,2.051724)
+[  INFO  ]  segment not in CMFD Cell start(-2.129310,2.051724), end(-2.177114,2.163266)
+[  INFO  ]  segment not in CMFD Cell start(-2.177114,2.163266), end(-2.292500,2.432500)
+[  INFO  ]  segment not in CMFD Cell start(-2.292500,2.432500), end(-2.590357,3.127500)
+[  INFO  ]  segment not in CMFD Cell start(-2.590357,3.127500), end(-2.750000,3.500000)
+[  INFO  ]  2D Track Array id:42, start(0.250000,-3.500000), end(-2.750000,3.500000), track length:7.615773,
+[  INFO  ]  ...  num segments:74
+[  INFO  ]  segment not in CMFD Cell start(0.750000,-3.500000), end(0.739286,-3.475000)
+[  INFO  ]  segment not in CMFD Cell start(0.739286,-3.475000), end(0.573825,-3.088925)
+[  INFO  ]  segment not in CMFD Cell start(0.573825,-3.088925), end(0.526021,-2.977383)
+[  INFO  ]  segment not in CMFD Cell start(0.526021,-2.977383), end(0.441429,-2.780000)
+[  INFO  ]  segment not in CMFD Cell start(-1.643571,2.085000), end(-1.728488,2.283139)
+[  INFO  ]  segment not in CMFD Cell start(-1.728488,2.283139), end(-1.776292,2.394681)
+[  INFO  ]  segment not in CMFD Cell start(-1.776292,2.394681), end(-1.941429,2.780000)
+[  INFO  ]  segment not in CMFD Cell start(-1.941429,2.780000), end(-2.140019,3.243378)
+[  INFO  ]  segment not in CMFD Cell start(-2.140019,3.243378), end(-2.250000,3.500000)
+[  INFO  ]  2D Track Array id:43, start(0.750000,-3.500000), end(-2.250000,3.500000), track length:7.615773,
+[  INFO  ]  ...  num segments:74
+[  INFO  ]  segment not in CMFD Cell start(1.250000,-3.500000), end(1.090357,-3.127500)
+[  INFO  ]  segment not in CMFD Cell start(1.090357,-3.127500), end(0.974647,-2.857510)
+[  INFO  ]  segment not in CMFD Cell start(0.974647,-2.857510), end(0.926844,-2.745968)
+[  INFO  ]  segment not in CMFD Cell start(0.926844,-2.745968), end(0.882245,-2.641906)
+[  INFO  ]  segment not in CMFD Cell start(-1.292500,2.432500), end(-1.327666,2.514553)
+[  INFO  ]  segment not in CMFD Cell start(-1.327666,2.514553), end(-1.375469,2.626095)
+[  INFO  ]  segment not in CMFD Cell start(-1.375469,2.626095), end(-1.511132,2.942642)
+[  INFO  ]  segment not in CMFD Cell start(-1.511132,2.942642), end(-1.739286,3.475000)
+[  INFO  ]  segment not in CMFD Cell start(-1.739286,3.475000), end(-1.750000,3.500000)
+[  INFO  ]  2D Track Array id:44, start(1.250000,-3.500000), end(-1.750000,3.500000), track length:7.615773,
+[  INFO  ]  ...  num segments:75
+[  INFO  ]  segment not in CMFD Cell start(1.750000,-3.500000), end(1.739286,-3.475000)
+[  INFO  ]  segment not in CMFD Cell start(1.739286,-3.475000), end(1.511132,-2.942642)
+[  INFO  ]  segment not in CMFD Cell start(1.511132,-2.942642), end(1.375469,-2.626095)
+[  INFO  ]  segment not in CMFD Cell start(1.375469,-2.626095), end(1.327666,-2.514553)
+[  INFO  ]  segment not in CMFD Cell start(1.327666,-2.514553), end(1.292500,-2.432500)
+[  INFO  ]  segment not in CMFD Cell start(-0.882245,2.641906), end(-0.926844,2.745968)
+[  INFO  ]  segment not in CMFD Cell start(-0.926844,2.745968), end(-0.974647,2.857510)
+[  INFO  ]  segment not in CMFD Cell start(-0.974647,2.857510), end(-1.090357,3.127500)
+[  INFO  ]  segment not in CMFD Cell start(-1.090357,3.127500), end(-1.250000,3.500000)
+[  INFO  ]  2D Track Array id:45, start(1.750000,-3.500000), end(-1.250000,3.500000), track length:7.615773,
+[  INFO  ]  ...  num segments:75
+[  INFO  ]  segment not in CMFD Cell start(2.250000,-3.500000), end(2.140019,-3.243378)
+[  INFO  ]  segment not in CMFD Cell start(2.140019,-3.243378), end(1.941429,-2.780000)
+[  INFO  ]  segment not in CMFD Cell start(1.941429,-2.780000), end(1.776292,-2.394681)
+[  INFO  ]  segment not in CMFD Cell start(1.776292,-2.394681), end(1.728488,-2.283139)
+[  INFO  ]  segment not in CMFD Cell start(1.728488,-2.283139), end(1.643571,-2.085000)
+[  INFO  ]  segment not in CMFD Cell start(-0.441429,2.780000), end(-0.526021,2.977383)
+[  INFO  ]  segment not in CMFD Cell start(-0.526021,2.977383), end(-0.573825,3.088925)
+[  INFO  ]  segment not in CMFD Cell start(-0.573825,3.088925), end(-0.739286,3.475000)
+[  INFO  ]  segment not in CMFD Cell start(-0.739286,3.475000), end(-0.750000,3.500000)
+[  INFO  ]  2D Track Array id:46, start(2.250000,-3.500000), end(-0.750000,3.500000), track length:7.615773,
+[  INFO  ]  ...  num segments:74
+[  INFO  ]  segment not in CMFD Cell start(2.750000,-3.500000), end(2.590357,-3.127500)
+[  INFO  ]  segment not in CMFD Cell start(2.590357,-3.127500), end(2.292500,-2.432500)
+[  INFO  ]  segment not in CMFD Cell start(2.292500,-2.432500), end(2.177114,-2.163266)
+[  INFO  ]  segment not in CMFD Cell start(2.177114,-2.163266), end(2.129310,-2.051724)
+[  INFO  ]  segment not in CMFD Cell start(2.129310,-2.051724), end(2.085084,-1.948529)
+[  INFO  ]  segment not in CMFD Cell start(-0.090357,3.127500), end(-0.125199,3.208798)
+[  INFO  ]  segment not in CMFD Cell start(-0.125199,3.208798), end(-0.173003,3.320340)
+[  INFO  ]  segment not in CMFD Cell start(-0.173003,3.320340), end(-0.250000,3.500000)
+[  INFO  ]  2D Track Array id:47, start(2.750000,-3.500000), end(-0.250000,3.500000), track length:7.615773,
+[  INFO  ]  ...  num segments:74
+[  INFO  ]  segment not in CMFD Cell start(3.000000,-2.916667), end(2.941429,-2.780000)
+[  INFO  ]  segment not in CMFD Cell start(2.941429,-2.780000), end(2.713971,-2.249265)
+[  INFO  ]  segment not in CMFD Cell start(2.713971,-2.249265), end(2.577936,-1.931851)
+[  INFO  ]  segment not in CMFD Cell start(2.577936,-1.931851), end(2.530132,-1.820309)
+[  INFO  ]  segment not in CMFD Cell start(2.530132,-1.820309), end(2.494643,-1.737500)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.558571,2.780000), end(0.456868,3.017309)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.456868,3.017309), end(0.377629,3.202199)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.377629,3.202199), end(0.320593,3.335283)
+[  INFO  ]  segment not in CMFD Cell start(0.320593,3.335283), end(0.250000,3.500000)
+[  INFO  ]  2D Track Array id:48, start(3.000000,-2.916667), end(0.250000,3.500000), track length:6.981125, num
+[  INFO  ]  ...  segments:66
+[  INFO  ]  Progress Segmenting 2D Tracks:  69.44%
+[  INFO  ]  segment not in CMFD Cell start(3.000000,-1.750000), end(2.962000,-1.661333)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,-1.661333), end(2.845714,-1.390000)
+[  INFO  ]  segment not in CMFD Cell start(2.845714,-1.390000), end(2.841500,-1.380167)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,-1.380167), end(2.659035,-0.954416)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.207500,2.432500), end(1.121263,2.633720)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.121263,2.633720), end(1.042024,2.818610)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.042024,2.818610), end(0.949480,3.034547)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.949480,3.034547), end(0.760714,3.475000)
+[  INFO  ]  segment not in CMFD Cell start(0.760714,3.475000), end(0.750000,3.500000)
+[  INFO  ]  2D Track Array id:49, start(3.000000,-1.750000), end(0.750000,3.500000), track length:5.711830, num
+[  INFO  ]  ...  segments:55
+[  INFO  ]  segment not in CMFD Cell start(3.000000,-0.583333), end(2.962000,-0.494667)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,-0.494667), end(2.841500,-0.213500)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,-0.213500), end(2.775056,-0.058463)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.856429,2.085000), end(1.785658,2.250132)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.785658,2.250132), end(1.706419,2.435021)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.706419,2.435021), end(1.578367,2.733811)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.578367,2.733811), end(1.424732,3.092291)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.424732,3.092291), end(1.407411,3.132707)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.407411,3.132707), end(1.250000,3.500000)
+[  INFO  ]  2D Track Array id:50, start(3.000000,-0.583333), end(1.250000,3.500000), track length:4.442534, num
+[  INFO  ]  ...  segments:37
+[  INFO  ]  segment not in CMFD Cell start(3.000000,0.583333), end(2.962000,0.672000)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,0.672000), end(2.952143,0.695000)
+[  INFO  ]  segment not in CMFD Cell start(2.952143,0.695000), end(2.841500,0.953167)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,0.953167), end(2.720120,1.236386)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.505357,1.737500), end(2.450053,1.866543)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.450053,1.866543), end(2.370815,2.051433)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.370815,2.051433), end(2.207500,2.432500)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.207500,2.432500), end(2.036298,2.831971)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.036298,2.831971), end(1.760714,3.475000)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.760714,3.475000), end(1.750000,3.500000)
+[  INFO  ]  2D Track Array id:51, start(3.000000,0.583333), end(1.750000,3.500000), track length:3.173239, num
+[  INFO  ]  ...  segments:19
+[  INFO  ]  segment not in CMFD Cell start(3.000000,1.750000), end(2.856429,2.085000)
+[  INFO  ]  segment not in CMFD Cell start(2.856429,2.085000), end(2.665185,2.531235)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.665185,2.531235), end(2.409643,3.127500)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.409643,3.127500), end(2.250000,3.500000)
+[  INFO  ]  2D Track Array id:52, start(3.000000,1.750000), end(2.250000,3.500000), track length:1.903943, num
+[  INFO  ]  ...  segments:4
+[  INFO  ]  segment not in CMFD Cell start(3.000000,2.916667), end(2.781205,3.427188)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.781205,3.427188), end(2.750000,3.500000)
+[  INFO  ]  2D Track Array id:53, start(3.000000,2.916667), end(2.750000,3.500000), track length:0.634648, num
+[  INFO  ]  ...  segments:2
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.400000,-3.500000), end(-2.736156,-3.349161)
+[  INFO  ]  segment not in CMFD Cell start(-2.736156,-3.349161), end(-3.000000,-3.230769)
+[  INFO  ]  2D Track Array id:54, start(-2.400000,-3.500000), end(-3.000000,-3.230769), track length:0.657636,
+[  INFO  ]  ...  num segments:2
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.200000,-3.500000), end(-1.533157,-3.350506)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.533157,-3.350506), end(-2.170547,-3.064498)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.170547,-3.064498), end(-2.807937,-2.778490)
+[  INFO  ]  segment not in CMFD Cell start(-2.807937,-2.778490), end(-3.000000,-2.692308)
+[  INFO  ]  2D Track Array id:55, start(-1.200000,-3.500000), end(-3.000000,-2.692308), track length:1.972908,
+[  INFO  ]  ...  num segments:4
+[  INFO  ]  Progress Segmenting 2D Tracks:  79.17%
+[  INFO  ]  segment not in CMFD Cell start(-0.000000,-3.500000), end(-0.330159,-3.351852)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.330159,-3.351852), end(-0.967549,-3.065844)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.967549,-3.065844), end(-1.604939,-2.779835)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.604939,-2.779835), end(-2.146754,-2.536713)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.146754,-2.536713), end(-2.379000,-2.432500)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.379000,-2.432500), end(-2.688313,-2.293706)
+[  INFO  ]  segment not in CMFD Cell start(-2.688313,-2.293706), end(-3.000000,-2.153846)
+[  INFO  ]  2D Track Array id:56, start(0.000000,-3.500000), end(-3.000000,-2.153846), track length:3.288180,
+[  INFO  ]  ...  num segments:7
+[  INFO  ]  segment not in CMFD Cell start(1.200000,-3.500000), end(0.872840,-3.353197)
+[  INFO  ]  segment not in CMFD Cell start(0.872840,-3.353197), end(0.447031,-3.162129)
+[  INFO  ]  segment not in CMFD Cell start(0.447031,-3.162129), end(0.311425,-3.101280)
+[  INFO  ]  segment not in CMFD Cell start(0.311425,-3.101280), end(0.235450,-3.067189)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.400100,-2.782006), end(-0.404571,-2.780000)
+[  INFO  ]  segment not in Hex CMFD Cell start(-0.941659,-2.538999), end(-1.179000,-2.432500)
+[  INFO  ]  segment not in Hex CMFD Cell start(-1.483217,-2.295992), end(-1.953429,-2.085000)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.024776,-2.052985), end(-2.484159,-1.846852)
+[  INFO  ]  segment not in Hex CMFD Cell start(-2.484159,-1.846852), end(-2.632805,-1.780152)
+[  INFO  ]  segment not in CMFD Cell start(-2.632805,-1.780152), end(-2.962000,-1.632436)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,-1.632436), end(-3.000000,-1.615385)
+[  INFO  ]  2D Track Array id:57, start(1.200000,-3.500000), end(-3.000000,-1.615385), track length:4.603453,
+[  INFO  ]  ...  num segments:31
+[  INFO  ]  segment not in CMFD Cell start(2.400000,-3.500000), end(2.075838,-3.354543)
+[  INFO  ]  segment not in CMFD Cell start(2.075838,-3.354543), end(1.438448,-3.068534)
+[  INFO  ]  segment not in CMFD Cell start(1.438448,-3.068534), end(0.971813,-2.859147)
+[  INFO  ]  segment not in CMFD Cell start(0.971813,-2.859147), end(0.836206,-2.798298)
+[  INFO  ]  segment not in CMFD Cell start(0.836206,-2.798298), end(0.804995,-2.784293)
+[  INFO  ]  segment not in CMFD Cell start(0.804995,-2.784293), end(0.795429,-2.780000)
+[  INFO  ]  segment not in CMFD Cell start(-2.704586,-1.209481), end(-2.841500,-1.148045)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,-1.148045), end(-2.962000,-1.093974)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,-1.093974), end(-3.000000,-1.076923)
+[  INFO  ]  2D Track Array id:58, start(2.400000,-3.500000), end(-3.000000,-1.076923), track length:5.918725,
+[  INFO  ]  ...  num segments:57
+[  INFO  ]  segment not in CMFD Cell start(3.000000,-3.230769), end(2.641447,-3.069880)
+[  INFO  ]  segment not in CMFD Cell start(2.641447,-3.069880), end(2.010091,-2.786579)
+[  INFO  ]  segment not in CMFD Cell start(2.010091,-2.786579), end(1.995429,-2.780000)
+[  INFO  ]  segment not in CMFD Cell start(1.995429,-2.780000), end(1.496594,-2.556164)
+[  INFO  ]  segment not in CMFD Cell start(1.496594,-2.556164), end(1.468532,-2.543572)
+[  INFO  ]  segment not in CMFD Cell start(1.468532,-2.543572), end(1.360988,-2.495315)
+[  INFO  ]  segment not in CMFD Cell start(1.360988,-2.495315), end(1.221000,-2.432500)
+[  INFO  ]  segment not in CMFD Cell start(-2.776367,-0.638809), end(-2.841500,-0.609583)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,-0.609583), end(-2.962000,-0.555513)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,-0.555513), end(-3.000000,-0.538462)
+[  INFO  ]  2D Track Array id:59, start(3.000000,-3.230769), end(-3.000000,-0.538462), track length:6.576361,
+[  INFO  ]  ...  num segments:66
+[  INFO  ]  segment not in CMFD Cell start(3.000000,-2.692308), end(2.673627,-2.545858)
+[  INFO  ]  segment not in CMFD Cell start(2.673627,-2.545858), end(2.421000,-2.432500)
+[  INFO  ]  segment not in CMFD Cell start(2.421000,-2.432500), end(2.132069,-2.302851)
+[  INFO  ]  segment not in CMFD Cell start(2.132069,-2.302851), end(2.021375,-2.253181)
+[  INFO  ]  segment not in CMFD Cell start(2.021375,-2.253181), end(1.885769,-2.192332)
+[  INFO  ]  segment not in CMFD Cell start(1.885769,-2.192332), end(1.646571,-2.085000)
+[  INFO  ]  segment not in CMFD Cell start(-2.741959,-0.115788), end(-2.841500,-0.071122)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,-0.071122), end(-2.962000,-0.017051)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,-0.017051), end(-3.000000,0.000000)
+[  INFO  ]  2D Track Array id:60, start(3.000000,-2.692308), end(-3.000000,0.000000), track length:6.576361,
+[  INFO  ]  ...  num segments:74
+[  INFO  ]  segment not in CMFD Cell start(3.000000,-2.153846), end(2.846571,-2.085000)
+[  INFO  ]  segment not in CMFD Cell start(2.846571,-2.085000), end(2.795605,-2.062131)
+[  INFO  ]  segment not in CMFD Cell start(2.795605,-2.062131), end(2.546157,-1.950199)
+[  INFO  ]  segment not in CMFD Cell start(2.546157,-1.950199), end(2.410551,-1.889350)
+[  INFO  ]  segment not in CMFD Cell start(2.410551,-1.889350), end(2.179189,-1.785534)
+[  INFO  ]  segment not in CMFD Cell start(-2.619981,0.367940), end(-2.841500,0.467340)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,0.467340), end(-2.962000,0.521410)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,0.521410), end(-3.000000,0.538462)
+[  INFO  ]  2D Track Array id:61, start(3.000000,-2.153846), end(-3.000000,0.538462), track length:6.576361,
+[  INFO  ]  ...  num segments:75
+[  INFO  ]  segment not in CMFD Cell start(3.000000,-1.615385), end(2.962000,-1.598333)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,-1.598333), end(2.841500,-1.544263)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,-1.544263), end(2.744798,-1.500871)
+[  INFO  ]  segment not in CMFD Cell start(-2.673016,0.930200), end(-2.841500,1.005801)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,1.005801), end(-2.962000,1.059872)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,1.059872), end(-3.000000,1.076923)
+[  INFO  ]  2D Track Array id:62, start(3.000000,-1.615385), end(-3.000000,1.076923), track length:6.576361,
+[  INFO  ]  ...  num segments:82
+[  INFO  ]  Progress Segmenting 2D Tracks:  88.89%
+[  INFO  ]  segment not in CMFD Cell start(3.000000,-1.076923), end(2.962000,-1.059872)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,-1.059872), end(2.841500,-1.005801)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,-1.005801), end(2.673016,-0.930200)
+[  INFO  ]  segment not in CMFD Cell start(-2.744798,1.500871), end(-2.841500,1.544263)
+[  INFO  ]  segment not in CMFD Cell start(-2.841500,1.544263), end(-2.962000,1.598333)
+[  INFO  ]  segment not in CMFD Cell start(-2.962000,1.598333), end(-3.000000,1.615385)
+[  INFO  ]  2D Track Array id:63, start(3.000000,-1.076923), end(-3.000000,1.615385), track length:6.576361,
+[  INFO  ]  ...  num segments:82
+[  INFO  ]  segment not in CMFD Cell start(3.000000,-0.538462), end(2.962000,-0.521410)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,-0.521410), end(2.841500,-0.467340)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,-0.467340), end(2.619981,-0.367940)
+[  INFO  ]  segment not in CMFD Cell start(-2.179189,1.785534), end(-2.410551,1.889350)
+[  INFO  ]  segment not in CMFD Cell start(-2.410551,1.889350), end(-2.546157,1.950199)
+[  INFO  ]  segment not in CMFD Cell start(-2.546157,1.950199), end(-2.795605,2.062131)
+[  INFO  ]  segment not in CMFD Cell start(-2.795605,2.062131), end(-2.846571,2.085000)
+[  INFO  ]  segment not in CMFD Cell start(-2.846571,2.085000), end(-3.000000,2.153846)
+[  INFO  ]  2D Track Array id:64, start(3.000000,-0.538462), end(-3.000000,2.153846), track length:6.576361,
+[  INFO  ]  ...  num segments:75
+[  INFO  ]  segment not in CMFD Cell start(3.000000,0.000000), end(2.962000,0.017051)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,0.017051), end(2.841500,0.071122)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,0.071122), end(2.741959,0.115788)
+[  INFO  ]  segment not in CMFD Cell start(-1.646571,2.085000), end(-1.885769,2.192332)
+[  INFO  ]  segment not in CMFD Cell start(-1.885769,2.192332), end(-2.021376,2.253181)
+[  INFO  ]  segment not in CMFD Cell start(-2.021376,2.253181), end(-2.132069,2.302851)
+[  INFO  ]  segment not in CMFD Cell start(-2.132069,2.302851), end(-2.421000,2.432500)
+[  INFO  ]  segment not in CMFD Cell start(-2.421000,2.432500), end(-2.673627,2.545858)
+[  INFO  ]  segment not in CMFD Cell start(-2.673627,2.545858), end(-3.000000,2.692308)
+[  INFO  ]  2D Track Array id:65, start(3.000000,0.000000), end(-3.000000,2.692308), track length:6.576361, num
+[  INFO  ]  ...  segments:74
+[  INFO  ]  segment not in CMFD Cell start(3.000000,0.538462), end(2.962000,0.555513)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,0.555513), end(2.841500,0.609583)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,0.609583), end(2.776367,0.638809)
+[  INFO  ]  segment not in CMFD Cell start(-1.221000,2.432500), end(-1.360988,2.495315)
+[  INFO  ]  segment not in CMFD Cell start(-1.360988,2.495315), end(-1.468532,2.543572)
+[  INFO  ]  segment not in CMFD Cell start(-1.468532,2.543572), end(-1.496594,2.556164)
+[  INFO  ]  segment not in CMFD Cell start(-1.496594,2.556164), end(-1.995429,2.780000)
+[  INFO  ]  segment not in CMFD Cell start(-1.995429,2.780000), end(-2.010091,2.786579)
+[  INFO  ]  segment not in CMFD Cell start(-2.010091,2.786579), end(-2.641447,3.069880)
+[  INFO  ]  segment not in CMFD Cell start(-2.641447,3.069880), end(-3.000000,3.230769)
+[  INFO  ]  2D Track Array id:66, start(3.000000,0.538462), end(-3.000000,3.230769), track length:6.576361, num
+[  INFO  ]  ...  segments:66
+[  INFO  ]  segment not in CMFD Cell start(3.000000,1.076923), end(2.962000,1.093974)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,1.093974), end(2.841500,1.148045)
+[  INFO  ]  segment not in CMFD Cell start(2.841500,1.148045), end(2.704586,1.209481)
+[  INFO  ]  segment not in CMFD Cell start(-0.795429,2.780000), end(-0.804995,2.784293)
+[  INFO  ]  segment not in CMFD Cell start(-0.804995,2.784293), end(-0.836206,2.798298)
+[  INFO  ]  segment not in CMFD Cell start(-0.836206,2.798298), end(-0.971813,2.859147)
+[  INFO  ]  segment not in CMFD Cell start(-0.971813,2.859147), end(-1.438448,3.068534)
+[  INFO  ]  segment not in CMFD Cell start(-1.438448,3.068534), end(-2.075838,3.354543)
+[  INFO  ]  segment not in CMFD Cell start(-2.075838,3.354543), end(-2.400000,3.500000)
+[  INFO  ]  2D Track Array id:67, start(3.000000,1.076923), end(-2.400000,3.500000), track length:5.918725, num
+[  INFO  ]  ...  segments:57
+[  INFO  ]  segment not in CMFD Cell start(3.000000,1.615385), end(2.962000,1.632436)
+[  INFO  ]  segment not in CMFD Cell start(2.962000,1.632436), end(2.632805,1.780152)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.632805,1.780152), end(2.484159,1.846852)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.484159,1.846852), end(2.024776,2.052985)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.953429,2.085000), end(1.483217,2.295992)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.179000,2.432500), end(0.941659,2.538999)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.404571,2.780000), end(0.400100,2.782006)
+[  INFO  ]  segment not in CMFD Cell start(-0.235450,3.067189), end(-0.311425,3.101280)
+[  INFO  ]  segment not in CMFD Cell start(-0.311425,3.101280), end(-0.447031,3.162129)
+[  INFO  ]  segment not in CMFD Cell start(-0.447031,3.162129), end(-0.872840,3.353197)
+[  INFO  ]  segment not in CMFD Cell start(-0.872840,3.353197), end(-1.200000,3.500000)
+[  INFO  ]  2D Track Array id:68, start(3.000000,1.615385), end(-1.200000,3.500000), track length:4.603453, num
+[  INFO  ]  ...  segments:31
+[  INFO  ]  segment not in CMFD Cell start(3.000000,2.153846), end(2.688313,2.293706)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.688313,2.293706), end(2.379000,2.432500)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.379000,2.432500), end(2.146754,2.536713)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.146754,2.536713), end(1.604939,2.779835)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.604939,2.779835), end(0.967549,3.065844)
+[  INFO  ]  segment not in Hex CMFD Cell start(0.967549,3.065844), end(0.330159,3.351852)
+[  INFO  ]  segment not in CMFD Cell start(0.330159,3.351852), end(-0.000000,3.500000)
+[  INFO  ]  2D Track Array id:69, start(3.000000,2.153846), end(0.000000,3.500000), track length:3.288180, num
+[  INFO  ]  ...  segments:7
+[  INFO  ]  segment not in CMFD Cell start(3.000000,2.692308), end(2.807937,2.778490)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.807937,2.778490), end(2.170547,3.064498)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.170547,3.064498), end(1.533157,3.350506)
+[  INFO  ]  segment not in Hex CMFD Cell start(1.533157,3.350506), end(1.200000,3.500000)
+[  INFO  ]  2D Track Array id:70, start(3.000000,2.692308), end(1.200000,3.500000), track length:1.972908, num
+[  INFO  ]  ...  segments:4
+[  INFO  ]  Progress Segmenting 2D Tracks: 100.00%
+[  INFO  ]  segment not in CMFD Cell start(3.000000,3.230769), end(2.736156,3.349161)
+[  INFO  ]  segment not in Hex CMFD Cell start(2.736156,3.349161), end(2.400000,3.500000)
+[  INFO  ]  2D Track Array id:71, start(3.000000,3.230769), end(2.400000,3.500000), track length:0.657636, num
+[  INFO  ]  ...  segments:2
+[  INFO  ]  Initializing 3D FSRs in axially extruded regions...
+[  INFO  ]  Progress initializing 3D FSRs:   0.00%
+[  INFO  ]  Progress initializing 3D FSRs:  10.19%
+[  INFO  ]  Progress initializing 3D FSRs:  20.14%
+[  INFO  ]  Progress initializing 3D FSRs:  30.09%
+[  INFO  ]  Progress initializing 3D FSRs:  40.05%
+[  INFO  ]  Progress initializing 3D FSRs:  50.00%
+[  INFO  ]  Progress initializing 3D FSRs:  59.95%
+[  INFO  ]  Progress initializing 3D FSRs:  69.91%
+[  INFO  ]  Progress initializing 3D FSRs:  79.86%
+[  INFO  ]  Progress initializing 3D FSRs:  89.81%
+[  INFO  ]  Progress initializing 3D FSRs: 100.00%
+[  INFO  ]  Total number of extruded FSRs = 432
+[  INFO  ]  Max storage for extruded FSRs per domain = 1.43 MiB
+[  INFO  ]  Progress reordering FSR IDs:   0.00%
+[  INFO  ]  Progress reordering FSR IDs:  10.19%
+[  INFO  ]  Progress reordering FSR IDs:  20.14%
+[  INFO  ]  Progress reordering FSR IDs:  30.09%
+[  INFO  ]  Progress reordering FSR IDs:  40.05%
+[  INFO  ]  Progress reordering FSR IDs:  50.00%
+[  INFO  ]  Progress reordering FSR IDs:  59.95%
+[  INFO  ]  Progress reordering FSR IDs:  69.91%
+[  INFO  ]  Progress reordering FSR IDs:  79.86%
+[  INFO  ]  Progress reordering FSR IDs:  89.81%
+[  INFO  ]  Progress reordering FSR IDs: 100.00%
+[  INFO  ]  Finished initialization of axial 3D FSRs
+[  INFO  ]  Initializing FSR lookup vectors
+[  INFO  ]  Total number of FSRs = 7875
+[  INFO  ]  Max storage for FSRs per domain = 0.81 MiB
+[  INFO  ]  Counting segments and allocate temporary segments...
+[ RESULT ]  Number of local 3D segments = 1782496
+[ HEADER ]  ****************************************************************************************************
+[ HEADER ]                                 Timing Report - Ray Tracing (average)                                
+[ HEADER ]  ****************************************************************************************************
+[ RESULT ]  Total Track Generation & Segmentation Time......... 3.56239E+00 s
+[ RESULT ]    Quadrature Initialization........................ 2.44661E-05 s  0.00%
+[ RESULT ]    Tracks Initialization............................ 1.80240E-02 s  0.51%
+[ RESULT ]    Segmenting Tracks................................ 3.54427E+00 s 99.49%
+[ RESULT ]      Segmenting on Superposition Plane.............. 3.07483E+00 s -86.75%
+[ RESULT ]      Axial FSRs Initialization...................... 2.52958E-01 s - 7.14%
+[ RESULT ]      Segments Counting.............................. 2.15631E-01 s - 6.08%
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[ RESULT ]             # 2D chains                      # 2D tracks                        # FSRs              
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[ RESULT ]                 34                               72                              7875               
+[   SP   ]  ----------------------------------------------------------------------------------------------------
+[  INFO  ]  Running simulation...
+[  INFO  ]  Initializing MOC eigenvalue solver...
+[  INFO  ]  Initializing materials...
+[  INFO  ]  Initializing solver arrays...
+[  INFO  ]  Computing volumes of FSRs...

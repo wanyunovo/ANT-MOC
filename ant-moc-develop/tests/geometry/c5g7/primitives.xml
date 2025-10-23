@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="GBK" ?>
+<global>
+  <!-- Halfspaces -->
+  <surface id="1" type="z-cylinder" coeffs="0 0 0.54"/>
+
+  <surface id="3" type="x-plane" coeffs="-32.13" name="left"   boundary="REFLECTIVE"/>
+  <surface id="4" type="x-plane" coeffs="+32.13" name="right"  boundary="VACUUM"/>
+  <surface id="5" type="y-plane" coeffs="-32.13" name="back"   boundary="VACUUM"/>
+  <surface id="6" type="y-plane" coeffs="+32.13" name="front"  boundary="REFLECTIVE"/>
+  <surface id="7" type="z-plane" coeffs="-32.13" name="bottom" boundary="REFLECTIVE"/>
+  <surface id="8" type="z-plane" coeffs="+32.13" name="top"    boundary="VACUUM"/>
+
+  <!-- Cells -->
+  <cell id="1"                name="moderator" material="Water"           region="+1" sectors="8">
+               <universes> 1 2 3 4 5 6 7 8 </universes>
+  </cell>
+  <cell id="2"  universes="1" name="uo2"       material="UO2"             region="-1" sectors="4"/>
+  <cell id="3"  universes="2" name="mox43"     material="MOX-4.3%"        region="-1" sectors="4"/>
+  <cell id="4"  universes="3" name="mox7"      material="MOX-7%"          region="-1" sectors="4"/>
+  <cell id="5"  universes="4" name="mox87"     material="MOX-8.7%"        region="-1" sectors="4"/>
+  <cell id="6"  universes="5" name="fc"        material="Fission Chamber" region="-1" rings="5" sectors="4"/>
+  <cell id="7"  universes="6" name="gt"        material="Guide Tube"      region="-1" rings="5" sectors="4"/>
+  <cell id="8"  universes="7" name="gtc"       material="Control Rod"     region="-1" rings="5" sectors="4"/>
+  <cell id="9"  universes="8" name="mpc"       material="Water"           region="-1" rings="5" sectors="4"/>
+  <cell id="10" universes="9" name="rc"        material="Water"/>
+
+  <!-- Top left, bottom right 17 x 17 assemblies -->
+  <cell id="21" universes="21" fill="31" name="assemgly1" type="ASSEMBLY">
+    <lattice id="31" name="assembly1 lattice" type="Rectangle">
+      <widths x="[1.26]*17" y="[1.26]*17" z="7.14"/>
+      <refines z="5"/>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 1 1 1 6 1 1 6 1 1 6 1 1 1 1 1 </row>
+      <row> 1 1 1 6 1 1 1 1 1 1 1 1 1 6 1 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 6 1 1 6 1 1 6 1 1 6 1 1 6 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 6 1 1 6 1 1 5 1 1 6 1 1 6 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 6 1 1 6 1 1 6 1 1 6 1 1 6 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 1 6 1 1 1 1 1 1 1 1 1 6 1 1 1 </row>
+      <row> 1 1 1 1 1 6 1 1 6 1 1 6 1 1 1 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+    </lattice>
+  </cell>
+
+  <!-- Top right, bottom left 17 x 17 assemblies -->
+  <cell id="22" universes="22" fill="32" name="assemgly2" type="ASSEMBLY">
+    <lattice id="32" name="assembly2 lattice" type="Rectangle">
+      <widths x="[1.26]*17" y="[1.26]*17" z="7.14"/>
+      <refines z="5"/>
+        <row> 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 </row>
+        <row> 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 </row>
+        <row> 2 3 3 3 3 6 3 3 6 3 3 6 3 3 3 3 2 </row>
+        <row> 2 3 3 6 3 4 4 4 4 4 4 4 3 6 3 3 2 </row>
+        <row> 2 3 3 3 4 4 4 4 4 4 4 4 4 3 3 3 2 </row>
+        <row> 2 3 6 4 4 6 4 4 6 4 4 6 4 4 6 3 2 </row>
+        <row> 2 3 3 4 4 4 4 4 4 4 4 4 4 4 3 3 2 </row>
+        <row> 2 3 3 4 4 4 4 4 4 4 4 4 4 4 3 3 2 </row>
+        <row> 2 3 6 4 4 6 4 4 5 4 4 6 4 4 6 3 2 </row>
+        <row> 2 3 3 4 4 4 4 4 4 4 4 4 4 4 3 3 2 </row>
+        <row> 2 3 3 4 4 4 4 4 4 4 4 4 4 4 3 3 2 </row>
+        <row> 2 3 6 4 4 6 4 4 6 4 4 6 4 4 6 3 2 </row>
+        <row> 2 3 3 3 4 4 4 4 4 4 4 4 4 3 3 3 2 </row>
+        <row> 2 3 3 6 3 4 4 4 4 4 4 4 3 6 3 3 2 </row>
+        <row> 2 3 3 3 3 6 3 3 6 3 3 6 3 3 3 3 2 </row>
+        <row> 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 </row>
+        <row> 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 </row>
+    </lattice>
+  </cell>
+
+  <!-- Top left, bottom right 17 x 17 assemblies -->
+  <cell id="23" universes="23" fill="33" name="assemgly1-rodded" type="ASSEMBLY">
+    <lattice id="33" name="assembly1-rodded lattice" type="Rectangle">
+      <widths x="[1.26]*17" y="[1.26]*17" z="7.14"/>
+      <refines z="5"/>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 1 1 1 7 1 1 7 1 1 7 1 1 1 1 1 </row>
+      <row> 1 1 1 7 1 1 1 1 1 1 1 1 1 7 1 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 7 1 1 7 1 1 7 1 1 7 1 1 7 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 7 1 1 7 1 1 5 1 1 7 1 1 7 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 7 1 1 7 1 1 7 1 1 7 1 1 7 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 1 7 1 1 1 1 1 1 1 1 1 7 1 1 1 </row>
+      <row> 1 1 1 1 1 7 1 1 7 1 1 7 1 1 1 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+      <row> 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </row>
+    </lattice>
+  </cell>
+
+  <!-- Top right, bottom left 17 x 17 assemblies -->
+  <cell id="24" universes="24" fill="34" name="assemgly2-rodded" type="ASSEMBLY">
+    <lattice id="34" name="assembly2-rodded lattice" type="Rectangle">
+      <widths x="[1.26]*17" y="[1.26]*17" z="7.14"/>
+      <refines z="5"/>
+        <row> 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 </row>
+        <row> 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 </row>
+        <row> 2 3 3 3 3 7 3 3 7 3 3 7 3 3 3 3 2 </row>
+        <row> 2 3 3 7 3 4 4 4 4 4 4 4 3 7 3 3 2 </row>
+        <row> 2 3 3 3 4 4 4 4 4 4 4 4 4 3 3 3 2 </row>
+        <row> 2 3 7 4 4 7 4 4 7 4 4 7 4 4 7 3 2 </row>
+        <row> 2 3 3 4 4 4 4 4 4 4 4 4 4 4 3 3 2 </row>
+        <row> 2 3 3 4 4 4 4 4 4 4 4 4 4 4 3 3 2 </row>
+        <row> 2 3 7 4 4 7 4 4 5 4 4 7 4 4 7 3 2 </row>
+        <row> 2 3 3 4 4 4 4 4 4 4 4 4 4 4 3 3 2 </row>
+        <row> 2 3 3 4 4 4 4 4 4 4 4 4 4 4 3 3 2 </row>
+        <row> 2 3 7 4 4 7 4 4 7 4 4 7 4 4 7 3 2 </row>
+        <row> 2 3 3 3 4 4 4 4 4 4 4 4 4 3 3 3 2 </row>
+        <row> 2 3 3 7 3 4 4 4 4 4 4 4 3 7 3 3 2 </row>
+        <row> 2 3 3 3 3 7 3 3 7 3 3 7 3 3 3 3 2 </row>
+        <row> 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 </row>
+        <row> 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 </row>
+    </lattice>
+  </cell>
+
+  <!-- Reflector assembly (unrodded) -->
+  <cell id="25" universes="25" fill="35" name="reflector" type="ASSEMBLY">
+    <lattice id="35" name="reflector lattice" type="Rectangle">
+      <widths x="[1.26]*17" y="[1.26]*17" z="7.14"/>
+      <refines x="3" y="3" z="5"/>
+      <universes> [9]*289 </universes>
+    </lattice>
+  </cell>
+
+  <!-- Reflector assembly (rodded) -->
+  <cell id="26" universes="26" fill="36" name="reflector-rodded" type="ASSEMBLY">
+    <lattice id="36" name="reflector-rodded lattice" type="Rectangle">
+      <widths x="[1.26]*17" y="[1.26]*17" z="7.14"/>
+      <refines z="5"/>
+      <row> 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 </row>
+      <row> 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 </row>
+      <row> 8 8 8 8 8 7 8 8 7 8 8 7 8 8 8 8 8 </row>
+      <row> 8 8 8 7 8 8 8 8 8 8 8 8 8 7 8 8 8 </row>
+      <row> 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 </row>
+      <row> 8 8 7 8 8 7 8 8 7 8 8 7 8 8 7 8 8 </row>
+      <row> 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 </row>
+      <row> 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 </row>
+      <row> 8 8 7 8 8 7 8 8 5 8 8 7 8 8 7 8 8 </row>
+      <row> 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 </row>
+      <row> 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 </row>
+      <row> 8 8 7 8 8 7 8 8 7 8 8 7 8 8 7 8 8 </row>
+      <row> 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 </row>
+      <row> 8 8 8 7 8 8 8 8 8 8 8 8 8 7 8 8 8 </row>
+      <row> 8 8 8 8 8 7 8 8 7 8 8 7 8 8 8 8 8 </row>
+      <row> 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 </row>
+      <row> 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 </row>
+    </lattice>
+  </cell>
+
+</global>

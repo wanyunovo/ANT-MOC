@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="GBK" ?>
+<settings>
+
+  <parallel>
+    <omp_threads>1</omp_threads>
+  </parallel>
+
+  <materials xs_layout="Named"/>
+
+  <tally reaction_rates="F,PHI" cross_sections="NONE" tracks="NONE">
+    <mesh shape="[1.26]*6, [1.26]*6, [3.78]*2"/>
+  </tally>
+
+  <quadrature type="Leonard" azims="8" polars="2">
+    <azim_spacing>0.75</azim_spacing>
+    <z_spacing>3.0</z_spacing>
+  </quadrature>
+
+  <ray_tracing segmentation="OTF Stacks">
+    <modules>1, 1, 1</modules>
+    <z_mesh>Local</z_mesh>
+  </ray_tracing>
+
+  <solver type="CPU Solver" max_iterations="200" tolerance="1E-5"/>
+
+</settings>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="GBK" ?>
+<settings>
+
+  <track_mapping>auto</track_mapping>
+
+  <geometry>
+    <path>cases/c5g7/pin-cell/geometry.xml</path>
+    <primitives>cases/c5g7/pin-cell/geometry.xml</primitives>
+  </geometry>
+
+  <materials path="cases/c5g7/c5g7-mgxs.h5"/>
+
+  <tally>
+    <reaction_rates>F, T, PHI</reaction_rates>
+    <cross_sections>F, T</cross_sections>
+    <tracks>none</tracks>
+    <mesh type="rectangle" shape="[2], [2], [2]"/>
+  </tally>
+
+  <quadrature type="Equal Weight" azims="24" polars="6">
+    <azim_spacing>0.3</azim_spacing>
+    <z_spacing>0.2</z_spacing>
+  </quadrature>
+
+  <ray_tracing segmentation="OTF Stacks" z_mesh="Local">
+    <zones>-1, 0, 1</zones>
+  </ray_tracing>
+
+  <solver type="CPU Solver" max_iterations="5000" tolerance="1E-4"/>
+
+</settings>

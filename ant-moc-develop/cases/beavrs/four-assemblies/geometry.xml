@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="GBK" ?>
+<geometry>
+  <cell id="1" type ="CORE" name="Beavrs三维基准题91号组件(4组件)" fill="1" region="+1 -2 +3 -4 +5 -6">
+    <!--以下面均为全反射边界-->
+    <surface id="1" type="x-plane" coeffs="-21.50364" boundary="REFLECTIVE" name="左边界"/>
+    <surface id="2" type="x-plane" coeffs="+21.50364" boundary="VACUUM" name="右边界"/>
+    <surface id="3" type="y-plane" coeffs="-21.50364" boundary="VACUUM" name="后边界"/>
+    <surface id="4" type="y-plane" coeffs="+21.50364" boundary="REFLECTIVE" name="前边界"/>
+    <surface id="5" type="z-plane" coeffs="-20"       boundary="REFLECTIVE" name="下边界"/>
+    <surface id="6" type="z-plane" coeffs="20"        boundary="REFLECTIVE" name="上边界"/>
+
+    <lattice id="1" name="Core Lattice" type="Rectangle" axial="extruded">
+      <row> 91 91 </row>
+      <row> 91 91 </row>
+      <widths x="[21.50364]*2" y="[21.50364]*2" z="[8.0] * 5"/>
+
+      <universe id="91" name="fuel">
+        <cell id="1" fill="1" name ="栅元阵列">
+          <lattice id="1" name="网格阵列" type="Rectangle">
+            <widths x="0.04318 + [1.25984]*17 + 0.04318" y="0.04318 + [1.25984]*17 + 0.04318" z="8.0"/>
+            <row>  290  290  290  290  290  290  290  290  290  290  290  290  290  290  290  290  290  290  291</row>
+            <row>  290  273  274  275  276  277  278  279  280  281  282  283  284  285  286  287  288  289  291</row>
+            <row>  290  256  257  258  259  260  261  262  263  264  265  266  267  268  269  270  271  272  291</row>
+            <row>  290  239  240  241  242  243  244  245  246  247  248  249  250  251  252  253  254  255  291</row>
+            <row>  290  222  223  224  225  226  227  228  229  230  231  232  233  234  235  236  237  238  291</row>
+            <row>  290  205  206  207  208  209  210  211  212  213  214  215  216  217  218  219  220  221  291</row>
+            <row>  290  188  189  190  191  192  193  194  195  196  197  198  199  200  201  202  203  204  291</row>
+            <row>  290  171  172  173  174  175  176  177  178  179  180  181  182  183  184  185  186  187  291</row>
+            <row>  290  154  155  156  157  158  159  160  161  162  163  164  165  166  167  168  169  170  291</row>
+            <row>  290  137  138  139  140  141  142  143  144  145  146  147  148  149  150  151  152  153  291</row>
+            <row>  290  120  121  122  123  124  125  126  127  128  129  130  131  132  133  134  135  136  291</row>
+            <row>  290  103  104  105  106  107  108  109  110  111  112  113  114  115  116  117  118  119  291</row>
+            <row>  290   86   87   88   89   90   91   92   93   94   95   96   97   98   99  100  101  102  291</row>
+            <row>  290   69   70   71   72   73   74   75   76   77   78   79   80   81   82   83   84   85  291</row>
+            <row>  290   52   53   54   55   56   57   58   59   60   61   62   63   64   65   66   67   68  291</row>
+            <row>  290   35   36   37   38   39   40   41   42   43   44   45   46   47   48   49   50   51  291</row>
+            <row>  290   18   19   20   21   22   23   24   25   26   27   28   29   30   31   32   33   34  291</row>
+            <row>  290    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17  291</row>
+            <row>  290  291  291  291  291  291  291  291  291  291  291  291  291  291  291  291  291  291  291</row>
+
+            <universe id="290"> <cell id="1" material="91-290" name="Gap A"/> </universe>
+            <universe id="291"> <cell id="1" material="91-291" name="Gap B"/> </universe>
+            <universe id="1"> <cell id="1"  material="91-1"/> </universe>
+            <universe id="2"> <cell id="1"  material="91-2"/> </universe>
+            <universe id="3"> <cell id="1"  material="91-3"/> </universe>
+            <universe id="4"> <cell id="1"  material="91-4"/> </universe>
+            <universe id="5"> <cell id="1"  material="91-5"/> </universe>
+            <universe id="6"> <cell id="1"  material="91-6"/> </universe>
+            <universe id="7"> <cell id="1"  material="91-7"/> </universe>
+            <universe id="8"> <cell id="1"  material="91-8"/> </universe>
+            <universe id="9"> <cell id="1"  material="91-9"/> </universe>
+            <universe id="10"> <cell id="1"  material="91-10"/> </universe>
+            <universe id="11"> <cell id="1"  material="91-11"/> </universe>
+            <universe id="12"> <cell id="1"  material="91-12"/> </universe>
+            <universe id="13"> <cell id="1"  material="91-13"/> </universe>
+            <universe id="14"> <cell id="1"  material="91-14"/> </universe>
+            <universe id="15"> <cell id="1"  material="91-15"/> </universe>
+            <universe id="16"> <cell id="1"  material="91-16"/> </universe>
+            <universe id="17"> <cell id="1"  material="91-17"/> </universe>
+            <universe id="18"> <cell id="1"  material="91-18"/> </universe>
+            <universe id="19"> <cell id="1"  material="91-19"/> </universe>
+            <universe id="20"> <cell id="1"  material="91-20"/> </universe>
+            <universe id="21"> <cell id="1"  material="91-21"/> </universe>
+            <universe id="22"> <cell id="1"  material="91-22"/> </universe>
+            <universe id="23"> <cell id="1"  material="91-23"/> </universe>
+            <universe id="24"> <cell id="1"  material="91-24"/> </universe>
+            <universe id="25"> <cell id="1"  material="91-25"/> </universe>
+            <universe id="26"> <cell id="1"  material="91-26"/> </universe>
+            <universe id="27"> <cell id="1"  material="91-27"/> </universe>
+            <universe id="28"> <cell id="1"  material="91-28"/> </universe>
+            <universe id="29"> <cell id="1"  material="91-29"/> </universe>
+            <universe id="30"> <cell id="1"  material="91-30"/> </universe>
+            <universe id="31"> <cell id="1"  material="91-31"/> </universe>
+            <universe id="32"> <cell id="1"  material="91-32"/> </universe>
+            <universe id="33"> <cell id="1"  material="91-33"/> </universe>
+            <universe id="34"> <cell id="1"  material="91-34"/> </universe>
+            <universe id="35"> <cell id="1"  material="91-35"/> </universe>
+            <universe id="36"> <cell id="1"  material="91-36"/> </universe>
+            <universe id="37"> <cell id="1"  material="91-37"/> </universe>
+            <universe id="38"> <cell id="1"  material="91-38"/> </universe>
+            <universe id="39"> <cell id="1"  material="91-39"/> </universe>
+            <universe id="40"> <cell id="1"  material="91-40"/> </universe>
+            <universe id="41"> <cell id="1"  material="91-41"/> </universe>
+            <universe id="42"> <cell id="1"  material="91-42"/> </universe>
+            <universe id="43"> <cell id="1"  material="91-43"/> </universe>
+            <universe id="44"> <cell id="1"  material="91-44"/> </universe>
+            <universe id="45"> <cell id="1"  material="91-45"/> </universe>
+            <universe id="46"> <cell id="1"  material="91-46"/> </universe>
+            <universe id="47"> <cell id="1"  material="91-47"/> </universe>
+            <universe id="48"> <cell id="1"  material="91-48"/> </universe>
+            <universe id="49"> <cell id="1"  material="91-49"/> </universe>
+            <universe id="50"> <cell id="1"  material="91-50"/> </universe>
+            <universe id="51"> <cell id="1"  material="91-51"/> </universe>
+            <universe id="52"> <cell id="1"  material="91-52"/> </universe>
+            <universe id="53"> <cell id="1"  material="91-53"/> </universe>
+            <universe id="54"> <cell id="1"  material="91-54"/> </universe>
+            <universe id="55"> <cell id="1"  material="91-55"/> </universe>
+            <universe id="56"> <cell id="1"  material="91-56"/> </universe>
+            <universe id="57"> <cell id="1"  material="91-57"/> </universe>
+            <universe id="58"> <cell id="1"  material="91-58"/> </universe>
+            <universe id="59"> <cell id="1"  material="91-59"/> </universe>
+            <universe id="60"> <cell id="1"  material="91-60"/> </universe>
+            <universe id="61"> <cell id="1"  material="91-61"/> </universe>
+            <universe id="62"> <cell id="1"  material="91-62"/> </universe>
+            <universe id="63"> <cell id="1"  material="91-63"/> </universe>
+            <universe id="64"> <cell id="1"  material="91-64"/> </universe>
+            <universe id="65"> <cell id="1"  material="91-65"/> </universe>
+            <universe id="66"> <cell id="1"  material="91-66"/> </universe>
+            <universe id="67"> <cell id="1"  material="91-67"/> </universe>
+            <universe id="68"> <cell id="1"  material="91-68"/> </universe>
+            <universe id="69"> <cell id="1"  material="91-69"/> </universe>
+            <universe id="70"> <cell id="1"  material="91-70"/> </universe>
+            <universe id="71"> <cell id="1"  material="91-71"/> </universe>
+            <universe id="72"> <cell id="1"  material="91-72"/> </universe>
+            <universe id="73"> <cell id="1"  material="91-73"/> </universe>
+            <universe id="74"> <cell id="1"  material="91-74"/> </universe>
+            <universe id="75"> <cell id="1"  material="91-75"/> </universe>
+            <universe id="76"> <cell id="1"  material="91-76"/> </universe>
+            <universe id="77"> <cell id="1"  material="91-77"/> </universe>
+            <universe id="78"> <cell id="1"  material="91-78"/> </universe>
+            <universe id="79"> <cell id="1"  material="91-79"/> </universe>
+            <universe id="80"> <cell id="1"  material="91-80"/> </universe>
+            <universe id="81"> <cell id="1"  material="91-81"/> </universe>
+            <universe id="82"> <cell id="1"  material="91-82"/> </universe>
+            <universe id="83"> <cell id="1"  material="91-83"/> </universe>
+            <universe id="84"> <cell id="1"  material="91-84"/> </universe>
+            <universe id="85"> <cell id="1"  material="91-85"/> </universe>
+            <universe id="86"> <cell id="1"  material="91-86"/> </universe>
+            <universe id="87"> <cell id="1"  material="91-87"/> </universe>
+            <universe id="88"> <cell id="1"  material="91-88"/> </universe>
+            <universe id="89"> <cell id="1"  material="91-89"/> </universe>
+            <universe id="90"> <cell id="1"  material="91-90"/> </universe>
+            <universe id="91"> <cell id="1"  material="91-91"/> </universe>
+            <universe id="92"> <cell id="1"  material="91-92"/> </universe>
+            <universe id="93"> <cell id="1"  material="91-93"/> </universe>
+            <universe id="94"> <cell id="1"  material="91-94"/> </universe>
+            <universe id="95"> <cell id="1"  material="91-95"/> </universe>
+            <universe id="96"> <cell id="1"  material="91-96"/> </universe>
+            <universe id="97"> <cell id="1"  material="91-97"/> </universe>
+            <universe id="98"> <cell id="1"  material="91-98"/> </universe>
+            <universe id="99"> <cell id="1"  material="91-99"/> </universe>
+            <universe id="100"> <cell id="1"  material="91-100"/> </universe>
+            <universe id="101"> <cell id="1"  material="91-101"/> </universe>
+            <universe id="102"> <cell id="1"  material="91-102"/> </universe>
+            <universe id="103"> <cell id="1"  material="91-103"/> </universe>
+            <universe id="104"> <cell id="1"  material="91-104"/> </universe>
+            <universe id="105"> <cell id="1"  material="91-105"/> </universe>
+            <universe id="106"> <cell id="1"  material="91-106"/> </universe>
+            <universe id="107"> <cell id="1"  material="91-107"/> </universe>
+            <universe id="108"> <cell id="1"  material="91-108"/> </universe>
+            <universe id="109"> <cell id="1"  material="91-109"/> </universe>
+            <universe id="110"> <cell id="1"  material="91-110"/> </universe>
+            <universe id="111"> <cell id="1"  material="91-111"/> </universe>
+            <universe id="112"> <cell id="1"  material="91-112"/> </universe>
+            <universe id="113"> <cell id="1"  material="91-113"/> </universe>
+            <universe id="114"> <cell id="1"  material="91-114"/> </universe>
+            <universe id="115"> <cell id="1"  material="91-115"/> </universe>
+            <universe id="116"> <cell id="1"  material="91-116"/> </universe>
+            <universe id="117"> <cell id="1"  material="91-117"/> </universe>
+            <universe id="118"> <cell id="1"  material="91-118"/> </universe>
+            <universe id="119"> <cell id="1"  material="91-119"/> </universe>
+            <universe id="120"> <cell id="1"  material="91-120"/> </universe>
+            <universe id="121"> <cell id="1"  material="91-121"/> </universe>
+            <universe id="122"> <cell id="1"  material="91-122"/> </universe>
+            <universe id="123"> <cell id="1"  material="91-123"/> </universe>
+            <universe id="124"> <cell id="1"  material="91-124"/> </universe>
+            <universe id="125"> <cell id="1"  material="91-125"/> </universe>
+            <universe id="126"> <cell id="1"  material="91-126"/> </universe>
+            <universe id="127"> <cell id="1"  material="91-127"/> </universe>
+            <universe id="128"> <cell id="1"  material="91-128"/> </universe>
+            <universe id="129"> <cell id="1"  material="91-129"/> </universe>
+            <universe id="130"> <cell id="1"  material="91-130"/> </universe>
+            <universe id="131"> <cell id="1"  material="91-131"/> </universe>
+            <universe id="132"> <cell id="1"  material="91-132"/> </universe>
+            <universe id="133"> <cell id="1"  material="91-133"/> </universe>
+            <universe id="134"> <cell id="1"  material="91-134"/> </universe>
+            <universe id="135"> <cell id="1"  material="91-135"/> </universe>
+            <universe id="136"> <cell id="1"  material="91-136"/> </universe>
+            <universe id="137"> <cell id="1"  material="91-137"/> </universe>
+            <universe id="138"> <cell id="1"  material="91-138"/> </universe>
+            <universe id="139"> <cell id="1"  material="91-139"/> </universe>
+            <universe id="140"> <cell id="1"  material="91-140"/> </universe>
+            <universe id="141"> <cell id="1"  material="91-141"/> </universe>
+            <universe id="142"> <cell id="1"  material="91-142"/> </universe>
+            <universe id="143"> <cell id="1"  material="91-143"/> </universe>
+            <universe id="144"> <cell id="1"  material="91-144"/> </universe>
+            <universe id="145"> <cell id="1"  material="91-145"/> </universe>
+            <universe id="146"> <cell id="1"  material="91-146"/> </universe>
+            <universe id="147"> <cell id="1"  material="91-147"/> </universe>
+            <universe id="148"> <cell id="1"  material="91-148"/> </universe>
+            <universe id="149"> <cell id="1"  material="91-149"/> </universe>
+            <universe id="150"> <cell id="1"  material="91-150"/> </universe>
+            <universe id="151"> <cell id="1"  material="91-151"/> </universe>
+            <universe id="152"> <cell id="1"  material="91-152"/> </universe>
+            <universe id="153"> <cell id="1"  material="91-153"/> </universe>
+            <universe id="154"> <cell id="1"  material="91-154"/> </universe>
+            <universe id="155"> <cell id="1"  material="91-155"/> </universe>
+            <universe id="156"> <cell id="1"  material="91-156"/> </universe>
+            <universe id="157"> <cell id="1"  material="91-157"/> </universe>
+            <universe id="158"> <cell id="1"  material="91-158"/> </universe>
+            <universe id="159"> <cell id="1"  material="91-159"/> </universe>
+            <universe id="160"> <cell id="1"  material="91-160"/> </universe>
+            <universe id="161"> <cell id="1"  material="91-161"/> </universe>
+            <universe id="162"> <cell id="1"  material="91-162"/> </universe>
+            <universe id="163"> <cell id="1"  material="91-163"/> </universe>
+            <universe id="164"> <cell id="1"  material="91-164"/> </universe>
+            <universe id="165"> <cell id="1"  material="91-165"/> </universe>
+            <universe id="166"> <cell id="1"  material="91-166"/> </universe>
+            <universe id="167"> <cell id="1"  material="91-167"/> </universe>
+            <universe id="168"> <cell id="1"  material="91-168"/> </universe>
+            <universe id="169"> <cell id="1"  material="91-169"/> </universe>
+            <universe id="170"> <cell id="1"  material="91-170"/> </universe>
+            <universe id="171"> <cell id="1"  material="91-171"/> </universe>
+            <universe id="172"> <cell id="1"  material="91-172"/> </universe>
+            <universe id="173"> <cell id="1"  material="91-173"/> </universe>
+            <universe id="174"> <cell id="1"  material="91-174"/> </universe>
+            <universe id="175"> <cell id="1"  material="91-175"/> </universe>
+            <universe id="176"> <cell id="1"  material="91-176"/> </universe>
+            <universe id="177"> <cell id="1"  material="91-177"/> </universe>
+            <universe id="178"> <cell id="1"  material="91-178"/> </universe>
+            <universe id="179"> <cell id="1"  material="91-179"/> </universe>
+            <universe id="180"> <cell id="1"  material="91-180"/> </universe>
+            <universe id="181"> <cell id="1"  material="91-181"/> </universe>
+            <universe id="182"> <cell id="1"  material="91-182"/> </universe>
+            <universe id="183"> <cell id="1"  material="91-183"/> </universe>
+            <universe id="184"> <cell id="1"  material="91-184"/> </universe>
+            <universe id="185"> <cell id="1"  material="91-185"/> </universe>
+            <universe id="186"> <cell id="1"  material="91-186"/> </universe>
+            <universe id="187"> <cell id="1"  material="91-187"/> </universe>
+            <universe id="188"> <cell id="1"  material="91-188"/> </universe>
+            <universe id="189"> <cell id="1"  material="91-189"/> </universe>
+            <universe id="190"> <cell id="1"  material="91-190"/> </universe>
+            <universe id="191"> <cell id="1"  material="91-191"/> </universe>
+            <universe id="192"> <cell id="1"  material="91-192"/> </universe>
+            <universe id="193"> <cell id="1"  material="91-193"/> </universe>
+            <universe id="194"> <cell id="1"  material="91-194"/> </universe>
+            <universe id="195"> <cell id="1"  material="91-195"/> </universe>
+            <universe id="196"> <cell id="1"  material="91-196"/> </universe>
+            <universe id="197"> <cell id="1"  material="91-197"/> </universe>
+            <universe id="198"> <cell id="1"  material="91-198"/> </universe>
+            <universe id="199"> <cell id="1"  material="91-199"/> </universe>
+            <universe id="200"> <cell id="1"  material="91-200"/> </universe>
+            <universe id="201"> <cell id="1"  material="91-201"/> </universe>
+            <universe id="202"> <cell id="1"  material="91-202"/> </universe>
+            <universe id="203"> <cell id="1"  material="91-203"/> </universe>
+            <universe id="204"> <cell id="1"  material="91-204"/> </universe>
+            <universe id="205"> <cell id="1"  material="91-205"/> </universe>
+            <universe id="206"> <cell id="1"  material="91-206"/> </universe>
+            <universe id="207"> <cell id="1"  material="91-207"/> </universe>
+            <universe id="208"> <cell id="1"  material="91-208"/> </universe>
+            <universe id="209"> <cell id="1"  material="91-209"/> </universe>
+            <universe id="210"> <cell id="1"  material="91-210"/> </universe>
+            <universe id="211"> <cell id="1"  material="91-211"/> </universe>
+            <universe id="212"> <cell id="1"  material="91-212"/> </universe>
+            <universe id="213"> <cell id="1"  material="91-213"/> </universe>
+            <universe id="214"> <cell id="1"  material="91-214"/> </universe>
+            <universe id="215"> <cell id="1"  material="91-215"/> </universe>
+            <universe id="216"> <cell id="1"  material="91-216"/> </universe>
+            <universe id="217"> <cell id="1"  material="91-217"/> </universe>
+            <universe id="218"> <cell id="1"  material="91-218"/> </universe>
+            <universe id="219"> <cell id="1"  material="91-219"/> </universe>
+            <universe id="220"> <cell id="1"  material="91-220"/> </universe>
+            <universe id="221"> <cell id="1"  material="91-221"/> </universe>
+            <universe id="222"> <cell id="1"  material="91-222"/> </universe>
+            <universe id="223"> <cell id="1"  material="91-223"/> </universe>
+            <universe id="224"> <cell id="1"  material="91-224"/> </universe>
+            <universe id="225"> <cell id="1"  material="91-225"/> </universe>
+            <universe id="226"> <cell id="1"  material="91-226"/> </universe>
+            <universe id="227"> <cell id="1"  material="91-227"/> </universe>
+            <universe id="228"> <cell id="1"  material="91-228"/> </universe>
+            <universe id="229"> <cell id="1"  material="91-229"/> </universe>
+            <universe id="230"> <cell id="1"  material="91-230"/> </universe>
+            <universe id="231"> <cell id="1"  material="91-231"/> </universe>
+            <universe id="232"> <cell id="1"  material="91-232"/> </universe>
+            <universe id="233"> <cell id="1"  material="91-233"/> </universe>
+            <universe id="234"> <cell id="1"  material="91-234"/> </universe>
+            <universe id="235"> <cell id="1"  material="91-235"/> </universe>
+            <universe id="236"> <cell id="1"  material="91-236"/> </universe>
+            <universe id="237"> <cell id="1"  material="91-237"/> </universe>
+            <universe id="238"> <cell id="1"  material="91-238"/> </universe>
+            <universe id="239"> <cell id="1"  material="91-239"/> </universe>
+            <universe id="240"> <cell id="1"  material="91-240"/> </universe>
+            <universe id="241"> <cell id="1"  material="91-241"/> </universe>
+            <universe id="242"> <cell id="1"  material="91-242"/> </universe>
+            <universe id="243"> <cell id="1"  material="91-243"/> </universe>
+            <universe id="244"> <cell id="1"  material="91-244"/> </universe>
+            <universe id="245"> <cell id="1"  material="91-245"/> </universe>
+            <universe id="246"> <cell id="1"  material="91-246"/> </universe>
+            <universe id="247"> <cell id="1"  material="91-247"/> </universe>
+            <universe id="248"> <cell id="1"  material="91-248"/> </universe>
+            <universe id="249"> <cell id="1"  material="91-249"/> </universe>
+            <universe id="250"> <cell id="1"  material="91-250"/> </universe>
+            <universe id="251"> <cell id="1"  material="91-251"/> </universe>
+            <universe id="252"> <cell id="1"  material="91-252"/> </universe>
+            <universe id="253"> <cell id="1"  material="91-253"/> </universe>
+            <universe id="254"> <cell id="1"  material="91-254"/> </universe>
+            <universe id="255"> <cell id="1"  material="91-255"/> </universe>
+            <universe id="256"> <cell id="1"  material="91-256"/> </universe>
+            <universe id="257"> <cell id="1"  material="91-257"/> </universe>
+            <universe id="258"> <cell id="1"  material="91-258"/> </universe>
+            <universe id="259"> <cell id="1"  material="91-259"/> </universe>
+            <universe id="260"> <cell id="1"  material="91-260"/> </universe>
+            <universe id="261"> <cell id="1"  material="91-261"/> </universe>
+            <universe id="262"> <cell id="1"  material="91-262"/> </universe>
+            <universe id="263"> <cell id="1"  material="91-263"/> </universe>
+            <universe id="264"> <cell id="1"  material="91-264"/> </universe>
+            <universe id="265"> <cell id="1"  material="91-265"/> </universe>
+            <universe id="266"> <cell id="1"  material="91-266"/> </universe>
+            <universe id="267"> <cell id="1"  material="91-267"/> </universe>
+            <universe id="268"> <cell id="1"  material="91-268"/> </universe>
+            <universe id="269"> <cell id="1"  material="91-269"/> </universe>
+            <universe id="270"> <cell id="1"  material="91-270"/> </universe>
+            <universe id="271"> <cell id="1"  material="91-271"/> </universe>
+            <universe id="272"> <cell id="1"  material="91-272"/> </universe>
+            <universe id="273"> <cell id="1"  material="91-273"/> </universe>
+            <universe id="274"> <cell id="1"  material="91-274"/> </universe>
+            <universe id="275"> <cell id="1"  material="91-275"/> </universe>
+            <universe id="276"> <cell id="1"  material="91-276"/> </universe>
+            <universe id="277"> <cell id="1"  material="91-277"/> </universe>
+            <universe id="278"> <cell id="1"  material="91-278"/> </universe>
+            <universe id="279"> <cell id="1"  material="91-279"/> </universe>
+            <universe id="280"> <cell id="1"  material="91-280"/> </universe>
+            <universe id="281"> <cell id="1"  material="91-281"/> </universe>
+            <universe id="282"> <cell id="1"  material="91-282"/> </universe>
+            <universe id="283"> <cell id="1"  material="91-283"/> </universe>
+            <universe id="284"> <cell id="1"  material="91-284"/> </universe>
+            <universe id="285"> <cell id="1"  material="91-285"/> </universe>
+            <universe id="286"> <cell id="1"  material="91-286"/> </universe>
+            <universe id="287"> <cell id="1"  material="91-287"/> </universe>
+            <universe id="288"> <cell id="1"  material="91-288"/> </universe>
+            <universe id="289"> <cell id="1"  material="91-289"/> </universe>
+          </lattice>
+        </cell>
+      </universe>
+    </lattice>
+  </cell>
+</geometry>
+
+
+

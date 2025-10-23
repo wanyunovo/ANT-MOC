@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<geometry>
+
+  <global>
+    <surface id="101" name="阵列的包围面" type="hex-lattice-prism">
+      <center>    0 0 </center>
+      <pitch> 6.125 </pitch>
+      <n_rings> 7 </n_rings>
+      <orientation> x </orientation>
+    </surface>
+
+    <surface id="102" type="z-plane"    coeffs=" 98.25" name="上端面" boundary='VACUUM'/>
+    <surface id="103" type="z-plane"    coeffs="-98.25" name="下端面" boundary='VACUUM'/>
+    <surface id="104" type="y-plane"    coeffs=" 36.00" name="前"     boundary="VACUUM"/>
+    <surface id="105" type="y-plane"    coeffs="-36.0"  name="后"     boundary="VACUUM"/>
+    <surface id="106" type="x-plane"    coeffs=" 40.00" name="右"     boundary="VACUUM"/>
+    <surface id="107" type="x-plane"    coeffs="-40.00" name="左"     boundary="VACUUM"/>
+  </global>
+
+
+  <cell id="1" fill="1" region="-102 +103 -104 +105 -106 +107" name="CEFR-127">
+    <universe id="1" name="堆芯和外围填充">
+      <cell id="2" material="32" region="+101" name="外围材料-真空" sectors="24"/>
+      <cell id="3" fill="2" region="-101" name="内部阵列部分">
+        <lattice id="2" type="Hexagon" name="组件阵列" orientation="x" n_rings="7">
+          <widths r="6.125" z="196.5"/>
+          <universes>
+                            03  03  07  03  03  03  03
+                          03  03  02  02  02  02  02  03
+                        03  10  02  02  03  02  06  02  03
+                      03  10  02  02  02  02  02  02  02  03
+                    03  02  02  02  06  02  02  02  02  02  03
+                  03  02  02  02  02  02  02  02  02  02  10  03
+                03  02  06  02  02  02  11  02  06  02  02  03  03
+                  03  02  02  02  02  02  02  02  02  02  10  03
+                    03  02  02  02  06  02  02  02  02  10  03
+                      03  10  02  02  02  02  02  02  02  03
+                        03  10  02  02  03  02  06  02  03
+                          03  03  02  02  02  02  02  03
+                            03  03  08  03  03  03  03
+          </universes>
+        </lattice>
+      </cell>
+    </universe>
+  </cell>
+
+</geometry>

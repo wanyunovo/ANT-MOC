@@ -1,0 +1,42 @@
+#-----------------------------------------------------------------------
+# Stage coverage
+#-----------------------------------------------------------------------
+test-coverage:
+  extends: .run-base
+  stage: coverage
+  needs: ["generate-tests"]
+  script:
+    - spack load lcov%gcc
+    - spack load antmoc%gcc~mpi
+    - cmake -S . -B build -DCMAKE_C_COMPILER=gcc
+                          -DCMAKE_CXX_COMPILER=g++
+                          -DBUILD_SHARED_LIBS:BOOL=ON
+                          -DENABLE_DEBUG:BOOL=ON
+                          -DENABLE_TESTS:BOOL=ON
+                          -DENABLE_COVERAGE:BOOL=ON
+    - cmake --build build -j $(nproc)
+    # generate code coverage reports, and a summary for Gitlab badges
+    - cd build/
+    - make coverage
+    - lcov --list coverage.info
+  timeout: 2h 30m
+  retry: 2
+  artifacts:
+    paths:
+      - build/coverage/
+    expire_in: 30 days
+
+#-----------------------------------------------------------------------
+# Stage deploy
+#-----------------------------------------------------------------------
+pages:
+  extends: .setup-base
+  stage: deploy
+  needs: ["test-coverage"]
+  script:
+    - mv build/coverage/ public/
+  retry: 2
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days

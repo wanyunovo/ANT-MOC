@@ -1,0 +1,15 @@
+. text !filter !merge !diff
+
+# Default behaviour
+*        text=auto
+
+# Text files are supposed to be normalized
+*.h      text
+*.cpp    text
+*.xml    text
+*.cu     text
+
+# HDF5 files
+# diff attribute HDF5 must be configured to take effect
+*.h5     diff=HDF5
+*.dat    diff=HDF5

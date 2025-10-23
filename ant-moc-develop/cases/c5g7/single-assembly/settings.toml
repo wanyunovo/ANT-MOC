@@ -1,0 +1,43 @@
+log_level = "info"
+
+[parallel]
+track_mapping = "auto"
+
+[geometry]
+path        = "/home/gengxiaoxu/data/Hex-CMFD/ant-moc-develop/cases/c5g7/single-assembly/geometry.xml"
+primitives  = "/home/gengxiaoxu/data/Hex-CMFD/ant-moc-develop/cases/c5g7/primitives.xml"
+lattice_refines = ""
+cell_sectors    = ""
+
+[materials]
+path      = "/home/gengxiaoxu/data/Hex-CMFD/ant-moc-develop/cases/c5g7/c5g7-mgxs.h5"
+xs_layout = "named"
+
+[output]
+directory = "cmfd-antmoc-log/c5g7-single-assembly-17-17-30"
+reaction_rates = "F, T, PHI"
+cross_sections = "none"
+tracks         = "none"
+mesh.type      = "rectangle"
+mesh.offset    = "0, 0, 0"
+mesh.shape     = "[1.26]*17, [1.26]*17, [1.428]*30"
+
+[quadrature]
+type         = "Equal Weight"
+azims        = 32
+azim_spacing = 0.05
+polars       = 2
+z_spacing    = 0.75
+
+[ray_tracing]
+segmentation = "OTF Stacks"
+z_mesh       = "Local"
+zones        = "-21.42, -7.14, +21.42"
+modules      = "3, 3, 1"
+
+[solver]
+type           = "CPU Solver"
+max_iterations = 1000
+tolerance      = 1E-5
+stabilization  = "none"
+keff_neutron_balance = false

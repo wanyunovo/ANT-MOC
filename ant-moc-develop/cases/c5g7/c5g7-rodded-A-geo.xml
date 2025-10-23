@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="GBK" ?>
+<geometry>
+  <cell id="1" fill="1" type ="CORE" name="C5G7 Rodded A" region="+3 -4 +5 -6 +7 -8">
+    <lattice id="1" name="Full Geometry" type="Rectangle">
+      <widths x="[21.42] * 3" y="[21.42] * 3" z="[7.14] * 9"/>
+      <row>  26  26  25 </row>
+      <row>  26  26  25 </row>
+      <row>  25  25  25 </row>
+
+      <row>  26  26  25 </row>
+      <row>  26  26  25 </row>
+      <row>  25  25  25 </row>
+
+      <row>  26  26  25 </row>
+      <row>  26  26  25 </row>
+      <row>  25  25  25 </row>
+
+      <row>  23  22  25 </row>  <!--1/4 rodded-->
+      <row>  22  21  25 </row>
+      <row>  25  25  25 </row>
+
+      <row>  23  22  25 </row>  <!--1/4 rodded-->
+      <row>  22  21  25 </row>
+      <row>  25  25  25 </row>
+
+      <row>  21  22  25 </row>
+      <row>  22  21  25 </row>
+      <row>  25  25  25 </row>
+
+      <row>  21  22  25 </row>
+      <row>  22  21  25 </row>
+      <row>  25  25  25 </row>
+
+      <row>  21  22  25 </row>
+      <row>  22  21  25 </row>
+      <row>  25  25  25 </row>
+
+      <row>  21  22  25 </row>
+      <row>  22  21  25 </row>
+      <row>  25  25  25 </row>
+    </lattice>
+  </cell>
+
+</geometry>

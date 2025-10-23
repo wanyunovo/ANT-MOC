@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="GBK" ?>
+
+<global>
+
+  <surface id="1" type="z-cylinder" coeffs="0 0 0.54"/>
+
+  <cell id="1" name="moderator" material="Water" region="+1" sectors="8">
+    <universes> 1 6 7 8 </universes>
+  </cell>
+  <cell id="2"  universes="1"   name="uo2"       material="UO2"         region="-1" sectors="4"/>
+  <cell id="7"  universes="6"   name="gt"        material="Guide Tube"  region="-1" sectors="4"/>
+  <cell id="8"  universes="7"   name="gtc"       material="Control Rod" region="-1" sectors="4"/>
+  <cell id="9"  universes="8"   name="mpc"       material="Water"       region="-1" sectors="4"/>
+  <cell id="10" universes="9"   name="rc"        material="Water" sectors="4"/>
+
+  <!-- Simple rodded lattice -->
+  <cell id="21" universes="21" fill="31">
+    <lattice id="31" name="Simple rodded lattice" type="Rectangle">
+      <widths x="[1.26]*3" y="[1.26]*3" z="3.78"/>
+      <refines z="1"/>
+      <universes>
+        1 1 1
+        1 7 1
+        1 1 1
+      </universes>
+    </lattice>
+  </cell>
+
+  <!-- Simple unrodded lattice -->
+  <cell id="22" universes="22" fill="32">
+    <lattice id="32" name="Simple rodded lattice" type="Rectangle">
+      <widths x="[1.26]*3" y="[1.26]*3" z="3.78"/>
+      <refines z="1"/>
+      <universes>
+        1 1 1
+        1 6 1
+        1 1 1
+      </universes>
+    </lattice>
+  </cell>
+
+  <!-- Simple rodded reflacter lattice -->
+  <cell id="23" universes="23" fill="33">
+    <lattice id="33" name="Simple rodded reflector lattice" type="Rectangle">
+      <widths x="[1.26]*3" y="[1.26]*3" z="3.78"/>
+      <refines z="1"/>
+      <universes>
+        8 8 8
+        8 7 8
+        8 8 8
+      </universes>
+    </lattice>
+  </cell>
+
+  <!-- Simple unrodded reflacter lattice -->
+  <cell id="24" universes="24" fill="34">
+    <lattice id="34" name="Simple unrodded reflector lattice" type="Rectangle">
+      <widths x="[1.26]*3" y="[1.26]*3" z="3.78"/>
+      <refines z="1"/>
+      <universes>
+        9 9 9
+        9 9 9
+        9 9 9
+      </universes>
+    </lattice>
+  </cell>
+
+</global>

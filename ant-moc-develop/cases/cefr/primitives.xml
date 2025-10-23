@@ -1,0 +1,284 @@
+<global>
+  <!-- 燃料组件的最外层边界 -->
+  <!-- N=19: H=190.95860153447 H/2=95.479300767235-->
+
+  <surface id="1" type="z-cylinder" coeffs="0 0 92" name="假想的圆柱包围面"/>
+  <surface id="2" type="z-plane"    coeffs=" 98.25" name="上端面" boundary='VACUUM'/>
+  <surface id="3" type="z-plane"    coeffs="-98.25" name="下端面" boundary='VACUUM'/>
+  <surface id="4" type="y-plane"    coeffs=" 93.00" name="前"     boundary="VACUUM"/>
+  <surface id="5" type="y-plane"    coeffs="-93.00" name="后"     boundary="VACUUM"/>
+  <surface id="6" type="x-plane"    coeffs=" 90.00" name="右"     boundary="VACUUM"/>
+  <surface id="7" type="x-plane"    coeffs="-90.00" name="左"     boundary="VACUUM"/>
+
+
+  <!-- 002号组件：整个燃料组件及组件间的钠 -->
+  <universe id="002" name="组件及组件间钠">
+    <cell   id="090" material="2" region="+21" name="组件间钠"/>
+    <cell   id="002" fill="095"   region="-21" name="组件栅元阵列及轴向其他部件"/>
+  </universe>
+
+  <!-- 燃料组件边界 -->
+  <surface id="21" name="栅元组件外壁(棱柱面)" type="hex-lattice-prism">
+    <center>    0 0 </center>
+    <pitch>   5.924 </pitch>
+    <n_rings>     1 </n_rings>
+    <orientation> x </orientation>
+  </surface>
+
+  <surface id="31" name="栅元组件内壁(棱柱面)" type="hex-lattice-prism">
+    <center>    0 0 </center>
+    <pitch>   5.683 </pitch>
+    <n_rings>     1 </n_rings>
+    <orientation> x </orientation>
+  </surface>
+
+  <!-- 燃料组件栅元阵列边界 -->
+  <surface id="32" name="栅元阵列外壁(棱柱面)" type="hex-lattice-prism">
+    <center>    0 0 </center>
+    <pitch>   0.695 </pitch>
+    <n_rings>     5 </n_rings>
+    <orientation> y </orientation>
+  </surface>
+
+  <!-- 燃料组件轴向建模 -->
+  <lattice id="095" type="Hexagon" name="燃料组件" orientation="x" n_rings="1" offset="0 0 13.4625">
+    <widths r="5.924" z="[10.041] + [135.5590] + [6.025] + [49.705] + [23.095]"/> <!-- 224.425 -->
+    <universes>
+      [096]
+      [097]
+      [098]
+      [100]
+      [099]
+    </universes>
+    <universe id="096"> <cell material="6" name="上部操作头"/> </universe>
+    <universe id="097"> <cell material="7" name="上屏蔽段"/>   </universe>
+    <universe id="098"> <cell material="8" name="钠腔"/>       </universe>
+    <universe id="099"> <cell material="5" name="气腔"/>       </universe>
+  </lattice>
+
+  <!-- 超栅元空间 -->
+  <universe id="100" name="栅元阵列、外套管">
+    <cell   id="091" material="1" name="组件外套管" region="-21 +31"/>
+    <cell   id="092" material="2" name="组件内钠"   region="-31 +32"/>
+    <cell   id="100" fill="200"   name="栅元阵列"   region="-32"/>
+  </universe>
+
+  <lattice  id="200" type="Hexagon" name="燃料组件栅元阵列" orientation="y" n_rings="5">
+    <!-- 135.5590 -->
+    <widths r="0.695" z="[3.515] + [44.182] + [1.004] + [25.1037] + [45.1863] + [10.041] + [4.519] + [2.008]"/>
+    <refines z="1"/>
+    <universes>
+      [101]*61
+      [102]*61
+      [103]*61
+      [104]*61
+      [105]*61
+      [106]*61
+      [107]*61
+      [108]*61
+    </universes>
+  </lattice>
+
+
+  <!-- 燃料棒定义 -->
+  <surface id="11" type="z-cylinder" coeffs="0 0 0.30499" name="绕丝位置"/>
+  <surface id="12" type="z-cylinder" coeffs="0 0 0.30124" name="包壳与绕丝接触面"/>
+  <surface id="13" type="z-cylinder" coeffs="0 0 0.27112" name="包壳内壁"/>
+  <surface id="14" type="z-cylinder" coeffs="0 0 0.25606" name="弹簧外侧面"/>
+  <surface id="15" type="z-cylinder" coeffs="0 0 0.08033" name="中心孔"/>
+
+  <cell                 id="102" material="2" region="+11"     name="包壳外钠">
+    <universes> 101 102 103 104 105 106 107 108 </universes> </cell>
+  <cell                 id="103" material="1" region="-11 +12" name="绕丝">
+    <universes> 101 102 103 104 105 106 107 108 </universes> </cell>
+  <cell                 id="104" material="1" region="-12 +13" name="包壳">
+    <universes> 101 102 103 104 105 106 107 108 </universes> </cell>
+
+  <cell universes="101" id="101" material="1"  region="-13" name="上端塞"/>
+
+  <cell universes="102" id="105" material="8"  region="-14"     name="弹簧"/>
+  <cell universes="102" id="106" material="32" region="+14 -13" name="弹簧元件与包壳之间，真空"/>
+
+  <cell universes="103" id="107" material="4" region="-13"     name="上转芯块"  />
+  <cell universes="104" id="108" material="3" region="-13"     name="活性区芯块"/>
+  <cell universes="105" id="109" material="4" region="-13"     name="下转芯块"  />
+
+  <cell universes="106" id="110" material="32" region="-15"     name="下支撑体中心孔"/>
+  <cell universes="106" id="111" material="1"  region="+15 -14" name="下支撑体"/>
+  <cell universes="106" id="112" material="32" region="+14 -13" name="下支撑体元件与包壳之间，真空"/>
+
+  <cell universes="107" id="113" material="32" region="-13" name="气腔"/>
+
+  <cell universes="108" id="114" material="1" region="-13" name="下端塞"/>
+
+  <!-- 一些材料 -->
+  <cell universes="119" id="119" material="9"  name="操作头"/>
+  <cell universes="120" id="120" material="10" name="上屏蔽"/>
+  <cell universes="121" id="121" material="11" name="钠"/>
+  <cell universes="122" id="122" material="12" name="棒束12"/>
+  <cell universes="123" id="123" material="13" name="下屏蔽"/>
+  <cell universes="124" id="124" material="14" name="plenum"/>
+  <cell universes="125" id="125" material="15" name="棒束15"/>
+
+  <!-- 003-005号组件：不锈钢、碳化硼 -->
+  <cell universes="003" id="003" fill="150" name="I类不锈钢组件栅格">
+    <lattice            id="150"
+        type="Hexagon" orientation="x" n_rings="1" offset="0 0 11.5345" name="I类不锈钢组件栅格">
+      <widths r="6.125" z="[50.820] + [4.518] + [87.160] + [3.012] + [47.697] + [27.362]"/> <!-- 220.569 -->
+      <universes>
+         [119]
+         [120]
+         [121]
+         [122]
+         [121]
+         [123]
+      </universes>
+    </lattice>
+  </cell>
+
+  <cell universes="004" id="004" fill="151" name="II类不锈钢组件栅格">
+    <lattice            id="151"
+        type="Hexagon" orientation="x" n_rings="1" offset="0 0 11.5345" name="II类不锈钢组件栅格">
+      <widths r="6.125" z="[50.820] + [4.518] + [137.869] + [27.362]"/> <!-- 220.569 -->
+      <universes>
+        [119]
+        [120]
+        [121]
+        [123]
+      </universes>
+    </lattice>
+  </cell>
+
+  <cell universes="005" id="005" fill="152" name="碳化硼组件栅格" comments="均匀化">
+    <lattice            id="152"
+        type="Hexagon" orientation="x" n_rings="1" offset="0 0 11.0025" name="碳化硼组件栅格">
+      <widths r="6.125" z="[50.820] + [4.016] + [1.506] + [80.331] + [3.013] + [1.707] + [3.012] + [47.737] + [27.363]"/> <!-- 219.505 -->
+      <universes>
+        [119]
+        [120]
+        [121]
+        [120]
+        [124]
+        [125]
+        [120]
+        [121]
+        [123]
+      </universes>
+    </lattice>
+  </cell>
+
+
+  <!-- 一些材料 -->
+  <cell universes="126" id="126" material="16" name="hand head"/>
+  <cell universes="127" id="127" material="17" name="head connector"/>
+  <cell universes="128" id="128" material="18" name="upper plenum"/>
+  <cell universes="129" id="129" material="19" name="upper connnector"/>
+  <cell universes="130" id="130" material="20" name="plenum"/>
+  <cell universes="131" id="131" material="21" name="absorber"/>
+  <cell universes="132" id="132" material="22" name="absorber"/>
+  <cell universes="133" id="133" material="23" name="baffle"/>
+
+  <!-- 006-008号组件：补偿棒、安全棒、调节棒组件 -->
+  <cell universes="006" id="006" fill="153" name="补偿棒and安全棒组件栅格" comments="提出堆芯">
+    <lattice            id="153"
+        type="Hexagon" orientation="x" n_rings="1" offset="0 0 8.191" name="补偿棒and安全棒组件栅格">
+      <widths r="6.125" z="[65.269] + [66.374] + [4.217] + [3.213] + [51.212] + [3.112] + [6.527] + [6.126] + [7.832]"/> <!-- 213.882 -->
+      <universes>
+        [126]
+        [127]
+        [129]
+        [130]
+        [131]
+        [130]
+        [133]
+        [121]
+        [123]
+      </universes>
+    </lattice>
+  </cell>
+
+  <cell universes="007" id="007" fill="154" name="调节棒组件栅格" comments="RE1/提出堆芯">
+    <lattice            id="154"
+        type="Hexagon" orientation="x" n_rings="1" offset="0 0 8.191" name="调节棒组件栅格">
+      <widths r="6.125" z="[65.269] + [66.374] + [4.217] + [3.213] + [51.212] + [3.112] + [6.527] + [6.126] + [7.832]"/> <!-- 213.882 -->
+      <universes>
+        [126]
+        [127]
+        [129]
+        [130]
+        [131]
+        [130]
+        [133]
+        [121]
+        [123]
+      </universes>
+    </lattice>
+  </cell>
+
+  <cell universes="008" id="008" fill="155" name="调节棒组件栅格" comments="RE2/7cm">
+    <lattice            id="155"
+        type="Hexagon" orientation="x" n_rings="1" offset="0 0 8.191" name="调节棒组件栅格">
+      <widths r="6.125" z="[65.269] + [17.67134] + [4.72106] + [3.2133] + [51.2113] + [3.113] + [6.527] + [45.387] + [8.937] + [7.832]"/> <!-- 213.882 -->
+      <universes>
+        [126]
+        [127]
+        [128]
+        [129]
+        [130]
+        [131]
+        [130]
+        [133]
+        [121]
+        [123]
+      </universes>
+    </lattice>
+  </cell>
+
+
+  <!-- 009号组件：钠 -->
+  <cell universes="009" id="009" material="5" name="外围钠组件"/>
+
+
+  <!-- 一些材料 -->
+  <cell universes="134" id="134" material="24" name="操作头"/>
+  <cell universes="135" id="135" material="25" name="上屏蔽"/>
+  <cell universes="136" id="136" material="26" name="filter"/>
+  <cell universes="137" id="137" material="27" name="下屏蔽"/>
+  <cell universes="138" id="138" material="28" name="上屏蔽"/>
+  <cell universes="139" id="139" material="29" name="上钠腔"/>
+  <cell universes="140" id="140" material="30" name="rod cluster 上段"/>
+  <cell universes="141" id="141" material="31" name="rod cluster 下段"/>
+
+  <!-- 010-011号组件：模拟组件、中子源组件 -->
+  <cell universes="010" id="010" fill="156" name="模拟组件">
+    <lattice            id="156"
+        type="Hexagon" orientation="x" n_rings="1" offset="0 0 8.5045" name="模拟组件">
+      <widths r="6.125" z="[104.732] + 36.852 + 0.125 + 49.705 + 23.095"/> <!-- 214.509 -->
+      <universes>
+        [134]
+        [135]
+        [121]
+        [136]
+        [137]
+      </universes>
+    </lattice>
+  </cell>
+
+  <cell universes="011" id="011" fill="157" name="中子源组件">
+    <lattice            id="157"
+        type="Hexagon" orientation="x" n_rings="1" offset="0 0 5.9315" name="中子源组件">
+      <widths r="6.125" z="[52.215] + [3.013] + [51.211] + [36.651] + [2.309] + [47.195] + [8.937] + [7.832]"/> <!-- 209.363 -->
+      <universes>
+        [126]
+        [127]
+        [138]
+        [139]
+        [140]
+        [141]
+        [121]
+        [123]
+      </universes>
+    </lattice>
+  </cell>
+
+</global>

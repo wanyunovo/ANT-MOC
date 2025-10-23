@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="GBK" ?>
+<settings>
+
+  <log_level>info</log_level>
+
+  <track_mapping>auto</track_mapping>
+
+  <geometry refines="20, 20, 20">
+    <path>cases/takeda/takeda-unrodded-geo.xml</path>
+    <primitives>cases/takeda/primitives.xml</primitives>
+  </geometry>
+
+  <materials path="cases/takeda/takeda-mgxs.h5"/>
+
+  <tally>
+    <reaction_rates>F, T, PHI</reaction_rates>
+    <cross_sections>none</cross_sections>
+    <tracks>none</tracks>
+
+    <mesh type="rectangle">
+      <shape>
+          [5]*5,
+          [5]*5,
+          [5]*5</shape>
+    </mesh>
+  </tally>
+
+  <quadrature type="Equal Weight" azims="32" polars="2">
+    <azim_spacing>0.05</azim_spacing>
+    <z_spacing>0.05</z_spacing>
+  </quadrature>
+
+  <ray_tracing segmentation="OTF Tracks" z_mesh="Local">
+    <zones>-12.5, 12.5</zones>
+    <modules>1, 1, 1</modules>
+  </ray_tracing>
+
+  <solver type="CPU Solver" max_iterations="1000" tolerance="1E-5"/>
+
+</settings>

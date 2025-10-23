@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<global>
+  <!-- 外部边界 轴向 347.8538 -->
+  <surface id="1" type="z-plane"    coeffs=" 173.9269"  name="上端面"/>
+  <surface id="2" type="z-plane"    coeffs="-173.9269"  name="下端面"/>
+  <surface id="3" type="z-cylinder" coeffs="0 0 225.0"/>
+
+  <!-- 堆芯燃料组件芯块 -->
+  <surface id="11" type="z-cylinder" coeffs="0 0 0.3320" name="棒包壳外壁"/>
+  <surface id="12" type="z-cylinder" coeffs="0 0 0.2867" name="棒包壳内壁"/>
+
+  <cell id="138"                 material="81"  region="+11"     name="棒间钠81">
+    <universes> 141 142 143 144 145 146 147 148 149 150 151 152 165 166 167 </universes> </cell>
+  <cell id="139"                 material="83"  region="-11 +12" name="包壳1">
+    <universes> 141 142 143 144 145 146 147 148 149 150 151 152 165 166 167 </universes> </cell>
+
+  <cell id="141" universes="141" material="141" region="-12" name="下转芯块"   type="PIN"/>
+  <cell id="142" universes="142" material="142" region="-12" name="活性区芯块" type="PIN"/>
+  <cell id="143" universes="143" material="143" region="-12" name="上转芯块"   type="PIN"/>
+  <cell id="144" universes="144" material="144" region="-12" name="下转芯块"   type="PIN"/>
+  <cell id="145" universes="145" material="145" region="-12" name="活性区芯块" type="PIN"/>
+  <cell id="146" universes="146" material="146" region="-12" name="上转芯块"   type="PIN"/>
+  <cell id="147" universes="147" material="147" region="-12" name="下转芯块"   type="PIN"/>
+  <cell id="148" universes="148" material="148" region="-12" name="活性区芯块" type="PIN"/>
+  <cell id="149" universes="149" material="149" region="-12" name="上转芯块"   type="PIN"/>
+  <cell id="150" universes="150" material="150" region="-12" name="下转芯块"   type="PIN"/>
+  <cell id="151" universes="151" material="151" region="-12" name="活性区芯块" type="PIN"/>
+  <cell id="152" universes="152" material="152" region="-12" name="上转芯块"   type="PIN"/>
+  <cell id="165" universes="165" material="165" region="-12" name="下转芯块"   type="PIN"/>
+  <cell id="166" universes="166" material="166" region="-12" name="活性区芯块" type="PIN"/>
+  <cell id="167" universes="167" material="167" region="-12" name="上转芯块"   type="PIN"/>
+  <!-- ######################################### -->
+
+
+  <!-- 芯块：SH补偿棒、SA安全棒、RE调节棒、PEP棒 -->
+  <surface id="13" type="z-cylinder" coeffs="0 0 0.7747" name="棒包壳外壁"/>
+  <surface id="14" type="z-cylinder" coeffs="0 0 0.6741" name="棒包壳内壁"/>
+
+  <cell id="228"                 material="40"  region="+13"     name="棒间钠40">
+    <universes> 231 232 233 234 </universes> </cell>
+  <cell id="229"                 material="83"  region="-13 +14" name="包壳2">
+    <universes> 231 232 233 234 </universes> </cell>
+
+  <cell id="231" universes="231" material="231" region="-14" name="B4C芯块" type="PIN"/>
+  <cell id="232" universes="232" material="232" region="-14" name="B4C芯块" type="PIN"/>
+  <cell id="233" universes="233" material="233" region="-14" name="B4C芯块" type="PIN"/>
+  <cell id="234" universes="234" material="82"  region="-13" name="钢"/>
+  <!-- ######################################### -->
+
+
+  <!-- 外圈径向转换组件芯块 -->
+  <surface id="15" type="z-cylinder" coeffs="0 0 0.7847" name="棒包壳外壁"/>
+  <surface id="16" type="z-cylinder" coeffs="0 0 0.7344" name="棒包壳内壁"/>
+
+  <cell id="158"                 material="81"  region="+15"     name="棒间钠81">
+    <universes> 161 162 163 164 </universes> </cell>
+  <cell id="159"                 material="83"  region="-15 +16" name="包壳3">
+    <universes> 161 162 163 164 </universes> </cell>
+
+  <cell id="161" universes="161" material="161" region="-16" name="转换区芯块" type="PIN"/>
+  <cell id="162" universes="162" material="162" region="-16" name="转换区芯块" type="PIN"/>
+  <cell id="163" universes="163" material="163" region="-16" name="转换区芯块" type="PIN"/>
+  <cell id="164" universes="164" material="164" region="-16" name="转换区芯块" type="PIN"/>
+  <!-- ######################################### -->
+
+
+  <!-- 组件相关的平面 -->
+  <surface id="41" type="x-plane" coeffs=" 5.4832" name="组件外套管内壁前"/>
+  <surface id="42" type="x-plane" coeffs="-5.4832" name="组件外套管内壁后"/>
+  <surface id="43" type="plane"   coeffs=" 1 1.7320508076 0  10.9663" name="组件外套管内壁右上"/>
+  <surface id="44" type="plane"   coeffs=" 1 1.7320508076 0 -10.9663" name="组件外套管内壁左下"/>
+  <surface id="45" type="plane"   coeffs="-1 1.7320508076 0  10.9663" name="组件外套管内壁左上"/>
+  <surface id="46" type="plane"   coeffs="-1 1.7320508076 0 -10.9663" name="组件外套管内壁右下"/>
+
+  <surface id="51" type="x-plane" coeffs=" 5.785" name="组件外套管外壁前"/>
+  <surface id="52" type="x-plane" coeffs="-5.785" name="组件外套管外壁后"/>
+  <surface id="53" type="plane"   coeffs=" 1 1.7320508076 0  11.57" name="组件外套管外壁右上"/>
+  <surface id="54" type="plane"   coeffs=" 1 1.7320508076 0 -11.57" name="组件外套管外壁左下"/>
+  <surface id="55" type="plane"   coeffs="-1 1.7320508076 0  11.57" name="组件外套管外壁左上"/>
+  <surface id="56" type="plane"   coeffs="-1 1.7320508076 0 -11.57" name="组件外套管外壁右下"/>
+
+  <surface id="61" type="x-plane" coeffs=" 6.0869" name="组件前侧面"/>
+  <surface id="62" type="x-plane" coeffs="-6.0869" name="组件后侧面"/>
+  <surface id="63" type="plane"   coeffs=" 1 1.7320508076 0  12.1736" name="组件右上侧面"/>
+  <surface id="64" type="plane"   coeffs=" 1 1.7320508076 0 -12.1736" name="组件左下侧面"/>
+  <surface id="65" type="plane"   coeffs="-1 1.7320508076 0  12.1736" name="组件左上侧面"/>
+  <surface id="66" type="plane"   coeffs="-1 1.7320508076 0 -12.1736" name="组件右下侧面"/>
+  <!-- ######################################### -->
+
+
+  <!-- 其他均匀化部分 -->
+  <cell id="107" universes="107" material="12" name="上部操作头">
+  <cell id="106" universes="106" material="13" name="上屏蔽段">
+  <cell id="105" universes="105" material="14" name="弹簧&端塞">
+  <cell id="104" universes="104" material="15" name="气腔"/>
+  <cell id="103" universes="103" material="19" name="下端塞&钠腔">
+  <cell id="102" universes="102" material="20" name="下部钢">
+
+  <cell id="109" universes="109" material="29" name="跟随体">
+  <cell id="108" universes="108" material="30" name="下材料">
+  <!-- ######################################### -->
+
+
+  <!-- ######################################### 组件区 ############################################ -->
+  <!--
+    0XX - 编号以0开头，表示组件和组件周围的钠（组件之间的钠）。
+    3XX - 编号以3开头，表示组件的轴向结构（不含钠），是轴向分层的Lattice。
+    4XX - 编号以4开头，表示组件内的栅元阵列、外套管、阵列与外套管之间的钠。
+    5XX - 编号以5开关，表示栅元阵列，是y朝向的六角形Lattice。
+  -->
+
+  <cell id="101"                 material="83" name="组件外套管&下转&活性区" temperature="293">
+      <region> +41 +43 +45 -42 -44 -46 -51 -53 -55 +52 +54 +56 </region>
+      <universes> 401 402 403 423 408 404 424 434 444 411 412 413 414 </universes>
+  </cell>
+
+  <!-- 堆芯燃料组件 -->
+  <cell    id="001" universes="001" material="81"  region="-61 +62 -63 +64 -65 +66" name="组件间钠81" temperature="893"/>
+  <lattice id="301" outer="001"     type="Hexagon" name="内堆芯燃料组件栅格"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[70] + [191.8538] + [13] + [15] + [58]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [106] <!-- 上屏蔽段 -->
+      [105] <!-- 弹簧&端塞 -->
+      [401] <!-- 组件栅元阵列 -->
+      [104] <!-- 气腔 -->
+    </universes>
+  </lattice>
+  <cell     id="401" universes="401" material="81"  region="-41 +42 -43 +44 -45 +46" name="组件内钠81" temperature="893"/>
+  <lattice  id="501" outer="401"     type="Hexagon" name="内堆芯燃料组件栅元阵列"
+      orientation="y" n_rings="8">
+    <widths r="0.8099" z="[45.2320] + [101.3191] + [45.3027]"/> <refines z="1"/>
+    <universes>
+      [143]*169 <!-- 上转芯块 -->
+      [142]*169 <!-- 活性区芯块 -->
+      [141]*169 <!-- 下转芯块 -->
+    </universes>
+  </lattice>
+
+  <cell    id="002" universes="002" material="81"  region="-61 +62 -63 +64 -65 +66" name="组件间钠81" temperature="893"/>
+  <lattice id="302" outer="002"     type="Hexagon" name="中堆芯燃料组件栅格"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[70] + [191.8538] + [13] + [15] + [58]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [106] <!-- 上屏蔽段 -->
+      [105] <!-- 弹簧&端塞 -->
+      [402] <!-- 组件栅元阵列 -->
+      [104] <!-- 气腔 -->
+    </universes>
+  </lattice>
+  <cell     id="402" universes="402" material="81"  region="-41 +42 -43 +44 -45 +46" name="组件内钠81" temperature="893"/>
+  <lattice  id="502" outer="402"     type="Hexagon" name="中堆芯燃料组件栅元阵列"
+      orientation="y" n_rings="8">
+    <widths r="0.8099" z="[45.2320] + [101.3191] + [45.3027]"/> <refines z="1"/>
+    <universes>
+      [146]*169 <!-- 上转芯块 -->
+      [145]*169 <!-- 活性区芯块 -->
+      [144]*169 <!-- 下转芯块 -->
+    </universes>
+  </lattice>
+
+  <cell    id="003" universes="003" material="81"  region="-61 +62 -63 +64 -65 +66" name="组件间钠81" temperature="893"/>
+  <lattice id="303" outer="003"     type="Hexagon" name="外堆芯燃料组件栅格"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[70] + [191.8538] + [13] + [15] + [58]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [106] <!-- 上屏蔽段 -->
+      [105] <!-- 弹簧&端塞 -->
+      [403] <!-- 组件栅元阵列 -->
+      [104] <!-- 气腔 -->
+    </universes>
+  </lattice>
+  <cell     id="403" universes="403" material="81"  region="-41 +42 -43 +44 -45 +46" name="组件内钠81" temperature="893"/>
+  <lattice  id="503" outer="403"     type="Hexagon" name="外堆芯燃料组件栅元阵列"
+      orientation="y" n_rings="8">
+    <widths r="0.8099" z="[45.2320] + [101.3191] + [45.3027]"/> <refines z="1"/>
+    <universes>
+      [149]*169 <!-- 上转芯块 -->
+      [148]*169 <!-- 活性区芯块 -->
+      [147]*169 <!-- 下转芯块 -->
+    </universes>
+  </lattice>
+
+  <cell    id="023" universes="023" material="81"  region="-61 +62 -63 +64 -65 +66" name="组件间钠81" temperature="893"/>
+  <lattice id="323" outer="023"     type="Hexagon" name="外堆芯燃料组件栅格"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[70] + [191.8538] + [13] + [15] + [58]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [106] <!-- 上屏蔽段 -->
+      [105] <!-- 弹簧&端塞 -->
+      [423] <!-- 组件栅元阵列 -->
+      [104] <!-- 气腔 -->
+    </universes>
+  </lattice>
+  <cell     id="423" universes="423" material="81"  region="-41 +42 -43 +44 -45 +46" name="组件内钠81" temperature="893"/>
+  <lattice  id="523" outer="423"     type="Hexagon" name="外堆芯燃料组件栅元阵列"
+      orientation="y" n_rings="8">
+    <widths r="0.8099" z="[45.2320] + [101.3191] + [45.3027]"/> <refines z="1"/>
+      [152]*169 <!-- 上转芯块 -->
+      [151]*169 <!-- 活性区芯块 -->
+      [150]*169 <!-- 下转芯块 -->
+    </universes>
+  </lattice>
+
+  <cell    id="008" universes="008" material="81"  region="-61 +62 -63 +64 -65 +66" name="组件间钠81" temperature="893"/>
+  <lattice id="308" outer="008"     type="Hexagon" name="内部转换组件栅格" comments="未使用"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[70] + [191.8538] + [13] + [15] + [58]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [106] <!-- 上屏蔽段 -->
+      [105] <!-- 弹簧&端塞 -->
+      [408] <!-- 组件栅元阵列 -->
+      [104] <!-- 气腔 -->
+    </universes>
+  </lattice>
+  <cell     id="408" universes="408" material="81"  region="-41 +42 -43 +44 -45 +46" name="组件内钠81" temperature="893"/>
+  <lattice  id="508" outer="408"     type="Hexagon" name="内部转换组件栅元阵列"
+      orientation="y" n_rings="8">
+    <widths r="0.8099" z="[45.2320] + [101.3191] + [45.3027]"/> <refines z="1"/>
+    <universes>
+      [167]*169 <!-- 上转芯块 -->
+      [166]*169 <!-- 活性区芯块 -->
+      [165]*169 <!-- 下转芯块 -->
+    </universes>
+  </lattice>
+  <!-- ######################################### -->
+
+
+  <!-- 径向转换组件 -->
+  <cell    id="004" universes="004" material="81"  region="-61 +62 -63 +64 -65 +66" name="组件间钠81" temperature="893"/>
+  <lattice id="304" outer="004"     type="Hexagon" name="第一圈径向转换组件栅格"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[26.5] + [13.5] + [20] + [201.0602] + [86.7936]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [404] <!-- 组件栅元阵列 -->
+      [104] <!-- 气腔 -->
+      [103] <!-- 下端塞&钠腔 -->
+      [102] <!-- 下部钢 -->
+    </universes>
+  </lattice>
+  <cell     id="404" universes="404" material="81"  region="-41 +42 -43 +44 -45 +46" name="组件内钠81" temperature="893"/>
+  <lattice  id="504" outer="404"     type="Hexagon" name="第一圈径向转换组件栅元阵列"
+      orientation="y" n_rings="4">
+    <widths r="1.7254" z="[201.0602]"/> <refines z="1"/>
+    <universes>
+      [161]*37 <!-- 转换区芯块 -->
+    </universes>
+  </lattice>
+
+  <cell    id="024" universes="024" material="81"  region="-61 +62 -63 +64 -65 +66" name="组件间钠81" temperature="893"/>
+  <lattice id="324" outer="024"     type="Hexagon" name="第二圈径向转换组件栅格"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[26.5] + [13.5] + [20] + [201.0602] + [86.7936]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [424] <!-- 组件栅元阵列 -->
+      [104] <!-- 气腔 -->
+      [103] <!-- 下端塞&钠腔 -->
+      [102] <!-- 下部钢 -->
+    </universes>
+  </lattice>
+  <cell     id="424" universes="424" material="81"  region="-41 +42 -43 +44 -45 +46" name="组件内钠81" temperature="893"/>
+  <lattice  id="524" outer="424"     type="Hexagon" name="第二圈径向转换组件栅元阵列"
+      orientation="y" n_rings="4">
+    <widths r="1.7254" z="[201.0602]"/> <refines z="1"/>
+    <universes>
+      [162]*37 <!-- 转换区芯块 -->
+    </universes>
+  </lattice>
+
+  <cell    id="034" universes="034" material="81"  region="-61 +62 -63 +64 -65 +66" name="组件间钠81" temperature="893"/>
+  <lattice id="334" outer="034"     type="Hexagon" name="第三圈径向转换组件栅格" comments="未使用"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[26.5] + [13.5] + [20] + [201.0602] + [86.7936]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [434] <!-- 组件栅元阵列 -->
+      [104] <!-- 气腔 -->
+      [103] <!-- 下端塞&钠腔 -->
+      [102] <!-- 下部钢 -->
+    </universes>
+  </lattice>
+  <cell     id="434" universes="434" material="81"  region="-41 +42 -43 +44 -45 +46" name="组件内钠81" temperature="893"/>
+  <lattice  id="534" outer="434"     type="Hexagon" name="第三圈径向转换组件栅元阵列"
+      orientation="y" n_rings="4">
+    <widths r="1.7254" z="[201.0602]"/> <refines z="1"/>
+    <universes>
+      [163]*37 <!-- 转换区芯块 -->
+    </universes>
+  </lattice>
+
+  <cell    id="044" universes="044" material="81"  region="-61 +62 -63 +64 -65 +66" name="组件间钠81" temperature="893"/>
+  <lattice id="344" outer="044"     type="Hexagon" name="第四圈径向转换组件栅格" comments="未使用"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[26.5] + [13.5] + [20] + [201.0602] + [86.7936]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [444] <!-- 组件栅元阵列 -->
+      [104] <!-- 气腔 -->
+      [103] <!-- 下端塞&钠腔 -->
+      [102] <!-- 下部钢 -->
+    </universes>
+  </lattice>
+  <cell     id="444" universes="444" material="81"  region="-41 +42 -43 +44 -45 +46" name="组件内钠81" temperature="893"/>
+  <lattice  id="544" outer="444"     type="Hexagon" name="第四圈径向转换组件栅元阵列"
+      orientation="y" n_rings="4">
+    <widths r="1.7254" z="[201.0602]"/> <refines z="1"/>
+    <universes>
+      [164]*37 <!-- 转换区芯块 -->
+    </universes>
+  </lattice>
+  <!-- ######################################### -->
+
+
+  <!-- SH补偿棒、SA安全棒、RE调节棒、PEP棒组件 -->
+  <!-- 原输入卡中，该部分的轴向高度都有重叠 -->
+  <cell    id="011" universes="011" material="81"  region="-61 +62 -63 +64 -65 +66" name="组件间钠81" temperature="893"/>
+  <lattice id="311" outer="311"     type="Hexagon" name="SH补偿棒组件栅格"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[70] + [122.5320] + [110] + [45.3218]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [411] <!-- 组件栅元阵列 -->
+      [109] <!-- 跟随体 -->
+      [108] <!-- 下材料 -->
+    </universes>
+  </lattice>
+  <cell     id="411" universes="411" material="81"  region="-41 +42 -43 +44 -45 +46" name="组件内钠81" temperature="893"/>
+  <lattice  id="511" outer="411"     type="Hexagon" name="SH补偿棒组件阵列"
+      orientation="y" n_rings="3">
+    <widths r="1.6953" z="[110]"/> <refines z="1"/>
+    <universes>
+      [232]*19 <!-- B4C芯块 -->
+    </universes>
+  </lattice>
+
+  <cell    id="012" universes="012" material="81"  region="-61 +62 -63 +64 -65 +66" name="组件间钠81" temperature="893"/>
+  <lattice id="312" outer="012"     type="Hexagon" name="SA安全棒组件栅格" comments="全提出"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[70] + [155.2320] + [110] + [12.6218]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [412] <!-- 组件栅元阵列 -->
+      [109] <!-- 跟随体 -->
+      [108] <!-- 下材料 -->
+    </universes>
+  </lattice>
+  <cell     id="412" universes="412" material="81"  region="-41 +42 -43 +44 -45 +46" name="组件内钠81" temperature="893"/>
+  <lattice  id="512" outer="412"     type="Hexagon" name="控制棒栅元阵列"
+      orientation="y" n_rings="3">
+    <widths r="1.6953" z="[110]"/> <refines z="1"/>
+    <universes>
+      [233]*19 <!-- B4C芯块 -->
+    </universes>
+  </lattice>
+
+  <cell    id="013" universes="013" material="81"  region="-61 +62 -63 +64 -65 +66" name="组件间钠81" temperature="893"/>
+  <lattice id="313" outer="013"     type="Hexagon" name="RE调节棒组件栅格" comments="临界棒位"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[70] + [100.2320] + [110] + [67.6218]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [413] <!-- 组件栅元阵列 -->
+      [109] <!-- 跟随体 -->
+      [108] <!-- 下材料 -->
+    </universes>
+  </lattice>
+  <cell     id="413" universes="413" material="81"  region="-41 +42 -43 +44 -45 +46" name="组件内钠81" temperature="893"/>
+  <lattice  id="513" outer="413"     type="Hexagon" name="控制棒栅元阵列"
+      orientation="y" n_rings="3">
+    <widths r="1.6953" z="[110]"/> <refines z="1"/>
+    <universes>
+              234
+          234     231
+      234     231     234
+          231     231
+      231     234     234
+          231     231
+      234     231     234
+          234     231
+              234
+    </universes>
+  </lattice>
+
+  <cell    id="014" universes="014" material="81"  region="-61 +62 -63 +64 -65 +66" name="组件间钠81" temperature="893"/>
+  <lattice id="314" outer="014"     type="Hexagon" name="PEP棒组件栅格(同安全棒)" comments="全提出"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[70] + [155.2320] + [110] + [12.6218]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [414] <!-- 组件栅元阵列 -->
+      [109] <!-- 跟随体 -->
+      [108] <!-- 下材料 -->
+    </universes>
+  </lattice>
+  <cell     id="414" universes="414" material="81"  region="-41 +42 -43 +44 -45 +46" name="组件内钠81" temperature="893"/>
+  <lattice  id="514" outer="414"     type="Hexagon" name="PEP棒栅元阵列"
+      orientation="y" n_rings="3">
+    <widths r="1.6953" z="[110]"/> <refines z="1"/>
+    <universes>
+      [233]*19 <!-- B4C芯块 -->
+    </universes>
+  </lattice>
+  <!-- ######################################### -->
+
+
+  <!-- 其他非栅格区域 -->
+  <cell id="111" universes="111" material="22" temperature="893" name="钢反射层">
+  <cell id="112" universes="112" material="23" temperature="893" name="钢反下部钠腔">
+  <cell id="113" universes="113" material="24" temperature="893" name="钢反射层下端">
+  <cell id="114" universes="114" material="25" temperature="893" name="硼屏蔽上部钠腔">
+  <cell id="115" universes="115" material="26" temperature="893" name="硼屏蔽上部段塞+钠腔">
+  <cell id="116" universes="116" material="27" temperature="893" name="硼屏蔽">
+
+  <cell    id="005" universes="005" fill="305" name="不锈钢反射层"/>
+  <lattice id="305" type="Hexagon" name="不锈钢反射层"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[52] + [8.5] + [229.3538] + [58]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [111] <!-- 钢反射层 -->
+      [112] <!-- 钢反下部钠腔 -->
+      [113] <!-- 钢反射层下端 -->
+    </universes>
+  </lattice>
+
+  <cell    id="006" universes="006" fill="306" name="碳化硼吸收体"/>
+  <lattice id="306" type="Hexagon" name="碳化硼吸收体"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[70] + [191.8538] + [13] + [58]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [114] <!-- 硼屏蔽上部钠腔 -->
+      [115] <!-- 硼屏蔽上部段塞+钠腔 -->
+      [116] <!-- 硼屏蔽 -->
+      [113] <!-- 钢反射层下端 -->
+    </universes>
+  </lattice>
+
+  <cell    id="007" universes="007" fill="307" name="储存阱"/>
+  <lattice id="307" type="Hexagon" name="储存阱" comments="未使用"
+      orientation="x" n_rings="1">
+    <widths r="11.57" z="[52] + [8.5] + [229.3538] + [58]"/>
+    <universes>
+      [107] <!-- 上部操作头 -->
+      [111] <!-- 钢反射层 -->
+      [112] <!-- 钢反下部钠腔 -->
+      [113] <!-- 钢反射层下端 -->
+    </universes>
+  </lattice>
+  <!-- ######################################### -->
+
+</global>

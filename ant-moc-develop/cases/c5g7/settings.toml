@@ -1,0 +1,43 @@
+log_level = "info"
+
+[parallel]
+track_mapping = "auto"
+
+[geometry]
+path        = "cases/c5g7/c5g7-rodded-B-geo.xml"
+primitives  = "cases/c5g7/primitives.xml"
+lattice_refines = ""
+cell_sectors    = ""
+
+[materials]
+path      = "cases/c5g7/c5g7-mgxs.h5"
+xs_layout = "named"
+
+[output]
+directory = "cmfd-antmoc-log/c5g7-rodded-B"
+reaction_rates = "F, T, PHI"
+cross_sections = "none"
+tracks         = "none"
+mesh.type      = "rectangle"
+mesh.offset    = "0, 0, 0"
+mesh.shape     = "[1.26]*51, [1.26]*51, [1.428]*45"
+
+[quadrature]
+type         = "Equal Weight"
+azims        = 32
+azim_spacing = 0.05
+polars       = 2
+z_spacing    = 0.75
+
+[ray_tracing]
+segmentation = "OTF Stacks"
+z_mesh       = "Local"
+zones        = "-32.13, -10.71, 10.71, 32.13"
+modules      = "3, 3, 1"
+
+[solver]
+type           = "CPU Solver"
+max_iterations = 1000
+tolerance      = 1E-5
+stabilization  = "none"
+keff_neutron_balance = false
