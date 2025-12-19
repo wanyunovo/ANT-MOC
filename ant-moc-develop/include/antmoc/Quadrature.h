@@ -120,8 +120,7 @@ protected:
   }
 
   template <typename T>
-  static void resize2D(std::vector< std::vector<T> >& vec, size_t dim1,
-                       size_t dim2) {
+  static void resize2D(std::vector< std::vector<T> >& vec, size_t dim1,size_t dim2) {
     vec.resize(dim1);
     for (size_t i = 0; i < dim1; ++i)
     {

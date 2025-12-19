@@ -34,64 +34,65 @@ enum coordType {
 
 
 /**
- * @class LocalCoords LocalCoords.h "openmoc/src/host/LocalCoords.h"
- * @brief The LocalCoords represents a set of local coordinates on some
- *        level of nested Universes making up the geometry.
- *        _next and _prev allow for use of LocalCoords as a linked list
- *        but _next_array can also be used to access coordinates.
+ * @class LocalCoords LocalCoords.h“openmoc/src/host/LocalCoords.h”
+ * @brief LocalCoords 表示某些上的一组局部坐标
+ *构成几何体的嵌套宇宙的级别。
+ *_next 和 _prev 允许使用 LocalCoords 作为链表
+ *但 _next_array 也可用于访问坐标。
  */
 class LocalCoords {
 
 private:
-  /** The local coordinate type (UNIV or LAT) */
+  /** 本地坐标类型（UNIV 或 LAT） */
   coordType _type;
 
-  /** The Universe within which this LocalCoords resides */
+  /** LocalCoords 所在的宇宙 */
   Universe* _universe;
 
-  /** The Cell within which this LocalCoords resides */
+  /** LocalCoords 所在的单元格 */
   Cell* _cell;
 
-  /** The Lattice within which this LocalCoords resides */
+  /** LocalCoords 所在的格子 */
   Lattice* _lattice;
 
-  /** The first index of the Lattice cell within which this LocalCoords
-   *  resides */
+  /** LocalCoords 所在的晶格单元的第一个索引
+   *  驻留*/
   int _lattice_x;
 
-  /** The second index of the Lattice cell within which this LocalCoords
-   *  resides */
+  /** LocalCoords 所在的晶格单元的第二个索引
+   *  驻留*/
   int _lattice_y;
 
-  /** The third index of the Lattice cell within which this LocalCoords
-   *  resides */
+  /** LocalCoords 所在的晶格单元的第三个索引
+   *  驻留*/
   int _lattice_z;
 
-  /** A Point representing the 3D coordinates of this LocalCoords */
+  /** 表示此 LocalCoords 的 3D 坐标的 Point */
   Point _coords;
 
-  /** The direction angle in radians with respect to the x-axis */
+  /** 相对于 x 轴的方向角（以弧度表示） */
   double _phi;
 
-  /** The direction angle in radians with respect to the z-axis */
+  /** 相对于 z 轴的方向角（以弧度表示） */
   double _polar;
 
-  /** A pointer to the LocalCoords at the next lower nested Universe level */
+  /** 指向下一个较低嵌套 Universe 级别的 LocalCoords 的指针 */
   LocalCoords* _next;
 
-  /** A pointer to the LocalCoords at the next higher nested Universe level */
+  /** 指向下一个更高嵌套 Universe 级别的 LocalCoords 的指针 */
   LocalCoords* _prev;
 
-  /** An array that contains pointers to all the next LocalCoords */
+  /** 包含指向所有下一个 LocalCoords 的指针的数组
+   * // 该局部点所在的链表表头 */
   LocalCoords* _next_array;
 
-  /** Position in the _next_array of coordinates */
+  /** _next_array 坐标中的位置 */
   int _position;
 
-  /** Size of the _next_array of coordinates */
+  /** _next_array 坐标的大小 */
   int _array_size;
 
-  /** An integer to differentiate otherwise matching coordinate FSR keys */
+  /** 一个整数，用于区分其他匹配的坐标 FSR 键 */
   int _version_num;
 
   void setArrayPosition(LocalCoords* array, int position, int array_size);

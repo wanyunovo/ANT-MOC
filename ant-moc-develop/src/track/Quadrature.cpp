@@ -679,12 +679,12 @@ void Quadrature::initialize() {
   }
 }
 
-
 /**
  * @brief This private routine computes the product of the sine thetas and
- *        weights for each angle in the polar quadrature.计算每个极角求积组的 sin(theta) 和权重的乘积
+ *        weights for each angle in the polar quadrature.
  * @details Note that this routine must be called after populating the
  *          sine thetas and weights vectors.
+ * 计算每个极角求积组的 sin(theta) 和权重的乘积
  */
 void Quadrature::precomputeWeights(bool solve_3D) {
 
@@ -698,7 +698,7 @@ void Quadrature::precomputeWeights(bool solve_3D) {
     log::ferror("Unable to precompute weights since polar angles have "
                       "not yet been set");
 
-  /* Clear azimuthal weights 清除方位角权重并初始化方位角*/
+  /* Clear azimuthal weights 清除方位角权重并初始化*/
   _azim_weights.resize(_num_azim/2);
 
   /* Create uncorrected weights if no angles have been set yet 如果 _phis 为空，将使用未修正的角度来计算方位角权重，并记录一个警告信息*/
@@ -716,7 +716,7 @@ void Quadrature::precomputeWeights(bool solve_3D) {
   for (size_t a = 0; a < _num_azim/4; ++a) {
 
     /* The azimuthal weights (in radians) using equal weight quadrature 
-    这里的 x1 和 x2 分别是当前方位角与前后方位角的一半差值，最后权重取这两个值的平均值。*/
+    这里的 x1 和 x2 分别是当前方位角与前后方位角的一半差值，最后权重取这两个值的和。*/
     if (a < _num_azim/4 - 1)
       x1 = 0.5 * (_phis[a+1] - _phis[a]);
     else
@@ -727,7 +727,7 @@ void Quadrature::precomputeWeights(bool solve_3D) {
     else
       x2 = _phis[a];
 
-    setAzimuthalValues(_azim_weights, a, double((x1 + x2) / M_PI));
+    setAzimuthalValues(_azim_weights, a, double((x1 + x2) / M_PI)); // 得到一个 0~_num_azim/2 的无量纲比例，方便后面计算
   }
 
   /* Allocate memory if it was not allocated previously 为 sin(theta) 和总权重 _total_weights 分配内存。*/
@@ -738,12 +738,14 @@ void Quadrature::precomputeWeights(bool solve_3D) {
   for (size_t a=0; a < _num_azim/4; ++a) {
     for (size_t p=0; p < _num_polar/2; ++p) {
       double sin_theta = sin(_thetas[a][p]);
-      double weight = 2.0 * M_PI * _azim_weights[a] * _azim_spacings[a]
-          * _polar_weights[a][p];
+
+      double weight = 2.0 * M_PI * _azim_weights[a] * _azim_spacings[a]* _polar_weights[a][p];
+
       if (solve_3D)
         weight *= _polar_spacings[a][p];
       else
-        weight *= 2.0 * sin_theta;  //乘以2.0来表示整个三维的情况。几何整体就变为4π了（前面有乘以2π）,再乘以sin_theta，把三维的极角投影到二维
+        weight *= 2.0 * sin_theta;  
+        //乘以2.0来表示整个三维的情况。几何整体就变为4π了（前面有乘以2π）,再乘以sin_theta，把三维的极角投影到二维
       setPolarValues(_sin_thetas, a, p, sin_theta);  //给_sin_thetas赋值
       setPolarValues(_total_weights, a, p, weight);  //给_total_weights赋值
     }

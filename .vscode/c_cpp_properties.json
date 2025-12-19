@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include/**"
+                "/usr/include/**",
+                "D:/C++/develop/Microsoft SDKs/MPI/Include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

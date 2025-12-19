@@ -1,10 +1,10 @@
 /**
- * @file enum_types.h
- * @details The type enums.
- *          Refactored in HPC&DE, USTB
- * @date April 18, 2019
- * @author William Boyd, MIT, Course 22 (wboyd@mit.edu)
- * @author An Wang, USTB (wangan@xs.ustb.edu.cn)
+ * @文件 enum_types.h
+ * @details 类型枚举。
+ *在HPC&DE、科技大学重构
+ * @日期 2019 年 4 月 18 日
+ * @作者 William Boyd，麻省理工学院，课程 22 (wboyd@mit.edu)
+ * @作者王安，科技大学 (wangan@xs.ustb.edu.cn)
  */
 
 #ifndef ENUM_TYPES_H_
@@ -24,7 +24,7 @@
 namespace antmoc {
 
 
-/// \brief Return better-enum object as string.
+/// \brief 将 better-enum 对象作为字符串返回。
 template <typename T>
 std::string enumToString(T e) {
   return stringutils::underscoreToSpace(e._to_string());
@@ -32,17 +32,17 @@ std::string enumToString(T e) {
 
 
 /**
- * @enum boundaryType
- * @brief The types of boundary conditions for Surfaces.
+ * @enum 边界类型
+ * @brief 表面边界条件的类型。
  */
 enum boundaryType {
-  /** A vacuum boundary condition */
+  /** 真空边界条件 */
   VACUUM,
 
-  /** A reflective boundary condition */
+  /** 反射边界条件 */
   REFLECTIVE,
 
-  /** A periodic boundary condition */
+  /** 周期性边界条件 */
   PERIODIC,
 
   /* Boundary between two domains (only in domain-decomposed geometry) 两个域之间的界面*/
@@ -53,162 +53,162 @@ enum boundaryType {
 };
 
 
-/// \enum segmentationType
-/// \brief The types of Track segmentation supported by ANT-MOC.
+/// \enum 分段类型
+/// \brief ANT-MOC 支持的轨道分段类型。
 BETTER_ENUM(segmentationType, char,
 
-  /**< Explicit 2D segments (required for 2D simulations) */
+  /**< 显式 2D 段（2D 模拟所需） */
   EXPLICIT_2D,
 
-  /**< Explicit 3D segments */
+  /**显式 3D 追踪，所有 3D 轨迹分段都显式存下来； */
   EXPLICIT_3D,
 
-  /**< Axial on-the-fly 3D segment formation by 3D track */
+  /**< 通过 3D 轨迹形成轴向动态 3D 分段 */
   OTF_TRACKS,
 
-  /**< Axial on-the-fly 3D segment formation by z-stack */
+  /**< 通过 z 堆栈形成轴向动态 3D 段 */
   OTF_STACKS
 )
 
 
-/// \enum surfaceType
-/// \brief The types of surfaces supported by ANT-MOC.
+/// \enum surface type
+/// \brief ANT-MOC supported surface types.
 enum surfaceType {
-  PLANE,            ///< A general plane
-  XPLANE,           ///< A plane perpendicular to the x-axis
-  YPLANE,           ///< A plane perpendicular to the y-axis
-  ZPLANE,           ///< A plane perpendicular to the z-axis
-  ZCYLINDER,        ///< A cylinder with axis parallel to the z-axis
-  QUADRATIC,        ///< A generalized quadratic surface
-  LATTICEPRISM,     ///< The surface of a lattice
-  RECLATTICEPRISM,  ///< The surface of a RecLattice
-  HEXLATTICEPRISM   ///< The surface of a HexLattice
+  PLANE,            ///< Ordinary aircraft
+  XPLANE,           ///< plane perpendicular to the x-axis
+  YPLANE,           ///< plane perpendicular to the y-axis
+  ZPLANE,           ///< plane perpendicular to the z-axis
+  ZCYLINDER,        ///< Cylinder with axis parallel to z-axis
+  QUADRATIC,        ///< Generalized Quadratic Surface
+  LATTICEPRISM,     ///< lattice surface
+  RECLATTICEPRISM,  ///< RecLattice 的表面
+  HEXLATTICEPRISM   ///< Surface of hexagonal lattice
 };
 
 
 /**
- * @enum universeType
- * @brief The type of universe
+ * @enum UniverseType
+ * @brief 宇宙的类型
  */
 enum universeType{
 
-  /** A simple non-repeating Universe */
+  /** 一个简单的非重复宇宙 */
   SIMPLE,
 
-  /** A collection of Universes in a rectangular Lattice */
+  /** 矩形格子中的宇宙集合 */
   LATTICE
 };
 
 
 /**
- * @enum latticeType
- * @brief The type of Lattice
+ * @enumlatticeType
+ * @brief 格子的类型
  */
 enum class latticeType{
 
-  /** A rectangular layout Lattice */
+  /** 矩形布局格子 */
   Rectangle,
 
-  /** A hexagonal layout Lattice */
+  /** 六边形布局格子 */
   Hexagon,
 
-  /** An empty Lattice without any layout */
+  /** 没有任何布局的空格子 */
   EMPTY
 };
 
 
 /**
  * @enum cellType
- * @brief The type of cell.
+ * @brief 单元格的类型。
 */
 enum cellType {
 
-  /** A cell filled by a Material */
+  /** 一个由材质填充的单元格 */
   MATERIAL,
 
-  /** A cell filled by a Universe */
+  /** 一个细胞充满了宇宙 */
   FILL,
 
-  /** A cell not yet filled by anything */
+  /** 细胞还没有被任何东西填满 */
   UNFILLED
 };
 
 
 /**
  * @enum cellPhy
- * @brief The physical meaning of cell
+ * @brief 细胞的物理意义
 */
 enum cellPhy {
 
-  /** A cell for a pin */
+  /** 一个单元用于一个引脚 */
   PIN, 
 
-  /** A cell for an assembly */
+  /** 装配单元 */
   ASSEMBLY, 
 
-  /** A cell for a reactor core */
+  /** 反应堆堆芯的单元 */
   CORE,
 
-  /** A cell for a control rod */
+  /** 控制棒的单元 */
   CROD,
 
-  /** A cell for others */
+  /** 为他人准备的牢房 */
   ELSE
 };
 
 
 /**
- * @enum solverMode
- * @brief The solution mode used by the MOC solver.
+ * @enum 求解器模式
+ * @brief MOC 求解器使用的求解模式。
  */
 enum solverMode {
 
-  /** The forward flux distribution */
+  /** 正向通量分布 */
   FORWARD,
 
-  /** The adjoint flux distribution */
+  /** 伴随通量分布 */
   ADJOINT,
 };
 
 
 /**
- * @enum residualType
- * @brief The type of residual used for the convergence criterion.
+ * @enum残差类型
+ * @brief 用于收敛标准的残差类型。
  */
 enum residualType {
 
-  /** A residual on the scalar flux distribution */
+  /** 标量通量分布的残差 */
   SCALAR_FLUX,
 
-  /** A residual on the fission source distribution */
+  /** 裂变源分布的残差 */
   FISSION_SOURCE,
 
-  /** A residual on the total source distribution */
+  /** 总源分布的残差 */
   TOTAL_SOURCE,
 };
 
 
 /**
- * @enum stabilizationType
- * @brief The type of stabilization to use on source iteration
+ * @enum 稳定类型
+ * @brief 在源迭代中使用的稳定类型
  */
 BETTER_ENUM(stabilizationType, char,
 
-  /** General diagonal stabilization */
+  /** 一般对角稳定 */
   DIAGONAL,
 
-  /** Yamamoto's groupwise stabilization */
+  /** 山本的群体稳定 */
   YAMAMOTO,
 
-  /** Global damping on the scalar flux update */
+  /** 标量通量更新的全局阻尼 */
   GLOBAL,
 
   NONE
 )
 
 
-/// \enum quadratureType
-/// \brief The types of quadrature sets supported by ANT-MOC.
+/// \enum 正交类型
+/// \brief ANT-MOC 支持的正交集类型。
 BETTER_ENUM(quadratureType, char,
   TABUCHI_YAMAMOTO,
   LEONARD,
@@ -218,8 +218,8 @@ BETTER_ENUM(quadratureType, char,
 )
 
 
-/// \enum solverType
-/// \brief The types of solvers supported by ANT-MOC.
+/// \enum 求解器类型
+/// \brief ANT-MOC 支持的求解器类型。
 BETTER_ENUM(solverType, char,
   CPU_SOLVER,
   CPU_LS_SOLVER,
@@ -227,39 +227,39 @@ BETTER_ENUM(solverType, char,
 )
 
 
-/// \see OpenMC
+/// \参见 OpenMC
 enum class Orientation {
-  x,  ///< Flat side of lattice parallel to y-axis
-  y   ///< Flat side of lattice parallel to x-axis
+  x,  ///< 晶格平行于 y 轴的平面
+  y   ///< 晶格平行于 x 轴的平面
 };
 
 
 /// \enum xsFileLayout
-/// \brief The layout of cross-section file
+/// \brief 横截面文件的布局
 BETTER_ENUM(XSFileLayout, char,
   NAMED,
   COMPRESSED
 )
 
 
-/// \enum tallyMeshType
-/// \brief The type of tally mesh
+/// \enumtallyMeshType
+/// \brief 计数网格的类型
 BETTER_ENUM(tallyMeshType, char,
-  RECTANGLE, /**< A rectangular layout tally mesh */
-  HEXAGON    /**< A hexagonal layout tally mesh */
+  RECTANGLE, /**< 矩形布局计数网格 */
+  HEXAGON    /**< 六边形布局计数网格 */
 )
 
 
 /// \enum trackMappingType
-/// \brief The type of track mapping algorithms
+/// \简介 轨迹映射算法的类型
 BETTER_ENUM(trackMappingType, char,
-  BLOCK,          /**< Mapping algorithm for block distribution */
-  CYCLIC_TRACK,   /**< Mapping algorithm for cyclic track distribution */
-  ANGLE,          /**< Mapping algorithm for angular decomposition */
-  AUTO            /**< Automatically choose the best algorithm */
+  BLOCK,          /**< 区块分布的映射算法 */
+  CYCLIC_TRACK,   /**< 循环轨迹分布的映射算法 */
+  ANGLE,          /**< 角度分解的映射算法 */
+  AUTO            /**< 自动选择最佳算法 */
 )
 
 
-} /* namespace antmoc */
+} /* 命名空间 Antmoc */
 
-#endif /* ENUM_TYPES_H_ */
+#endif /* 枚举类型 h */

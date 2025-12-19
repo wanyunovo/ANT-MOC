@@ -1292,7 +1292,7 @@ namespace antmoc
       if (_cmfd->GetHexLatticeEnable()) // 00000000000000000000
         _cmfd->initializeHex();
       else
-        _cmfd->initialize(); // 初始化CMFD相关的矩阵和矢量对象、k-nearest模板、CMFD中子流和MOC材料
+        _cmfd->initialize(); // 初始化CMFD相关的矩阵和矢量对象、k-nearest模板、CMFD中子流和MOC材料，重点
     }
 
     TrackGenerator3D *track_generator_3D =
@@ -1699,14 +1699,15 @@ namespace antmoc
     initializeFSRs();
 
     countFissionableFSRs();
-    
+
     initializeExpEvaluators();
     if (!_is_restart)
       initializeFluxArrays();
 
     initializeSourceArrays();
 
-    initializeCmfd(); // CMFD求解的初始化
+    initializeCmfd(); // CMFD求解的初始化，重点
+
     _geometry->fixFSRMaps();
 #ifdef ENABLE_MPI_
     if (mpi::isSpatialDecomposed())
@@ -1771,8 +1772,8 @@ namespace antmoc
       addSourceToScalarFlux(); // 更新FSR标通量
 
       /* Solve CMFD diffusion problem and update MOC flux */
-      if (_cmfd != NULL && _cmfd->isFluxUpdateOn())//是否开启CMFD
-        _k_eff = _cmfd->computeKeff(i); // cfmd具体求解部分，计算有效增殖因子
+      if (_cmfd != NULL && _cmfd->isFluxUpdateOn()) // 是否开启CMFD
+        _k_eff = _cmfd->computeKeff(i);             // cfmd具体求解部分，计算有效增殖因子，重点
       else
         computeKeff();
 

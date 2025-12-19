@@ -6,10 +6,10 @@
 namespace antmoc {
 
 
-/// \brief Initializes a Point with two-dimensional coordinates.
-/// \param x x-coordinate
-/// \param y y-coordinate
-/// \param z z-coordinate
+/// \brief 用二维坐标初始化一个点。
+/// \param x x 坐标
+/// \param y y 坐标
+/// \param z z 坐标
 void Point::setCoords(const double x, const double y, const double z) {
   _xyz[0] = x;
   _xyz[1] = y;
