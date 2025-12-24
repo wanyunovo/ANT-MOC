@@ -4,36 +4,37 @@ log_level = "info"
 track_mapping = "auto"
 
 [geometry]
-path        = "cases/c5g7/c5g7-rodded-B-geo.xml"
-primitives  = "cases/c5g7/primitives.xml"
+path        = "cases/c5g7/c5g7-rodded-B-geo.xml" # 几何描述文件
+primitives  = "cases/c5g7/primitives.xml" # 基本几何元素文件
 lattice_refines = ""
 cell_sectors    = ""
 
 [materials]
-path      = "cases/c5g7/c5g7-mgxs.h5"
-xs_layout = "named"
+path      = "cases/c5g7/c5g7-mgxs.h5"   # 材料截面数据（HDF5格式）
+xs_layout = "named"                       # 截面数据按名称组织
 
 [output]
-directory = "cmfd-antmoc-log/c5g7-rodded-B"
-reaction_rates = "F, T, PHI"
-cross_sections = "none"
-tracks         = "none"
-mesh.type      = "rectangle"
-mesh.offset    = "0, 0, 0"
+directory = "cmfd-antmoc-log/c5g7-rodded-B"    # 输出目录
+reaction_rates = "F, T, PHI"                   # 输出裂变率(F)、总反应率(T)、通量(PHI)
+cross_sections = "none"                        # 不输出截面
+tracks         = "none"                        # 不输出轨迹
+mesh.type      = "rectangle"                   # 统计网格类型：矩形
+mesh.offset    = "0, 0, 0"                     # 网格偏移
 mesh.shape     = "[1.26]*51, [1.26]*51, [1.428]*45"
+# 统计网格：x方向51个1.26cm、y方向51个1.26cm、z方向45个1.428cm
 
 [quadrature]
-type         = "Equal Weight"
-azims        = 32
-azim_spacing = 0.05
-polars       = 2
-z_spacing    = 0.75
+type         = "Equal Weight"   # 等权重求积
+azims        = 32               # 方位角32个
+azim_spacing = 0.05             # 方位角轨迹间距0.05cm
+polars       = 2                # 极角2个
+z_spacing    = 0.75             # 轴向轨迹间距0.75cm
 
 [ray_tracing]
 segmentation = "OTF Stacks"
 z_mesh       = "Local"
 zones        = "-32.13, -10.71, 10.71, 32.13"
-modules      = "3, 3, 1"
+modules      = "3, 3, 1" #将整个几何区域划分为3*3*1=9个模块，（轴向不分割）
 
 [solver]
 type           = "CPU Solver"

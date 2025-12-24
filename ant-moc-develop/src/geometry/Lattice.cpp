@@ -282,6 +282,9 @@ namespace antmoc
    *          below this Universe within the nested Universe coordinate system.
    * @return a map of Universe keyed by the universe ID.
    *
+   *作用：收集 Lattice 中所有不重复的 Universe
+   为什么要"不重复"：一个 Lattice 可能在多个位置填充同一个 Universe（如：4x4的栅格中可能有多个格子都填充"燃料Universe"），只需要细分一次
+   *
    * 整理 Lattice 中包含的所有不重复 Universe 的标号以及指针,  并返回存储 Universe 标号与指针的 map 容器
    */
   std::map<int, Universe *> Lattice::getUniqueUniverses()
@@ -290,7 +293,7 @@ namespace antmoc
     std::map<int, Universe *> unique_universes;
 
     // Iterate all universes
-    for (auto u : *this)
+    for (auto u : *this) //*this 调用 Lattice::begin() 和 Lattice::end() 返回迭代器，遍历 Lattice 中的每个 Universe
       /* The lattice may reuse the same Universe pointer at different indices.
        * Using the Universe ID as the map key collapses duplicates. */
       if (u)
@@ -429,7 +432,7 @@ namespace antmoc
    *        into rings and angular sectors aligned with the z-axis.
    * @param max_radius the maximum allowable radius used in the subdivisions
    *
-   * 将 Lattice 中所有以材料填充的 Cell,按照垂直于 z 轴方向,进行环状和扇区分割
+   * 将 Lattice 中所有以材料填充的 Cell以z轴为中心，进行环状和扇区划分
    */
   void Lattice::subdivideCells(double max_radius)
   {
@@ -450,9 +453,12 @@ namespace antmoc
                   u.first, unique_radius[u.first], max_radius);
 
       /* If the  local universe equivalent radius is smaller than max_radius
-         parameter, over-ride it*/
-      /* Each Universe decides how to subdivide its Cells, but we clamp the
-       * target radius by both the lattice-specific radius and the user cap. */
+         parameter, over-ride it
+         如果局部 Universe 的等效半径小于 max_radius，就用小的那个
+         */
+      /* Each Universe decides how to subdivide its Cells, but we clamp the target radius by both the lattice-specific radius and the user cap.
+       每个 Universe 自己决定如何细分，但半径要同时满足两个限制：Lattice 计算的等效半径 和 用户指定的 max_radius。
+       */
       u.second->subdivideCells(std::min(unique_radius[u.first],
                                         max_radius));
     }
@@ -560,7 +566,7 @@ namespace antmoc
    * @param unique_universes The unique universes of this Lattice
    * @return a map of unique radius keyed by the universe ID.
    *  计算矩形 Lattice 内每种唯一 Universe 的“等效半径”，并返回一个 map<int,double>，键是 Universe ID，值是半径。
-“等效半径”是指填充该 Universe 的矩形单元对角线的一半：sqrt( (width_x/2)^2 + (width_y/2)^2 )。它衡量了“从单元中心到边界最远点”的距离，后续在 subdivideCells 里会用它来控制环/扇形细分的最大半径。
+   *   等效半径”是指填充该 Universe 的矩形单元对角线的一半：sqrt( (width_x/2)^2 + (width_y/2)^2 )。它衡量了“从单元中心到边界最远点”的距离，后续在 subdivideCells 里会用它来控制环/扇形细分的最大半径。
    */
   std::map<int, double> RecLattice::getUniqueRadius(std::map<int, Universe *> &unique_universes)
   {
@@ -574,16 +580,27 @@ namespace antmoc
     /* Get the maximum equivalent radius of each unique universe */
     for (auto it = begin(); it != end(); ++it)
     {
+      // 计算 x 方向索引（列号）
+      // 原理：每行有 _num_x 个格点，取模得到列内偏移
       auto i = it.getPos() % _num_x;
+      // 计算 y 方向索引（行号）
+      // 步骤1：pos % (_num_x * _num_y) 去掉完整的层
+      // 步骤2：除以 _num_x 得到在当前层的第几行
       auto j = it.getPos() % (_num_x * _num_y) / _num_x;
-      // 这里不懂
-      /*
-      pos % (_num_x * _num_y) 先把层数剥掉，只保留本层里的位置。比如 _num_x=4,_num_y=3，一层有 12 个格点；如果 pos=17，17 % 12 = 5，说明在当前层里是第 5 个位置（从 0 开始）。
-再除以 _num_x（每一行 x 的数量）就得到 y 行号。继续上例：5 / 4 = 1，表示在 y=1 这一行，也就是第二行。
-i 表示当前格点在 x 方向排第几个，用 “位置对 _num_x 取模”就能得到。
-j 表示在 y 方向排第几个，先把位置按一层（_num_x * _num_y）取模，再除以 _num_x，相当于“去掉 x 的贡献后剩下的层内 y 索引”。
-这样就可以用 _widths_x[i]、_widths_y[j] 查到当前格点在 x/y 方向的尺寸，从而计算该格点 (也即放在此处的 Universe) 的等效半径。*/
+
       auto u = *it;
+      /*
+       处理非均匀网格
+       每个格子的宽度可能不同：
+       _widths_x[0] = 1.0 cm
+       _widths_x[1] = 1.5 cm
+       _widths_x[2] = 2.0 cm
+       ...
+       所以必须知道确切的 i 和 j 才能查表。
+       需要 _widths_x[i] 和 _widths_y[j] 来计算等效半径
+       不同层的同一位置 (i, j) 使用相同的 x、y 宽度
+      */
+      // 如果同一个 Universe 出现在多个格点，取最大半径
       unique_radius[u->getId()] =
           std::max(unique_radius[u->getId()],
                    sqrt(_widths_x[i] * _widths_x[i] / 4.0 + _widths_y[j] * _widths_y[j] / 4.0));
@@ -1257,7 +1274,7 @@ i 方向在输入和内部都是“从左到右”，无需翻转。
   }
 
   /**
-   * @brief Set widths of non-uniform meshes in x y z directions.
+   * @brief Set widths of non-uniform meshes in x y z directions.设置 x y z 方向上非均匀网格的宽度。
    * @details An example of how this may be called from Python illustrated below:
    *
    * @code

@@ -35,15 +35,49 @@ namespace antmoc
   {
 
   protected:
-    latticeType _lattice_type; ///< The type of the Lattice layout
-    Point _offset;             ///< The coordinates of the offset for the Universe“此 Lattice 的几何中心在父几何里的全局坐标”，求单元中心时也是先在格子坐标算出局部位置，再加 _offset 得到全局位置
-    // 全局中心为(0,0,0),局部中心(1,1,1)(即_offset),所以全局坐标->局部坐标,减_offset
-    bool _non_uniform;                  ///< True if the lattice is non-uniform 如果Lattice不均匀则为真
-    int _num_z;                         ///< The number of Lattice cells along the z-axis 沿 z 轴的Lattice单元数
-    double _width_z;                    ///< The axial width of each Lattice cell (uniform lattices only) 每个Lattice单元的轴向宽度（仅限均匀Lattice）
-    DoubleVec _widths_z;                ///< Z-direction widths of non-uniform lattice meshes  非均匀Lattice沿z方向的各单元格宽度
-    DoubleVec _accumulate_z;            ///< Accumulated widths of non-uniform lattice meshes 非均匀Lattice沿z方向的累积宽度
-    std::vector<Universe *> _universes; ///< A container of Universes 存储 Lattice 中包含的子 Universe 的容器
+    /** Lattice的布局类型（枚举类型 latticeType，可能值：RECTANGULAR矩形、HEXAGONAL六边形等）
+     *  用于标识当前晶格是矩形排列还是六边形排列 */
+    latticeType _lattice_type;
+
+    /** Lattice在父几何体中的偏移坐标（Point类型包含x、y、z三个坐标值）
+     *  表示此Lattice的几何中心在父Universe坐标系中的位置
+     *  例如：_offset = (1.5, 2.0, 0.0) 表示lattice中心位于父坐标系的(1.5, 2.0, 0.0)处
+     *  作用：坐标转换时使用，全局坐标 = 局部坐标 + _offset
+     * */
+    Point _offset;
+
+    /** 标识晶格是否为非均匀网格（布尔类型）
+     *  true  = 非均匀晶格（每个格子可以有不同的尺寸，需要用_widths数组存储）
+     *  false = 均匀晶格（所有格子尺寸相同，只需要_width单个值） */
+    bool _non_uniform;
+
+    /** 沿z轴（高度/轴向）的Lattice层数
+     *  例如：_num_z = 10 表示z方向堆叠了10层 */
+    int _num_z;
+
+    /** z方向每层的统一高度（单位：cm），仅用于均匀晶格
+     *  例如：_width_z = 5.0 表示每层高5.0cm
+     *  特殊值：infinity（无穷大）表示2D晶格（不沿z方向分层）
+     * */
+    double _width_z;
+
+    /** z方向各层的高度数组，用于非均匀晶格
+     *  长度为 _num_z，_widths_z[i] 存储第i层的高度
+     *  例如：_widths_z = {5.0, 8.0, 5.0} 表示3层分别高5.0、8.0、5.0cm
+     * */
+    DoubleVec _widths_z;
+
+    /** z方向的累积高度数组（前缀和），用于快速定位在哪一层
+     *  长度为 _num_z+1，_accumulate_z[i] 表示从底部到第i层底面的累积高度
+     *  工作原理与x/y方向的_accumulate完全相同
+     * */
+    DoubleVec _accumulate_z;
+
+    /** 存储所有子Universe指针的容器
+     *  _universes[i] 指向第i个lattice单元中填充的Universe对象
+     *  Universe*：指针类型，指向Universe对象
+     *  长度等于晶格单元总数，对于RecLattice是 _num_x * _num_y * _num_z */
+    std::vector<Universe *> _universes;
 
   public:
     //-----------------------------------------------------
@@ -114,7 +148,7 @@ namespace antmoc
     virtual int getNumLatticeCells() const = 0;
     int getMaxNumUniverses() const;
 
-    virtual bool containsPoint(Point *point) = 0; // 判断点是否在 Lattice 内
+    virtual bool containsPoint(Point *point) = 0;                                            // 判断点是否在 Lattice 内
     virtual double minSurfaceDist(Point *point, double azim, double polar = M_PI / 2.0) = 0; // 计算局部点沿某方向到最近面的距离
 
     virtual double getMinX() const = 0;
@@ -190,20 +224,28 @@ namespace antmoc
 
     bool operator!=(const LatticeIter &rhs) { return !(*this == rhs); }
 
-    /// \brief Return a reference to a pointer to Universe 返回一个指向Universe的指针
+    /*
+    重载解引用运算符（像指针的 *ptr）
+    返回lattice中当前位置的一个指向Universe的指针
+    &：引用，返回的是引用而非副本
+    为什么返回引用：可以修改这个 Universe 指针，指向别的 Universe
+    */
     Universe *&operator*() { return _lat._universes[_pos]; }
 
     /// \brief Move to the next valid lattice cell
     /// \details This overloaded operator iterates cells of the given
     ///          lattice and checks the validation
+    /*
+    返回 LatticeIter &：返回自身引用（标准做法）
+    */
     LatticeIter &operator++()
     {
       // Find the next valid index
       while (_pos < _lat._universes.size())
       {
         ++_pos;
-        if (_lat.isValidIndex(_pos))
-          return *this;
+        if (_lat.isValidIndex(_pos)) // 调用 Lattice 的 isValidIndex() 检查索引是否有效
+          return *this;              // 返回lattice中当前位置的一个指向Universe的指针
       }
       // The index past the last element
       _pos = _lat._universes.size();
@@ -214,7 +256,7 @@ namespace antmoc
     size_t getPos() const { return _pos; }
 
   protected:
-    Lattice &_lat; ///< The lattice to be iterated
+    Lattice &_lat; /// 要迭代的 Lattice
     size_t _pos;   ///< Index of the current lattice cell
   };
 
@@ -226,28 +268,47 @@ namespace antmoc
   {
 
   private:
-    /** The number of Lattice cells along the x-axis */
+    /** 沿x轴方向的Lattice单元格数量（整数）
+     *  例如：_num_x = 5 表示x方向有5个格子排列 */
     int _num_x;
 
-    /** The number of Lattice cells along the y-axis */
+    /** 沿y轴方向的Lattice单元格数量（整数）
+     *  例如：_num_y = 5 表示y方向有5个格子排列 */
     int _num_y;
 
-    /** The width of each Lattice cell (cm) along the x-axis
-        (uniform lattices only) */
+    // --- 均匀网格（uniform lattice）：所有格子宽度相同 ---
+    /** x方向每个格子的统一宽度（单位：cm）
+     *  仅用于均匀晶格（所有格子宽度一样）
+     *  例如：_width_x = 1.26 表示每个格子x方向都是1.26cm宽 */
     double _width_x;
 
-    /** x-direction dimensions of non-uniform lattice meshes */
+    // --- 非均匀网格（non-uniform lattice）：每个格子宽度可以不同 ---
+    /** x方向各个格子的宽度数组（DoubleVec是std::vector<double>的类型别名）
+     *  长度为 _num_x，_widths_x[i] 存储第i个格子的宽度
+     *  例如：_widths_x = {1.0, 1.5, 2.0} 表示3个格子分别宽1.0、1.5、2.0cm */
     DoubleVec _widths_x;
-    DoubleVec _accumulate_x;
-    // 长度为 _num_x+1 的前缀和，_accumulate_x[i] 是第 i 条纵向网格线相对于最小 x 的位置，_accumulate_x[_num_x] 则是整个晶格的总宽。对应的 _accumulate_y/_accumulate_z 处理 y/z 方向。以晶格最小 x 为起点的、每个网格边界的累计距离数组
-    // 存的就是从左到右的累计宽度（第 0 格左边界=0，第 1 格右界=宽度1，第 2 格右界=宽度1+宽度2 ...
 
-    /** The width of each Lattice cell (cm) along the y-axis
-        (uniform lattices only) */
+    /** x方向的累积宽度数组（前缀和数组，用于快速定位）
+     *  长度为 _num_x+1，_accumulate_x[i] 是第 i 条纵向网格线相对于最小 x 的位置
+     *  _accumulate_x[0] = -2（起点）
+     *  _accumulate_x[i] = _widths_x[0] + _widths_x[1] + ... + _widths_x[i-1]（前i个格子的总宽）
+     *  _accumulate_x[_num_x] = 整个lattice的总宽度
+     *
+     *  作用：给定一个x坐标，可通过二分查找快速确定它在哪个格子里
+     *  例如：_widths_x = {1.0, 1.5, 2.0}
+     *       则 _accumulate_x = {-2.0, -1.0, 0.5, 2.5}
+     *       表示网格线位置在-2.0、-1.0、0.5、2.5cm处
+     * */
+    DoubleVec _accumulate_x;
+
+    // --- Y方向的对应变量（含义与X方向完全相同）---
+    /** y方向每个格子的统一宽度（cm），仅用于均匀晶格 */
     double _width_y;
 
-    /** y-direction dimensions of non-uniform lattice meshes */
+    /** y方向各个格子的宽度数组，用于非均匀晶格 */
     DoubleVec _widths_y;
+
+    /** y方向的累积宽度数组（前缀和），用于快速定位格子 */
     DoubleVec _accumulate_y;
 
   public:
@@ -308,8 +369,7 @@ namespace antmoc
       // 是把三维索引用成一维索引用的公式，遵循 k*_num_x*_num_y + j*_num_x + i 的行主序规则：lat_z 决定层偏移，lat_y 决定在层内的行偏移，lat_x 是列索引。
     }
     /// \brief Compute the uid of a lattice cell where a point resides
-    int getLatticeCell(Point *point); 
-
+    int getLatticeCell(Point *point);
 
     int getLatticeSurface(int cell, Point *point, double azim = 0, double polar = M_PI / 2.0);
     int getLatticeSurfaceOTF(int cell, double z, int surface_2D);

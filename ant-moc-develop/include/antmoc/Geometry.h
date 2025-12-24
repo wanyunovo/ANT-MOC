@@ -51,23 +51,34 @@ namespace antmoc
     ParallelHashMap<std::string, FSRData *> _FSR_keys_map;
     ParallelHashMap<std::string, ExtrudedFSR *> _extruded_FSR_keys_map;
 
-    /** An vector of FSR key hashes indexed by FSR ID */
+    /** An vector of FSR key hashes indexed by FSR ID
+     * _FSRs_to_keys[fsr_id] 返回该FSR的唯一标识字符串
+     */
     std::vector<std::string> _FSRs_to_keys;
 
-    /** An vector of FSR centroids indexed by FSR ID */
+    /** An vector of FSR centroids indexed by FSR ID
+     * _FSRs_to_centroids[fsr_id] 返回该FSR的数值中心点(Point指针)
+     */
     std::vector<Point *> _FSRs_to_centroids;
 
     /** A boolean indicating whether any centroids have been set */
     bool _contains_FSR_centroids;
 
-    /** A vector of Material IDs indexed by FSR IDs */
+    /** A vector of Material IDs indexed by FSR IDs
+     * _FSRs_to_material_IDs[fsr_id] 返回该FSR所含材料的ID
+     */
     std::vector<int> _FSRs_to_material_IDs;
 
-    /* _extruded_FSR_keys_map 是 key → ExtrudedFSR* 的 map；
-    同样，我们希望通过 extruded_fsr_id 直接拿到对应的 ExtrudedFSR*/
+    /*
+    _extruded_FSR_keys_map 是 key → ExtrudedFSR* 的 map；
+    同样，我们希望通过 extruded_fsr_id 直接拿到对应的 ExtrudedFSR*
+
+    */
     std::vector<ExtrudedFSR *> _extruded_FSR_lookup;
 
-    /** An vector of CMFD cell IDs indexed by FSR ID */
+    /** An vector of CMFD cell IDs indexed by FSR ID
+     * _FSRs_to_CMFD_cells[fsr_id] 返回该FSR所属的CMFD单元ID
+     */
     std::vector<int> _FSRs_to_CMFD_cells;
 
     /* The Universe at the root node in the CSG tree */
@@ -79,23 +90,37 @@ namespace antmoc
     /** An optional axial mesh overlaid on the Geometry 这个变量不是很理解 文档的解释是“额外定义的一层网，如果这个网轴向有 nz 层，每层都算上”是轴向网吗？*/
     RecLattice *_overlaid_mesh;
 
-    /* A map of all Material in the Geometry for optimization purposes */
+    /* A map of all Material in the Geometry for optimization purposes
+      材料ID → Material对象指针
+      all_materials[material_id] = Material*
+      拿到所有cell里用到的材料，键是材料id，值是材料指针
+    */
     std::map<int, Material *> _all_materials;
 
     /* A vector containing allocated strings for key generation */
     std::vector<std::string> _fsr_keys; // 为每个 OpenMP 线程准备一个复用的 string，用来快速生成 FSR key
 
-    /* A boolean to know whether FSRs were counted */
+    /* A boolean to know whether FSRs were counted
+        布尔标志：是否已统计各区域的FSR数量
+    */
     bool _domain_FSRs_counted;
 
-    /* Lattice object of size 1 that contains the local domain */
+    /* Lattice object of size 1 that contains the local domain
+      RecLattice对象指针
+      存储当前MPI进程负责的几何子域的空间边界
+    */
     RecLattice *_domain_bounds;
 
-    /* Number of FSRs in each domain */
+    /* Number of FSRs in each domain
+      `_num_domain_FSRs[domain_id]` = 该区域的FSR总数
+    */
     std::vector<long> _num_domain_FSRs;
 
     /* Number of modular track laydowns within a domain, in the X, Y and
-       Z directions */
+       Z directions
+        X/Y/Z方向的模块数量
+        将大问题分解为多个小模块分别追踪
+       */
     int _num_modules_x;
     int _num_modules_y;
     int _num_modules_z;
@@ -103,7 +128,9 @@ namespace antmoc
     /* Symmetries in X,Y and Z axis used to restrict the computation domain */
     std::vector<bool> _symmetries;
 
-    /* Wether to read bites backwards or forward (for BGQ) */
+    /* Wether to read bites backwards or forward (for BGQ)
+
+    */
     bool _twiddle;
 
     /* Whether the geometry was loaded from a .geo file or created in the input

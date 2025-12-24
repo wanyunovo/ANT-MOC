@@ -170,19 +170,29 @@ int main(int argc, char *argv[])
   log::fdebug("Creating CMFD mesh...");
   Cmfd *cmfd = new Cmfd();
   cmfd->setSORRelaxationFactor(1.5);   // 设置求解用的SOR迭代松弛因子
-  cmfd->setLatticeStructure(3, 3, 30); // 设置CMFD网格的逻辑结构  每一个cmfd网格都是一个lattice
+  cmfd->setLatticeStructure(3, 3, 30); // 设置CMFD网格的逻辑结构  整个CMFD网格系统用一个Lattice对象来表示，该Lattice包含3×3×30个单元
 
+  // 设置MOC（精细）能群到CMFD（粗）能群的映射关系，实现能群压缩以加速计算
   if (!conf->isHexTallyMesh()) // 判断不是六边形，默认就是四边形
-  {                            // 设置MOC能群和CMFD能群的对应关系
+  {
+    /*
+    每个元素代表一个CMFD能群，存储属于该CMFD能群的所有MOC能群编号
+    cmfd_group_structure = [
+    [1, 2, 3],      ← CMFD第0群包含MOC的1,2,3群
+    [4, 5, 6, 7]    ← CMFD第1群包含MOC的4,5,6,7群
+    ]
+    cmfd能群压缩，MOC是7个能群，压缩为2个能群，1-3能群压缩为第1个能群，4-7能群压缩第为2个能群
+    */
     std::vector<std::vector<int>> cmfd_group_structure;
-    cmfd_group_structure.resize(2); // cmfd能群压缩，MOC是7个能群，压缩为2个能群，1-3能群压缩为第1个能群，4-7能群压缩第为2个能群
+
+    cmfd_group_structure.resize(2); // resize函数用于调整向量的大小
     for (int g = 0; g < 3; g++)
       cmfd_group_structure.at(0).push_back(g + 1); // 这里g+1是为了便于统计总共有多少个MOC能群数，以及便于后续判断CMFD对应的MOC能群数是否是线性递增的
     for (int g = 3; g < 7; g++)
       cmfd_group_structure.at(1).push_back(g + 1);
     cmfd->setGroupStructure(cmfd_group_structure);
   }
-  cmfd->setKNearest(3); // 设置更新MOC通量所关联的径向CMFD网格数量，后续会根据这个数量来更新MOC通量
+  cmfd->setKNearest(3); // 设置更新MOC通量所关联的径向CMFD网格数量，使用K近邻插值更新MOC通量
 
   // set for HexLattice 000000000 - 为六边形设置 000000000
   cmfd->setHexLatticeEnable(conf->isHexTallyMesh());
@@ -206,6 +216,14 @@ int main(int argc, char *argv[])
   Geometry geometry;
   geometry.setNumDomainModules(nmods[0], nmods[1], nmods[2]);
 
+  /**
+   * 工厂模式（标准设计模式）：通过工厂方法创建对象，隐藏复杂的创建过程。
+   * <GeoInputXml>：模板参数，指定创建的是读取XML格式几何文件的处理器
+   * 参数含义：
+   * &geometry：几何对象的地址（引用传递，避免拷贝）
+   * mat_input：材料处理器（之前创建的）
+   * conf：配置对象
+   */
   auto geo_input =
       Factory::getGeoInput<GeoInputXml>(&geometry, mat_input, conf);
 
@@ -214,9 +232,10 @@ int main(int argc, char *argv[])
   // Read the geometry - 读取几何
   geo_input->readGeometryFromFile(conf->getGeoInputPath());
 
-  // Dump geometry settings as needed - 按需导出几何设置
+  // Dump geometry settings as needed - 检查配置中是否要求导出几何设置
   if (conf->doesDumpSettings())
   {
+    // 将几何设置导出到指定目录，用于后续检查或调试
     geo_input->dumpSettings(conf->getOutputDirectory());
   }
 
@@ -230,9 +249,9 @@ int main(int argc, char *argv[])
 
 #ifdef ENABLE_MPI_
   timer.startTimer();
-  if (mpi::isSpatialDecomposed())
+  if (mpi::isSpatialDecomposed()) // 检查是否启用了空间分解（将几何空间切分给多个进程）
   {
-    geometry.setDomainDecomposition();
+    geometry.setDomainDecomposition(); // 为几何对象设置域分解信息，告诉它：当前进程负责计算哪一块区域
   }
   timer.stopTimer("Domain Decomposition");
 #endif

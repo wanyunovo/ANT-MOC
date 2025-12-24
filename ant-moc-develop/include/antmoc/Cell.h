@@ -39,7 +39,7 @@ namespace antmoc
 
   struct Halfspace
   {
-    int halfspace;
+    int halfspace; // +1 or -1
     Surface *surface;
   };
 

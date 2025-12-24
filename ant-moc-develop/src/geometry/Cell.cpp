@@ -721,7 +721,8 @@ namespace antmoc
   ///       nested Universes filling this Cell.
   /// \return std::map of Cell IDs and pointers
   /**
-   * 当 Universe::getType() 发现实际类型是 SIMPLE，说明它真的是一个普通 Universe，于是直接调用 univ_fill->getAllCells()；否则它其实是 Lattice（继承 Universe），再次用 static_cast<Lattice*>(univ_fill) 把指针看作 Lattice，以便调用其特化的 getAllCells()。
+   * 当 Universe::getType() 发现实际类型是 SIMPLE，说明它真的是一个普通 Universe，于是直接调用 univ_fill->getAllCells()；
+   * 否则它其实是 Lattice（继承 Universe），再次用 static_cast<Lattice*>(univ_fill) 把指针看作 Lattice，以便调用其特化的 getAllCells()。
    */
   std::map<int, Cell *> Cell::getAllCells()
   {
@@ -732,7 +733,7 @@ namespace antmoc
     {
       std::map<int, Cell *> nested_cells;
       // 在这里是把“我知道它其实是某种 Universe”这条假设告诉编译器，好让编译器允许调用派生类接口
-      //  把无类型指针“恢复”成具体类型，再调用 getAllCells()
+      // 把无类型指针“恢复”成具体类型，再调用 getAllCells()
       Universe *univ_fill = static_cast<Universe *>(_fill);
 
       if (univ_fill->getType() == SIMPLE)
@@ -1559,8 +1560,8 @@ namespace antmoc
     /** A container of all Cell clones created for rings and sectors */
     std::vector<Cell *> subcells;
 
-    sectorize(subcells);
-    ringify(subcells, max_radius);
+    sectorize(subcells);           // 先划分扇区
+    ringify(subcells, max_radius); // 再划分环
 
     /* Put any ring / sector subcells in a new Universe fill */
     if (subcells.size() != 0)

@@ -257,12 +257,17 @@ namespace antmoc
     /* If not initialized, compute _sigma_a the absorption cross section */
     if (_sigma_a == NULL)
     {
+      /*
+      _sigma_a 是吸收截面（absorption cross-section），表示中子被材料吸收的概率。在核物理中有基本关系：
+      \sigma_a = \sigma_t - \sum \sigma_s
+      即：总截面 = 吸收截面 + 散射截面
+      */
       _sigma_a = new FP_PRECISION[_num_groups];
-      for (int g = 0; g < _num_groups; g++)
+      for (int g = 0; g < _num_groups; g++) // 遍历目标能群g
       {
-        _sigma_a[g] = _sigma_t[g];
-        for (int gp = 0; gp < _num_groups; gp++)
-          _sigma_a[g] -= _sigma_s[gp * _num_groups + g];
+        _sigma_a[g] = _sigma_t[g];                       //   目标能群g的总截面
+        for (int gp = 0; gp < _num_groups; gp++)         // 遍历源能群gp
+          _sigma_a[g] -= _sigma_s[gp * _num_groups + g]; // 所有源能群 gp 散射到 g 的截面都要减掉
       }
     }
 

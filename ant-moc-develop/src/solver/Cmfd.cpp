@@ -682,7 +682,8 @@ namespace antmoc
   }
 
   /**
-   * @brief Set Mesh width in the x-direction 设置 CMFD 网格在 x 方向的总几何宽度，并在已知单元数时同步更新每个单元的平均宽度。
+   * @brief Set Mesh width in the x-direction
+   * 设置 CMFD 网格在 x 方向的总几何宽度，并在已知单元数时同步更新每个单元的平均宽度。
    * @param width Physical width of Mesh in the x-direction
    */
   void Cmfd::setWidthX(double width)
@@ -745,7 +746,7 @@ namespace antmoc
 
     if (_domain_communicator == NULL)
     {
-      _domain_communicator = new DomainCommunicator;
+      _domain_communicator = new DomainCommunicator; // DomainCommunicator：存储MPI通信相关信息的结构体
       _domain_communicator->_MPI_cart = _geometry->getMPICart();
     }
 
@@ -2651,28 +2652,32 @@ namespace antmoc
 
     /* Allocate memory for new group indices */
     _num_cmfd_groups = group_indices.size();
-    _group_indices = new int[_num_cmfd_groups + 1]; // 扩大个位置记录最后一个能群数量
+    _group_indices = new int[_num_cmfd_groups + 1]; // 数组大小 = CMFD能群数 + 1
 
     /* Initialize first group index to 0 */
-    int last_moc_group = 0; // 设置这个变量的作用是保证CMFD对应的MOC能群的值是线性递增的
+    int last_moc_group = 0; // 设置这个变量的作用是保证CMFD对应的MOC能群的值是单调线性递增的
 
     /* Set MOC group bounds for rest of CMFD energy groups */
     for (int i = 0; i < _num_cmfd_groups; i++)
     {
       for (size_t j = 0; j < group_indices[i].size(); j++)
       {
-        if (group_indices[i][j] <= last_moc_group)
+        if (group_indices[i][j] <= last_moc_group) // 每个数字必须比前一个大
           log::ferror("The CMFD coarse group indices are not "
                       "monotonically increasing");
-        last_moc_group = group_indices[i][j]; // 最后一个 group_indices[1][3] = 7
+        last_moc_group = group_indices[i][j];
       }
       _group_indices[i] = group_indices[i][0] - 1; //_group_indices[0]  = 0   _group_indices[1] = 3
       log::fdebug("CMFD group indices %d: %d", i, _group_indices[i]);
     }
 
-    /* Set the last group index */
-    _group_indices[_num_cmfd_groups] = // _group_indices[2]  = 7  表示总的MOC能群数
-        group_indices[_num_cmfd_groups - 1].back();
+    /*
+    _group_indices[0] = 1 - 1 = 0  // CMFD第0群从MOC第0群开始
+    _group_indices[1] = 4 - 1 = 3  // CMFD第1群从MOC第3群开始
+    _group_indices[2] = 7          // 总共7个MOC能群
+       */
+    _group_indices[_num_cmfd_groups] =
+        group_indices[_num_cmfd_groups - 1].back(); // back()获取最后一个元素
     log::fdebug("CMFD group indices %d: %d",
                 _num_cmfd_groups, _group_indices[_num_cmfd_groups]);
   }
@@ -2815,23 +2820,29 @@ namespace antmoc
   }
 
   /**
-   * @brief Initializes the vector of vectors that links CMFD cells with FSRs. 初始化每个 CMFD 单元与 FSR 关联的二维向量。
+   * @brief Initializes the vector of vectors that links CMFD cells with FSRs
    * @details This method is called by the geometry once the CMFD mesh has been
-   *          initialized by the geometry. This method allocates a vector for 该方法在几何模块完成 CMFD 网格初始化后由几何模块调用。
+   *          initialized by the geometry. This method allocates a vector for
    *          each CMFD cell that is used to store the FSR ids contained within
-   *          that cell. 本方法为每个 CMFD 单元分配一个向量，用于存储该单元中包含的 FSR 的 ID。
+   *          that cell.
+   * 建立 CMFD粗网格 -> FSR的索引关系
+   * _cell_fsrs[cmfd_cell_id] 返回该粗网格内包含的所有FSR ID列表
+   * 执行前：_cell_fsrs = []
+   * 执行后：_cell_fsrs = [[], [], [], ..., []]  // 共 _local_num_x × _local_num_y × _local_num_z 个空向量
+   *_local_num_x：当前进程负责的X方向CMFD单元数
+   _local_* 前缀表示并行计算中的区域分解：整个计算域被分割给多个进程，每个进程只处理自己的局部区域
    */
-  void Cmfd::initializeCellMap() // 一个cmfd中包含很多FSR
+  void Cmfd::initializeCellMap()
   {
 
-    int count = 0;
-    /* Allocate memory for mesh cell FSR vectors 给一个域中的所有CMFD单元分配FSR数组内存（每一个CMFD所包含的FSR数组）*/
+    /* Allocate memory for mesh cell FSR vectors 只是给一个域中的所有CMFD单元对应的FSR数组分配内存（每一个CMFD所包含的FSR数组）*/
     for (int z = 0; z < _local_num_z; z++)
-    { //_cell_fsrs是一个二维数组，第一维对应一个CMFD，第二维对应该CMFD中所包含的FSR数组
+    {
       for (int y = 0; y < _local_num_y; y++)
-      { // 一维index = z * (_local_num_y * _local_num_x) + y * _local_num_x + x
+      {
+        // 一维index = z * (_local_num_y * _local_num_x) + y * _local_num_x + x
         for (int x = 0; x < _local_num_x; x++)
-          _cell_fsrs.push_back(std::vector<long>());
+          _cell_fsrs.push_back(std::vector<long>()); // 创建一个空的long类型动态数组（初始大小为0）
       }
     }
   }
@@ -6858,7 +6869,7 @@ namespace antmoc
   /**
    * @brief Initialize the CMFD lattice.
    */
-  void Cmfd::initializeLattice(Point *offset) // CMFD lattice粗网格的划分
+  void Cmfd::initializeLattice(Point *offset)
   {
 
     if (_hexlattice_enable)
@@ -6892,28 +6903,31 @@ namespace antmoc
     else
     { // Create RecLattice - 创建四边形lattice
       if (_non_uniform)
-      { // 这个均匀不均匀体现在每个CMFD网格的宽度（包括XYZ）是不是由几何的总宽度除以各个方向上的的数量，比如一个方向总宽为6，方向上有3个CMFD网格，均匀的就是一个网格宽2了，不均匀的可能是宽度为2,1,3这种
+      { // _non_uniform：布尔标志，表示网格是否非均匀；非均匀：每个网格宽度不同，例如 [2, 1, 3]
+        // 从已设置的宽度数组获取网格数量
         setNumX(_cell_widths_x.size());
         setNumY(_cell_widths_y.size());
         setNumZ(_cell_widths_z.size());
       }
       else
       {
-        // 均匀模式：每个方向的单元宽度 = 总宽度 / 单元数
+        // 均匀：每个方向的单元宽度 = 总宽度 / 单元数
         _cell_width_x = _width_x / _num_x;
         _cell_width_y = _width_y / _num_y;
         _cell_width_z = _width_z / _num_z;
 
-        _cell_widths_x.resize(_num_x, _cell_width_x); // 如果是均匀的CMFD，则将非均匀网格的每个宽度_cell_widths_x设为和均匀网格的宽度一样的大小
-        _cell_widths_y.resize(_num_y, _cell_width_y); // 将容器大小改为 _num_y ；对“新增加的元素”用 value 初始化，已有元素保留原值。_cell_widths_y应该为空或未设定，调用后得到长度为 _num_z 的数组，所有项都等于 _cell_width_y
+        _cell_widths_x.resize(_num_x, _cell_width_x); // 如果是均匀的CMFD，则将_cell_widths_x数组的所有宽度设为一样的大小
+        _cell_widths_y.resize(_num_y, _cell_width_y);
         _cell_widths_z.resize(_num_z, _cell_width_z);
       }
 
       // 计算三个方向的累计宽度（前缀和），用于定位单元边界与做宽度一致性校验
-      _accumulate_x.resize(_num_x + 1, 0.0); // 将 _accumulate_x 调整为长度 _num_x + 1 的向量，并把所有元素初始化为 0.0 。num_x 个单元对应 num_x + 1 个边界（含起点和终点）。例如3个格子需要4个边界位置。
+      _accumulate_x.resize(_num_x + 1, 0.0);
+      // 将 _accumulate_x 调整为长度 _num_x + 1 的向量，并把所有元素初始化为 0.0 。num_x 个单元对应 num_x + 1 个边界（含起点和终点）。例如3个格子需要4个边界位置。
       _accumulate_y.resize(_num_y + 1, 0.0);
       _accumulate_z.resize(_num_z + 1, 0.0);
 
+      //_accumulate_x = [0.0, 2.0, 4.0, 6.0...]
       for (int i = 0; i < _num_x; i++)
         _accumulate_x[i + 1] = _accumulate_x[i] + _cell_widths_x[i]; // X 方向累计宽度
 
@@ -6923,42 +6937,40 @@ namespace antmoc
       for (int i = 0; i < _num_z; i++)
         _accumulate_z[i + 1] = _accumulate_z[i] + _cell_widths_z[i]; // Z 方向累计宽度
 
-      // 一致性校验：累计宽度末值应等于该方向总宽度（允许 FLT_EPSILON 误差）
+      // 一致性校验：检查累积宽度是否等于总宽度（允许微小误差）
       if (fabs(_width_x - _accumulate_x[_num_x]) > FLT_EPSILON ||
           fabs(_width_y - _accumulate_y[_num_y]) > FLT_EPSILON ||
           fabs(_width_z - _accumulate_z[_num_z]) > FLT_EPSILON)
-        if (fabs(_width_x - _accumulate_x[_num_x]) > FLT_EPSILON ||
-            fabs(_width_y - _accumulate_y[_num_y]) > FLT_EPSILON ||
-            fabs(_width_z - _accumulate_z[_num_z]) > FLT_EPSILON)
-        {
-          log::ferror("The sum of non-uniform mesh widths are not consistent "
-                      "with geometry dimensions. width_x = %20.17E, width_y = %20.17E"
-                      ", width_z = %20.17E, sum_x = %20.17E, sum_y = %20.17E, sum_z ="
-                      " %20.17E, diff_x = %20.17E, diff_y = %20.17E, diff_z = %20.17E"
-                      ", FLT_EPSILON = %20.17E",
-                      _width_x, _width_y, _width_z,
-                      _accumulate_x[_num_x], _accumulate_y[_num_y],
-                      _accumulate_z[_num_z], fabs(_width_x - _accumulate_x[_num_x]),
-                      fabs(_width_y - _accumulate_y[_num_y]),
-                      fabs(_width_z - _accumulate_z[_num_z]), FLT_EPSILON);
-        }
+      {
+        log::ferror("The sum of non-uniform mesh widths are not consistent "
+                    "with geometry dimensions. width_x = %20.17E, width_y = %20.17E"
+                    ", width_z = %20.17E, sum_x = %20.17E, sum_y = %20.17E, sum_z ="
+                    " %20.17E, diff_x = %20.17E, diff_y = %20.17E, diff_z = %20.17E"
+                    ", FLT_EPSILON = %20.17E",
+                    _width_x, _width_y, _width_z,
+                    _accumulate_x[_num_x], _accumulate_y[_num_y],
+                    _accumulate_z[_num_z], fabs(_width_x - _accumulate_x[_num_x]),
+                    fabs(_width_y - _accumulate_y[_num_y]),
+                    fabs(_width_z - _accumulate_z[_num_z]), FLT_EPSILON);
+      }
 
-      /* Delete old lattice if it exists - 若存在旧 lattice 则删除以避免内存泄漏 */
+      /* Delete old lattice if it exists - 若存在旧 lattice 则删除 */
       if (_lattice != NULL)
         delete _lattice;
 
-      /* Initialize the lattice - 初始化lattice 对象 */
+      /* Initialize the lattice */
       _lattice = new RecLattice();
       _lattice->setNumX(_num_x); // 设置 x 方向单元数
       _lattice->setNumY(_num_y); // 设置 y 方向单元数
       _lattice->setNumZ(_num_z); // 设置 z 方向单元数
 
       if (_non_uniform)
-        _lattice->setWidths(_cell_widths_x, _cell_widths_y, _cell_widths_z); // 非均匀：直接传入每个单元的宽度数组
+        _lattice->setWidths(_cell_widths_x, _cell_widths_y, _cell_widths_z); // 非均匀：传入每个方向的单元宽度数组
       else
-        _lattice->setWidth(_cell_width_x, _cell_width_y, _cell_width_z);   // 均匀：传入统一单元宽度
-      _lattice->setOffset(offset->getX(), offset->getY(), offset->getZ()); // 设置lattice偏移量
-      _lattice->computeSizes();                                            // 计算派生尺寸（如单元中心、边界坐标、与CMFD索引映射等）
+        _lattice->setWidth(_cell_width_x, _cell_width_y, _cell_width_z); // 均匀：传入每个方向的单元宽度即可
+
+      _lattice->setOffset(offset->getX(), offset->getY(), offset->getZ()); // 设置lattice偏移量，offset是整个几何的中心点
+      _lattice->computeSizes();                                            // 计算lattice三个方向的累计宽度（前缀和），用于定位单元边界，与前面的_accumulate_x的逻辑一样
     }
   }
 

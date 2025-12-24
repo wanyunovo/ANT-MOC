@@ -3,6 +3,7 @@
   <!-- Halfspaces -->
   <surface id="1" type="z-cylinder" coeffs="0 0 0.54"/>
 
+<!-- 边界定义 -->
   <surface id="3" type="x-plane" coeffs="-32.13" name="left"   boundary="REFLECTIVE"/>
   <surface id="4" type="x-plane" coeffs="+32.13" name="right"  boundary="VACUUM"/>
   <surface id="5" type="y-plane" coeffs="-32.13" name="back"   boundary="VACUUM"/>
@@ -14,11 +15,15 @@
   <cell id="1"                name="moderator" material="Water"           region="+1" sectors="8">
                <universes> 1 2 3 4 5 6 7 8 </universes>
   </cell>
+
+  <!-- 栅元cell定义 -->
   <cell id="2"  universes="1" name="uo2"       material="UO2"             region="-1" sectors="4"/>
+  <!-- 栅元类型1：UO2燃料棒，分4个扇形区 -->
   <cell id="3"  universes="2" name="mox43"     material="MOX-4.3%"        region="-1" sectors="4"/>
   <cell id="4"  universes="3" name="mox7"      material="MOX-7%"          region="-1" sectors="4"/>
   <cell id="5"  universes="4" name="mox87"     material="MOX-8.7%"        region="-1" sectors="4"/>
   <cell id="6"  universes="5" name="fc"        material="Fission Chamber" region="-1" rings="5" sectors="4"/>
+  <!-- 栅元类型6：控制棒，5环、4扇区 -->
   <cell id="7"  universes="6" name="gt"        material="Guide Tube"      region="-1" rings="5" sectors="4"/>
   <cell id="8"  universes="7" name="gtc"       material="Control Rod"     region="-1" rings="5" sectors="4"/>
   <cell id="9"  universes="8" name="mpc"       material="Water"           region="-1" rings="5" sectors="4"/>

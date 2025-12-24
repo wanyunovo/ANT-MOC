@@ -64,7 +64,30 @@ namespace antmoc
     /** Max total cross section */
     FP_PRECISION _max_sigma_t;
 
-    /** A 2D array of the scattering cross-section matrix from/into each group */
+    /** A 2D array of the scattering cross-section matrix from/into each group
+     * 散射矩阵（概念图）：矩阵元素 σ(gp→g) 表示：中子从能群 gp 散射到能群 g
+     * 标准约定：核物理领域习惯列=源能群，行=目标能群
+             源能群 (gp)
+          1    2    3    4
+目标 1  [σ11  σ21  σ31  σ41]  从能群1/2/3/4散射到能群1 计算σ_a[0]时，减去这一行
+能群 2  [σ12  σ22  σ32  σ42]  从能群1/2/3/4散射到能群2 计算σ_a[1]时，减去这一行
+(g)  3  [σ13  σ23  σ33  σ43]  从能群1/2/3/4散射到能群3
+     4  [σ14  σ24  σ34  σ44]  从能群1/2/3/4散射到能群4
+
+     虽然逻辑上是二维矩阵，但在C++中用一维数组存储，需要索引转换。
+     1D数组索引 = 列索引 × 行数 + 行索引
+          = gp × _num_groups + g
+
+逻辑上的二维矩阵：             实际的一维数组存储（列主序）：
+     gp=0  gp=1  gp=2  gp=3
+g=0 [ 0    4     8    12 ]    索引0:  (gp=0, g=0)
+g=1 [ 1    5     9    13 ]    索引1:  (gp=0, g=1)
+g=2 [ 2    6    10    14 ]    索引2:  (gp=0, g=2)
+g=3 [ 3    7    11    15 ]    索引3:  (gp=0, g=3)
+                              索引4:  (gp=1, g=0)
+_sigma_s[] = {0,1,2,3, 4,5,6,7, 8,9,10,11, 12,13,14,15}
+             └──列0──┘└──列1──┘└───列2───┘└────列3───┘
+     */
     FP_PRECISION *_sigma_s;
 
     /** An array of the absorption cross-sections for each energy group */
@@ -145,7 +168,7 @@ namespace antmoc
 
     void buildFissionMatrix();
     void transposeProductionMatrices();
-    void alignData();//没懂，后面看
+    void alignData(); // 没懂，后面看
     Material *clone();
 
     static std::int32_t convertStringToId(std::string id_string);

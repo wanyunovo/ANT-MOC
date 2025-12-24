@@ -402,6 +402,9 @@ namespace antmoc
    * @brief Returns the std::map of Cell IDs and Cell pointers in this Universe
    *        at all nested Universe levels.
    * @return std::map of Cell IDs and pointers
+   *
+   *  先把当前 Universe 里的所有 Cell* 都加进 map，然后遍历每个 Cell，调用 cell->getAllCells() 收集“这个 Cell 里再填充的 Cell”，把结果合并进 map。
+   * 拿到所有类型的cell，包括材料cell和容器cell（universe/lattice），键是cell id，值是cell *
    */
   std::map<int, Cell *> Universe::getAllCells()
   {
@@ -409,14 +412,13 @@ namespace antmoc
     std::map<int, Cell *> cells;
     std::map<int, Cell *>::iterator iter;
 
-    /* Add this Universe's Cells to the map */
-    cells.insert(_cells.begin(), _cells.end());
+    cells.insert(_cells.begin(), _cells.end()); // 把当前 Universe 的所有 Cell 都加进 cells
 
     /* Append all Cells in each Cell in the Universe to the map */
     for (iter = _cells.begin(); iter != _cells.end(); ++iter)
     {
       std::map<int, Cell *> nested_cells = iter->second->getAllCells();
-      cells.insert(nested_cells.begin(), nested_cells.end());
+      cells.insert(nested_cells.begin(), nested_cells.end()); // 把这个 Cell 里面所有嵌套的 Cell 都加进 cells
     }
 
     return cells;
@@ -654,8 +656,8 @@ namespace antmoc
    *        into rings and angular sectors aligned with the z-axis.
    * @param max_radius the maximum allowable radius used in the subdivisions
    *
-   * 将 Universe 内所有以材料填充的 Cell 按照垂直于 z 轴方向,  进行扇区和环状分割
-   * 这个universe的cell都是一个cell-universe-cell的结构
+   * 将 Universe 内所有以材料填充的 Cell 以z轴为中心,  进行扇区和环状分割
+   * 划分完成后这个universe的每个cell都是cell-universe-cell的结构
    */
   void Universe::subdivideCells(double max_radius)
   {
@@ -666,7 +668,7 @@ namespace antmoc
 
     std::map<int, Cell *>::iterator iter;
 
-    for (iter = _cells.begin(); iter != _cells.end(); ++iter)
+    for (iter = _cells.begin(); iter != _cells.end(); ++iter) // 遍历这个 Universe 里的每个 Cell
     {
 
       /* Cells filled with Materials */
@@ -792,13 +794,15 @@ namespace antmoc
 
     /* Calculate the minimum reachable x-coordinate in the geometry and store it
      * in _min_x */
+
+    // 阶段一：查找Surface定义的边界
     double min_x = std::numeric_limits<double>::infinity(); // 设为无限大
     Surface *surf;
     int halfspace;
 
     /* Calculate the boundary condition at the minimum reachable x-coordinate in
      * the Universe and store it in _min_x_bound */
-    _min_x_bound = BOUNDARY_NONE; // 无类型边界
+    _min_x_bound = BOUNDARY_NONE; // 边界条件初始化为"无"
 
     /* Check if the universe contains a cell with an x-min boundary */
     for (const auto &c : _cells)
@@ -806,23 +810,30 @@ namespace antmoc
 
       double cell_min_x = -std::numeric_limits<double>::infinity(); // 无限小
       boundaryType cell_min_x_bound = BOUNDARY_NONE;
-      for (const auto &hs : *(c.second))
-      { // 遍历一个cell下的所有表面和半空间信息
-        surf = hs.surface;
-        halfspace = hs.halfspace;
 
+      for (const auto &hs : *(c.second)) // 遍历这个Cell的所有半空间
+      {
+        surf = hs.surface;
+        halfspace = hs.halfspace; // 半空间方向
+
+        /*
+        对于X_MIN边界，我们要找从右往左限制的平面
+        例如：平面X=-10且halfspace=+1，表示"X≥-10的区域"，这个平面就是X方向的最小边界
+        */
         if (surf->getSurfaceType() == XPLANE && halfspace == +1 &&
             surf->getBoundaryType() != BOUNDARY_NONE)
-        { // 如果找到x平面且半空间为正方向的表面
+        {
           if (surf->getMinX(halfspace) > cell_min_x)
-          { // 找到+1方向上围成这个cell中最里面（求交）的xplane
+          {
+            // 多个平面约束时，取最右侧的那个，找到+1方向上最里面的xplane
             cell_min_x = surf->getMinX(halfspace);
             cell_min_x_bound = surf->getBoundaryType();
           }
         }
       }
+
       if (cell_min_x_bound != BOUNDARY_NONE && cell_min_x < min_x)
-      { // 如果找到这个cell中符合条件的surface
+      { // 如果找到这个cell中符合条件的surface，在所有Cell中找最左侧的边界
         min_x = cell_min_x;
         _min_x_bound = cell_min_x_bound;
       }
@@ -833,8 +844,10 @@ namespace antmoc
     if (min_x == std::numeric_limits<double>::infinity())
     {
       // 如果 min_x 仍然是无穷大，表示未找到有效的 x-min 边界条件，没有找到有效的半平面，后面就直接从cell的边界处寻找
+
       double cell_min_x = min_x;
       boundaryType cell_min_x_bound = BOUNDARY_NONE;
+
       for (const auto &c : _cells)
       { // 接着检查cell的边界值，找到最小 x 坐标 cell_min_x 和相应的边界条件 cell_min_x_bound。
         cell_min_x = c.second->getMinX();

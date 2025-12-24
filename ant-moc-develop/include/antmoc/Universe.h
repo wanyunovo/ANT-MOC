@@ -42,17 +42,24 @@ namespace antmoc
   class Universe
   {
 
-  protected:
-    /** A static counter for the number of Universes */
+  protected: // protected 访问权限：派生类（子类）可以访问，外部代码不能直接访问
+    // ==================== ID 相关成员变量 ====================
+
+    /** 静态成员变量：记录已创建的 Universe 总数 */
+    // static 关键字：该变量被所有 Universe 对象共享，不属于某个具体对象
+    // 所有 Universe 对象共用一个 _n，用于统计总数或生成唯一ID
     static int _n;
 
-    /** A monotonically increasing unique ID for each Universe created */
+    /** 唯一ID (_uid)：每个 Universe 对象的唯一标识符 */
+    // 单调递增：创建新对象时自动分配，保证全局唯一性
     int _uid;
 
-    /** A user-defined id for each Universe created */
+    /** 为每个创建的 Universe 定义一个用户 ID */
+    // 与 _uid 不同，这个ID可以由用户指定，可能重复
     int _id;
 
-    /** a univese id in the XML file or user-defined */
+    /**  a univese id in the XML file or user-defined */
+    // 从外部配置文件（如XML）读取的ID
     int _input_id;
 
     /** A user-defined name for the Surface */
@@ -64,24 +71,27 @@ namespace antmoc
     /** A collection of Cell IDs and Cell pointers in this Universe */
     std::map<int, Cell *> _cells;
 
-    /** A boolean representing whether or not this Universe contains a Material
-     *  with a non-zero fission cross-section and is fissionable */
+    /** 可裂变标志：该 Universe 是否包含可发生裂变的材料 */
     bool _fissionable;
 
-    /** The extrema of the Universe */
-    double _min_x;
-    double _max_x;
-    double _min_y;
-    double _max_y;
-    double _min_z;
-    double _max_z;
+    // ==================== 几何边界 ====================
 
-    /** A flag for determining if boundaries are up to date */
+    /** Universe 的空间范围极值：六个面的坐标 */
+    double _min_x; // X轴最小坐标（左边界）
+    double _max_x; // X轴最大坐标（右边界）
+    double _min_y; // Y轴最小坐标（前边界）
+    double _max_y; // Y轴最大坐标（后边界）
+    double _min_z; // Z轴最小坐标（下边界）
+    double _max_z; // Z轴最大坐标（上边界）
+
+    // ==================== 状态标志 ====================
+
+    /** 边界检查标志：边界是否已计算并保持最新 */
     bool _boundaries_inspected;
 
     /** The boundaryTypes of the universe */
-    boundaryType _min_x_bound;
-    boundaryType _max_x_bound;
+    boundaryType _min_x_bound; // Universe 在最小 x 坐标处的边界条件类型（VACUUM 真空边界 或 REFLECTIVE 反射边界）
+    boundaryType _max_x_bound; // Universe 在最大 x 坐标处的边界条件类型
     boundaryType _min_y_bound;
     boundaryType _max_y_bound;
     boundaryType _min_z_bound;
@@ -162,7 +172,7 @@ namespace antmoc
    *         symbiosis with the second_t struct template defined above.
    * @param map a std::map iterator
    * @return the second element in the iterator (e.g., map value)
-   * 
+   *
    *传入任意 map（或 map 迭代器意义上的容器）就返回一个 second_t 实例，调用处写法更简
    */
   template <typename tMap>

@@ -531,10 +531,15 @@ namespace antmoc
 
   /// \brief Retrieve all materials from the root universe to this geometry.
   ///        This method is supposed to be invoked before any further usage
-  ///        of getAllMaterials(). 从根全域中检索所有材料并存储到当前几何对象中。 该方法应在任何需要调用getAllMaterials()之前执行。
+  ///        of getAllMaterials().
+  ///        拿到所有cell里用到的材料，存放在_all_materials里，键是材料id，值是材料指针。 该方法应在任何需要调用getAllMaterials()之前执行。
   void Geometry::retrieveAllMaterials()
   {
-
+/*
+宏定义：这是 OpenMP 的编译器指令（pragma directive）
+作用：只让主线程执行紧随其后的代码块，其他线程跳过
+为什么需要：在并行环境中，收集材料信息只需一个线程做一次即可，避免重复工作和数据竞争
+*/
 #pragma omp master
     {
       /* Gather all materials from all cells */
@@ -544,7 +549,7 @@ namespace antmoc
 
         for (const auto &c : all_cells)
         {
-          if (c.second->getType() == MATERIAL)
+          if (c.second->getType() == MATERIAL) // 只处理材料类型的 Cell
           {
             Material *material = c.second->getFillMaterial();
 
@@ -555,6 +560,10 @@ namespace antmoc
       }
     }
 
+/*
+宏定义：OpenMP 的同步障碍指令
+作用：所有线程必须等待，直到主线程完成材料收集后，所有线程都到达这个点，才能继续执行，保证数据一致性
+*/
 #pragma omp barrier
   }
 
@@ -1857,7 +1866,7 @@ namespace antmoc
   }
 
   /**
-   * @brief 将几何中所有单元格（Cell）细分为与z轴对齐的环（rings）和角扇区（angular sectors）。
+   * @brief 将几何中所有单元格（Cell）细分为与z轴对齐的环（rings）和扇区（angular sectors）。
    * @details 此方法默认由Geometry::initializeFlatSourceRegions()方法调用，
    *          若有需要，用户也可在Python中直接调用，示例如下：
    *
@@ -1868,17 +1877,17 @@ namespace antmoc
   void Geometry::subdivideCells()
   {
 
-    /* 计算与当前几何模型面积等效的“等效半径” */
-    /* 该半径将作为所有需“环形细分”的单元格的最大半径限制 */
-    // width_x：根全域（_root_universe）在x方向的宽度（最大x坐标 - 最小x坐标）
+    /* 计算与当前几何模型面积等效的“等效半径”
+    该半径将作为所有需“环形细分”的单元格的最大半径限制
+    */
+    // width_x：_root_universe在x方向的宽度（最大x坐标 - 最小x坐标）
     double width_x = _root_universe->getMaxX() - _root_universe->getMinX();
-    // width_y：根全域在y方向的宽度（最大y坐标 - 最小y坐标）
+    // width_y：_root_universe在y方向的宽度（最大y坐标 - 最小y坐标）
     double width_y = _root_universe->getMaxY() - _root_universe->getMinY();
-    // max_radius：等效半径，计算逻辑为“根全域对角线长度的一半”（勾股定理）
+    // max_radius：等效半径，计算逻辑为“对角线长度的一半”（勾股定理）
     double max_radius = sqrt(width_x * width_x + width_y * width_y) / 2;
 
-    /* 递归地将所有单元格细分为环和角扇区 */
-    // 调用根全域的subdivideCells方法，传入最大半径（控制细分范围），实现全几何单元格的递归细分
+    /* 递归地将所有单元格细分为环和扇区 */
     _root_universe->subdivideCells(max_radius);
   }
 
@@ -1896,7 +1905,7 @@ namespace antmoc
     log::finfo("Initializing flat source regions...");
 
     /* Subdivide Cells into sectors and rings - 将单元细分为扇区与环形 */
-    subdivideCells(); // 重要：FSR 划分直接影响后续离散规模与求解效率
+    subdivideCells();
 
     /* Build collections of neighbor Cells for optimized ray tracing - 为优化光线追踪构建邻居单元集合 */
     // FIXME
@@ -1909,13 +1918,18 @@ namespace antmoc
     /* Initialize absorption XS if CMFD absent - 若CMFD模块为空，则初始化材料的吸收截面（Σₐ） */
     if (_cmfd == nullptr)
     {
-      for (const auto &pair : all_materials)
-        pair.second->getSigmaA();
+      /*
+      const auto &pair：
+      const：不修改元素
+      auto：自动推导类型（这里 pair 是键值对）
+      &：引用，避免复制
+      */
+      for (const auto &pair : all_materials) // 遍历：遍历材料映射表中的每个键值对
+        pair.second->getSigmaA();            // 初始化时预先计算每个材料在所有能群下的吸收截面
     }
 
-    /* Initialize CMFD - 初始化 CMFD */
     if (_cmfd != nullptr) /* 若CMFD模块已存在，则初始化CMFD */
-      initializeCmfd();   // 涉及 CMFD 网格、映射与边界等相关初始化
+      initializeCmfd();
   }
   /*
    */
@@ -2891,9 +2905,9 @@ namespace antmoc
 
       /* _extruded_FSR_keys_map 是 key → ExtrudedFSR* 的 map；
       同样，我们希望通过 extruded_fsr_id 直接拿到对应的 ExtrudedFSR*/
-      _extruded_FSR_lookup = std::vector<ExtrudedFSR *>(num_extruded_FSRs); 
+      _extruded_FSR_lookup = std::vector<ExtrudedFSR *>(num_extruded_FSRs);
       auto extruded_value_list = _extruded_FSR_keys_map.values();
-      
+
 #pragma omp parallel for
       for (size_t i = 0; i < num_extruded_FSRs; i++)
       {
@@ -3243,11 +3257,14 @@ namespace antmoc
   /**
    * @brief This is a method that initializes the CMFD Lattice and sets
    *          CMFD parameters.
+   * 初始化CMFD网格并设置相关参数
    */
   void Geometry::initializeCmfd()
   {
 
-    /* Get the global Geometry boundary conditions */
+    /* Get the global Geometry boundary conditions
+    获取几何模型六个面的边界条件
+    */
     boundaryType min_x_bound = _root_universe->getMinXBoundaryType(); // 计算方法主要是calculateBoundaries();
     boundaryType max_x_bound = _root_universe->getMaxXBoundaryType();
     boundaryType min_y_bound = _root_universe->getMinYBoundaryType();
@@ -3255,7 +3272,9 @@ namespace antmoc
     boundaryType min_z_bound = _root_universe->getMinZBoundaryType();
     boundaryType max_z_bound = _root_universe->getMaxZBoundaryType();
 
-    /* Get the global Geometry boundaries */
+    /* Get the global Geometry boundaries
+    获取几何模型六个边界的坐标值
+    */
     double min_x = _root_universe->getMinX();
     double max_x = _root_universe->getMaxX();
     double min_y = _root_universe->getMinY();
@@ -3263,8 +3282,8 @@ namespace antmoc
     double min_z = _root_universe->getMinZ();
     double max_z = _root_universe->getMaxZ();
 
-    if (_cmfd->GetHexLatticeEnable())
-    { // HexLattice   000000000000
+    if (_cmfd->GetHexLatticeEnable()) // 这部分是HexLattice的CMFD初始化代码
+    {                                 // HexLattice   000000000000
       /* Set CMFD mesh boundary conditions */
 
       _cmfd->setBoundary(HEX_SURFACE_BETA_MIN, min_x_bound);
@@ -3315,7 +3334,7 @@ namespace antmoc
     }
     else
     { // RecLattice - 四边形
-      /* Set CMFD mesh boundary conditions -   // 为CMFD网格设置几何边界，与整个MOC的边界一一对应
+      // Set CMFD mesh boundary conditions
       _cmfd->setBoundary(SURFACE_X_MIN, min_x_bound);
       _cmfd->setBoundary(SURFACE_Y_MIN, min_y_bound);
       _cmfd->setBoundary(SURFACE_Z_MIN, min_z_bound);
@@ -3323,36 +3342,41 @@ namespace antmoc
       _cmfd->setBoundary(SURFACE_Y_MAX, max_y_bound);
       _cmfd->setBoundary(SURFACE_Z_MAX, max_z_bound);
 
-      /* Set CMFD mesh dimensions - 设置 CMFD 网格在各方向的总尺寸，一般在各个方向上都是均分的，得到每个单元在各方向的平均宽度 与前面setLatticeStructure中的代码保持一致 */
+      /* Set CMFD mesh dimensions 设置CMFD网格在三个方向的总宽度，把universe几何体的物理尺寸传递给CMFD */
       _cmfd->setWidthX(max_x - min_x);
       _cmfd->setWidthY(max_y - min_y);
       _cmfd->setWidthZ(max_z - min_z);
 
-      /* Initialize the CMFD lattice - 初始化 CMFD lattice */
-      Point offset; // 设置偏移量（选择几何中心作为参考点）
+      /* Initialize the CMFD lattice 初始化 CMFD lattice */
+      Point offset; // 选择几何中心作为参考点
       offset.setX(min_x + (max_x - min_x) / 2.0);
       offset.setY(min_y + (max_y - min_y) / 2.0);
-      if (std::abs(min_z + (max_z - min_z) / 2.0) < FLT_INFINITY) // z轴中心位置是一个有限值
+      if (std::abs(min_z + (max_z - min_z) / 2.0) < FLT_INFINITY) // 如果Z中心坐标有效（不是无穷大），使用计算值；否则设为0
         offset.setZ(min_z + (max_z - min_z) / 2.0);
-      else // Z轴中心位置是无限大或未定义
+      else
         offset.setZ(0.);
 
       _cmfd->setGeometry(this);
-      _cmfd->initializeLattice(&offset); // 初始化每个 CMFD 所对应的 lattice 的大小
+
+      _cmfd->initializeLattice(&offset); //  设置表示整个CMFD的lattice的沿各方向的单元宽度以及累积宽度，并设置此Lattice的几何中心在父Universe坐标系中的位置
 
 #ifdef ENABLE_MPI_
-      if (isDomainDecomposed())
+      if (isDomainDecomposed()) // 检查是否进行了域分解，域分解: 将计算区域分割给多个进程并行计算
       {
-        /* Check that CMFD mesh is compatible with domain decomposition - 检查 CMFD 网格与域分解设置是否兼容 */
+        /*
+         mpi::getNumDomainsX(): 获取X方向的域数量（MPI进程数）
+         mpi::getDomainIndexX():  获取当前进程负责的子区域在X方向的索引
+         */
         _cmfd->setNumDomains(mpi::getNumDomainsX(),
                              mpi::getNumDomainsY(),
                              mpi::getNumDomainsZ());
+
         _cmfd->setDomainIndexes(mpi::getDomainIndexX(),
                                 mpi::getDomainIndexY(),
-                                mpi::getDomainIndexZ()); // 重要：与域分解参数对齐，影响本地域尺寸与通信布局
+                                mpi::getDomainIndexZ());
       }
 #endif
-      /* Initialize CMFD Maps -. 初始化每个 CMFD 单元与 FSR 关联的二维向量*/
+      /* Initialize CMFD Maps  只是给一个域中的所有CMFD单元对应的FSR数组分配内存*/
       _cmfd->initializeCellMap();
     }
   }
