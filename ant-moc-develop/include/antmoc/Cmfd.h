@@ -77,7 +77,7 @@ namespace antmoc
 /** Indexing macro for the angular fluxes for each polar angle and energy
  *  group for either the forward or reverse direction for a given Track
  * 为给定轨道的每个极角和正向或反向能量组的角通量建立索引宏
- * 
+ *
  * */
 #define track_flux(p, e) (track_flux[(p) * _num_moc_groups + (e)])
 
@@ -110,29 +110,63 @@ namespace antmoc
     /** The new source vector */
     Vector *_new_source;
 
-    /* Domain boundary communication buffers    15个变量*/
-    CMFD_PRECISION ***_boundary_volumes;
-    CMFD_PRECISION ***_boundary_reaction;
-    CMFD_PRECISION ***_boundary_diffusion;
-    // 三维大小:NUM_FACES(面数),某一个面对应的边界CMFD网格数(比如x面的CMFD网格数即为:_local_num_y * _local_num_z),ncg
-    // storage_per_cell * num_boundary_cells + ncg * num_boundary_cells;其中storage_per_cell=((2 + NUM_FACES) * ncg + 1)
-    // num_boundary_cells=所有面的CMFD网格数,
-    CMFD_PRECISION ***_old_boundary_flux;
-    CMFD_PRECISION ***_boundary_surface_currents;
+    /* ==================== 并行计算：域边界通信缓冲区（MPI多进程通信用）==================== */
+    /*
+     * 【背景知识】MPI域分解并行计算：
+     * - MPI将整个计算区域切分成多个子区域（domain），每个进程负责一个子区域
+     * - 相邻子区域的边界处需要交换数据（称为"边界通信"）
+     * 发送端进程               接收端进程
+     *   ↓                       ↓
+     * 准备发送缓冲区 → MPI_Send → MPI_Recv → 存入接收缓冲区
+     * (_send_xxx)            (_boundary_xxx)
+     *
+     * 【三层指针含义】CMFD_PRECISION ***变量 等价于 三维数组
+     * - 第1维：面的索引（如X方向左面、右面，Y方向前面、后面，Z方向上面、下面，共6个面）
+     * - 第2维：该面上的边界CMFD网格索引（如X面的网格数 = _local_num_y × _local_num_z）
+     * - 第3维：能群索引（ncg = num_cmfd_groups，粗网有限差分的能量组数）
+     */
 
-    CMFD_PRECISION ***_send_volumes;
-    CMFD_PRECISION ***_send_reaction;
-    CMFD_PRECISION ***_send_diffusion;
-    CMFD_PRECISION ***_send_currents;
+    // -------------------- 接收缓冲区：存储从相邻进程收到的边界数据 --------------------
+    CMFD_PRECISION ***_boundary_volumes;          // 边界单元的体积（或2D情况下的面积）
+    CMFD_PRECISION ***_boundary_reaction;         // 边界单元的反应率（吸收、散射等核反应截面）
+    CMFD_PRECISION ***_boundary_diffusion;        // 边界单元的扩散系数（描述中子扩散快慢）
+    CMFD_PRECISION ***_old_boundary_flux;         // 边界单元的上一次迭代通量值（用于迭代收敛判断）
+    CMFD_PRECISION ***_boundary_surface_currents; // 边界表面的中子流（净流入/流出量）
 
-    CMFD_PRECISION *_send_split_current_data;
-    CMFD_PRECISION *_receive_split_current_data;
-    CMFD_PRECISION **_send_split_currents_array;
-    CMFD_PRECISION **_receive_split_currents_array;
-    CMFD_PRECISION ***_off_domain_split_currents;
-    CMFD_PRECISION ***_received_split_currents;
+    // -------------------- 发送缓冲区：准备发送给相邻进程的本域边界数据 --------------------
+    CMFD_PRECISION ***_send_volumes;   // 待发送：本域边界单元的体积
+    CMFD_PRECISION ***_send_reaction;  // 待发送：本域边界单元的反应率
+    CMFD_PRECISION ***_send_diffusion; // 待发送：本域边界单元的扩散系数
+    CMFD_PRECISION ***_send_currents;  // 待发送：本域边界表面的中子流
 
-    /* A tally buffer for threads to tally temporary surface currents 每个线程提供一个独立的缓冲区，用于记录每个线程计算出的临时表面电流值*/
+    // -------------------- 分裂中子流特殊处理缓冲区（处理网格角点和边的中子流分配）--------------------
+    /*
+     *split current = 分裂中子流（角点/边上的中子流量按比例分配给相邻网格）
+     *surface current = 表面中子流（通过网格表面的中子净流量）
+     *net current = 净中子流（流入 - 流出）
+     * 【分裂中子流（split current）概念】：
+     * - 在直角网格中：
+     *   · 角点：被4个单元共享（2D）或8个单元共享（3D）
+     *   · 边：被2个单元共享（2D）或4个单元共享（3D）
+     *   · 面：被2个单元共享（仅3D有面的概念）
+     * - 角点/边上的中子流需要"分裂"按比例分配给相邻单元，避免重复计算或遗漏
+     * - 例如2D角点：中子流 = 25%给左上 + 25%给右上 + 25%给左下 + 25%给右下
+     * - 例如3D边：中子流 = 25%分配给围绕该边的4个单元
+     */
+    CMFD_PRECISION *_send_split_current_data;       // 一维数组：打包所有待发送的分裂中子流（连续内存便于MPI传输）
+    CMFD_PRECISION *_receive_split_current_data;    // 一维数组：接收所有分裂中子流的连续缓冲区
+    CMFD_PRECISION **_send_split_currents_array;    // 二维数组：将上述一维数组重新组织成按面索引的格式
+    CMFD_PRECISION **_receive_split_currents_array; // 二维数组：将接收数据按面索引组织
+    CMFD_PRECISION ***_off_domain_split_currents;   // 三维数组：存储本域外（相邻域）传来的分裂中子流
+    CMFD_PRECISION ***_received_split_currents;     // 三维数组：最终整理好的接收到的分裂中子流数据
+
+    /* A tally buffer for threads to tally temporary surface currents
+     * [OpenMP并行计算] 线程私有缓冲区
+     * - 为了避免多个线程同时写入同一个变量导致冲突（数据竞争），给每个线程分配独立的内存空间
+     * - 二维数组：第一维是线程ID，第二维是该线程计算的数据
+     * - 计算完成后，再将所有线程的数据汇总
+     *  每个线程提供一个独立的缓冲区，用于记录每个线程计算出的临时表面电流值
+     */
     CMFD_PRECISION **_temporary_currents;
 
     /** Vector representing the flux for each cmfd cell and cmfd enegy group at
@@ -140,22 +174,32 @@ namespace antmoc
     Vector *_new_flux;
 
     /** Vector representing the flux for each cmfd cell and cmfd enegy group at
-     * the beginning of a CMFD solve CMFD求解前的网格通量(由moc数据累加平均得到)*/
+     * the beginning of a CMFD solve CMFD求解前的通量向量(由moc数据累加平均得到)*/
     Vector *_old_flux;
 
     /** The corrected diffusion coefficients from the previous iteration 上一次迭代的表面修正扩散系数*/
     Vector *_old_dif_surf_corr;
 
-    /** Whether the old diffusion coefficient has been set 是否已经有了表面修正扩散系数*/
+    /** Whether the old diffusion coefficient has been set
+     * 标志位：是否已经存在表面修正扩散系数（第一步迭代时通常为false）
+     */
     bool _old_dif_surf_valid;
 
-    /** Gauss-Seidel SOR relaxation factor 高斯-赛德尔 SOR 松弛因子*/
+    /** Gauss-Seidel SOR relaxation factor
+     * [数值计算] SOR（逐次超松弛）迭代法的松弛因子
+     * - 值通常在 (1, 2) 之间
+     * - 作用：加快线性方程组求解的收敛速度
+     */
     double _SOR_factor;
 
-    /** cmfd source convergence threshold cmfd源收敛阈值*/
+    /** cmfd source convergence threshold
+     * 源收敛阈值：当两次迭代的源项差异小于此值时，认为计算收敛，停止迭代
+     */
     double _source_convergence_threshold;
 
-    /** Number of cells in x direction 整个几何上x方向上CMFD网格的数量*/
+    /** Number of cells in x direction
+     * 整个几何X方向上的CMFD粗网格数量
+     */
     int _num_x;
 
     /** Number of cells in y direction */
@@ -167,217 +211,347 @@ namespace antmoc
     /** Number of radial tiles 径向六边形数量层数，一层1个，2层6个，三层12个*/
     int _num_r;
 
-    /** Number of energy groups */
+    /** Number of energy groups
+     * MOC（精细计算）使用的能群总数
+     */
     int _num_moc_groups;
 
-    /** Number of polar angles */
+    /** Number of polar angles
+     * 角度离散参数：极角数量
+     */
     int _num_polar;
 
-    /** Number of azimuthal angles */
+    /** Number of azimuthal angles
+     * 角度离散参数：方位角数量
+     */
     int _num_azim;
 
     /** Number of energy groups used in cmfd solver. Note that cmfd supports
-     * energy condensation from the MOC */
+     * energy condensation from the MOC
+     * CMFD（粗网计算）使用的能群数量
+     * 通常 _num_cmfd_groups < _num_moc_groups，即进行了"能群归并"（Energy Condensation）以加速计算
+     */
     int _num_cmfd_groups;
 
     /** Number of energy groups used in hex cmfd solver. Note that cmfd supports
-     * energy condensation from the MOC */
+     * energy condensation from the MOC
+     * 六边形CMFD求解器的能群数量
+     */
     int _hex_num_groups;
 
-    /** Coarse energy indices for fine energy groups 用于存储CMFD的索引对应全部MOC能群数的第几个(下标从0开始,左闭右开),数组大小为CMFD能群数+1*/
+    /** Coarse energy indices for fine energy groups
+     * 能群映射索引数组
+     * - 数组大小 = CMFD能群数 + 1
+     * - 定义了MOC细能群如何归并到CMFD粗能群的边界
+     * - 例如：CMFD第1群包含MOC第0~5群，则 indices[0]=0, indices[1]=6
+     */
     int *_group_indices;
 
-    /** Map of MOC groups to CMFD groups 用于将细化MOC能量组映射到对应的粗化CMFD能量组，这个映射可以是一对一的，也可以是一对多的，取决于细化和粗化能量组之间的关系。*/
+    /** Map of MOC groups to CMFD groups
+     * 详细映射表：数组下标是MOC能群ID，值是对应的CMFD能群ID
+     * map[moc_group_id] = cmfd_group_id
+     */
     int *_group_indices_map;
 
-    /** Number of energy groups in the backup CMFD solver 备用的 CMFD 求解器中使用的能量组的数量*/
+    /** Number of energy groups in the backup CMFD solver
+     * 备用的 CMFD 求解器中使用的能群数
+     */
     int _num_backup_groups;
 
-    /** Map of MOC groups to backup CMFD group structure 是一个二维 std::vector，其元素类型为 int，用于将 MOC 组映射到备用 CMFD组的结构或布局。*/
+    /** Map of MOC groups to backup CMFD group structure
+     * 二维向量：定义MOC能群到备用求解器能群的映射结构
+     */
     std::vector<std::vector<int>> _backup_group_structure;
 
-    /** Map of CMFD groups to backup CMFD group structure 用于将主 CMFD 求解器中的 CMFD 能群映射到备用 CMFD 求解器中的能群结构*/
+    /** Map of CMFD groups to backup CMFD group structure
+     * 用于将主 CMFD 求解器中的 CMFD 能群映射到备用 CMFD 求解器中的能群的映射数组
+     */
     int *_cmfd_group_to_backup_group;
 
-    /** If the user specified fine-to-coarse group indices 用户是否已经指定了细化能量组到粗化能量组的映射关系*/
+    /** If the user specified fine-to-coarse group indices
+     * 标志位：用户是否在输入文件中显式指定了能群归并关系
+     * 即细化能量组到粗化能量组的映射关系
+     */
     bool _user_group_indices;
 
-    /** If a linear source approximation is used 是否使用线性源近似*/
+    /** If a linear source approximation is used
+     * 标志位：是否使用线性源近似
+     * - true: 线性源近似（源在网格内线性变化，精度高）
+     */
     bool _linear_source;
 
-    /** If diffusion coefficients are limited by the flux 是否使用通量限制来限制扩散系数*/
+    /** If diffusion coefficients are limited by the flux
+     * 是否使用通量限制来限制扩散系数
+     * - 防止在通量梯度极大的地方计算出非物理的扩散系数
+     * - 增强数值稳定性
+     */
     bool _flux_limiting;
 
     /** Whether to rebalance the computed sigma-t to be consistent with the MOC
      *  solution on every sweep
-     * 是否在每次进行扫描计算时，程序会根据最新的 MOC 解调整总截面值，
+     * 是否在每次进行扫描计算时，程序会根据最新的 MOC 解调整总截面(Sigma-t)值，
      * 确保总截面与中子通量分布保持一致性。这可以提高计算的准确性和稳定性
      *  */
     bool _balance_sigma_t; //
 
-    /** Number of FSRs 是整个几何的FSR还是一个CMFD中所有的FSR，是整个几何的*/
+    /** Number of FSRs 是整个几何的FSR还是一个CMFD中所有的FSR，是整个几何的FSR数量*/
     long _num_FSRs;
 
-    /** The volumes (areas) for each FSR */
+    /** The volumes (areas) for each FSR
+     * 数组：存储每个FSR的体积（3D）或面积（2D）
+     * FP_PRECISION 是浮点精度宏（通常是 float 或 double）
+     */
     FP_PRECISION *_FSR_volumes;
 
-    /** Pointers to Materials for each FSR */
+    /** Pointers to Materials for each FSR
+     * 指针数组：存储每个FSR对应的材料对象指针
+     * Material** 是指向指针的指针（数组的每个元素都是一个 Material*）
+     */
     Material **_FSR_materials;
 
-    /** The FSR scalar flux in each energy group */
+    /** The FSR scalar flux in each energy group
+     * 数组：存储每个FSR在每个能群的标通量
+     * 大小通常是 _num_FSRs * _num_moc_groups
+     */
     FP_PRECISION *_FSR_fluxes;
 
-    /** The FSR source in each energy group */
+    /** The FSR source in each energy group
+     * 数组：存储每个FSR的源项（裂变源 + 散射源）
+     */
     FP_PRECISION *_FSR_sources;
 
     /** The source region flux moments (x, y, and z) for each energy group 存储每个能量组在源区域中的通量矩*/
     FP_PRECISION *_flux_moments;
 
-    /** Array of CMFD cell volumes */
+    /** Array of CMFD cell volumes
+     * 向量：存储每个CMFD粗网格的体积
+     */
     Vector *_volumes;
 
-    /** Array of material pointers for CMFD cell materials CMFD材料数组（二维的）*/
+    /** Array of material pointers for CMFD cell materials CMFD材料数组（二维指针数组）*/
     Material **_materials;
 
-    /** Physical dimensions of the geometry and each CMFD cell 整个几何上X方向的宽度*/
+    /** Physical dimensions of the geometry and each CMFD cell
+     * 几何体的物理尺寸（总长、总宽、总高）
+     */
     double _width_x;
     double _width_y;
     double _width_z;
     double _width_r;
-    DoubleVec _widths_z;
+    DoubleVec _widths_z; // Z方向各层的宽度向量
 
-    /** 一个CMFD网格的长宽高*/
+    /** 一个CMFD网格的长宽高
+     * 均匀网格情况下的单个网格尺寸
+     */
     double _cell_width_x;
     double _cell_width_y;
     double _cell_width_z;
 
-    /** Distance of each mesh from the left-lower-bottom most point */
-    // 从晶格最左边界开始到每个网格边界的距离
+    /** Distance of each mesh from the left-lower-bottom most point
+     * _accumulate_x[i] 表示第i个网格右边界距离晶格最左边界的距离
+     */
     std::vector<double> _accumulate_x;
     std::vector<double> _accumulate_y;
     std::vector<double> _accumulate_z;
 
-    /** Physical dimensions of non-uniform CMFD meshes (for whole geometry) */
+    /** Physical dimensions of non-uniform CMFD meshes (for whole geometry)
+     * 非均匀网格尺寸数组：存储每个网格的具体尺寸
+     */
     std::vector<double> _cell_widths_x;
     std::vector<double> _cell_widths_y;
     std::vector<double> _cell_widths_z;
 
-    /** True if the cmfd meshes are non-uniform 判断是CMFD网格是均匀的还是非均匀的*/
+    /** True if the cmfd meshes are non-uniform
+     * 标志位：是否使用非均匀CMFD网格
+     */
     bool _non_uniform;
 
-    /** True if the cmfd mesh has been adjusted to fit the domain decomposition */
+    /** True if the cmfd mesh has been adjusted to fit the domain decomposition
+     * 标志位：网格是否为了适应MPI域分解而进行了调整
+     */
     bool _widths_adjusted_for_domains;
 
-    /** Array of geometry boundaries */
+    /** Array of geometry boundaries
+     * 边界条件数组：存储几何体各个面的边界类型（如反射、真空等）
+     */
     boundaryType *_boundaries;
 
-    /** Array of surface currents for each CMFD cell 存储每个CMFD单元格表面的中子流信息的Vector数组*/
+    /** Array of surface currents for each CMFD cell
+     * Vector数组：存储每个CMFD单元各个表面的中子流
+     */
     Vector *_surface_currents;
 
-    /** Array of total current from starting boundary fluxes 存储从开始边界通量得到的总电流的Vector数组*/
+    /** Array of total current from starting boundary fluxes
+     * Vector数组：存储从边界入射通量产生的总中子流
+     */
     Vector *_starting_currents;
 
-    /** Array of net currents of all CMFD cells 存储所有CMFD单元格的净电流的Vector数组*/
+    /** Array of net currents of all CMFD cells
+     * Vector数组：存储每个CMFD单元的净中子流（Net Current = 流出 - 流入）
+     */
     Vector *_net_currents;
 
     /** Array of surface currents on all faces + edges and corners used in
-        debugging 用于存储所有面、边和角上的表面电流的Vector数组*/
+        debugging
+        调试用：存储所有面、边、角上的中子流数据
+     */
     Vector *_full_surface_currents;
 
-    /** Array of surface currents on edges and corners for each CMFD cell */
+    /** Array of surface currents on edges and corners for each CMFD cell
+     * 映射表：存储边和角上的中子流（用于更精细的分析）
+     * std::map<int, ...> 键是边/角的唯一ID
+     */
     std::map<int, CMFD_PRECISION> _edge_corner_currents;
 
-    /** Vector of vectors of FSRs containing in each cell 这个是二维vector数组，第一维确定是具体的哪个CMFD单元，第二个是单个CMFD中所关联的所有FSR，*/
+    /** Vector of vectors of FSRs containing in each cell
+     * 嵌套向量：建立 CMFD粗网格 -> FSR的索引关系
+     * _cell_fsrs[cmfd_cell_id] 返回该粗网格内包含的所有FSR ID列表
+     */
     std::vector<std::vector<long>> _cell_fsrs;
 
-    /** vector for storing whether the CMFD cells are empty or not. */
-    std::vector<bool> _empty_fsrs_cells; // 判断CMFD中的FSR是否为空（在边界外）
-    int _empty_cells_num;                // CMFD中空单元格数量
+    /** vector for storing whether the CMFD cells are empty or not.
+     * 布尔向量：标记CMFD网格是否为空（即不包含任何FSR，通常位于几何体外的填充区域）
+     */
+    std::vector<bool> _empty_fsrs_cells;
+    int _empty_cells_num; // 空网格计数
 
     /** logical cmfd index to actual cmfd cell index从逻辑cmfd索引到实际cmfd单元索引*/
     std::vector<int> _logical_actual_map;
 
-    /** Pointer to Lattice object representing the CMFD mesh 指向Lattice对象的CMFD*/
+    /** Pointer to Lattice object representing the CMFD mesh
+     * 指向代表 CMFD 网格的 Lattice 对象的指针
+     */
     Lattice *_lattice;
 
-    /** Orientation of the lattice CMFD晶格的方向*/
+    /** Orientation of the lattice
+     * CMFD lattice的方向
+     */
     Orientation _orientation;
 
-    /** Bool type, which is used to determine the shape of the Lattice */
+    /** Bool type, which is used to determine the shape of the Lattice
+     * 标志位：是否启用六边形Lattice（Hexagonal Lattice）
+     */
     bool _hexlattice_enable;
 
     /** Flag indicating whether to update the MOC flux
+     * 标志位：是否将CMFD计算结果反馈更新到MOC通量
+     * - CMFD加速的核心步骤：MOC -> CMFD -> MOC (更新)
      * 在求解过程中，通常需要多次迭代来达到收敛状态。每次迭代中，
      * 可能需要更新MOC通量以反映新的物理状态或边界条件的变化。
      * 如果当前迭代需要更新MOC通量，则 _flux_update_on 设为 true。
-     *
      */
     bool _flux_update_on;
 
-    /** Flag indicating whether to us centroid updating 是否进行质心更新操作*/
+    /** Flag indicating whether to us centroid updating
+     * 标志位：是否使用质心更新策略（一种改进的通量更新方法）
+     */
     bool _centroid_update_on;
 
-    /** Flag indicating whether to check neutron balance on every CMFD solve */
+    /** Flag indicating whether to check neutron balance on every CMFD solve
+     * 标志位：是否在每次CMFD求解后检查中子守恒（调试和验证用）
+     */
     bool _check_neutron_balance;
 
-    /** Number of cells to used in updating MOC flux 用于更新MOC通量的CMFD数*/
+    /** Number of cells to used in updating MOC flux
+     * 参数 K：用于K近邻插值更新MOC通量
+     * 用于更新MOC通量的CMFD数量
+     */
     int _k_nearest;
 
     /** Relaxation factor to use for corrected diffusion coefficients 用于修正扩散系数的松弛因子*/
     double _relaxation_factor;
 
-    /** Map storing the k-nearest stencil for each fsr 存储每个 FSR 的最近邻单元及其权重信息，用于更新 MOC 通量*/
+    /** Map storing the k-nearest stencil for each fsr
+     * 映射表：存储每个FSR的K个最近邻CMFD网格及其权重
+     * - 用于将CMFD粗网格结果插值回FSR细网格
+     * - pair<int, double> 表示 <网格ID, 权重>
+     */
     std::map<int, std::vector<std::pair<int, double>>>
         _k_nearest_stencils;
 
-    /** OpenMP mutual exclusion locks for atomic CMFD cell operations  CMFD互斥锁*/
+    /** OpenMP mutual exclusion locks for atomic CMFD cell operations
+     * [OpenMP并行] 互斥锁数组
+     * - 每个CMFD网格一个锁
+     * - 防止多个线程同时修改同一个网格的数据
+     */
     omp_lock_t *_cell_locks;
 
-    /** OpenMP mutual exclusion lock for edge/corner current tallies 边/角中子流计数的OpenMP互斥锁*/
+    /** OpenMP mutual exclusion lock for edge/corner current tallies
+     * [OpenMP并行] 边/角中子流计数的OpenMP互斥锁
+     */
     omp_lock_t _edge_corner_lock;
 
 #ifndef THREED
-    /** Flag indicating whether the problem is 2D or 3D 指示问题是二维还是三维的标志*/
+    /** Flag indicating whether the problem is 2D or 3D
+     * 标志位：指示当前是2D还是3D计算（当未定义THREED宏时使用）
+     */
     bool _SOLVE_3D;
 #endif
 
-    /** Array of azimuthal track spacings */
+    /** Array of azimuthal track spacings
+     * 几何参数：方位角特征线的间距
+     */
     double *_azim_spacings;
 
-    /** 2D array of polar track spacings 极角轨迹间距的2D阵列*/
+    /** 2D array of polar track spacings
+     * 几何参数：极角特征线的间距（二维数组）
+     */
     double **_polar_spacings;
 
     /** Whether to use axial interpolation for flux update ratios
      * 是否在更新通量比率时使用轴向插值
-     * 0：不使用插值。1：使用 FSR 在轴向上的平均值进行插值。2：使用质心（centroid）的 z 坐标值进行插值
-     * */
+     * 0：不插值
+     * 1：使用 FSR 在轴向上的平均值进行插值
+     * 2：使用质心（centroid）的 z 坐标值进行插值
+     */
     int _use_axial_interpolation;
 
-    /** Axial interpolation constants */
+    /** Axial interpolation constants
+     * 预计算的轴向插值常数
+     */
     std::vector<double *> _axial_interpolants;
 
-    /* Structure to contain information about the convergence of the CMFD 有关CMFD收敛性信息的（ConvergenceData类型的）结构*/
+    /* Structure to contain information about the convergence of the CMFD
+     * 结构体指针：存储CMFD收敛过程数据（如残差历史、迭代次数）
+     */
     ConvergenceData *_convergence_data;
 
-    /* MPI communicator to transfer buffers, mainly currents at interfaces MPI通讯器（DomainCommunicator）结构，用于传输缓冲区，主要是CMFD界面处的中子流 */
+    /* MPI communicator to transfer buffers, mainly currents at interfaces
+     * [MPI并行] 域通信器对象
+     * - 负责管理跨进程的数据传输
+     * - 处理域分解边界上的中子流交换
+     */
     DomainCommunicator *_domain_communicator;
 
-    /* Buffer to contain received data 包含接收数据的缓冲区*/
+    /* Buffer to contain received data
+     * [MPI并行] 接收缓冲区：存储从其他进程接收的数据
+     */
     CMFD_PRECISION *_inter_domain_data;
 
-    /* Buffer to contain sent data from domain 包含域中发送数据的缓冲区*/
+    /* Buffer to contain sent data from domain
+     * [MPI并行] 发送缓冲区：存储准备发送给其他进程的数据
+     */
     CMFD_PRECISION *_send_domain_data;
 
-    /* For each face (1st dimension of the array), will contain data received 对于每个面（阵列的第一个维度），将包含接收到的数据*/
+    /* For each face (1st dimension of the array), will contain data received
+     * [MPI并行] 二维数组，对于每个面（数组的第一个维度），将包含接收到的数据
+     */
     CMFD_PRECISION **_domain_data_by_surface;
 
-    /* For each face (1st dimension of the array), will contain data to send //对于每个面（数组的第一个维度），将包含要发送的数据*/
+    /* For each face (1st dimension of the array), will contain data to send
+     * [MPI并行] 二维数组，对于每个面（数组的第一个维度），将包含准备发送的数据
+     */
     CMFD_PRECISION **_send_data_by_surface;
 
-    /* Map of the indexes to each boundary in the tally arrays 界面的索引映射信息*/
+    /* Map of the indexes to each boundary in the tally arrays
+     * 映射表：边界索引映射，用于快速查找边界数据在数组中的位置
+     */
     std::vector<std::map<int, int>> _boundary_index_map;
 
-    /* The number of on-domain cells in the x-direction 一个domain域中x方向上CMFD单元数*/
+    /* The number of on-domain cells in the x-direction
+     * 本地（当前进程负责的）子区域在X方向的网格数
+     一个domain域中x方向上CMFD单元数
+     */
     int _local_num_x;
 
     /* The number of on-domain cells in the y-direction */
@@ -386,58 +560,124 @@ namespace antmoc
     /* The number of on-domain cells in the z-direction */
     int _local_num_z;
 
-    /* Size of _tally_memory array */
+    /* Size of _tally_memory array
+     * 统计内存总大小
+     */
     long _total_tally_size;
 
-    /* 1D array that contains all tallies (diffusion, reaction and volume) */
+    /* 1D array that contains all tallies (diffusion, reaction and volume)
+     */
     CMFD_PRECISION *_tally_memory;
 
-    /* 2D array that contains reaction rates in each cell and group */
+    /* 2D array that contains reaction rates in each cell and group
+     * 指针数组：指向 _tally_memory 中的反应率数据段
+     */
     CMFD_PRECISION **_reaction_tally;
 
-    /* 2D array that contains volume tallies of each cell */
+    /* 2D array that contains volume tallies of each cell
+     * 指针数组：指向 _tally_memory 中的体积数据段
+     */
     CMFD_PRECISION **_volume_tally;
 
-    /* 2D array that contains diffusion tallies for each cell and groups */
+    /* 2D array that contains diffusion tallies for each cell and groups
+     * 指针数组：指向 _tally_memory 中的扩散系数数据段
+     */
     CMFD_PRECISION **_diffusion_tally;
 
-    /* Boolean to check if tallies are allocated */
+    /* Boolean to check if tallies are allocated
+     * 标志位：内存是否已分配
+     */
     bool _tallies_allocated;
 
     /* Boolean to check if the domain communicator (for domain decomposed CMFD)
-     * has been allocated */
+     * has been allocated
+     * 标志位：MPI通信器是否已初始化
+     */
     bool _domain_communicator_allocated;
 
-    /** A timer to record timing data for a simulation */
+    /** A timer to record timing data for a simulation
+     * 计时器对象：用于性能分析
+     */
     Timer *_timer;
 
-    /** A one-group backup CMFD solver 一个单能群的备用 CMFD求解器*/
+    /** A one-group backup CMFD solver
+     * 备用CMFD求解器指针（通常用于加速主求解器的收敛，或作为预处理）
+     */
     Cmfd *_backup_cmfd;
 
     /* Private worker functions */
+
+    /* 计算Larsen有效扩散系数因子
+     * - 用于修正扩散系数，使其更符合输运理论的结果
+     * - dif_coef: 原始扩散系数
+     * - delta: 网格尺寸
+     */
     CMFD_PRECISION computeLarsensEDCFactor(CMFD_PRECISION dif_coef,
                                            CMFD_PRECISION delta);
+
+    /* 构建CMFD线性方程组的矩阵 (Ax = b)
+     * - moc_iteration: 当前MOC迭代步数
+     * - 计算矩阵系数 A 和 M
+     */
     void constructMatrices(int moc_iteration);
-    void hexConstructMatrices(int moc_iteration);
+    void hexConstructMatrices(int moc_iteration); // 六边形几何版本
+
+    /* 归并截面 (Fine -> Coarse)
+     * - 将MOC细网格的截面加权平均，得到CMFD粗网格的截面
+     * - 权重通常是通量和体积
+     */
     void collapseXS();
-    void hexCollapseXS();
+    void hexCollapseXS(); // 六边形版本
+
+    /* 更新MOC通量 (Coarse -> Fine)
+     * - 将CMFD计算得到的粗网格通量变化，调制回MOC细网格通量
+     * - 实现加速收敛的关键步骤
+     */
     void updateMOCFlux();
-    void updateHexMOCFlux();
+    void updateHexMOCFlux(); // 六边形版本
+
+    /* 重新缩放通量
+     * - 确保全堆总中子产生率（或总功率）守恒
+     */
     void rescaleFlux();
+
+    /* 分裂顶点中子流
+     * - 处理角点处的中子流分配问题
+     */
     void splitVertexCurrents();
     void splitVertexCurrentsHex();
+
+    /* 分裂边中子流
+     * - 处理边处的中子流分配问题
+     */
     void splitEdgeCurrents();
     void splitEdgeCurrentsHex();
+
+    /* 获取顶点分裂关联的表面列表
+     * - 辅助函数：确定一个顶点连接了哪些表面
+     */
     void getVertexSplitSurfaces(int cell, int vertex, std::vector<int> *surfaces);
     void getVertexSplitSurfacesHex(int cell, int vertex, std::vector<int> *surfaces);
+
+    /* 获取边分裂关联的表面列表 */
     void getEdgeSplitSurfaces(int cell, int edge, std::vector<int> *surfaces);
     void getEdgeSplitSurfacesHex(int cell, int edge, std::vector<int> *surfaces);
+
+    /* 初始化材料属性 */
     void initializeMaterials();
     void initializeHexMaterials();
+
+    /* 初始化中子流数组 */
     void initializeCurrents();
     void initializeCurrentsHex();
+
+    /* 生成K近邻模板
+     * - 预计算每个FSR周围最近的K个CMFD网格，用于插值
+     */
     void generateKNearestStencils();
     void generateKNearestStencilsHex();
+
+    /* 方向与表面索引转换工具函数 */
     int convertDirectionToSurface(int *direction);
     void convertSurfaceToDirection(int surface, int *direction);
     void convertSurfaceToDirectionHex(int surface, int *direction);
@@ -445,46 +685,95 @@ namespace antmoc
     std::string getSurfaceNameFromSurface(int surface);
 
     /* Private getter functions */
+    /* 获取相邻网格ID
+     * - global=true: 返回全局ID
+     * - neighbor=true: 即使在不同域也返回ID
+     */
     int getCellNext(int cell_id, int surface_id, bool global = true,
                     bool neighbor = false);
+
+    /* 根据模板获取网格ID */
     int getCellByStencil(int cell_id, int stencil_id);
     int getHexCellByStencil(int cell_id, int stencil_id);
     int getHexCellByStencilPre(int cell_id, int stencil_id);
+
+    /* 获取通量比率 (新通量/旧通量) */
     CMFD_PRECISION getFluxRatio(int cell_id, int group, int fsr);
     CMFD_PRECISION getHexFluxRatio(int cell_id, int group, int fsr);
+
+    /* 获取更新比率 (用于MOC更新) */
     CMFD_PRECISION getUpdateRatio(int cell_id, int moc_group, int fsr);
     CMFD_PRECISION getHexUpdateRatio(int cell_id, int moc_group, int fsr);
+
+    /* 计算到质心的距离 (用于插值权重计算) */
     double getDistanceToCentroid(Point *centroid, int cell_id,
                                  int stencil_index);
     double getDistanceToCentroidHex(Point *centroid, int cell_id,
                                     int stencil_index);
     double getDistanceToCentroidHexPre(Point *centroid, int cell_id,
                                        int stencil_index);
+
+    /* 获取表面扩散系数
+     * - correction=true: 返回经过CMFD修正后的系数
+     */
     CMFD_PRECISION getSurfaceDiffusionCoefficient(int cmfd_cell, int surface,
                                                   int group, int moc_iteration,
                                                   bool correction);
     CMFD_PRECISION getHexSurfaceDiffusionCoefficient(int cmfd_cell, int surface,
                                                      int group, int moc_iteration,
                                                      bool correction);
+
+    /* 获取网格中心扩散系数 */
     CMFD_PRECISION getDiffusionCoefficient(int cmfd_cell, int group);
+
+    /* 获取表面几何宽度 */
     CMFD_PRECISION getSurfaceWidth(int surface);
     CMFD_PRECISION getHexSurfaceWidth(int surface);
     CMFD_PRECISION getPerpendicularSurfaceWidth(int surface);
     CMFD_PRECISION getHexPerpendicularSurfaceWidth(int surface);
+
+    /* 获取表面方向 (正向/负向) */
     int getSense(int surface);
-    int getLocalCMFDCell(int cmfd_cell);  // TODO: optimize, document
-    int getGlobalCMFDCell(int cmfd_cell); // TODO: optimize, document
-    int getCellColor(int cmfd_cell);      // TODO: optimize, document
+
+    /* ID转换函数 */
+    int getLocalCMFDCell(int cmfd_cell);  // 全局ID -> 本地ID
+    int getGlobalCMFDCell(int cmfd_cell); // 本地ID -> 全局ID
+    int getCellColor(int cmfd_cell);      // 获取网格颜色(用于红黑迭代等并行算法)
+
+    /* 打包MPI通信缓冲区 */
     void packBuffers();
+
 #ifdef ENABLE_MPI_
+    /* 幽灵网格交换 (Ghost Cell Exchange)
+     * - MPI通信核心函数
+     * - 交换相邻域边界上的网格数据
+     */
     void ghostCellExchange();
+
+    /* 通信分裂中子流
+     * - faces=true: 交换面上的数据
+     * - faces=false: 交换边/角上的数据
+     */
     void communicateSplits(bool faces);
 #endif
+
+    /* 解包分裂中子流数据 */
     void unpackSplitCurrents(bool faces);
+
+    /* 复制完整表面中子流 (用于调试或输出) */
     void copyFullSurfaceCurrents();
     void copyHexFullSurfaceCurrents();
+
+    /* 检查中子守恒 (Neutron Balance Check)
+     * - 验证流入+产生 = 流出+吸收
+     * - pre_split: 是否在分裂电流处理前检查
+     */
     void checkNeutronBalance(bool pre_split = true);
     void checkNeutronBalanceHex(bool pre_split = true);
+
+    /* 打印延长因子 (Prolongation Factors)
+     * - 调试用：查看粗网到细网的插值系数
+     */
     void printProlongationFactors(int iteration);
 
   public:
