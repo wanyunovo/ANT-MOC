@@ -2938,11 +2938,17 @@ namespace antmoc
    *           of length _num_moc_groups that maps the MOC energy groups to CMFD
    *           energy groups. The indices into _group_indices_map are the MOC
    *           energy groups and the values are the CMFD energy groups.
+   * 建立 MOC（细群）和 CMFD（粗群）之间的能群映射关系。
+   * 简单来说，MOC 计算通常使用很多能群（比如 100 个）来保证精度，而 CMFD 为了加速，通常使用较少的能群（比如 2 个，快群和热群）。这个函数就是用来定义：MOC 的第几群到第几群，归并成 CMFD 的第 1 群；第几群到第几群，归并成 CMFD 的第 2 群……
    */
   void Cmfd::initializeGroupMap()
   {
 
     /* Setup one-to-one fine-to-coarse group map if not specified by user */
+    // 1. 检查用户是否自定义了分群结构
+    // _user_group_indices 是一个标志位。
+    // 如果用户没有手动设置（比如在 Python 里调用 setGroupStructure），
+    // 那么默认采用“一对一”映射，即 CMFD 的能群数等于 MOC 的能群数，不进行归并。
     if (!_user_group_indices)
     {
       _num_cmfd_groups = _num_moc_groups;
@@ -2955,6 +2961,12 @@ namespace antmoc
       _group_indices = new int[_num_cmfd_groups + 1];
 
       /* Populate a 1-to-1 mapping from MOC to CMFD groups */
+      // 填充默认的一对一映射：
+      // _group_indices[0] = 0
+      // _group_indices[1] = 1
+      // ...
+      // 意思是：第 i 个粗群，只包含第 i 个细群。
+      /* Populate a 1-to-1 mapping from MOC to CMFD groups */
       for (int i = 0; i <= _num_cmfd_groups; i++)
       {
         _group_indices[i] = i;
@@ -2962,6 +2974,13 @@ namespace antmoc
     }
     else
     {
+      // 如果用户自定义了分群结构，这里做一个简单的校验。
+      // _group_indices 数组已经在 setGroupStructure 函数里被填充好了。
+      // 这里检查一下：最后一个粗群的结束边界，是否等于 MOC 的总能群数。
+      // 如果不等，说明分群定义有误（比如漏掉了几个群，或者多出了几个群）。
+      /*
+      定义了MOC细能群如何归并到CMFD粗能群的边界
+      例如：CMFD第1群包含MOC第0~5群，则 indices[0]=0, indices[1]=6 */
       if (_num_moc_groups != _group_indices[_num_cmfd_groups])
         log::ferror("The CMFD coarse group mapping is specified for "
                     "%d groups, but the MOC problem contains %d groups",
@@ -2973,13 +2992,22 @@ namespace antmoc
       delete[] _group_indices_map;
 
     /* Allocate memory for new group indices map */
+    // _group_indices_map 是一个数组，长度等于 MOC 的细群总数。
+    // 它的作用是：给定一个 MOC 细群 ID，快速查到它属于哪个 CMFD 粗群。
     _group_indices_map = new int[_num_moc_groups];
 
     /* Create group indices map */
+    // 3. 填充反向查找表
+    // 外层循环：遍历每一个 CMFD 粗群 (e)
     for (int e = 0; e < _num_cmfd_groups; e++)
     {
+      // 内层循环：遍历该粗群包含的所有 MOC 细群 (h)
+      // 起始位置：_group_indices[e]
+      // 结束位置：_group_indices[e + 1]
+      // 左闭右开
       for (int h = _group_indices[e]; h < _group_indices[e + 1]; h++)
       {
+        // 记录映射关系：细群 h 属于 粗群 e
         _group_indices_map[h] = e;
       }
     }
@@ -2993,13 +3021,17 @@ namespace antmoc
    * @param The coords being evaluated.
    * @return The surface ID.
    *
-   * 查找 LocalCoords 对象所在的 CMFD 表面索引
+   * 给定一个空间点坐标LocalCoords和一个 CMFD 网格单元 ID，判断这个点位于该网格单元的哪个表面上。
+   * 即查找 LocalCoords 对象所在的 CMFD 表面索引(这个索引是全局唯一的)。
    */
   int Cmfd::findCmfdSurface(int cell, LocalCoords *coords, double azim, double polar)
   {
     double surface_polar = polar; // 把输入 polar 角复制到局部变量，防止后续修改原参数
+
     Point *point = coords->getHighestLevel()->getPoint();
-    cell = getGlobalCMFDCell(cell); // 获取一维全局ID
+
+    cell = getGlobalCMFDCell(cell); // 获取全局一维索引
+
     return _lattice->getLatticeSurface(cell, point, azim, surface_polar);
   }
 
@@ -3029,15 +3061,21 @@ namespace antmoc
    * @brief Find the CMFD cell that a LocalCoords object is in.
    * @param The coords being evaluated.
    * @return The CMFD cell ID.
+   * 根据给定的空间坐标，找到它所属的 CMFD（粗网有限差分）网格单元的索引。
    */
   int Cmfd::findCmfdCell(LocalCoords *coords)
   {
     Point *point = coords->getHighestLevel()->getPoint();
-    int global_cmfd_cell = _lattice->getLatticeCell(point); // 全局一维索引
-    if (_hexlattice_enable)
+    int global_cmfd_cell = _lattice->getLatticeCell(point); // 计算这个 point 落在 Lattice 的哪一个格子（Cell）里，并返回该格子的全局一维索引。
+
+    if (_hexlattice_enable) // 如果是六角形网格模式（_hexlattice_enable 为真），直接返回刚才算出的全局索引。
       return global_cmfd_cell;
-    else
+    else // 处理笛卡尔网格 (Cartesian/Rectangular)：普通的矩形网格，将全局索引转换为当前进程视角的本地索引。
     {
+      /**
+       * 背景：在大规模并行计算（MPI）中，整个CMFD被切分成多个“域”（Domain），每个 CPU 核心只负责计算其中一块区域。
+       * 将全局 CMFD 单元索引转换为当前 MPI 进程的本地索引（局部一维索引）。
+       */
       int local_cmfd_cell = getLocalCMFDCell(global_cmfd_cell);
       return local_cmfd_cell;
     }
@@ -3082,7 +3120,7 @@ namespace antmoc
     }
     else
     {
-      /** Vector of vectors of FSRs containing in each cell 这个是二维vector数组，第一维确定是具体的哪个CMFD单元，第二个是单个CMFD中所关联的所有FSR
+      /** _cell_fsrs是二维vector数组，第一维确定是具体的哪个CMFD单元，第二个是单个CMFD中所关联的所有FSR
        * std::vector<std::vector<long>> _cell_fsrs;
        * */
       _cell_fsrs.at(cmfd_cell).push_back(fsr_id); // 把fsr_id数据添加到具体的cmfd_cell单元相关联
@@ -6200,46 +6238,58 @@ namespace antmoc
   {
 
     /* Delete old Matrix and Vector objects if they exist */
-    if (_A != NULL) // 对应CMFD文档中的B.29公式
+    if (_A != NULL) // 损失矩阵 A，对应 B.29 公式左边
       delete _A;
-    if (_M != NULL)
+    if (_M != NULL) // 乘法矩阵 M（裂变产生矩阵），对应 B.29 右边
       delete _M;
-    if (_old_source != NULL) // The old source vector
+    if (_old_source != NULL) // 旧源向量
       delete _old_source;
-    if (_new_source != NULL)
+    if (_new_source != NULL) // 新源向量
       delete _new_source;
-    if (_old_flux != NULL) // B.32，CMFD求解前的通量
+    if (_old_flux != NULL) // CMFD求解前的通量，对应 B.32
       delete _old_flux;
-    if (_new_flux != NULL)
+    if (_new_flux != NULL) // CMFD求解后的通量
       delete _new_flux;
-    if (_old_dif_surf_corr != NULL) // 上一次迭代的表面修正扩散系数
+    if (_old_dif_surf_corr != NULL) // 上一次迭代的表面修正扩散系数 D̃
       delete _old_dif_surf_corr;
-    if (_volumes != NULL)
+    if (_volumes != NULL) // 单元体积向量
       delete _volumes;
-    if (_cell_locks != NULL) // CMFD互斥锁
+    if (_cell_locks != NULL) // OpenMP互斥锁数组
       delete[] _cell_locks;
 
     /* Calculate the number of elements */
-    int num_cells = _local_num_x * _local_num_y * _local_num_z;
-    int ncg = _num_cmfd_groups;
+    int num_cells = _local_num_x * _local_num_y * _local_num_z; // 本进程负责的CMFD单元总数
+    int ncg = _num_cmfd_groups;                                 // CMFD粗群数量
 
     try
     {
 
       /* Allocate temporary tally vectors for surface currents by thread 按线程为表面中子流分配临时记录向量 */
-      int num_threads = omp_get_max_threads();
+      int num_threads = omp_get_max_threads(); // 获取OpenMP最大线程数，omp_get_max_threads()：OpenMP 标准库函数，返回程序可用的最大线程数
       _temporary_currents = new CMFD_PRECISION *[num_threads];
+
       for (int t = 0; t < num_threads; t++)
-        _temporary_currents[t] = new CMFD_PRECISION[ncg]; //_temporary_currents:用于记录每个线程计算出的临时表面中子流
+        _temporary_currents[t] = new CMFD_PRECISION[ncg]; //_temporary_currents:用于记录每个线程计算出的临时表面中子流，线程 t 将计算结果写入 _temporary_currents[t][group]，之后再合并
 
-      /* Allocate array of OpenMP locks for each CMFD cell 分配锁空间*/
-      _cell_locks = new omp_lock_t[num_cells];
+      /* Allocate array of OpenMP locks for each CMFD cell */
+      _cell_locks = new omp_lock_t[num_cells]; // 每个CMFD单元一把锁
 
-      /* Loop over all cells to initialize OpenMP locks 初始化锁*/
+      /* Loop over all cells to initialize OpenMP locks 初始化锁
+      omp_lock_t 是什么？
+OpenMP 提供的互斥锁类型
+当多个线程可能同时修改同一数据时，需要用锁来保护，确保一次只有一个线程能访问
+#pragma omp parallel for schedule(guided)
+这是 OpenMP 并行编程的标准写法，由三部分组成：
+#pragma omp	告诉编译器这是 OpenMP 指令
+parallel for	将下面的 for 循环并行化，多个线程分担迭代
+schedule(guided)	调度策略：先分配大块任务，后期动态分配小块（适合负载不均的情况）
+omp_init_lock() ：OpenMP 标准函数，初始化一把锁
+以后怎么用：omp_set_lock(&_cell_locks[i]) 加锁，omp_unset_lock(&_cell_locks[i]) 解锁
+      */
 #pragma omp parallel for schedule(guided)
       for (int r = 0; r < num_cells; r++)
-        omp_init_lock(&_cell_locks[r]);
-      omp_init_lock(&_edge_corner_lock);
+        omp_init_lock(&_cell_locks[r]);  // 初始化每把锁
+      omp_init_lock(&_edge_corner_lock); // 边角专用锁，一个
 
       // 为各个变量分配空间
       _M = new Matrix(_cell_locks, _local_num_x, _local_num_y, _local_num_z,
@@ -6247,17 +6297,17 @@ namespace antmoc
       _A = new Matrix(_cell_locks, _local_num_x, _local_num_y, _local_num_z,
                       ncg);
       _old_source = new Vector(_cell_locks, _local_num_x, _local_num_y,
-                               _local_num_z, ncg);
+                               _local_num_z, ncg); // 旧源向量
       _new_source = new Vector(_cell_locks, _local_num_x, _local_num_y,
-                               _local_num_z, ncg);
+                               _local_num_z, ncg); // 新源向量
       _old_flux = new Vector(_cell_locks, _local_num_x, _local_num_y,
-                             _local_num_z, ncg);
+                             _local_num_z, ncg); // 旧通量
       _new_flux = new Vector(_cell_locks, _local_num_x, _local_num_y,
-                             _local_num_z, ncg);
+                             _local_num_z, ncg); // 新通量
       _old_dif_surf_corr = new Vector(_cell_locks, _local_num_x, _local_num_y,
                                       _local_num_z, NUM_FACES * ncg);
-      _old_dif_surf_corr->setAll(0.0);
-      _volumes = new Vector(_cell_locks, _local_num_x, _local_num_y, _local_num_z, 1);
+      _old_dif_surf_corr->setAll(0.0);                                                 // 初始化为0
+      _volumes = new Vector(_cell_locks, _local_num_x, _local_num_y, _local_num_z, 1); // 体积向量
 
       /* Initialize k-nearest stencils, currents, flux, materials and tallies */
       generateKNearestStencils(); // 设置周围的K个CMFD网格对FSR通量更新的贡献（百分比），数据保存在了_k_nearest_stencils这个模具中
@@ -8696,6 +8746,9 @@ namespace antmoc
    * @details Marked for deletion, but still used thoroughly.
    * @param cmfd_cell The global CMFD cell ID
    * @return The local CMFD cell ID, -1 if not in the domain.
+   * 将全局 CMFD 单元索引转换为当前 MPI 进程的本地索引（局部一维索引）。
+   * cmfd_cell 是一个全局唯一 ID，代表整个问题空间中的某个网格单元。
+   * 我们需要判断这个单元是否属于当前进程，如果是，它在当前进程的本地数组中排第几。
    */
   int Cmfd::getLocalCMFDCell(int cmfd_cell)
   {
@@ -8706,10 +8759,19 @@ namespace antmoc
     int x_end = _num_x;
     int y_end = _num_y;
     int z_end = _num_z;
+    // 第一步：确定当前进程“管辖”的全局坐标范围
     if (mpi::isSpatialDecomposed())
     {
       if (_domain_communicator != NULL)
       {
+        // _domain_idx_x 是当前进程在 X 方向是第几个进程（比如第 0 个，第 1 个...）
+        // _local_num_x 是每个进程负责的网格数
+        // 乘起来就是当前进程负责的起始全局坐标
+        /**
+         * 例子：假设 X 方向总长 100(x方向有100列)，分给 2 个进程。
+         * 进程 0：x_start = 0 * 50 = 0, x_end = 50。
+         * 进程 1：x_start = 1 * 50 = 50, x_end = 100。
+         */
         x_start = _domain_communicator->_domain_idx_x * _local_num_x;
         x_end = x_start + _local_num_x;
         y_start = _domain_communicator->_domain_idx_y * _local_num_y;
@@ -8718,12 +8780,14 @@ namespace antmoc
         z_end = z_start + _local_num_z;
       }
     }
-
-    int ix = (cmfd_cell % (_num_x * _num_y)) % _num_x; // 获取全局三维索引
+    // 第二步：把全局 ID 还原回全局坐标 (ix, iy, iz)
+    // 传入的 cmfd_cell 是一个扁平化的全局索引（Z-Y-X 顺序排列）。代码通过取模和除法把它还原成三维索引。
+    int ix = (cmfd_cell % (_num_x * _num_y)) % _num_x;
     int iy = (cmfd_cell % (_num_x * _num_y)) / _num_x;
     int iz = cmfd_cell / (_num_x * _num_y);
 
     int local_cmfd_cell;
+    // 第三步：判断归属并计算本地 ID。拿到全局坐标 (ix, iy, iz) 后，先看它在不在第一步计算的范围内。
     if (ix < x_start || ix >= x_end || iy < y_start || iy >= y_end ||
         iz < z_start || iz >= z_end)
     {
@@ -8731,6 +8795,13 @@ namespace antmoc
     }
     else // 转为局部一维索引
       local_cmfd_cell = ((iz - z_start) * _local_num_y + iy - y_start) * _local_num_x + ix - x_start;
+    /**
+     * 如果归我管，就要把它映射到本地数组的索引。本地数组的大小是 _local_num_x * _local_num_y * _local_num_z。
+     * 计算公式是：3D 转 1D（但是用的是本地坐标和本地尺寸）。
+     * 本地 X 坐标：ix - x_start
+     * 本地 Y 坐标：iy - y_start
+     * 本地 Z 坐标：iz - z_start
+     */
     return local_cmfd_cell;
   }
 
@@ -8749,7 +8820,9 @@ namespace antmoc
     int y_start = 0;
     int z_start = 0;
     /*
-    初始为 0；如果 mpi::isSpatialDecomposed()（说明 CMFD 网格被分块到不同 MPI 进程），并且 _domain_communicator 存在，就用该域在 X/Y/Z 方向的索引号乘以每个域本地单元数 _local_num_x 等，得到本域在全局坐标上的起始偏移。
+     _domain_idx_x 是当前进程在 X 方向是第几个进程（比如第 0 个，第 1 个...）
+     _local_num_x 是每个进程负责的网格数
+     乘起来就是当前进程负责的起始全局坐标
     */
     if (mpi::isSpatialDecomposed())
     {
@@ -8761,10 +8834,12 @@ namespace antmoc
       }
     }
 
-    int ix = cmfd_cell % _local_num_x;                                   // 计算 cmfd_cell 在 x ,y,z方向上的局部索引
-    int iy = (cmfd_cell % (_local_num_x * _local_num_y)) / _local_num_x; // 先取 XY 平面内的偏移，再除以 _local_num_x 得到 Y 位置。
+    // 将局部1维索引转换为局部三维索引
+    int ix = cmfd_cell % _local_num_x;
+    int iy = (cmfd_cell % (_local_num_x * _local_num_y)) / _local_num_x;
     int iz = cmfd_cell / (_local_num_x * _local_num_y);
 
+    // 将局部三维索引转换为全局1维索引
     return ((iz + z_start) * _num_y + iy + y_start) * _num_x + ix + x_start;
   }
 

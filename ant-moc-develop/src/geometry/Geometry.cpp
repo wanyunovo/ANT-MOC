@@ -1199,7 +1199,7 @@ namespace antmoc
         fsr->_point = point;
         fsr->_mat_id = cell->getFillMaterial()->getId();
 
-        /* If CMFD acceleration is on, add FSR CMFD cell to FSR data 如果启用了CMFD加速，则将FSR的CMFD单元添加到FSR数据中*/
+        /* If CMFD acceleration is on, add FSR CMFD cell to FSR data 如果启用了CMFD加速，则将FSR所在的CMFD单元添加到FSR数据中*/
         if (_cmfd != nullptr)
         {
           if (_cmfd->findCmfdCell(coords->getHighestLevel()) != -1)
@@ -2105,7 +2105,7 @@ namespace antmoc
 
   /**
    * @brief This method performs ray tracing to create Track segments within each
-   *        flat source region in the Geometry.执行射线追踪，以在几何体中的每个平面源区域内创建轨迹段
+   *        flat source region in the Geometry.
    * @details This method starts at the beginning of a Track and finds successive
    *          intersection points with FSRs as the Track crosses through the
    *          Geometry and creates segment structs and adds them to the Track.
@@ -2379,8 +2379,7 @@ namespace antmoc
       start.setZ(z_coords[min_z_ind]);
       findCellContainingCoords(&start);
 
-      // Create a unique ExtrudedFSR by comparing ExtrudedFSRs with the same CSG
-      region_id = createUniqueExtrudedFSR(start, z_coords); // 根据最小线段的Z高度来创建轴向挤出FSR
+      region_id = createUniqueExtrudedFSR(start, z_coords); //_extruded_FSR_keys_map的数据就是在这里填充的
 
       /* Move the coordinates to the next intersection */
       start.copyCoords(&end);
@@ -2409,18 +2408,18 @@ namespace antmoc
       {
 
         /* Find cmfd cell that segment lies in */
-        int cmfd_cell = _cmfd->findCmfdCell(&start); // 计算线段起点所在的CMFD cell，如果不在当前域上（返回 -1），就不处理 CMFD，直接跳到 add_segment 标签处。
+        int cmfd_cell = _cmfd->findCmfdCell(&start); // 计算线段起点所在的CMFD cell，如果起点不在任何 CMFD 网格内（返回 -1），说明该线段不需要贡献给 CMFD 统计，直接使用 goto 跳转到 add_segment 标签，跳过后续 CMFD 处理。
 
         if (cmfd_cell == -1)
         {
-          log::fdebug("segment not in CMFD Cell start(%lf,%lf), end(%lf,%lf)", // 该线段不在当前域中
+          log::fdebug("segment not in CMFD Cell start(%lf,%lf), end(%lf,%lf)",
                       start.getX(), start.getY(), end.getX(), end.getY());
           goto add_segment;
         }
 
         if (_cmfd->GetHexLatticeEnable())
-        { // 000000000000
-          if (!_cmfd->CellinHexLattice(cmfd_cell))
+        {                                          // 检查是否启用了六角形网格模式。
+          if (!_cmfd->CellinHexLattice(cmfd_cell)) // 检查找到的 cmfd_cell 是否属于有效的六角形晶格结构。如果不在有效晶格内，同样跳过。
           {
             log::fdebug("segment not in Hex CMFD Cell start(%lf,%lf), end(%lf,%lf)",
                         start.getX(), start.getY(), end.getX(), end.getY());
@@ -2450,6 +2449,7 @@ namespace antmoc
         _cmfd->GetXYSurfaces(cmfd_surfaces);
 
         /* Save CMFD surfaces */
+        // 将找到的“前向面”（出射面）和“后向面”（入射面）索引保存到 new_segment 结构体中。后续求解器在扫描这条线段时，会利用这两个索引将中子流贡献累加到对应的 CMFD 面上。
         new_segment._cmfd_surface_fwd = cmfd_surfaces[0];
         new_segment._cmfd_surface_bwd = cmfd_surfaces[1];
 
@@ -2512,7 +2512,8 @@ namespace antmoc
 
       // Find FSR ID using starting coordinate, create a new FSR if there is not an FSR associated with the LocalCoords.
       start.setVersionNum(v);
-      region_id = findExtrudedFSR(&start);
+      region_id = findExtrudedFSR(&start); // 根据 start 的 CSG 信息和 version 号 v，找对应的 ExtrudedFSR id；如果没有找到，就创建一个新的 ExtrudedFSR，并返回它的 id。
+
       std::string fsr_key = getFSRKey(&start); // start所在FSR的标识串，在2D情况下用的是getFSRKeyFast，这里再取一遍，是为了后面从 _extruded_FSR_keys_map 里取出刚刚关联的那块挤出区。
 
       // 获取extruded FSR的坐标
@@ -2629,14 +2630,14 @@ namespace antmoc
     std::string msg = "initializing 3D FSRs";
     Progress progress(_extruded_FSR_keys_map.size(), msg, 0.1, this, true);
 
-    int anticipated_size = 2 * _extruded_FSR_keys_map.size(); // 提前给 _FSR_keys_map（3D FSR 的 key → FSRData* 映射）预留更大的容量
-    if (_overlaid_mesh != nullptr)                            // 估计：3D FSR 的数量大约是 ExtrudedFSR 数量的 2 倍（若定义了_overlaid_mesh， ×_overlaid_mesh->getNumZ()）
+    int anticipated_size = 2 * _extruded_FSR_keys_map.size();
+    if (_overlaid_mesh != nullptr) // 估计：3D FSR 的数量大约是 ExtrudedFSR 数量的 2 倍，若定义了_overlaid_mesh，则还要乘以 Z 方向的层数
       anticipated_size *= _overlaid_mesh->getNumZ();
 
-    _FSR_keys_map.realloc(anticipated_size); // 扩容 3D FSR 的哈希表。
+    _FSR_keys_map.realloc(anticipated_size); // 提前给 _FSR_keys_map 预留更大的容量，避免后续反复扩容带来的性能损失 （findFSRId会把3D FSR 的 key → FSRData* 加入）
     long total_number_fsrs_in_stack = 0;     // 累加所有挤出 FSR 内含的 3D FSR 数量，用于统计内存需求。
 
-    /* Loop over extruded FSRs 遍历轴向挤出FSR*/
+    /* 遍历重叠平面上所有的轴向挤出FSR */
 #pragma omp parallel for // 多线程并行
     for (size_t i = 0; i < _extruded_FSR_keys_map.size(); i++)
     {
@@ -2648,7 +2649,6 @@ namespace antmoc
       double x0 = extruded_FSR->_coords->getX(); // 之前在 segmentizeExtruded 时保存的“特征点”，start点
       double y0 = extruded_FSR->_coords->getY();
 
-      /* Determine if there is a global mesh or local meshes should be created 确定是否应创建全局轴向网或局部轴向网*/
       if (global_z_mesh.size() > 0)
       { // 提供了全局轴向网（global_z_mesh）
 
@@ -2663,15 +2663,15 @@ namespace antmoc
           for (size_t n = 0; n < num_regions; n++)
           {
 
-            /* Set the axial coordinate at the midpoint of mesh boundaries 设置网格边界中点的轴向坐标*/
+            /* 取相邻轴向网格的中点*/
             double midpt = (global_z_mesh[n] + global_z_mesh[n + 1]) / 2;
 
             LocalCoords coord(x0, y0, midpt); // 实例化一个局部点,以 (x0, y0, zmid) 为坐标,定在 root universe 上
             coord.setUniverse(_root_universe);
 
-            /* Get the FSR ID and material */
+            /* 找到这个点所在的Cell(findCellContainingCoords)，继而找到填充的材料；找到点所在 FSR 的 id(findFSRId)，此时会给轴向 FSR 逐个编号 */
             Cell *cell = findCellContainingCoords(&coord);
-            long fsr_id = findFSRId(&coord); // 找到点所在 FSR 的 id(findFSRId),此时会给轴向 FSR 逐个编号
+            long fsr_id = findFSRId(&coord); // 找到点所在 FSR 的 id(findFSRId)，此时会给轴向 FSR 逐个编号
             Material *material = cell->getFillMaterial();
 
             /* Set the FSR ID and material */
@@ -2693,23 +2693,20 @@ namespace antmoc
         int num_segments = track.getNumSegments();
         segment *segments = track.getSegments();
 
-        /* Allocate materials and mesh in extruded FSR */
+        /* 3D FSR 数量为num_segments */
         extruded_FSR->_num_fsrs = (size_t)num_segments;
         extruded_FSR->_materials = new Material *[num_segments];
         extruded_FSR->_fsr_ids = new long[num_segments];
         extruded_FSR->_mesh = new double[num_segments + 1];
 
-        /* Initialize values in extruded FSR */
+        /* 遍历num_segments 个 3D FSR,把线段对应的材料和 FSR id 赋给结构体 */
         for (int s = 0; s < num_segments; s++)
         {
           extruded_FSR->_materials[s] = segments[s]._material;
           extruded_FSR->_fsr_ids[s] = segments[s]._region_id;
         }
 
-        /* Initialize z mesh  初始化Z网格的高度/初始化轴向网的值
-         * The accumulation performed below may cause a non-negligible
-         * rounding error which makes the program never take the conditional
-         * branch. 下面执行的累加可能会导致不可忽略的舍入误差，这使得程序永远不会采用条件分支（待）*/
+        /* Initialize z mesh  初始化局部轴向网,最低层为 zmin,每层高度为前一层加线段长度:zlocal[s + 1] =  zlocal[s] + lengthseg[s]*/
         int s;
         double level = min_z;
         extruded_FSR->_mesh[0] = level;
@@ -2832,12 +2829,12 @@ namespace antmoc
    *      are loaded from a file.
    * 在前面的分段过程中，FSR 是这样被记录的：
    * _FSR_keys_map：key → FSRData*
-   * key：一个字符串，唯一描述一个 FSR 在 CSG 结构中的位置（类似“几何指纹”）；
+   * key：一个字符串，唯一描述一个 FSR 在 CSG 结构中的位置；
    * FSRData 结构体里有 _fsr_id、_mat_id、_point（质心）等。
    *
    * 但是后续求解时，我们通常是通过“fsr_id”去查：
    * 这个编号对应的 key 是啥？（有时要 debug 用）
-   * 他的特征点是哪个？
+   * 他的特征点centroids是哪个？
    * 它的材料 id 是多少？
    * 它在 CMFD 的哪个粗网格 cell 里？
    * initializeFSRVectors 就是把FSRData 结构体的数据，整理成几个“数组/向量”，让你可以通过 fsr_id O(1) 访问到对应信息。

@@ -44,21 +44,29 @@ namespace antmoc
 
   private:
     /** A user-defined ID for each Material created */
+    // 每个材料的唯一标识符。
     int _id;
 
     /** A user-defined name for the Material */
+    // 材料名称。
     char *_name;
 
     /** The volume / area of the Material computed from overlapping segments */
+    // 材料的体积或面积，由几何处理中的重叠线段计算得出。
     double _volume;
 
     /** The total number of instances of this Material in the Geometry  实例数*/
+    // 该材料在整个几何结构中被使用的总次数。
     int _num_instances;
 
     /** The number of energy groups */
+    // 能群数量。中子输运计算通常将连续的能量离散化为多个组（Group）。
     int _num_groups;
 
     /** An array of the total cross-sections for each energy group */
+    // FP_PRECISION: 这是一个宏定义，通常在 constants.h 中定义为 float 或 double。
+    // *: 指针，这里表示动态数组。_sigma_t 指向一个数组，存储每个能群的总截面 (Sigma_t)。
+    // 数组大小通常为 _num_groups。
     FP_PRECISION *_sigma_t;
 
     /** Max total cross section */
@@ -88,33 +96,46 @@ g=3 [ 3    7    11    15 ]    索引3:  (gp=0, g=3)
 _sigma_s[] = {0,1,2,3, 4,5,6,7, 8,9,10,11, 12,13,14,15}
              └──列0──┘└──列1──┘└───列2───┘└────列3───┘
      */
+    // 散射截面矩阵 (Sigma_s)。虽然物理上是 GxG 的矩阵，但为了内存连续性，这里用一维数组存储。
     FP_PRECISION *_sigma_s;
 
     /** An array of the absorption cross-sections for each energy group */
+    // 吸收截面 (Sigma_a) 数组。表示中子被原子核吸收的概率。
     FP_PRECISION *_sigma_a;
 
     /** An array of the fission cross-sections for each energy group */
+    // 裂变截面 (Sigma_f) 数组。表示发生核裂变的概率。
     FP_PRECISION *_sigma_f;
 
-    /** An array of the fission cross-sections multiplied by 单次裂变发射的平均中子数 nu \f$ \nu \f$
-     *  for each energy group */
+    // nu (ν) 是每次裂变产生的平均中子数。
+    // 数组，裂变截面_sigma_f乘以每次裂变产生的平均中子数ν
     FP_PRECISION *_nu_sigma_f;
 
-    /** An array of the 裂变中子能谱chi \f$ \chi \f$ values for each energy group */
+    /** An array of the 裂变中子能谱chi 表示裂变产生的中子在各个能群中的分布概率。 */
+    // 所有能群的 Chi 之和通常归一化为 1。
     FP_PRECISION *_chi;
 
     /** A 2D array of the fission matrix from/into each group */
+    // 裂变矩阵，由_nu_sigma_f与_chi的外积构建。void Material::buildFissionMatrix() 中构建。用一维数组模拟二维矩阵，列索引 g 对应原群，行索引 G 对应目的群。
+    // 矩阵的每个元素说明从能群g产生的裂变中子流入能群G的数量为 νΣ_f(g) * χ(G)。
     FP_PRECISION *_fiss_matrix;
 
     /** A boolean representing whether or not this Material contains a non-zero
      *  fission cross-section and is fissionable */
+    // 标记该材料是否可裂变（即 Σ_f > 0）。
     bool _fissionable;
 
     /** A boolean to indicate whether or not the data has been
      * allocated to be vector aligned for SIMD instructions */
+    // 标记数据内存是否已对齐。
+    // SIMD (Single Instruction, Multiple Data) 是并行计算的一种，利用 CPU 的向量寄存器（如 AVX, SSE）同时处理多个数据。
+    // 为了高效使用 SIMD，数据在内存中的起始地址通常需要是 16、32 或 64 字节的倍数（即“对齐”）。
     bool _data_aligned;
 
     /** The number of vector widths needed to fit all energy groups */
+    // 计算需要多少个 SIMD 向量宽度才能覆盖所有能群。
+    // 例如：如果有 10 个能群，SIMD 宽度为 4（一次处理4个浮点数），则需要 ceil(10/4) = 3 个向量宽度。
+    // 这用于编写向量化的循环。
     int _num_vector_groups;
 
   public:

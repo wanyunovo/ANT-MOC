@@ -123,7 +123,7 @@ namespace antmoc
     ///< Boolean indicating whether segments have been counted (true) or not (false)
     bool _segments_counted;
 
-    /** Number of segments */
+    /** Number of segments 所有 track 的 segment 数总和*/
     long _num_segments;
 
     /** The quadrature set */

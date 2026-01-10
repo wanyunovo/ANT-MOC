@@ -760,6 +760,8 @@ namespace antmoc
 
   /**
    * @brief Initializes new ExpEvaluator object to compute exponentials.
+   * 在 MOC（特征线法）计算中，核心公式涉及大量的e−τ计算（其中 τ 是光学长度，定义为τ=Σ_t*L（总截面 × 物理长度））
+   * 直接调用数学库的 exp() 函数非常慢，因此程序预先计算好一个查找表（Table Lookup）或插值表，用“查表”代替“计算”来加速
    */
   void Solver::initializeExpEvaluators()
   {
@@ -769,6 +771,7 @@ namespace antmoc
     _timer->startTimer();
 
     /* Compute the first exponential evaluator */
+
     ExpEvaluator *first_evaluator = _exp_evaluators[0][0];
     first_evaluator->setQuadrature(_quad);
 
@@ -851,7 +854,8 @@ namespace antmoc
    * @brief Initializes the Material's production matrices.
    * @details In an adjoint calculation, this routine will transpose the
    *          scattering and fission matrices in each material.
-   * @param mode the solution type (FORWARD or ADJOINT)
+   * @param mode the solution type
+   * 为求解器准备材料数据，特别是构建裂变矩阵，并根据计算模式（正向或伴随）调整数据结构。
    */
   void Solver::initializeMaterials(solverMode mode)
   {
@@ -860,14 +864,14 @@ namespace antmoc
 
     _solver_mode = mode;
 
-    auto &materials = _geometry->getAllMaterials();
+    auto &materials = _geometry->getAllMaterials(); // 从几何对象 (_geometry) 中获取所有材料的列表（通常是一个 Map 容器）。auto & 表示引用，避免拷贝大量数据。
 
-    for (auto &m : materials)
+    for (auto &m : materials) // m.first 是材料 ID，m.second 是材料对象的指针。
     {
-      m.second->buildFissionMatrix();
+      m.second->buildFissionMatrix(); // 构建裂变矩阵。
 
-      if (mode == ADJOINT)
-        m.second->transposeProductionMatrices();
+      if (mode == ADJOINT)                       // 如果是伴随模式。
+        m.second->transposeProductionMatrices(); // 转置产生矩阵
     }
 
     /* GPU solver needs this */
@@ -879,6 +883,9 @@ namespace antmoc
    * @details This method assigns each FSR a unique, monotonically increasing
    *          ID, sets the Material for each FSR, and assigns a volume based on
    *          the cumulative length of all of the segments inside the FSR.
+   * 求解之前调用一个函数来初始化求解过程中用到的变量。有的已经算好了, 有的还未计算, 如下：
+   * 从已有对象中提取, 存入数组  – FSR 数量、能群数量、材料数量  – 材料
+   * 需要计算得到  – 每条轨迹的角通量数(3D 时为能群数,2D 时为能群加极角数)  – FSR 体积、形心
    */
   void Solver::initializeFSRs()
   {
@@ -892,10 +899,15 @@ namespace antmoc
       delete[] _FSR_materials;
 
     /* Get an array of volumes indexed by FSR  */
-    _track_generator->initializeFSRVolumesBuffer();
+    _track_generator->initializeFSRVolumesBuffer(); // 为存储 FSR 体积的数组分配内存
     _FSR_volumes = _track_generator->getFSRVolumes();
 
 #ifdef NGROUPS
+    /**
+     * 这是一个预处理指令（宏）。
+    含义: 如果在编译代码时定义了 NGROUPS 这个宏（通常是为了优化性能，把能群数固定死，编译器可以生成更快的代码），那么就执行下面的检查。
+    检查内容: 检查编译时指定的能群数 (NGROUPS) 是否与当前输入文件（几何对象 _geometry）中的能群数一致。如果不一致，报错并提示用户重新编译代码。
+     */
     if (_geometry->getNumEnergyGroups() != NGROUPS)
       log::error("The code has been compiled for {} groups, and the "
                  "current case is in {} groups, please re-compile with the right "
@@ -903,7 +915,7 @@ namespace antmoc
                  NGROUPS, _geometry->getNumEnergyGroups());
 #endif
 
-    /* Retrieve simulation parameters from the Geometry */
+    // 从 _geometry 对象中获取模拟的基本参数：FSR 总数、能群总数、材料总数。
     _num_FSRs = _geometry->getNumFSRs();
     _num_groups = _geometry->getNumEnergyGroups();
     _num_materials = _geometry->getNumMaterials();
@@ -911,10 +923,12 @@ namespace antmoc
     if (_SOLVE_3D)
     {
       _fluxes_per_track = _num_groups;
+      //_fluxes_per_track: 每条径迹上需要存储多少个通量值。  为什么是 num_groups？
     }
     else
     {
       _fluxes_per_track = _num_groups * _num_polar / 2;
+      // MOC 在 2D 下通常会对极角（Polar Angle）进行离散化积分。这里 _num_polar / 2 是因为通常利用了对称性
     }
 
     /* Allocate scratch memory */
@@ -923,22 +937,30 @@ namespace antmoc
     if (_regionwise_scratch != NULL)
       delete[] _regionwise_scratch;
 
+    /*
+    omp_get_max_threads(): 这是 OpenMP 的函数。
+    含义: 获取当前环境下允许的最大并行线程数（通常等于 CPU 核心数）。
+    */
     int num_threads = omp_get_max_threads();
+
+    //_groupwise_scratch: 这是一个 vector（动态数组），大小调整为线程数。每个线程都有自己独立的一块大小为 _num_groups 的内存，防止多线程计算时数据冲突
     _groupwise_scratch.resize(num_threads);
+
     for (int i = 0; i < num_threads; i++)
       _groupwise_scratch.at(i) = new FP_PRECISION[_num_groups];
+
     _regionwise_scratch = new double[_num_FSRs];
 
     /* Generate the FSR centroids */
-    _track_generator->generateFSRCentroids(_FSR_volumes);
+    _track_generator->generateFSRCentroids(_FSR_volumes); // 计算FSR的形心
 
     /* Allocate an array of Material pointers indexed by FSR */
-    _FSR_materials = new Material *[_num_FSRs];
+    _FSR_materials = new Material *[_num_FSRs]; // _FSR_materials[fsr_id] 存储每个 FSR 对应的材料指针
 
     /* Loop over all FSRs to extract FSR material pointers */
     for (long r = 0; r < _num_FSRs; r++)
     {
-      _FSR_materials[r] = _geometry->findFSRMaterial(r);
+      _FSR_materials[r] = _geometry->findFSRMaterial(r); // 根据 FSR 的 ID (r)，找到它对应的材料对象。
     }
 
     _timer->stopTimer("Initialize FSRs");
@@ -1230,27 +1252,33 @@ namespace antmoc
    *          and the Mesh object. This method is for internal use only
    *          and should not be called directly by the user.
    * 如果用户未将虚拟Cmfd对象指定给解算器，则实例化该对象，并初始化FSR、材质、通量和网格对象。
+   *
+   * 这个函数就是把 MOC 求解器里的数据（如通量、材料、几何信息）“挂载”到 CMFD 对象上，让 CMFD 准备好工作。
    */
   void Solver::initializeCmfd()
   {
 
     log::fverbose_once("Initializing CMFD...");
 
-    /* Retrieve CMFD from the Geometry */
+    // 1. 获取 CMFD 对象
+    // CMFD 对象通常是在读取几何文件（Geometry）时创建的。
     _cmfd = _geometry->getCmfd();
 
     /* If the user did not initialize Cmfd, simply return */
+    // 2. 检查是否需要 CMFD
+    // 如果没有定义 CMFD，或者用户显式关闭了通量更新（加速），就直接退出，不初始化了。
     if (_cmfd == NULL)
       return;
     else if (!_cmfd->isFluxUpdateOn())
       return;
 
     /* Initialize the CMFD energy group structure */
+    // 3. 设置源迭代收敛阈值
     _cmfd->setSourceConvergenceThreshold(_converge_thresh * 1.e-1); // FIXME  这里为什么把收敛阈值缩小10倍？
-    _cmfd->setNumMOCGroups(_num_groups);
+    _cmfd->setNumMOCGroups(_num_groups);                            // 设置MOC能群数
 
-    if (_cmfd->GetHexLatticeEnable())
-    { // 0000000000000000000
+    if (_cmfd->GetHexLatticeEnable()) // 六角形
+    {                                 // 0000000000000000000
       std::vector<std::vector<int>> cmfd_group_structure;
       int hex_num_groups = _cmfd->getHexGroups();
       cmfd_group_structure.resize(hex_num_groups);
@@ -1276,16 +1304,21 @@ namespace antmoc
       _cmfd->setGroupStructure(cmfd_group_structure);
     }
 
+    // 初始化能群映射表（建立细群到粗群的索引关系）
     _cmfd->initializeGroupMap();
     /* Give CMFD number of FSRs and FSR property arrays */
-    _cmfd->setSolve3D(_SOLVE_3D);
-    _cmfd->setNumFSRs(_num_FSRs);
-    _cmfd->setFSRVolumes(_FSR_volumes);
-    _cmfd->setFSRMaterials(_FSR_materials);
-    _cmfd->setFSRFluxes(_scalar_flux);
-    _cmfd->setFSRSources(_reduced_sources);
-    _cmfd->setQuadrature(_quad);
-    _cmfd->setGeometry(_geometry);
+    // 5. 传递核心数据指针（共享内存）
+    // 这一步非常关键！Solver 并没有把数据“复制”给 CMFD，而是把数据的“地址”（指针）传过去了。
+    // 这样 CMFD 和 MOC 读写的是同一块内存，CMFD 修改了通量，MOC 立马就能看到。
+    _cmfd->setSolve3D(_SOLVE_3D);           // 是否是 3D
+    _cmfd->setNumFSRs(_num_FSRs);           // 平源区数量
+    _cmfd->setFSRVolumes(_FSR_volumes);     // 体积数组
+    _cmfd->setFSRMaterials(_FSR_materials); // 材料数组
+    _cmfd->setFSRFluxes(_scalar_flux);      // 通量数组（最重要的数据）
+    _cmfd->setFSRSources(_reduced_sources); // 源数组(源项Q)
+    _cmfd->setQuadrature(_quad);            // 角度积分权重
+    _cmfd->setGeometry(_geometry);          // 几何对象
+                                            // 传递特征线间距信息
     _cmfd->setAzimSpacings(_quad->getAzimSpacings(), _num_azim);
     if (!_is_restart)
     {
@@ -1295,6 +1328,8 @@ namespace antmoc
         _cmfd->initialize(); // 初始化CMFD相关的矩阵和矢量对象、k-nearest模板、CMFD中子流和MOC材料，重点
     }
 
+    // 7. 3D 特殊处理
+    // 如果是 3D 问题，还需要传递极角间距信息
     TrackGenerator3D *track_generator_3D =
         dynamic_cast<TrackGenerator3D *>(_track_generator);
     if (track_generator_3D != NULL)
@@ -1687,24 +1722,25 @@ namespace antmoc
     _num_iterations = _is_restart;
 
     /* Clear convergence data from a previous simulation run */
-    double previous_residual = 1.0;
+    double previous_residual = 1.0; // 初始化残差
     double residual = 0.;
     if (!_is_restart)
       _k_eff = 1.;
 
     /* Initialize data structures */
     _timer->startTimer();
-    initializeMaterials(_solver_mode);
+    initializeMaterials(_solver_mode); //  构建裂变矩阵。
 
-    initializeFSRs();
+    initializeFSRs(); // 初始化平源区，– 每条轨迹的角通量数(3D 时为能群数,2D 时为能群加极角数)  – FSR 体积、形心
 
-    countFissionableFSRs();
+    countFissionableFSRs(); // 统计可裂变平源区
 
-    initializeExpEvaluators();
+    initializeExpEvaluators(); // 初始化指数求值器
+
     if (!_is_restart)
-      initializeFluxArrays();
+      initializeFluxArrays(); // 初始化通量数组
 
-    initializeSourceArrays();
+    initializeSourceArrays(); // 初始化源项数组
 
     initializeCmfd(); // CMFD求解的初始化，重点
 
@@ -1749,7 +1785,7 @@ namespace antmoc
     /* Record the starting eigenvalue guess */
     double k_prev = _k_eff;
 
-    /* Source iteration loop */
+    /* Source iteration loop  */
     for (int i = 0; i < max_iters; i++)
     {
 
@@ -1761,19 +1797,19 @@ namespace antmoc
 
       /* Perform the source iteration */
       _timer->startTimer();
-      computeFSRSources(i); // 源更新算法
+      computeFSRSources(i); //  更新源项Q，用标通量求每个 FSR 和能群下的源项 Q
       _timer->stopTimer("Update Solver Values");
 
       _timer->startTimer();
-      transportSweep(); // 输运扫描算法  输运迭代与CMFD结合部分
+      transportSweep(); // 输运扫描算法，扫描过程中保存通量，求每一条轨迹角通量的变化量 ∆Ψ 输运迭代与CMFD结合部分
       _timer->stopTimer("Transport Sweep");
 
       _timer->startTimer();
-      addSourceToScalarFlux(); // 更新FSR标通量
+      addSourceToScalarFlux(); // 更新FSR标通量，用所有经过同一平源区的角通量来求标通量Φ
 
       /* Solve CMFD diffusion problem and update MOC flux */
       if (_cmfd != NULL && _cmfd->isFluxUpdateOn()) // 是否开启CMFD
-        _k_eff = _cmfd->computeKeff(i);             // cfmd具体求解部分，计算有效增殖因子，重点
+        _k_eff = _cmfd->computeKeff(i);             // cfmd具体求解部分，计算Keff，重点
       else
         computeKeff();
 
@@ -1784,7 +1820,7 @@ namespace antmoc
       }
 
       /* Normalize the flux and compute residuals */
-      normalizeFluxes();
+      normalizeFluxes();                    // 归一化通量
       residual = computeResidual(res_type); // 计算残差
 
       /* Compute difference in k and apparent dominance ratio */
@@ -1827,7 +1863,7 @@ namespace antmoc
           residual = 1e-6;
         _cmfd->setSourceConvergenceThreshold(0.01 * residual);
       }
-      storeFSRFluxes();
+      storeFSRFluxes(); // 存储平源区通量
       _num_iterations++;
 
       _timer->stopTimer("Update Solver Values");

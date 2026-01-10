@@ -1584,7 +1584,9 @@ namespace antmoc
     /* 用于轴向挤出轨迹分段的射线追踪... */
 
     /* Get all unique z-coords at which 2D radial segmentation is performed */
-    /* 获取执行2D径向分段的所有唯一z坐标 */
+    /* 获取执行2D径向分段的所有唯一z坐标
+    如果用户/外部已经指定了要在哪些 z 高度分段，就用 _segmentation_heights；
+    否则调用 _geometry->getUniqueZPlanes()：自动提取所有轴向层的高度*/
     std::vector<double> z_coords;
     if (_contains_segmentation_heights)
       z_coords = _segmentation_heights;
@@ -1658,10 +1660,8 @@ namespace antmoc
       mpi::mpiBarrierUniqueDomains();
 #endif // ENABLE_MPI_
 
-    /* Initialize 3D FSRs and their associated vectors */
-    // 这里会初始化FSR的数据结构，比如FSRData
     _timer->startTimer();
-    _geometry->initializeAxialFSRs(_global_z_mesh); // 初始化FSR
+    _geometry->initializeAxialFSRs(_global_z_mesh); // 在已有“2D FSR 和轴向网”的基础上，怎么把 3D FSR 的材料、id、网格信息初始化出来。
     _geometry->initializeFSRVectors();              // 记录CMFD对应的FSR，以及每个FSR的ID对应的CMFD单元
     _timer->stopTimer("Initialize Axial FSRs");
 
@@ -2024,32 +2024,42 @@ namespace antmoc
    * @brief Allocates memory for temporary segment storage if necessary
    * @details New memory is only allocated if _max_num_segments exceeds
    *          _num_seg_matrix_columns (the maximum when the segments were allocated)
+   * 在 OTF 模式下，程序不会一次性把所有线段（Segments）都存下来（因为内存会爆），而是算一条轨迹、生成一串线段、算完就扔掉，复用这块内存给下一条轨迹用。这个函数就是负责申请这块可复用的内存。
    */
   void TrackGenerator3D::allocateTemporarySegments()
   {
-
-    /* Check if a resize is unnecessary */
+    /* 1. 检查是否需要扩容 */
+    // _max_num_segments: 刚才数出来的、所有轨迹里最长的那条有多少段（比如 400 段）。
+    // _num_seg_matrix_columns: 当前已经分配的缓冲区能容纳多少段（比如 500 段）。
+    // 如果现有容量够用（400 <= 500? Yes），就直接返回，不用折腾。
     if (_max_num_segments <= _num_seg_matrix_columns)
       return;
 
-    /* Widen the number of columns in the temporary segments matrix */
+    /* 2. 更新容量记录 */
+    // 既然不够用，那就把标准提高到最大需求。
     _num_seg_matrix_columns = _max_num_segments;
 
-    /* Delete temporary segments if already allocated */
+    /* 3. 清理旧内存 */
+    // 如果之前已经分配过（_contains_temporary_segments 为真），先把旧的删掉。
+    // 因为我们要重新分配更大的。
     if (_contains_temporary_segments)
     {
       for (int t = 0; t < _num_threads; t++)
       {
-        delete[] _temporary_segments.at(t);
+        delete[] _temporary_segments.at(t); // 删掉每个线程的旧缓冲区
       }
     }
     else
     {
+      // 如果是第一次分配，就初始化 vector 大小，对应线程数。
       _temporary_segments.resize(_num_threads);
       _contains_temporary_segments = true;
     }
 
-    /* Allocate new temporary segments */
+    /* 4. 分配新内存 */
+    // 给每个线程（t）分配一个独立的数组。
+    // 数组大小 = _num_seg_matrix_columns（最大段数）。
+    // 这样每个线程在并行计算时，都有自己的一块私有地盘来放临时线段，互不干扰。
     for (int t = 0; t < _num_threads; t++)
       _temporary_segments.at(t) = new segment[_num_seg_matrix_columns];
   }

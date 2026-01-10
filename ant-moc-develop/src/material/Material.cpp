@@ -1015,10 +1015,22 @@ namespace antmoc
    * @details The fission matrix is constructed as the outer product of the
    *          chi and fission cross-section vectors. This routine is intended
    *          for internal use and is called by the Solver at runtime.
+   * 在反应堆物理中，裂变过程通常被描述为
+   * 一个能量为g的中子被核吸收并引发裂变。
+   * 产生 ν个新中子（平均值）。
+   * 这些新中子按照能谱χ分布在各个能群G中。
+   * 因此，从能群g产生的裂变中子流入能群G的数量为 νΣ_f(g) * χ(G)。
    */
   void Material::buildFissionMatrix()
   {
 
+    /*
+    在计算之前，必须确保已经设置了：
+    能群数量 (_num_groups)
+     νΣ_f截面数据 (_nu_sigma_f)
+    裂变能谱χ (_chi)
+    如果缺任何一个，程序就会报错。
+    */
     if (_num_groups == 0)
       log::ferror("Unable to build Material %d's fission matrix "
                   "since the number of energy groups has not been set",
@@ -1038,12 +1050,17 @@ namespace antmoc
 
     _fiss_matrix = new FP_PRECISION[_num_groups * _num_groups];
 
-    /* Compute vector outer product of chi and the fission cross-section */
+    /* Compute vector outer product of chi and the fission cross-section
+    双重循环，遍历所有可能的“出发能群”g和“目标能群”G。
+    “外积”就是把两个向量 a、b 做成一张矩阵，列向量乘行向量：矩阵的 (i,j) 元素等于 a[i] * b[j]。
+    所以 _fiss_matrix[G*_num_groups + g] = _chi[G] * _nu_sigma_f[g] 正是外积的实现。
+    列索引 g 对应原群，行索引 G 对应目的群。矩阵的每个元素说明从能群g产生的裂变中子流入能群G的数量为 νΣ_f(g) * χ(G)。
+    存储方式: 这里使用了一维数组模拟二维矩阵。
+    */
     for (int G = 0; G < _num_groups; G++)
     {
       for (int g = 0; g < _num_groups; g++)
         _fiss_matrix[G * _num_groups + g] = _chi[G] * _nu_sigma_f[g];
-      // “外积”就是把两个列向量 a、b 做成一张矩阵：矩阵的 (i,j) 元素等于 a[i] * b[j]。在这里 a = _chi（目的群分布），b = _nu_sigma_f（原群产生的裂变中子数）。所以 _fiss_matrix[G*_num_groups + g] = _chi[G] * _nu_sigma_f[g] 正是外积的实现。列索引 g 对应原群，行索引 G 对应目的群。矩阵的每个元素说明“从 g 产生的裂变中子有多少流入 G”
     }
   }
 
@@ -1158,12 +1175,13 @@ namespace antmoc
    * @brief Transposes the scattering and fission matrices.
    * @details This routine is used by the Solver when performing
    *          adjoint flux caclulations.
+   * 把散射矩阵和裂变矩阵转置
    */
   void Material::transposeProductionMatrices()
   {
 
     int num_groups;
-    if (_data_aligned)
+    if (_data_aligned) //_data_aligned: 这是一个优化标志。为了利用 CPU 的 SIMD（单指令多数据）指令集加速，数据可能会被填充（Padding）成特定长度的倍数（比如 4 或 8 的倍数）。
       num_groups = _num_vector_groups * VEC_LENGTH;
     else
       num_groups = _num_groups;

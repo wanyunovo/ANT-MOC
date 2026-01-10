@@ -316,6 +316,7 @@ namespace antmoc
    *        and FSR scalar flux arrays.
    * @details Deletes memory for old flux arrays if they were allocated
    *          for a previous simulation.
+   * 为求解器分配计算所需的内存空间（主要是存储中子通量 Flux 的数组）。
    */
   void CPUSolver::initializeFluxArrays()
   {
@@ -340,8 +341,9 @@ namespace antmoc
       delete[] _stabilizing_flux;
 
 #ifdef ENABLE_MPI_
+    // mpi::isSpatialDecomposed() 是一个工具函数，判断是否开启了空间区域分解（即并行计算）。
     if (mpi::isSpatialDecomposed())
-      deleteMPIBuffers();
+      deleteMPIBuffers(); // 清理 MPI 通信用的缓存。
 #endif
 
     long size;
@@ -349,15 +351,23 @@ namespace antmoc
     /* Allocate memory for the Track boundary fluxes and leakage arrays */
     try
     {
+      // --- 计算边界角通量数组的大小 ---
+      // 大小 = 2（正反两个方向） * 总特征线数 * 每条线上的能群/极角数
       size = 2 * _tot_num_tracks * _fluxes_per_track;
       long max_size = size;
 #ifdef ENABLE_MPI_
       if (mpi::isSpatialDecomposed())
+        // MPI_Allreduce 是一个标准的 MPI 集合通信函数。
+        // 它的作用是：让所有并行的进程把自己的 size 拿出来，取一个最大值 (MPI_MAX)，
+        // 然后把这个最大值告诉所有人。
+        // 这里主要用于在日志里打印出“最大的那个进程用了多少内存”，方便评估性能。
         MPI_Allreduce(&size, &max_size, 1, mpi::getDatatype<long>(), MPI_MAX,
                       _geometry->getMPICart());
 #endif
+      // 将字节数转换为 MiB (1 << 20 就是 2的20次方，即 1024*1024)
       double max_size_mb = 2.0 * max_size * sizeof(float) / (1 << 20);
 
+      // 如果只定义了真空边界条件，内存减半（这是特定的优化逻辑）
 #ifdef ONLYVACUUMBC
       max_size_mb /= 2;
 #endif
@@ -365,22 +375,28 @@ namespace antmoc
 
       _boundary_flux = new float[size];
 #ifndef ONLYVACUUMBC
+      // 如果不是“仅真空边界”，还需要分配 start_flux
       _start_flux = new float[size];
 #endif
 
-      // Initialize boundary fluxes and start fluxes. In some cases, uninitialized boundary
-      // flux causes weired behaviour like NaN.
+      // Initialize boundary fluxes and start fluxes. In some cases, uninitialized boundary flux causes weired behaviour like NaN.
+      // 这是一个函数调用，把刚才分配的 _boundary_flux 和 _start_flux 数组里的所有元素都设为 0.0。
+      // 这是一个好习惯，防止数组里有随机的垃圾数据导致计算出现 NaN (Not a Number)。
       zeroTrackFluxes();
 
       /* Allocate memory for boundary leakage if necessary. CMFD is not set in
          solver at this point, so the value of _cmfd is always NULL as initial
          value currently */
+      // 如果几何中没有 CMFD (Coarse Mesh Finite Difference) 加速对象，
+      // 就需要自己分配边界泄漏数组。
       if (_geometry->getCmfd() == NULL)
       {
         _boundary_leakage = new float[_tot_num_tracks];
       }
 
       /* Determine the size of arrays for the FSR scalar fluxes */
+      // --- 计算标量通量数组的大小 ---
+      // 大小 = 平源区(FSR)数量 * 能群数
       size = _num_FSRs * _NUM_GROUPS;
       max_size = size;
 #ifdef ENABLE_MPI_
@@ -416,6 +432,7 @@ namespace antmoc
 
 #ifdef ENABLE_MPI_
       /* Allocate memory for angular flux exchanging buffers */
+      // 如果开启了 MPI 并行，需要分配用于在不同进程间“倒腾”数据的缓存区。
       if (mpi::isSpatialDecomposed())
         setupMPIBuffers();
 #endif
@@ -438,27 +455,38 @@ namespace antmoc
     /* Delete old sources arrays if they exist */
     if (_reduced_sources != NULL)
       delete[] _reduced_sources;
+    // !_fixed_sources_initialized 这个标记很重要：
+    // 有时候内存是由外部脚本分配好传进来的，这种情况下 C++ 这边就不能随便删，否则会报错。
     if (_fixed_sources != NULL && !_fixed_sources_initialized)
       delete[] _fixed_sources;
 
+    // --- 2. 计算需要多大空间 ---
+    // 大小 = 平源区(FSR)数量 * 能群数
     long size = _num_FSRs * _NUM_GROUPS;
 
     /* Allocate memory for all source arrays */
     _reduced_sources = new FP_PRECISION[size]();
+
+    // 如果开启了固定源功能 (_fixed_sources_on)，且没有被外部初始化，就分配内存。
     if (_fixed_sources_on && !_fixed_sources_initialized)
       _fixed_sources = new FP_PRECISION[size]();
 
+    // --- 4. 记录日志（MPI 相关） ---
+    // 这部分逻辑和之前完全一样，只是为了在屏幕上打印一下“我用了多少内存”。
     long max_size = size;
 #ifdef ENABLE_MPI_
     if (mpi::isSpatialDecomposed())
       MPI_Allreduce(&size, &max_size, 1, mpi::getDatatype<long>(), MPI_MAX,
                     _geometry->getMPICart());
 #endif
+    // 计算内存占用（MB）
     double max_size_mb = (double)(max_size * sizeof(FP_PRECISION)) / (double)(1 << 20);
     if (_fixed_sources_on)
       max_size_mb *= 2;
     log::info("Max source storage per domain = {:.3f} MiB", max_size_mb);
 
+    // --- 5. 填入数据 ---
+    // 如果开启了固定源，且是我们自己分配的内存，就需要把用户设置的数据填进去
     /* Populate fixed source array with any user-defined sources */
     if (_fixed_sources_on && !_fixed_sources_initialized)
       initializeFixedSources();
@@ -466,6 +494,7 @@ namespace antmoc
 
   /**
    * @brief Populates array of fixed sources assigned by FSR.
+   * 它的作用是把用户零零散散设置的固定源数据，整理到一个整齐的数组里，方便计算时快速读取
    */
   void CPUSolver::initializeFixedSources()
   {
@@ -475,9 +504,13 @@ namespace antmoc
     long fsr_id;
     int group;
     std::pair<int, int> fsr_group_key;
+    // std::map 是 C++ 的“字典”或“哈希表”。
+    // _fix_src_FSR_map 存储了用户之前的设置：Key是(FSR ID, 能群), Value是源的强度。
+    // iterator 是“迭代器”，用来遍历这个字典。
     std::map<std::pair<int, int>, FP_PRECISION>::iterator fsr_iter;
 
     /* Populate fixed source array with any user-defined sources */
+    // --- 遍历用户设置的所有固定源 ---
     for (fsr_iter = _fix_src_FSR_map.begin();
          fsr_iter != _fix_src_FSR_map.end(); ++fsr_iter)
     {
@@ -496,7 +529,11 @@ namespace antmoc
         log::ferror("Unable to use fixed source for FSR %d with only "
                     "%d FSRs in the geometry",
                     fsr_id, _num_FSRs);
-
+      // --- 填入数组 ---
+      // _fixed_sources 是一个一维数组，模拟二维矩阵。
+      // 访问方式是：_fixed_sources(行, 列)
+      // 注意：group - 1 是因为 C++ 数组是从 0 开始计数的，而物理上能群通常从 1 开始。
+      // fsr_iter->second 取出的是 Value (源的强度)。
       _fixed_sources(fsr_id, group - 1) = _fix_src_FSR_map[fsr_group_key];
     }
   }
@@ -507,13 +544,14 @@ namespace antmoc
    */
   void CPUSolver::zeroTrackFluxes()
   {
-
+    // OpenMP 是用于“共享内存并行”的（比如你的一台电脑有8个核，它可以让8个核一起跑这个循环）。
+    // schedule(static) 是一种任务分配策略，把循环平均分给每个核。
 #pragma omp parallel for schedule(static)
-    for (long t = 0; t < _tot_num_tracks; t++)
+    for (long t = 0; t < _tot_num_tracks; t++) // 遍历所有特征线
     {
-      for (int d = 0; d < 2; d++)
+      for (int d = 0; d < 2; d++) // 遍历两个方向（正向/反向）
       {
-        for (int pe = 0; pe < _fluxes_per_track; pe++)
+        for (int pe = 0; pe < _fluxes_per_track; pe++) // 遍历能群/极角
         {
           _boundary_flux(t, d, pe) = 0.0;
 #ifndef ONLYVACUUMBC

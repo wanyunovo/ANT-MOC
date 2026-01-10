@@ -175,6 +175,7 @@ namespace antmoc
 
   /**
    * @brief Initialize an array to contain the FSR volumes.
+   * 为存储 FSR 体积的数组分配内存
    */
   void TrackGenerator::initializeFSRVolumesBuffer()
   {
@@ -182,10 +183,10 @@ namespace antmoc
     if (_FSR_volumes != NULL)
       delete[] _FSR_volumes;
 
-#pragma omp critical
+#pragma omp critical // OpenMP 临界区，保证多线程下只有一条线程执行此代码块，防止并发分配冲突
     {
       long num_FSRs = _geometry->getNumFSRs();
-      _FSR_volumes = new FP_PRECISION[num_FSRs]();
+      _FSR_volumes = new FP_PRECISION[num_FSRs](); // 分配新数组并初始化为0
     }
   }
 
@@ -394,6 +395,9 @@ namespace antmoc
    * @details Note: The memory is stored in the FSR volumes buffer of the
    *          TrackGenerator and is freed during deconstruction.
    * @return a pointer to the array of FSR volumes
+   * 计算并返回 FSR 体积数组
+   * _FSR_volumes[fsr_id] =该 FSR 的体积
+   * 在 MOC 中，区域的体积通常是通过统计穿过该区域的所有特征线段的长度及权重累加得到的（数值积分）。它内部会调用一个 VolumeCalculator 类来执行这个计算
    */
   FP_PRECISION *TrackGenerator::getFSRVolumes()
   {
@@ -949,7 +953,25 @@ namespace antmoc
         // FIXME HERE dumpSegmentsToFile();
       }
 
-      /* Allocate array of mutex locks for each FSR */
+      /* Allocate array of mutex locks for each FSR
+      在 MOC 求解过程中，计算是高度并行的：
+并行维度：程序会同时在多个 CPU 核心上处理不同的特征线（Tracks）。
+共享资源：虽然每条线是独立的，但它们都会穿过同一个几何体，进而穿过相同的 FSR（平源区）。
+冲突场景：
+当一条特征线穿过某个 FSR 时，它会计算该 FSR 的中子通量贡献，并试图累加到该 FSR 的总通量变量中。
+如果线程 A 正在处理穿过 FSR #10 的特征线，同时线程 B 也在处理另一条穿过 FSR #10 的特征线。
+如果两个线程同时尝试修改 FSR #10 的通量值（flux += delta），就会发生写冲突，导致数据错误。
+
+_FSR_locks 数组为每一个 FSR 提供了一把独立的“锁”。
+加锁：当某个线程想要更新 FSR #i 的数据时，它必须先拿到 _FSR_locks[i]。
+互斥：如果锁已经被别的线程拿走了，当前线程就必须等待（阻塞），直到锁被释放。
+解锁：更新完成后，线程释放锁，其他线程才能继续操作该 FSR。
+
+3. 为什么是“细粒度”锁？
+代码中是为每个 FSR 分配一个锁（new omp_lock_t[num_FSRs]），而不是用一个全局大锁。
+全局锁：如果所有 FSR 共用一把锁，那么线程 A 更新 FSR #1 时，线程 B 连 FSR #2 都不能更新，这会严重降低并行效率，变成串行程序。
+细粒度锁（Fine-grained Locking）：每个 FSR 有自己的锁。线程 A 更新 FSR #1 时，完全不影响线程 B 更新 FSR #2。只有当它们真的撞在同一个 FSR 上时才需要排队。这最大化了并行效率。
+      */
       /* 为每个FSR（平源区）分配互斥锁数组 */
       long num_FSRs = _geometry->getNumFSRs();
       _FSR_locks = new omp_lock_t[num_FSRs];
@@ -1877,10 +1899,10 @@ namespace antmoc
   /**
    * @brief Generate segments for each Track across the Geometry.
    */
-  void TrackGenerator::segmentize()
   {
+    void TrackGenerator::segmentize()
 
-    log::finfo("Ray tracing for 2D track segmentation...");
+        log::finfo("Ray tracing for 2D track segmentation...");
 
     /* Check to ensure the Geometry is infinite in axial direction */
     double max_z = _geometry->getGlobalMaxZ();
@@ -2375,6 +2397,7 @@ namespace antmoc
    *          centroid fomula can be found in R. Ferrer et. al. "Linear Source
    *          Approximation in CASMO 5", PHYSOR 2012.
    * @param FSR_volumes An array of FSR volumes.
+   * 计算每个 FSR 的几何中心（形心）。
    */
   void TrackGenerator::generateFSRCentroids(FP_PRECISION *FSR_volumes)
   {
@@ -2398,6 +2421,10 @@ namespace antmoc
 
 #ifdef ENABLE_MPI_
     // If there are processes sharing FSRs, reduce FSR centroids
+    /**
+     * 如果开启了 MPI，不同进程可能只负责一部分径迹。因此，每个进程算出来的形心只是“局部”的。
+     * MPI_Allreduce: 这是一个 MPI 通信函数，将所有进程计算出的坐标加在一起（MPI_SUM），然后把结果分发给所有进程。这样每个进程都能得到完整的、正确的形心坐标。
+     */
     if (mpi::isPrdTrackDecomposed())
     {
       _timer->startTimer();
@@ -2507,7 +2534,9 @@ namespace antmoc
     // Count the number of segments on each track and update the maximum
     countNumSegments();
 
-    /* Allocate new temporary segments if necessary */
+    // 内存分配（如果是 OTF 模式）
+    // 如果不是显式存储所有线段（EXPLICIT_2D/3D），说明是 On-The-Fly (OTF) 模式。
+    // OTF 模式下，线段是算的时候临时生成的，所以需要预先分配一块足够大的“临时缓冲区”来放这些临时线段。
     if (_segment_formation != +segmentationType::EXPLICIT_3D &&
         _segment_formation != +segmentationType::EXPLICIT_2D)
       allocateTemporarySegments();
@@ -2520,12 +2549,17 @@ namespace antmoc
   long TrackGenerator::countNumSegments()
   {
 
+    // 1. 安全检查
     // After segmentize() or segmentizeExtruded(), this flag will be set to true.
+    // 如果还没生成线段（segmentize 还没跑），就没法数，报错。
     if (!containsSegments())
       log::error("Cannot count segments since they have not been generated.");
 
     log::verbose_once("Counting segments and update the maximum number...");
 
+    // 2. 使用辅助类 SegmentCounter 进行统计
+    // SegmentCounter 是一个专门用来数数的工具类。
+    // 为什么要专门搞个类？因为数数的过程可能很复杂（涉及并行、最大光学长度拆分等逻辑）。
     SegmentCounter counter(this);
     counter.countTotalNumSegments();
     counter.execute();

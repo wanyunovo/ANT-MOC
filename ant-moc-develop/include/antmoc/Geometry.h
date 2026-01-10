@@ -47,7 +47,10 @@ namespace antmoc
   {
 
   private:
-    /** An map of FSR key hashes to unique FSRData structs */
+    /** An map of FSR key hashes to unique FSRData structs
+     * _FSR_keys_map[key] 返回该FSR的FSRData结构体
+     * _extruded_FSR_keys_map[key] 返回该轴向挤出FSR的ExtrudedFSR结构体
+     */
     ParallelHashMap<std::string, FSRData *> _FSR_keys_map;
     ParallelHashMap<std::string, ExtrudedFSR *> _extruded_FSR_keys_map;
 
@@ -57,7 +60,7 @@ namespace antmoc
     std::vector<std::string> _FSRs_to_keys;
 
     /** An vector of FSR centroids indexed by FSR ID
-     * _FSRs_to_centroids[fsr_id] 返回该FSR的数值中心点(Point指针)
+     * _FSRs_to_centroids[fsr_id] 返回该FSR的形心(Point指针)
      */
     std::vector<Point *> _FSRs_to_centroids;
 
@@ -72,7 +75,6 @@ namespace antmoc
     /*
     _extruded_FSR_keys_map 是 key → ExtrudedFSR* 的 map；
     同样，我们希望通过 extruded_fsr_id 直接拿到对应的 ExtrudedFSR*
-
     */
     std::vector<ExtrudedFSR *> _extruded_FSR_lookup;
 
@@ -84,7 +86,7 @@ namespace antmoc
     /* The Universe at the root node in the CSG tree */
     Universe *_root_universe;
 
-    /** A CMFD object pointer */
+    /** A CMFD object pointer 从几何中获取 CMFD 对象 */
     Cmfd *_cmfd;
 
     /** An optional axial mesh overlaid on the Geometry 这个变量不是很理解 文档的解释是“额外定义的一层网，如果这个网轴向有 nz 层，每层都算上”是轴向网吗？*/

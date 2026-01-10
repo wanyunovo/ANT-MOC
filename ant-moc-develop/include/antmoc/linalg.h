@@ -122,18 +122,15 @@ namespace antmoc
     int _num_domains_y; // Y方向域的总数 2
     int _num_domains_z; // Z方向域的总数 2
 
-    /* 当前进程负责的域的索引（从0开始编号）
-     * 例如：16个进程负责一个4×2×2的域分解，则 idx 范围是 [0,3]×[0,1]×[0,1]
-     * 进程0负责域(0,0,0)，进程1负责域(1,0,0)，依此类推
-     * 用于定位当前域在全局几何中的位置
-     * 例如：进程5负责域(1,1,0)
-     * _domain_idx_x = 1 // X方向索引
-     * _domain_idx_y = 1 // Y方向索引
-     * _domain_idx_z = 0 // Z方向索引
-     */
-    int _domain_idx_x; // 当前域在X方向上的索引
-    int _domain_idx_y; // 当前域在Y方向上的索引
-    int _domain_idx_z; // 当前域在Z方向上的索引
+    /*
+    在前面的域分解例子中：
+    x方向上，进程0负责第0~24列，进程1负责第25~49列，进程2负责第50~74列，进程3负责第75~99列
+    所以进程2的_domain_idx_x就是2
+    以此类推，Y方向和Z方向也是类似的逻辑
+    */
+    int _domain_idx_x; // 是当前进程在 X 方向是第几个进程（比如第 0 个，第 1 个...）
+    int _domain_idx_y;
+    int _domain_idx_z;
 
     /* 当前域的在各个方向上负责的CMFD网格数量
     还是前面那个例子：100×80×60的网格，4×2×2的进程网格分解
@@ -143,8 +140,8 @@ namespace antmoc
     Z方向 _local_num_z：60 / 2 = 30 层
      */
     int _local_num_x; // 本域X方向负责的CMFD网格数
-    int _local_num_y; 
-    int _local_num_z; 
+    int _local_num_y;
+    int _local_num_z;
 
     /* ==================== 全局索引偏移量 ==================== */
 

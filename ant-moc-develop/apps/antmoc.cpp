@@ -288,12 +288,27 @@ int main(int argc, char *argv[])
   //------------------------------------------------------------
   // Generate tracks - 生成轨迹
   //------------------------------------------------------------
+  /*
+  含义：使用工厂模式创建一个 求积组（Quadrature） 对象。
+物理意义：
+在 MOC 方法中，我们需要对角度进行积分（计算中子在不同方向上的运动）。
+求积组 定义了一组离散的角度（极角和方位角）以及对应的权重。
+常见的求积组类型包括 Tabuchi-Yamamoto, Legendre-Gauss 等。
+代码逻辑：Factory::getQuadrature 会读取 conf 中的配置（如 quadrature_type, num_azim, num_polar），然后实例化对应的子类（如 TYPolarQuad 或 GLPolarQuad）。
+  */
   log::info("Initializing the track generator...");
   auto quad = Factory::getQuadrature(conf);
+  /*
+  含义：使用工厂模式创建一个 轨迹生成器（TrackGenerator） 对象。
+功能：
+这是 MOC 的核心组件之一。它负责在几何体上“铺设”特征线。
+根据配置（segmentation_type），它可能返回一个标准的 2D TrackGenerator，或者一个支持 3D 的 TrackGenerator3D。
+它持有 geometry 的指针，因为轨迹必须依据几何体的边界和尺寸来生成。
+  */
   auto tg = Factory::getTrackGenerator(&geometry, conf);
   tg->setQuadrature(quad);
-  tg->generateTracks(); // 轨迹生成，涉及粗网格与FSR的映射，以及轨迹段与粗网格的映射关系
-
+  tg->generateTracks(); // 轨迹生成
+  
   //------------------------------------------------------------
   // Run simulation - 运行仿真
   //------------------------------------------------------------

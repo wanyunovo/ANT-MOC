@@ -8,7 +8,7 @@
 #ifndef CONSTANTS_H_
 #define CONSTANTS_H_
 
-#include<limits>
+#include <limits>
 namespace antmoc
 {
 
@@ -74,7 +74,7 @@ namespace antmoc
 #define MIN_EXP_INTERP_POINTS 100
 
 /** The minimum calculated determinant to allow for the calculation of a matrix
-  * inverse. */
+ * inverse. */
 #define MIN_DET 1E-10
 
 /** The maximum number of iterations allowed for a power method eigenvalue
@@ -89,7 +89,7 @@ namespace antmoc
 #define MAX_LINEAR_SOLVE_ITERATIONS 10000
 
 #ifdef ENABLE_MPI_
-//TODO Make tracks per buffer dependent on number of processes, and groups
+// TODO Make tracks per buffer dependent on number of processes, and groups
 #define TRACKS_PER_BUFFER 2000
 #define CMFD_BUFFER_SIZE 10000
 #endif
@@ -100,6 +100,7 @@ namespace antmoc
 /** The faces, edges, and vertices that collectively make up the surfaces of a
  *  rectangular prism. The edges denoted as "e" and vertices as "v" on the
  *  illustration below:
+ * 6 faces, 12 edges, 8 vertices
  *
  *                                   e
  *                       v +--------------------+ v
@@ -125,25 +126,25 @@ namespace antmoc
 #define NUM_EDGES 12
 #define NUM_VERTICES 8
 #define NUM_SURFACES 26
-#define SURFACE_X_MIN 0
-#define SURFACE_Y_MIN 1
-#define SURFACE_Z_MIN 2
-#define SURFACE_X_MAX 3
-#define SURFACE_Y_MAX 4
-#define SURFACE_Z_MAX 5
-#define SURFACE_X_MIN_Y_MIN 6
-#define SURFACE_X_MAX_Y_MIN 7
-#define SURFACE_X_MIN_Y_MAX 8
-#define SURFACE_X_MAX_Y_MAX 9
-#define SURFACE_X_MIN_Z_MIN 10
-#define SURFACE_X_MAX_Z_MIN 11
+#define SURFACE_X_MIN 0        // 左面
+#define SURFACE_Y_MIN 1        // 前面
+#define SURFACE_Z_MIN 2        // 底面
+#define SURFACE_X_MAX 3        // 右面
+#define SURFACE_Y_MAX 4        // 后面
+#define SURFACE_Z_MAX 5        // 顶面
+#define SURFACE_X_MIN_Y_MIN 6  // 左前棱
+#define SURFACE_X_MAX_Y_MIN 7  // 右前棱
+#define SURFACE_X_MIN_Y_MAX 8  // 左后棱
+#define SURFACE_X_MAX_Y_MAX 9  // 右后棱
+#define SURFACE_X_MIN_Z_MIN 10 // 左底棱
+#define SURFACE_X_MAX_Z_MIN 11 // 右底棱
 #define SURFACE_X_MIN_Z_MAX 12
 #define SURFACE_X_MAX_Z_MAX 13
 #define SURFACE_Y_MIN_Z_MIN 14
 #define SURFACE_Y_MAX_Z_MIN 15
 #define SURFACE_Y_MIN_Z_MAX 16
 #define SURFACE_Y_MAX_Z_MAX 17
-#define SURFACE_X_MIN_Y_MIN_Z_MIN 18
+#define SURFACE_X_MIN_Y_MIN_Z_MIN 18 // 左前底角
 #define SURFACE_X_MIN_Y_MIN_Z_MAX 19
 #define SURFACE_X_MIN_Y_MAX_Z_MIN 20
 #define SURFACE_X_MIN_Y_MAX_Z_MAX 21
@@ -152,10 +153,10 @@ namespace antmoc
 #define SURFACE_X_MAX_Y_MAX_Z_MIN 24
 #define SURFACE_X_MAX_Y_MAX_Z_MAX 25
 
-
 /** The faces, edges, and vertices that collectively make up the surfaces of a
  *  Hextangular prism. The edges denoted as "e" and vertices as "v" on the
  *  illustration below:
+ * 
  */
 #define HEX_NUM_FACES 8
 #define HEX_NUM_EDGES 18
@@ -200,13 +201,12 @@ namespace antmoc
 #define HEX_SURFACE_GAMMA_MAX_DELTA_MIN_Z_MIN 36
 #define HEX_SURFACE_GAMMA_MAX_DELTA_MIN_Z_MAX 37
 
-
 /** The number of values used in representing a Track when the Tracks are
-   *  retrieved from the TrackGenerator. */
+ *  retrieved from the TrackGenerator. */
 #define NUM_VALUES_PER_RETRIEVED_TRACK 6
 
 /** The number of values used in representing a Segment when the Segments are
-   *  retrieved from the TrackGenerator. */
+ *  retrieved from the TrackGenerator. */
 #define NUM_VALUES_PER_RETRIEVED_SEGMENT 7
 
 /** Least common multiple tolerance */

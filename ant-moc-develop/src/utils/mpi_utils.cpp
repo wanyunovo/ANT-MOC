@@ -41,7 +41,7 @@ namespace antmoc
     static int _num_domains_y = 1;
     static int _num_domains_z = 1;
 
-    ///Index of the domain in the whole geometry in the X, Y and Z directions
+    /// Index of the domain in the whole geometry in the X, Y and Z directions
     static int _domain_index_x = 1;
     static int _domain_index_y = 1;
     static int _domain_index_z = 1;
@@ -149,7 +149,9 @@ namespace antmoc
     ///< Indicate whether MPI variables are initialized
     static bool _mpi_initialized = false;
     ///< Indicate whether the Geometry is domain decomposed
+    // 是否启用了空间区域分解
     static bool _spatial_decomposed = false;
+
     ///< Indicate whether the periodic tracks are decomposed
     static bool _prd_track_decomposed = false;
 

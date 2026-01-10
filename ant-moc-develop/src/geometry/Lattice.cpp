@@ -169,7 +169,9 @@ namespace antmoc
 
     int lat_z = -1;
 
-    /* get the distance to the bottom surface */
+    /* getMinZ() 返回 Lattice 在全局坐标系下的最低 Z 坐标。
+    dist_to_bottom 是该点距离 Lattice 底部的垂直距离。
+    */
     double dist_to_bottom = point->getZ() - getMinZ();
 
     /* Compute the z index for the Lattice cell this point is in */
@@ -188,7 +190,7 @@ namespace antmoc
     if (fabs(dist_to_bottom) < ON_SURFACE_THRESH)
       lat_z = 0;
     else if (fabs(dist_to_bottom - _accumulate_z[_num_z]) < ON_SURFACE_THRESH)
-      lat_z = _num_z - 1;
+      lat_z = _num_z - 1; // 将其归属为最后一个有效的网格单元，其索引正是 _num_z - 1。
     if (lat_z == -1)
       log::ferror("Trying to get lattice z index for point(z = %f) that is "
                   "outside lattice bounds. dist_to_bottom = %f is not within "
@@ -522,11 +524,13 @@ namespace antmoc
   /**
    * @brief Returns the minimum reachable x-coordinate in the Lattice.
    * @return the minimum reachable x-coordinate
-   * _offset 存的是整个 lattice 中心在父级坐标系的位置；_accumulate_x[_num_x] 是 x 方向所有单元宽度的总和，即 lattice 的全宽
-   * getMaxX()/getMinX() 的任务就是返回 lattice 在全局坐标下的左右边界。由于 _offset 位于 lattice 中心，把总宽度除以 2 再加减 _offset，就得到左右端点：
+   * _offset 存储了 Lattice 的几何中心在父级 Universe 坐标系中的位置，默认情况下，Lattice 的中心位于 (0, 0, 0)。
+   * _accumulate_x[_num_x] 存储的是最后一根网格线的位置，也就是整个 Lattice 在 X 方向的总宽度。
+   *
+   * getMaxX()/getMinX() 的任务就是返回 lattice 在全局坐标下的左右边界。
    * 最左：_offset.getX() - total_width/2
    * 最右：_offset.getX() + total_width/2。
-   * y/z 方向同理，用 _accumulate_y[_num_y]/_accumulate_z[_num_z]。这样保证无论 lattice 被放在父几何哪个位置，只要知道中心和总宽，就能快速得到边界，后续判断点是否在 lattice 内、转换局部坐标等都依赖这些值。
+   * y/z 方向同理，用 _accumulate_y[_num_y]/_accumulate_z[_num_z]。这样只要知道中心和总宽，就能快速得到边界。这是几何定位的基础，用于判断点是否在 Lattice 内以及计算相对坐标。
    */
   double RecLattice::getMinX() const
   {
@@ -849,6 +853,7 @@ i 方向在输入和内部都是“从左到右”，无需翻转。
    * @brief Finds the Lattice cell x index that a point lies in.
    * @param point a pointer to a point being evaluated.
    * @return the Lattice cell x index.
+   * 计算一个空间点在矩形晶格中 X 方向（列）的索引。
    */
   int RecLattice::getLatX(Point *point)
   {
@@ -856,11 +861,12 @@ i 方向在输入和内部都是“从左到右”，无需翻转。
     int lat_x = -1;
 
     /* get the distance to the left surface */
-    // 如果晶格最左面的绝对位置是 getMinX()，那么 dist_to_left = point->getX() - getMinX() 就代表该点沿 x 方向距离左边界多远
+    // getMinX() 返回整个 Lattice 在全局坐标系下的最左边界。dist_to_left 就是该点距离 Lattice 左边界的水平距离。
     double dist_to_left = point->getX() - getMinX();
 
-    //_accumulate_x 中存的就是从左到右的累计宽度（第 0 格左边界=0，第 1 格右界=宽度1，第 2 格右界=宽度1+宽度2 ...）。for 循环 (Lattice.cpp (lines 808-815)) 找到满足 _accumulate_x[i] <= dist_to_left < _accumulate_x[i+1] 的区间，说明该点位于第 i 列。
-    /* Compute the x index for the Lattice cell this point is in */
+    //_accumulate_x 是一个数组，存储了每一列网格线的累积位置（相对于左边界，第 0 格左边界=0，第 1 格右界=宽度1，第 2 格右界=宽度1+宽度2 ...）。
+    // for 循环 (Lattice.cpp (lines 808-815)) 找到满足 _accumulate_x[i] <= dist_to_left < _accumulate_x[i+1] 的区间，说明该点位于第 i 列。
+    /*如果是非均匀网格（每列宽度不同），这个循环是必要的。如果是均匀网格，其实可以直接用除法算出来，但这里为了通用性使用了循环查找。 */
     for (int i = 0; i < _num_x; i++)
     {
       if (dist_to_left >= _accumulate_x[i] && dist_to_left < _accumulate_x[i + 1])
@@ -872,10 +878,9 @@ i 方向在输入和内部都是“从左到右”，无需翻转。
 
     /* Check if the Point is on the Lattice boundaries and if so adjust
      * x Lattice cell index */
-    if (fabs(dist_to_left) < ON_SURFACE_THRESH)
+    if (fabs(dist_to_left) < ON_SURFACE_THRESH) // 如果点正好落在最左边界上（dist_to_left ≈ 0），强制归为第 0 列。
       lat_x = 0;
     else if (fabs(dist_to_left - _accumulate_x[_num_x]) < ON_SURFACE_THRESH) // _accumulate_x 列表包含 _num_x+1 个值，代表每一条垂直网格线相对最左边界的累积距离（第 0 条线在 0，最后一条线在总宽度处），所以 _accumulate_x[_num_x] 是“最右边界线的位置”
-
       lat_x = _num_x - 1;
     if (lat_x == -1)
       log::ferror("Trying to get lattice x index for point(x = %f) that is "
@@ -1002,6 +1007,16 @@ i 方向在输入和内部都是“从左到右”，无需翻转。
    *                  0    1   2   3
    * @param point a pointer to a point being evaluated.
    * @return the Lattice cell index.
+   *  查找一个空间点在矩形晶格（Lattice）中的一维线性索引。单元格从左下角开始编号，行内从左到右递增，行间从下到上递增。例如4x4晶格的编号如上图所示
+   * 这是一种典型的 Row-Major（行优先） 或者是 Z-Y-X 的三维数组扁平化映射方式。
+   * getLatX(point)：计算点在 X 方向是第几列（0 到 _num_x - 1）。
+   * getLatY(point)：计算点在 Y 方向是第几行（0 到 _num_y - 1）。
+   * getLatZ(point)：计算点在 Z 方向是第几层（0 到 _num_z - 1）。
+   * 公式推导：
+   * 每一层有 _num_x * _num_y 个单元。所以 Z 层之前的单元总数是 Z * (_num_x * _num_y)。
+   * 每一行有 _num_x 个单元。所以当前层中，Y 行之前的单元总数是 Y * _num_x。
+   * 当前行中，X 列之前的单元数就是 X。
+   * 加起来就是全局唯一索引。
    */
   int RecLattice::getLatticeCell(Point *point)
   {
@@ -1019,12 +1034,13 @@ i 方向在输入和内部都是“从左到右”，无需翻转。
    * @param cell the cell index that the point is in.
    * @param point a pointer to a point being evaluated.
    * @return the Lattice surface index.
-   *  查找2维点所在的Lattice单元格曲面。如果该点不在曲面上，则返回-1
+   * int cell: 表示当前点所在的晶格单元的全局一维索引。
+   * 判断一个空间点（Point）具体落在晶格单元（Cell）的哪个“表面”上。这里的“表面”不仅指 6 个面，还包括 12 条棱边和 8 个角点。
    */
   int RecLattice::getLatticeSurface(int cell, Point *point, double azim, double polar)
   {
 
-    int surface = -1;
+    int surface = -1; // 初始化 surface 为 -1。如果最后还是 -1，说明该点不在任何边界上（即在单元内部）。
 
     /* Get coordinates of point and cell boundaries */
     // unused
@@ -1044,6 +1060,7 @@ i 方向在输入和内部都是“从左到右”，无需翻转。
     /* Bools indicating if point is on each surface 声明六个布尔 on_min_x 等，分别表示点是否落在该单元的六个面上。 */
     bool on_min_x, on_max_x, on_min_y, on_max_y, on_min_z, on_max_z;
     // 依次对 X/Y 方向的最小/最大面赋值：使用 _accumulate_x[lat_x] 这类累积距离 + 全局最小坐标 getMinX() 来得到当前单元左/右界位置，设置平面，再调用 isPointOnSurface(point) 检查点是否正好在那个面上
+
     /* Check if point is on X_MIN boundary */
     xplane.setX(_accumulate_x[lat_x] + getMinX());
     on_min_x = xplane.isPointOnSurface(point);
@@ -1077,7 +1094,7 @@ i 方向在输入和内部都是“从左到右”，无需翻转。
     }
 
     if (on_min_x)
-    { // 通过嵌套的条件语句判断该点在哪些平面上
+    { // 通过嵌套的条件语句组合上面的 6 个布尔值，确定点具体在哪里。
       /*
        通过嵌套 if/else 判断点落在的具体组合：优先看 X 方向，再看 Y，再看 Z。只要点在多个方向交线/角上，就返回不同枚举值，例如 SURFACE_X_MIN_Y_MIN_Z_MIN 代表该单元左-前-底角；这些枚举常量（注释如 // 18）对应局部面/棱/角编号。
       */
@@ -1162,8 +1179,15 @@ i 方向在输入和内部都是“从左到右”，无需翻转。
     else if (on_max_z)
       surface = SURFACE_Z_MAX; // 5
 
+    // 计算并返回全局索引
+    /*
+    NUM_SURFACES: 一个常量，表示一个单元格总共有多少个“表面实体”。在 CMFD 方法中，为了精确处理，通常每个CMFD 网格不仅考虑 6 个面，还考虑 12 条边和 8 个角，加起来共 26 个实体。
+    cell: 第几个单元格。
+    surface: 单元格内的第几个部位。
+    NUM_SURFACES * cell + surface: 这是一个扁平化操作，为整个网格系统中每一个单元的每一个部位生成一个全局唯一的 ID。
+    */
     if (surface != -1)
-      surface = NUM_SURFACES * cell + surface; // 每个CMFD 网格都有26个面点边面，返回的是全局的CMFD surface数量
+      surface = NUM_SURFACES * cell + surface;
 
     return surface;
   }

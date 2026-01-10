@@ -92,13 +92,17 @@ namespace antmoc
     /** Pointer to polar quadrature object 求积组不是一组包含方位角和极角的组合以及他们的权值，这里为什么说是极角求积组？*/
     QuadraturePtr _quadrature;
 
-    /** Pointer to geometry object */
+    /** Pointer to geometry object
+     *
+     */
     Geometry *_geometry;
 
     /** The keff eigenvalue */
     double _k_eff;
 
-    /** The A (destruction) matrix 对应CMFD文档中的B.29公式*/
+    /** The A (destruction) matrix 对应CMFD文档中的B.29公式
+     * 损失矩阵
+     */
     Matrix *_A;
 
     /** The M (production) matrix */
@@ -170,14 +174,18 @@ namespace antmoc
     CMFD_PRECISION **_temporary_currents;
 
     /** Vector representing the flux for each cmfd cell and cmfd enegy group at
-     * the end of a CMFD solve 表示cmfd求解结束时每个cmfd单元和cmfd能量组的通量的向量*/
+     * the end of a CMFD solve 
+     * 表示cmfd求解结束时每个cmfd单元和cmfd能量组的通量的向量 新通量
+     * */
     Vector *_new_flux;
 
     /** Vector representing the flux for each cmfd cell and cmfd enegy group at
-     * the beginning of a CMFD solve CMFD求解前的通量向量(由moc数据累加平均得到)*/
+     * the beginning of a CMFD solve CMFD求
+     * 解前的通量向量(由moc数据累加平均得到) 旧通量
+     * */
     Vector *_old_flux;
 
-    /** The corrected diffusion coefficients from the previous iteration 上一次迭代的表面修正扩散系数*/
+    /** The corrected diffusion coefficients from the previous iteration 上一次迭代的表面修正扩散系数(B.26)*/
     Vector *_old_dif_surf_corr;
 
     /** Whether the old diffusion coefficient has been set
@@ -212,7 +220,7 @@ namespace antmoc
     int _num_r;
 
     /** Number of energy groups
-     * MOC（精细计算）使用的能群总数
+     * MOC使用的能群总数
      */
     int _num_moc_groups;
 
@@ -250,6 +258,7 @@ namespace antmoc
     /** Map of MOC groups to CMFD groups
      * 详细映射表：数组下标是MOC能群ID，值是对应的CMFD能群ID
      * map[moc_group_id] = cmfd_group_id
+     * 给定一个 MOC 细群 ID，快速查到它属于哪个 CMFD 粗群
      */
     int *_group_indices_map;
 
@@ -305,7 +314,7 @@ namespace antmoc
 
     /** Pointers to Materials for each FSR
      * 指针数组：存储每个FSR对应的材料对象指针
-     * Material** 是指向指针的指针（数组的每个元素都是一个 Material*）
+     * _FSR_materials[fsr_id] 返回对应FSR的Material指针
      */
     Material **_FSR_materials;
 
@@ -419,7 +428,7 @@ namespace antmoc
     std::vector<int> _logical_actual_map;
 
     /** Pointer to Lattice object representing the CMFD mesh
-     * 指向代表 CMFD 网格的 Lattice 对象的指针
+     * 指向代表整个 CMFD 网格系统的 Lattice 对象的指针
      */
     Lattice *_lattice;
 
@@ -434,11 +443,8 @@ namespace antmoc
     bool _hexlattice_enable;
 
     /** Flag indicating whether to update the MOC flux
-     * 标志位：是否将CMFD计算结果反馈更新到MOC通量
-     * - CMFD加速的核心步骤：MOC -> CMFD -> MOC (更新)
-     * 在求解过程中，通常需要多次迭代来达到收敛状态。每次迭代中，
-     * 可能需要更新MOC通量以反映新的物理状态或边界条件的变化。
-     * 如果当前迭代需要更新MOC通量，则 _flux_update_on 设为 true。
+     * 标志位：是否需要 CMFD
+     如果没有定义 CMFD，或者用户显式关闭了通量更新（加速），就直接退出，不初始化了。
      */
     bool _flux_update_on;
 
